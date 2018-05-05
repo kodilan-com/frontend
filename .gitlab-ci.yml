@@ -1,9 +1,32 @@
+image: node:latest
+
+cache:
+  paths:
+  - node_modules/
+
+stages:
+  - build
+  - test
+  - deploy
+
+before_script:
+- npm install
+
+eslint:
+  stage: build
+  script:
+    - npm run eslint
+
+karma:
+  stage: test
+  script:
+    - npm run unit
+
 pages:
   stage: deploy
   script:
-  - mkdir .public
-  - cp -r * .public
-  - mv .public public
+  - mkdir public
+  - cp -r dist public
   artifacts:
     paths:
     - public
