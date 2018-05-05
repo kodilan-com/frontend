@@ -1,9 +1,15 @@
 <script>
-import db from '../services/firebase';
+import { mapActions } from 'vuex';
+import api from '../services/api';
 
 export default {
+  methods: {
+    ...mapActions(['setData']),
+  },
   created() {
-    console.log(db);
+    api.fetchData().then((data) => {
+      this.setData(data);
+    });
   },
 };
 </script>
