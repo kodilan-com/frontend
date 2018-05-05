@@ -1,21 +1,21 @@
 image: node:latest
 
 stages:
-  - build
-  - test
+  # - build
+  # - test
   - deploy
 
-eslint:
-  stage: build
-  script:
-    - npm install
-    - npm run lint
+# eslint:
+#   stage: build
+#   script:
+#     - npm install
+#     - npm run lint
 
-karma:
-  stage: test
-  script:
-    - npm install
-    - npm run unit
+# karma:
+#   stage: test
+#   script:
+#     - npm install
+#     - npm run unit
 
 pages:
   stage: deploy

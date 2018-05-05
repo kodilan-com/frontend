@@ -2,13 +2,15 @@
 import { mapState, mapActions } from 'vuex';
 import api from '../services/api';
 import Loader from './shared/Loader';
+import Post from './shared/Post';
 
 export default {
   components: {
     Loader,
+    Post,
   },
   computed: {
-    ...mapState(['isLoading']),
+    ...mapState(['isLoading', 'posts']),
   },
   methods: {
     ...mapActions(['setData', 'toggleLoading']),
@@ -23,7 +25,25 @@ export default {
 </script>
 
 <template>
-  <div>
-    <loader v-if="isLoading" />
+  <div class="app-container container">
+    <div class="columns">
+      <loader v-if="isLoading" />
+      <div
+        class="column col-12"
+        v-else
+      >
+        <post
+          v-for="post in posts"
+          :key="post.id"
+          :post="post"
+        />
+      </div>
+    </div>
   </div>
 </template>
+
+<style lang="scss">
+.app-container {
+  max-width: 1024px;
+}
+</style>
