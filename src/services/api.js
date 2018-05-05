@@ -33,6 +33,10 @@ export default {
       );
   },
 
+  save(data) {
+    return db.collection(collections.POSTS).add(data);
+  },
+
   fetchTags() {
     return this.fetch(collections.TAGS);
   },
