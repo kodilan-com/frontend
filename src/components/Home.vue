@@ -28,7 +28,7 @@ export default {
   <div class="app-container container">
     <router-link
       class="btn btn-primary btn-lg"
-      to="/post"
+      to="/submit"
     >
       İLAN EKLE
     </router-link>
