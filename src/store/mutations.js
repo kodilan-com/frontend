@@ -24,4 +24,8 @@ export default {
 
     Object.assign(state, { companies, tags, posts: normalizedPosts });
   },
+
+  [constants.TOGGLE_LOADING](state) {
+    Object.assign(state, { isLoading: !state.isLoading });
+  },
 };

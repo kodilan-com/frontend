@@ -1,19 +1,29 @@
 <script>
-import { mapActions } from 'vuex';
+import { mapState, mapActions } from 'vuex';
 import api from '../services/api';
+import Loader from './shared/Loader';
 
 export default {
+  components: {
+    Loader,
+  },
+  computed: {
+    ...mapState(['isLoading']),
+  },
   methods: {
-    ...mapActions(['setData']),
+    ...mapActions(['setData', 'toggleLoading']),
   },
   created() {
     api.fetchData().then((data) => {
       this.setData(data);
+      this.toggleLoading();
     });
   },
 };
 </script>
 
 <template>
-  <h1>KodIlan.com</h1>
+  <div>
+    <loader v-if="isLoading" />
+  </div>
 </template>
