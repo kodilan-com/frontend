@@ -26,6 +26,12 @@ export default {
 
 <template>
   <div class="app-container container">
+    <router-link
+      class="btn btn-primary btn-lg"
+      to="/post"
+    >
+      İLAN EKLE
+    </router-link>
     <div class="columns">
       <loader v-if="isLoading" />
       <div

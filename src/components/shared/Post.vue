@@ -36,18 +36,18 @@ export default {
       <div class="tile-content">
         <p class="tile-title">{{post.position}}</p>
         <p class="tile-subtitle text-gray">
-          <a :href="`companies/${post.company.name}`">
+          <router-link :to="`companies/${post.company.name}`">
             {{post.company.name}}
-          </a>
+          </router-link>
         </p>
         <span
           v-for="tag in post.tags"
           :key="tag.id"
           class="label label-rounded label-secondary"
         >
-          <a :href="`categories/${tag.slug}`">
+          <router-link :to="`categories/${tag.slug}`">
             {{tag.title}}
-          </a>
+          </router-link>
         </span>
       </div>
       <div class="tile-action">
