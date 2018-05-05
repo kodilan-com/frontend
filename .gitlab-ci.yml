@@ -9,8 +9,7 @@ eslint:
   stage: build
   script:
     - npm install
-    - npm install -g eslint
-    - npm run eslint
+    - npm run lint
 
 karma:
   stage: test
