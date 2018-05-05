@@ -22,8 +22,7 @@ pages:
   script:
   - npm install
   - npm run build
-  - mkdir public
-  - cp -r dist public
+  - mv dist public
   artifacts:
     paths:
     - public
