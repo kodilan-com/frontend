@@ -80,10 +80,10 @@ export default {
           <input class="form-input" type="text" id="logo" v-model="post.company.logo"/>
         </div>
         <div class="form-group">
-          <label class="form-label" for="email">Twitter Hesabı</label>
+          <label class="form-label" for="twitter">Twitter Hesabı</label>
           <div class="input-group">
               <span class="input-group-addon">https://twitter.com/</span>
-              <input type="text" class="form-input" v-model="post.company.twitter">
+              <input type="text" class="form-input" id="twitter" v-model="post.company.twitter">
             </div>
         </div>
       </div>
