@@ -19,7 +19,7 @@ export default new Router({
       component: Detail,
     },
     {
-      path: '/submit',
+      path: '/ilan-ekle',
       name: 'Submit',
       component: Submit,
     },

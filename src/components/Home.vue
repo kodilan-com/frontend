@@ -1,6 +1,5 @@
 <script>
 import { mapState, mapActions } from 'vuex';
-import api from '../services/api';
 import Loader from './shared/Loader';
 import Post from './shared/Post';
 
@@ -13,11 +12,10 @@ export default {
     ...mapState(['isLoading', 'posts']),
   },
   methods: {
-    ...mapActions(['setData', 'toggleLoading']),
+    ...mapActions(['fetchData', 'setData', 'toggleLoading']),
   },
   created() {
-    api.fetchData().then((data) => {
-      this.setData(data);
+    this.fetchData().then(() => {
       this.toggleLoading();
     });
   },
@@ -28,7 +26,7 @@ export default {
   <div class="app-container container">
     <router-link
       class="btn btn-primary btn-lg"
-      to="/submit"
+      to="/ilan-ekle"
     >
       İLAN EKLE
     </router-link>

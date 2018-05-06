@@ -2,16 +2,18 @@ import * as constants from './constants';
 import api from '../services/api';
 
 export default {
-  setData({ commit }, { companies, tags, posts }) {
-    commit(constants.SET_DATA, { companies, tags, posts });
+  fetchData({ commit }) {
+    api.fetchData().then(({ companies, tags, posts }) => {
+      commit(constants.SET_DATA, { companies, tags, posts });
+    });
   },
   toggleLoading({ commit }) {
     commit(constants.TOGGLE_LOADING);
   },
   createJob({ commit }, data) {
-    api.save(data).then(console.log);
+    return api.save(data).then(console.log);
   },
   findPostById({ commit }, id) {
-    api.fetchItem(id);
-  }
+    return api.fetchPostById(id);
+  },
 };

@@ -5,23 +5,24 @@ export default {
   data() {
     return {
       post: {
-        position: "",
-        description: "",
-        location: "",
-        applyUrl: "",
+        position: '',
+        description: '',
+        location: '',
+        applyUrl: '',
         company: {
-          name: "",
-          email: "",
-          logo: "",
-          twitter: ""
+          name: '',
+          email: '',
+          logo: '',
+          twitter: '',
         },
-        tags: ""
+        tags: '',
       },
-    }
+    };
   },
   created() {
     this.findPostById(this.$route.params.id).then((data) => {
       this.post = data;
+      console.log(data);
       this.toggleLoading();
     });
   },
@@ -49,7 +50,7 @@ export default {
             {{post.company.name}}
           </router-link>
         </p>
-        
+
       </div>
       <div class="tile-action">
         <a

@@ -8,25 +8,12 @@ const collections = {
 
 export default {
   fetchData() {
-    return this.fetchTags().then((tags) => {
-      return this.fetchCompanies().then((companies) => {
-        return this.fetchPosts().then((posts) => {
-          return { tags, companies, posts };
-        });
-      });
-    });
+    return this.fetchTags().then(tags =>
+      this.fetchCompanies().then(companies =>
+        this.fetchPosts().then(posts => ({ tags, companies, posts })),
+      ),
+    );
   },
-
-  fetchItem(id) {
-    return db.
-      collection(collections.POSTS)
-      .doc(id)
-      .get()
-      .then((post) => {
-        return post;
-      });
-  },
-
   fetch(collectionName) {
     return db
       .collection(collectionName)
@@ -42,20 +29,22 @@ export default {
         }),
       );
   },
-
-  save(data) {
-    return db.collection(collections.POSTS).add(data);
-  },
-
   fetchTags() {
     return this.fetch(collections.TAGS);
   },
-
   fetchPosts() {
     return this.fetch(collections.POSTS);
   },
-
   fetchCompanies() {
     return this.fetch(collections.COMPANIES);
+  },
+  fetchPostById(id) {
+    return db
+      .collection(collections.POSTS)
+      .doc(id)
+      .get();
+  },
+  save(data) {
+    return db.collection(collections.POSTS).add(data);
   },
 };
