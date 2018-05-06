@@ -17,6 +17,16 @@ export default {
     });
   },
 
+  fetchItem(id) {
+    return db.
+      collection(collections.POSTS)
+      .doc(id)
+      .get()
+      .then((post) => {
+        return post;
+      });
+  },
+
   fetch(collectionName) {
     return db
       .collection(collectionName)

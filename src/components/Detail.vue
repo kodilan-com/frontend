@@ -1,30 +1,39 @@
 <script>
+import { mapState, mapActions } from 'vuex';
+
 export default {
-  props: {
-    post: {
-      type: Object,
-      required: true,
-    },
-  },
   data() {
     return {
-      isExpanded: false,
-    };
+      post: {
+        position: "",
+        description: "",
+        location: "",
+        applyUrl: "",
+        company: {
+          name: "",
+          email: "",
+          logo: "",
+          twitter: ""
+        },
+        tags: ""
+      },
+    }
+  },
+  created() {
+    this.findPostById(this.$route.params.id).then((data) => {
+      this.post = data;
+      this.toggleLoading();
+    });
   },
   methods: {
-    toggle() {
-      this.isExpanded = !this.isExpanded;
-    }
+    ...mapActions(['findPostById', 'toggleLoading']),
   },
 };
 </script>
 
 <template>
   <div>
-    <div
-      @click="toggle"
-      class="tile tile-centered"
-    >
+    <div class="tile tile-centered">
       <div class="tile-icon">
         <figure class="avatar avatar-lg">
           <img
@@ -40,15 +49,7 @@ export default {
             {{post.company.name}}
           </router-link>
         </p>
-        <span
-          v-for="tag in post.tags"
-          :key="tag.id"
-          class="label label-rounded label-secondary"
-        >
-          <router-link :to="`categories/${tag.slug}`">
-            {{tag.title}}
-          </router-link>
-        </span>
+        
       </div>
       <div class="tile-action">
         <a
@@ -58,21 +59,11 @@ export default {
         >
           Başvur
         </a>
-        <router-link
-          :to="{ name: 'Detail', params: { id: post.id } }"
-          class="btn btn-primary btn-sm"
-        >
-          Detaylar
-        </router-link>
       </div>
     </div>
-    <div
-      v-if="isExpanded"
-      class="details"
-    >
-      <p>
+
+    <p>
         {{post.description}}
-      </p>
-    </div>
+    </p>
   </div>
 </template>

@@ -11,4 +11,7 @@ export default {
   createJob({ commit }, data) {
     api.save(data).then(console.log);
   },
+  findPostById({ commit }, id) {
+    api.fetchItem(id);
+  }
 };
