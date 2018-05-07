@@ -1,30 +1,30 @@
-image: node:latest
+# image: node:latest
 
-stages:
-  # - build
-  # - test
-  - deploy
+# stages:
+#   # - build
+#   # - test
+#   - deploy
 
-# eslint:
-#   stage: build
+# # eslint:
+# #   stage: build
+# #   script:
+# #     - npm install
+# #     - npm run lint
+
+# # karma:
+# #   stage: test
+# #   script:
+# #     - npm install
+# #     - npm run unit
+
+# pages:
+#   stage: deploy
 #   script:
-#     - npm install
-#     - npm run lint
-
-# karma:
-#   stage: test
-#   script:
-#     - npm install
-#     - npm run unit
-
-pages:
-  stage: deploy
-  script:
-  - npm install
-  - npm run build
-  - mv dist public
-  artifacts:
-    paths:
-    - public
-  only:
-  - master
+#   - npm install
+#   - npm run build
+#   - mv dist public
+#   artifacts:
+#     paths:
+#     - public
+#   only:
+#   - master
