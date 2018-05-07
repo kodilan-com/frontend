@@ -2,10 +2,12 @@
 import { mapGetters, mapActions } from 'vuex';
 import { VueEditor } from 'vue2-editor';
 import autocomplete from '../../utils/autocomplete';
+import JobDetails from './JobDetails';
 
 export default {
   data() {
     return {
+      isPreview: false,
       model: {
         position: '',
         description: '',
@@ -26,10 +28,15 @@ export default {
     };
   },
   components: {
+    JobDetails,
     VueEditor,
   },
   methods: {
     ...mapActions(['fetchTags', 'savePost']),
+    togglePreview() {
+      this.isPreview = !this.isPreview;
+    },
+    save() {},
   },
   computed: {
     ...mapGetters(['autocompleteTags']),
@@ -53,10 +60,30 @@ export default {
         </div>
       </div>
     </div>
-    <div class="container">
+    <template
+      v-if="isPreview"
+    >
+      <job-details
+        :preview="true"
+        :preview-data="model"
+      />
+      <div class="button-container container margin-top-40">
+        <button
+          @click="save"
+          class="button big margin-top-5"
+          type="button"
+        >
+          Kaydet <i class="fa fa-check"></i>
+        </button>
+      </div>
+    </template>
+    <div
+      v-else
+      class="container"
+    >
       <div class="sixteen columns">
         <div class="submit-page">
-          <div class="notification notice closeable margin-bottom-40">
+          <div class="notification notice margin-bottom-40">
             <p>
               <span>Önemli hatırlatma!</span>
               İlan ekleyebilmek için belirtmiş olduğunuz firma ismiyle uyumlu bir e-posta adresi vermeniz gerekiyor.
@@ -159,10 +186,14 @@ export default {
             />
           </div>
 
-          <div class="preview-button">
-            <a href="#" class="button big margin-top-5">
+          <div class="button-container">
+            <button
+              @click="togglePreview"
+              class="button big margin-top-5"
+              type="button"
+            >
               Önizleme <i class="fa fa-arrow-circle-right"></i>
-            </a>
+            </button>
           </div>
         </div>
       </div>
@@ -172,7 +203,7 @@ export default {
 
 <style lang="scss">
 .add-job {
-  .preview-button {
+  .button-container {
     text-align: right;
   }
 

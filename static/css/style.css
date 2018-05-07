@@ -8426,11 +8426,6 @@ div.sceditor-group:first-child {
   padding: 65px 0;
 }
 
-#titlebar.single.submit-page h2,
-.submit-page {
-  padding: 0 9%;
-}
-
 #titlebar.single.submit-page h2 {
   font-size: 32px;
 }
