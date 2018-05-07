@@ -107,8 +107,13 @@
           </div>
         </a>
       </div>
-      <a href="browse-jobs.html" class="button centered">
-        <i class="fa fa-plus-circle"></i> Show More Jobs</a>
+      <router-link
+        to="/tum-ilanlar"
+        class="button centered"
+      >
+        <i class="fa fa-plus-circle"></i>
+        Tüm ilanları gör
+      </router-link>
       <div class="margin-bottom-55"></div>
     </div>
   </div>
