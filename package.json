@@ -17,8 +17,6 @@
     "awesomplete": "^1.1.2",
     "axios": "^0.18.0",
     "date-fns": "^1.29.0",
-    "firebase": "^4.13.1",
-    "vee-validate": "^2.0.9",
     "vue": "^2.5.2",
     "vue-router": "^3.0.1",
     "vue2-editor": "^2.4.3",
