@@ -1,11 +1,11 @@
 <script>
-import JobList from '../shared/JobList';
+import RecentJobsList from '../shared/RecentJobsList';
 import JobSpotlight from '../shared/JobSpotlight';
 import InfoBanner from '../shared/InfoBanner';
 
 export default {
   components: {
-    JobList,
+    RecentJobsList,
     JobSpotlight,
     InfoBanner,
   },
@@ -15,7 +15,7 @@ export default {
 <template>
   <div>
     <div class="container">
-      <job-list />
+      <recent-jobs-list />
       <job-spotlight />
     </div>
     <info-banner />

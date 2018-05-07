@@ -1,2 +1,2 @@
-export const SET_DATA = 'SET_DATA';
 export const TOGGLE_LOADING = 'TOGGLE_LOADING';
+export const SET_RECENT_POSTS = 'SET_RECENT_POSTS';
