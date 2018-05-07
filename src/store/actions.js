@@ -9,6 +9,7 @@ export default {
 
     return axios.get(endpoint).then((res) => {
       commit('SET_RECENT_POSTS', res.data.data);
+      return res.data;
     });
   },
   fetchAllPosts({ commit }) {
@@ -16,6 +17,7 @@ export default {
 
     return axios.get(endpoint).then((res) => {
       commit('SET_ALL_POSTS', res.data.data);
+      return res.data;
     });
   },
   toggleLoading({ commit }) {
