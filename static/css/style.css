@@ -4676,13 +4676,10 @@ span.temporary {
   line-height: 18px;
   font-weight: 500;
   position: absolute;
-  top: 25px;
   right: 25px;
   white-space: nowrap;
   text-align: center;
   min-width: 76px;
-  top: 50%;
-  transform: translateY(-50%);
 }
 
 @media (max-width: 768px) {

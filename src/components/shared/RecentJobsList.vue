@@ -36,7 +36,7 @@ export default {
       <router-link
         to="/tum-ilanlar"
         class="button centered"
-        v-if="!isLoading"
+        v-if="!isLoading && recentPosts.length"
       >
         <i class="fa fa-plus-circle"></i>
         Tüm ilanları gör

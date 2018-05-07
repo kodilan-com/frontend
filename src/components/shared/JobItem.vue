@@ -1,4 +1,6 @@
 <script>
+import formatDate from '../../utils/date';
+
 export default {
   props: {
     post: {
@@ -17,6 +19,9 @@ export default {
     },
     company() {
       return this.post.company;
+    },
+    timeago() {
+      return formatDate(this.post.created_at);
     },
   },
 };
@@ -38,6 +43,7 @@ export default {
       <h4>
         {{post.position}}
         <span class="listing-type">Full-Time</span>
+        <span class="timeago">{{timeago}}</span>
       </h4>
       <ul class="listing-icons">
         <li>
@@ -47,7 +53,17 @@ export default {
           <i class="ln ln-icon-Map2"></i> {{post.location}}
         </li>
         <li>
-          <div class="listing-date new">new</div>
+          <div
+            v-for="tag in post.tags"
+            :key="tag.slug"
+            class="listing-date post-tag"
+          >
+            <router-link
+              :to="`/etiket/${tag.slug}`"
+            >
+              {{tag.name}}
+            </router-link>
+          </div>
         </li>
       </ul>
     </div>
@@ -59,6 +75,22 @@ export default {
   img {
     width: 60px;
     height: 60px;
+  }
+
+  .post-tag {
+    margin-right: 5px;
+  }
+
+  .listing-type {
+    top: 30px;
+  }
+
+  .timeago {
+    font-size: 12px;
+    color: #808080;
+    position: absolute;
+    right: 25px;
+    top: 60px;
   }
 }
 </style>

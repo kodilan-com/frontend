@@ -25,11 +25,21 @@ export default {
   <div class="listings-container">
     <loader v-if="isLoading" />
     <div v-else>
-      <job-item
-        v-for="post in posts"
-        :key="post.slug"
-        :post="post"
-      />
+      <div v-if="posts.length">
+        <job-item
+          v-for="post in posts"
+          :key="post.slug"
+          :post="post"
+        />
+      </div>
+      <div
+        v-else
+        class="notification notice closeable"
+      >
+        <p>
+          <span>İlan bulunamadı.</span>
+        </p>
+      </div>
     </div>
   </div>
 </template>
