@@ -12,6 +12,9 @@ export default new Router({
       path: '/',
       name: 'Home',
       component: Home,
+      meta: {
+        hasBanner: true,
+      },
     },
     {
       path: '/ilan-ekle',
