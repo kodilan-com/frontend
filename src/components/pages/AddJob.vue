@@ -1,10 +1,35 @@
 <script>
 import { mapGetters, mapActions } from 'vuex';
+import { VueEditor } from 'vue2-editor';
 import autocomplete from '../../utils/autocomplete';
 
 export default {
+  data() {
+    return {
+      model: {
+        position: '',
+        description: '',
+        apply_email: '',
+        apply_url: '',
+        location: '',
+        type: 1,
+        tags: '',
+        company: {
+          name: '',
+          email: '',
+          logo: '',
+          www: '',
+          twitter: '',
+          linkedin: '',
+        },
+      },
+    };
+  },
+  components: {
+    VueEditor,
+  },
   methods: {
-    ...mapActions(['fetchTags']),
+    ...mapActions(['fetchTags', 'savePost']),
   },
   computed: {
     ...mapGetters(['autocompleteTags']),
@@ -41,24 +66,35 @@ export default {
           </div>
           <div class="form">
             <h5>E-posta Adresiniz</h5>
-            <input class="search-field" type="text" placeholder="mail@example.com" />
+            <input
+              v-model="model.company.email"
+              class="search-field" type="text" placeholder="mail@example.com"
+            />
           </div>
           <div class="form">
             <h5>Pozisyon</h5>
-            <input class="search-field" type="text" />
+            <input
+              v-model="model.position"
+              class="search-field" type="text"
+            />
           </div>
           <div class="form">
             <h5>İlan Açıklaması</h5>
-            <textarea class="wysiwyg" name="summary" cols="40" rows="3" id="summary"></textarea>
+            <vue-editor
+              v-model="model.description"
+            />
           </div>
           <div class="form">
             <h5>Lokasyon</h5>
-            <input class="search-field" type="text" />
+            <input
+              v-model="model.location"
+              class="search-field" type="text"
+            />
             <p class="note">Bu ilan uzaktan çalışmaya izin veriyorsa lokasyon olarak Remote yazabilirsiniz.</p>
           </div>
           <div class="form">
             <h5>Job Type</h5>
-            <select>
+            <select v-model="model.type">
               <option value="1">Tam zamanlı</option>
               <option value="2">Yarı zamanlı</option>
               <option value="3">Stajyer</option>
@@ -67,12 +103,19 @@ export default {
           </div>
           <div class="form">
             <h5>Etiketler</h5>
-            <input ref="tagsInput" class="tags-input" type="text" data-multiple />
+            <input
+              v-model="model.tags"
+              ref="tagsInput"
+              class="tags-input" type="text" data-multiple
+            />
             <p class="note">Bu pozisyon için gerekli olan yeti ve teknolojileri seçebilirsiniz ya da ekleme yapabilirsiniz.</p>
           </div>
           <div class="form">
             <h5>Başvuru linki</h5>
-            <input type="text" />
+            <input
+              v-model="model.apply_url"
+              type="text"
+            />
             <p class="note">Bu ilana başvurmak için kendi sitenize bir link ya da bir e-posta adresi girebilirsiniz.</p>
           </div>
 
@@ -81,24 +124,39 @@ export default {
           </div>
           <div class="form">
             <h5>Firma adı</h5>
-            <input type="text" />
+            <input
+              v-model="model.company.name"
+              type="text"
+            />
           </div>
           <div class="form">
             <h5>Website</h5>
-            <input type="text" placeholder="https://" />
+            <input
+              v-model="model.company.www"
+              type="text" placeholder="https://"
+            />
           </div>
           <div class="form">
             <h5>Logo URL</h5>
-            <input type="text" placeholder="https://" />
+            <input
+              v-model="model.company.logo"
+              type="text" placeholder="https://"
+            />
             <p class="note">Logo kare olarak gösterilecektir.</p>
           </div>
           <div class="form">
             <h5>Twitter Kullanıcı adı <span>(opsiyonel)</span></h5>
-            <input type="text" placeholder="@twitter" />
+            <input
+              v-model="model.company.twitter"
+              type="text" placeholder="@twitter"
+            />
           </div>
           <div class="form">
             <h5>Linkedin URL<span>(opsiyonel)</span></h5>
-            <input type="text" placeholder="https://" />
+            <input
+              v-model="model.company.linkedin"
+              type="text" placeholder="https://"
+            />
           </div>
 
           <div class="preview-button">

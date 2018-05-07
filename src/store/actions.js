@@ -4,6 +4,9 @@ import * as constants from './constants';
 const API_ROOT = 'https://api.kodilan.com/';
 
 export default {
+  toggleLoading({ commit }) {
+    commit(constants.TOGGLE_LOADING);
+  },
   fetchRecentPosts({ commit }) {
     const endpoint = `${API_ROOT}/posts`;
 
@@ -34,7 +37,7 @@ export default {
       commit('SET_TAGS', res.data.data);
     });
   },
-  toggleLoading({ commit }) {
-    commit(constants.TOGGLE_LOADING);
+  savePost(_, data) {
+    console.log(data);
   },
 };
