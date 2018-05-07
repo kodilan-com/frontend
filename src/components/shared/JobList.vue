@@ -5,7 +5,7 @@
       <div class="listings-container">
         <a href="job-page-alt.html" class="listing full-time">
           <div class="listing-logo">
-            <img src="images/job-list-logo-01.png" alt="">
+            <img src="http://f.acet.me/p8Qw.png" alt="">
           </div>
           <div class="listing-title">
             <h4>Marketing Coordinator - SEO / SEM Experience
@@ -26,7 +26,7 @@
         </a>
         <a href="job-page.html" class="listing part-time">
           <div class="listing-logo">
-            <img src="images/job-list-logo-02.png" alt="">
+            <img src="http://f.acet.me/p8Qw.png" alt="">
           </div>
           <div class="listing-title">
             <h4>Core PHP Developer for Site Maintenance
@@ -47,7 +47,7 @@
         </a>
         <a href="job-page-alt.html" class="listing full-time">
           <div class="listing-logo">
-            <img src="images/job-list-logo-01.png" alt="">
+            <img src="http://f.acet.me/p8Qw.png" alt="">
           </div>
           <div class="listing-title">
             <h4>Restaurant Team Member - Crew
@@ -66,7 +66,7 @@
         </a>
         <a href="job-page.html" class="listing internship">
           <div class="listing-logo">
-            <img src="images/job-list-logo-04.png" alt="">
+            <img src="http://f.acet.me/p8Qw.png" alt="">
           </div>
           <div class="listing-title">
             <h4>Power Systems User Experience Designer
@@ -87,7 +87,7 @@
         </a>
         <a href="job-page.html" class="listing freelance">
           <div class="listing-logo">
-            <img src="images/job-list-logo-05.png" alt="">
+            <img src="http://f.acet.me/p8Qw.png" alt="">
           </div>
           <div class="listing-title">
             <h4>iPhone / Android Music App Development
