@@ -1,0 +1,107 @@
+/* ------------------------------------------------------------------- */
+/* Blue #0c6aca
+---------------------------------------------------------------------- */
+#current,
+.icon-box.rounded i:after,
+a.button.gray.app-link.opened,
+ul.float-right li a:hover,
+.menu ul li.sfHover a.sf-with-ul,
+.menu ul li a:hover,
+a.menu-trigger:hover,
+#jPanelMenu-menu li a:hover,
+.search-container button,
+.upload-btn,
+button,
+input[type="button"],
+input[type="submit"],
+a.button,
+.upload-btn:hover,
+#titlebar.photo-bg a.button.white:hover,
+a.button.dark:hover,
+#backtotop a:hover,
+.mfp-close:hover,
+.tabs-nav li.active a,
+.ui-accordion .ui-accordion-header-active:hover,
+.ui-accordion .ui-accordion-header-active,
+.highlight.color,
+ .plan.color-2 .plan-price,
+.plan.color-2 a.button,
+.tp-leftarrow:hover,
+.tp-rightarrow:hover,
+.pagination ul li a.current-page,
+.pagination .current,
+.pagination ul li a:hover,
+.pagination-next-prev ul li a:hover,
+.infobox,
+.hover-icon,
+.comment-by a.reply:hover,
+.chosen-container .chosen-results li.highlighted,
+.chosen-container-multi .chosen-choices li.search-choice,
+.list-search button,
+.checkboxes input[type=checkbox]:checked + label:before 
+{ background-color: #0c6aca; }
+
+
+
+a,
+table td.title a:hover,
+.icon-box.rounded i,
+table.manage-table td.action a:hover,
+#breadcrumbs ul li a:hover,
+#titlebar span.icons a:hover,
+.counter-box i,
+.counter,
+#popular-categories li a i,
+.list-1 li:before,
+.dropcap,
+.resume-titlebar span a:hover i,
+.resumes-list-content h4,
+.job-overview ul li i,
+.company-info span a:hover,
+.infobox a:hover,
+.meta-tags span a:hover,
+.widget-text h5 a:hover,
+.app-content .info span ,
+.app-content .info ul li a:hover
+{ color: #0c6aca; }
+
+
+.icon-box.rounded i {
+	border-color: #0c6aca;
+}
+
+.resumes-list li a:before,
+.job-list li a:before,
+table.manage-table tr:before {
+	-webkit-box-shadow: 0px 1px 0px 0px rgba(12,106,202,0.7);
+	-moz-box-shadow: 0px 1px 0px 0px rgba(12,106,202,0.7);
+	box-shadow: 0px 1px 0px 0px rgba(12,106,202,0.7);
+}
+
+#popular-categories li a:before {
+	-webkit-box-shadow: 0px 0px 0px 1px rgba(12,106,202,0.7);
+	-moz-box-shadow: 0px 0px 0px 1px rgba(12,106,202,0.7);
+	box-shadow: 0px 0px 0px 1px rgba(12,106,202,0.7);
+}
+
+table.manage-table tr:hover td,
+.resumes-list li:hover,
+.job-list li:hover { border-color: rgba(12,106,202,0.7); }
+
+table.manage-table tr:hover td,
+.resumes-list li:hover,
+.job-list li:hover,
+#popular-categories li a:hover { background-color: rgba(12,106,202,0.05); }
+
+
+.resumes-list li:hover,
+.job-list li:hover { border-color: #0c6aca !important; }
+
+.resumes-list li.highlighted a:after,
+.resumes-list li a:after,
+.job-list li.highlighted a:after,
+.job-list li a:after { background-color: #0c6aca }
+
+.resumes-list.alternative li:before,
+.category-small-box:hover { background-color: #0c6aca }
+.category-small-box i { color: #0c6aca }

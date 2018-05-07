@@ -6,6 +6,8 @@ export default {
 
 <template>
   <div id="app">
-    <router-view/>
+    <div id="wrapper">
+      <router-view />
+    </div>
   </div>
 </template>
