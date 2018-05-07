@@ -27,6 +27,13 @@ export default {
 
     return axios.get(endpoint).then(res => res.data);
   },
+  fetchTags({ commit }) {
+    const endpoint = `${API_ROOT}/tags`;
+
+    return axios.get(endpoint).then((res) => {
+      commit('SET_TAGS', res.data.data);
+    });
+  },
   toggleLoading({ commit }) {
     commit(constants.TOGGLE_LOADING);
   },

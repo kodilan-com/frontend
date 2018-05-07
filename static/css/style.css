@@ -9849,3 +9849,16 @@ body ul.tabs-nav li:last-child a {
 }
 
 /* BORDER RADIUS - END */
+
+.awesomplete li {
+  background: #fcfcfc;
+  line-height: 36px;
+}
+
+.awesomplete li[aria-selected="true"] {
+  background: #26ae61 !important;
+}
+
+.awesomplete mark {
+  top: 0;
+}

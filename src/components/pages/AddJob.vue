@@ -1,3 +1,22 @@
+<script>
+import { mapGetters, mapActions } from 'vuex';
+import autocomplete from '../../utils/autocomplete';
+
+export default {
+  methods: {
+    ...mapActions(['fetchTags']),
+  },
+  computed: {
+    ...mapGetters(['autocompleteTags']),
+  },
+  mounted() {
+    this.fetchTags().then(() => {
+      autocomplete.init(this.$refs.tagsInput, this.autocompleteTags);
+    });
+  },
+};
+</script>
+
 <template>
   <div class="add-job">
     <div id="titlebar" class="single submit-page">
@@ -39,7 +58,7 @@
           </div>
           <div class="form">
             <h5>Job Type</h5>
-            <select  class="chosen-select-no-single">
+            <select>
               <option value="1">Tam zamanlı</option>
               <option value="2">Yarı zamanlı</option>
               <option value="3">Stajyer</option>
@@ -48,7 +67,7 @@
           </div>
           <div class="form">
             <h5>Etiketler</h5>
-            <input class="search-field" type="text" />
+            <input ref="tagsInput" class="tags-input" type="text" data-multiple />
             <p class="note">Bu pozisyon için gerekli olan yeti ve teknolojileri seçebilirsiniz ya da ekleme yapabilirsiniz.</p>
           </div>
           <div class="form">
@@ -97,6 +116,14 @@
 .add-job {
   .preview-button {
     text-align: right;
+  }
+
+  select {
+    height: 48px;
+  }
+
+  .awesomplete {
+    width: 100%;
   }
 }
 </style>
