@@ -3,7 +3,7 @@ import Router from 'vue-router';
 import Home from '@/components/pages/Home';
 import AddJob from '@/components/pages/AddJob';
 import JobDetails from '@/components/pages/JobDetails';
-import JobListing from '@/components/pages/JobListing';
+import JobList from '@/components/pages/JobList';
 
 Vue.use(Router);
 
@@ -30,8 +30,8 @@ export default new Router({
     },
     {
       path: '/tum-ilanlar',
-      name: 'JobListing',
-      component: JobListing,
+      name: 'JobList',
+      component: JobList,
     },
   ],
 });

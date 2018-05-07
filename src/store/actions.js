@@ -99,6 +99,15 @@ export default {
       commit('SET_RECENT_POSTS', mock.data);
     });
   },
+  fetchAllPosts({ commit }) {
+    // const endpoint = `${API_ROOT}/posts`;
+    const endpoint = '/';
+
+    return axios.get(endpoint).then((res) => {
+      // commit('SET_RECENT_POSTS', res.data);
+      commit('SET_ALL_POSTS', mock.data);
+    });
+  },
   toggleLoading({ commit }) {
     commit(constants.TOGGLE_LOADING);
   },

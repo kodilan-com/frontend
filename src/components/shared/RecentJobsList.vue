@@ -1,7 +1,6 @@
 <script>
 import { mapState, mapActions } from 'vuex';
-import JobItem from './JobItem';
-import Loader from './Loader';
+import JobListing from './JobListing';
 
 export default {
   data() {
@@ -10,8 +9,7 @@ export default {
     };
   },
   components: {
-    JobItem,
-    Loader,
+    JobListing,
   },
   computed: {
     ...mapState(['recentPosts']),
@@ -31,16 +29,10 @@ export default {
   <div class="eleven columns">
     <div class="padding-right">
       <h3 class="margin-bottom-25">En Son Eklenen İlanlar</h3>
-      <div class="listings-container">
-        <loader v-if="isLoading" />
-        <div v-else>
-          <job-item
-            v-for="post in recentPosts"
-            :key="post.slug"
-            :post="post"
-          />
-        </div>
-      </div>
+      <job-listing
+        :is-loading="isLoading"
+        :posts="recentPosts"
+      />
       <router-link
         to="/tum-ilanlar"
         class="button centered"
