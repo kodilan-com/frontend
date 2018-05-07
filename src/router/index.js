@@ -2,6 +2,7 @@ import Vue from 'vue';
 import Router from 'vue-router';
 import Home from '@/components/pages/Home';
 import AddJob from '@/components/pages/AddJob';
+import JobDetails from '@/components/pages/JobDetails';
 
 Vue.use(Router);
 
@@ -20,6 +21,11 @@ export default new Router({
       path: '/ilan-ekle',
       name: 'AddJob',
       component: AddJob,
+    },
+    {
+      path: '/ilan-detay/:slug',
+      name: 'JobDetails',
+      component: JobDetails,
     },
   ],
 });

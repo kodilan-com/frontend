@@ -3,7 +3,7 @@
     <div class="padding-right">
       <h3 class="margin-bottom-25">Son Eklenen İlanlar</h3>
       <div class="listings-container">
-        <a href="job-page-alt.html" class="listing full-time">
+        <a href="/ilan-detay/slug" class="listing full-time">
           <div class="listing-logo">
             <img src="http://f.acet.me/p8Qw.png" alt="">
           </div>
@@ -24,7 +24,7 @@
             </ul>
           </div>
         </a>
-        <a href="job-page.html" class="listing part-time">
+        <a href="/ilan-detay/slug" class="listing part-time">
           <div class="listing-logo">
             <img src="http://f.acet.me/p8Qw.png" alt="">
           </div>
@@ -64,7 +64,7 @@
             </ul>
           </div>
         </a>
-        <a href="job-page.html" class="listing internship">
+        <a href="/ilan-detay/slug" class="listing internship">
           <div class="listing-logo">
             <img src="http://f.acet.me/p8Qw.png" alt="">
           </div>
@@ -85,7 +85,7 @@
             </ul>
           </div>
         </a>
-        <a href="job-page.html" class="listing freelance">
+        <a href="/ilan-detay/slug" class="listing freelance">
           <div class="listing-logo">
             <img src="http://f.acet.me/p8Qw.png" alt="">
           </div>
