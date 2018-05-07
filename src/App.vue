@@ -15,12 +15,12 @@ export default {
 
 <template>
   <div id="app">
-    <app-header
-      :with-banner="$route.meta.hasBanner"
-    />
-    <div id="wrapper">
+    <div id="main-wrapper">
+      <app-header
+        :with-banner="$route.meta.hasBanner"
+      />
       <router-view />
-      <app-footer />
     </div>
+    <app-footer />
   </div>
 </template>

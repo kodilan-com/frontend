@@ -8525,10 +8525,16 @@ a.close-form i {
 /* Footer
 ---------------------------------------------------------------------- */
 
+#main-wrapper {
+  min-height: calc(100vh - 425px);
+}
+
 #footer {
   background-color: #202020;
   padding: 50px 0 0 0;
   color: #999;
+  height: 320px;
+  margin-top: 55px;
 }
 
 #footer h4 {
