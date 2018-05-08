@@ -131,13 +131,6 @@ export default {
               <div class="job-overview">
                 <ul>
                   <li>
-                    <i class="fa fa-map-marker"></i>
-                    <div>
-                      <strong>Lokasyon</strong>
-                      <span>{{postData.location}}</span>
-                    </div>
-                  </li>
-                  <li>
                     <i class="fa fa-user"></i>
                     <div>
                       <strong>Pozisyon</strong>
@@ -145,7 +138,28 @@ export default {
                     </div>
                   </li>
                   <li>
-                    <i class="fa fa-tag"></i>
+                    <i class="fa fa-map-marker"></i>
+                    <div>
+                      <strong>Lokasyon</strong>
+                      <span>{{postData.location}}</span>
+                    </div>
+                  </li>
+                  <li>
+                    <i class="ln ln-icon-Globe"></i>
+                    <div>
+                      <strong>Website</strong>
+                      <span>
+                        <a
+                          :href="postData.company.www"
+                          target="_blank"
+                        >
+                          {{postData.company.www}}
+                        </a>
+                      </span>
+                    </div>
+                  </li>
+                  <li>
+                    <i class="ln ln-icon-Tag-3"></i>
                     <div>
                       <p>
                         <strong>Etiketler</strong>
