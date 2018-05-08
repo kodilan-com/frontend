@@ -38,6 +38,8 @@ export default {
     });
   },
   savePost(_, data) {
-    console.log(data);
+    const endpoint = `${API_ROOT}/posts`;
+
+    return axios.post(endpoint, data);
   },
 };

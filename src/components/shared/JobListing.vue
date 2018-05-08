@@ -34,7 +34,7 @@ export default {
       </div>
       <div
         v-else
-        class="notification notice closeable"
+        class="notification notice"
       >
         <p>
           <span>İlan bulunamadı.</span>

@@ -187,7 +187,7 @@ export default {
       </template>
       <div
         v-else
-        class="notification notice closeable"
+        class="notification notice center"
       >
         <p>
           <span>Böyle bir ilan bulunamadı.</span>
@@ -225,8 +225,8 @@ export default {
   }
 
   .tag {
-    display: inline;
-    margin-right: 5px;
+    display: inline-block;
+    margin: 0 5px 5px 0;
   }
 }
 </style>

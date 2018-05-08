@@ -9857,3 +9857,8 @@ body ul.tabs-nav li:last-child a {
 .awesomplete mark {
   top: 0;
 }
+
+.center.notification {
+  width: 800px;
+  margin: 40px auto;
+}
