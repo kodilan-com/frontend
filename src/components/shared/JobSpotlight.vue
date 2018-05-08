@@ -1,6 +1,6 @@
 <template>
   <div class="five columns">
-    <h3 class="margin-bottom-5">Job Spotlight</h3>
+    <h3 class="margin-bottom-5">Öne çıkan ilanlar</h3>
     <div class="showbiz-navigation">
       <div class="sb-navigation-left">
         <i class="fa fa-angle-left"></i>

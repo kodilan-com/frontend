@@ -1,5 +1,5 @@
 <template>
-  <div id="banner" style="background-image: url(http://f.acet.me/dIRy.jpg)" class="parallax background" data-img-width="2000" data-img-height="1330" data-diff="400">
+  <div id="banner" style="background-image: url(/static/images/banner.jpg)" class="parallax background" data-img-width="2000" data-img-height="1330" data-diff="400">
     <div class="container">
       <div class="sixteen columns">
         <div class="search-container">

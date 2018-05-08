@@ -28,7 +28,7 @@ export default {
 <template>
   <div class="eleven columns">
     <div class="padding-right">
-      <h3 class="margin-bottom-25">En Son Eklenen İlanlar</h3>
+      <h3 class="margin-bottom-25">En son eklenen ilanlar</h3>
       <job-listing
         :is-loading="isLoading"
         :posts="recentPosts"
