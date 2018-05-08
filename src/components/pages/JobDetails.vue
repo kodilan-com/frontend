@@ -1,6 +1,7 @@
 <script>
 import { mapActions } from 'vuex';
 import Loader from '../shared/Loader';
+import ApplyLink from '../shared/ApplyLink';
 
 export default {
   props: {
@@ -25,6 +26,7 @@ export default {
     };
   },
   components: {
+    ApplyLink,
     Loader,
   },
   methods: {
@@ -179,7 +181,7 @@ export default {
                     </div>
                   </li>
                 </ul>
-                <a href="#small-dialog" class="popup-with-zoom-anim button">Bu pozisyona başvur</a>
+                <apply-link :post="postData" />
               </div>
             </div>
           </div>
