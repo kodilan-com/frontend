@@ -39,23 +39,6 @@ export default {
           />
         </div>
         <div class="clearfix"></div>
-        <div class="pagination-container">
-          <nav class="pagination">
-            <ul>
-              <li><a href="#" class="current-page">1</a></li>
-              <li><a href="#">2</a></li>
-              <li><a href="#">3</a></li>
-              <li class="blank">...</li>
-              <li><a href="#">22</a></li>
-            </ul>
-          </nav>
-          <nav class="pagination-next-prev">
-            <ul>
-              <li><a href="#" class="prev">Previous</a></li>
-              <li><a href="#" class="next">Next</a></li>
-            </ul>
-          </nav>
-        </div>
       </div>
     </div>
     <div class="five columns">
