@@ -30,6 +30,11 @@ export default {
 
     return axios.get(endpoint).then(res => res.data);
   },
+  search(_, params) {
+    const endpoint = `${API_ROOT}/search`;
+
+    return axios.get(endpoint, { params }).then(res => res.data);
+  },
   fetchTags({ commit }) {
     const endpoint = `${API_ROOT}/tags`;
 
