@@ -5,6 +5,7 @@ import AddJob from '@/components/pages/AddJob';
 import JobDetails from '@/components/pages/JobDetails';
 import JobList from '@/components/pages/JobList';
 import TagPosts from '@/components/pages/TagPosts';
+import Search from '@/components/pages/Search';
 import NotFound from '@/components/pages/NotFound';
 
 Vue.use(Router);
@@ -39,6 +40,11 @@ export default new Router({
       path: '/etiket/:slug',
       name: 'TagPosts',
       component: TagPosts,
+    },
+    {
+      path: '/ilan-ara',
+      name: 'Search',
+      component: Search,
     },
     {
       path: '*',
