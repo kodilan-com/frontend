@@ -65,16 +65,20 @@ export default {
           v-if="jobType"
           class="listing-type"
         >
-          {{jobType}}
+          <router-link :to="`/ilan-ara?type=${post.type}`">
+            {{jobType}}
+          </router-link>
         </span>
         <span class="timeago">{{timeago}}</span>
       </h4>
       <ul class="listing-icons">
         <li>
-          <i class="ln ln-icon-Management"></i> {{company.name}}
+          <i class="ln ln-icon-Management"></i>
+          <router-link :to="`/ilan-ara?company=${company.slug}`">{{company.name}}</router-link>
         </li>
         <li>
-          <i class="ln ln-icon-Map2"></i> {{post.location}}
+          <i class="ln ln-icon-Map2"></i>
+          <router-link :to="`/ilan-ara?location=${post.location}`">{{post.location}}</router-link>
         </li>
         <li>
           <div

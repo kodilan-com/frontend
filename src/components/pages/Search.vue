@@ -19,6 +19,12 @@ export default {
     query() {
       return this.$route.query.query;
     },
+    type() {
+      return this.$route.query.type;
+    },
+    company() {
+      return this.$route.query.company;
+    },
   },
   methods: {
     ...mapActions(['search']),
@@ -44,15 +50,22 @@ export default {
     <div
       v-if="posts.length"
       class="columns sixteen">
-      <h3 class="margin-bottom-25">
+      <h2 class="margin-bottom-25">
+        <template v-if="company">
+          <strong>{{company}}</strong> firmasındaki
+        </template>
+        <template v-if="type">
+          <strong>{{type}}</strong> tipindeki
+        </template>
         <template v-if="location">
-          <strong>{{location}}</strong> bölgesindeki
+          <strong>{{location}}</strong>
+          <template v-if="location !== 'Remote'">bölgesindeki</template>
         </template>
         <template v-if="query">
           <strong>{{query}}</strong> anahtar kelimesine sahip
         </template>
-        <template v-if="location || query">ilanlar</template>
-      </h3>
+        <template v-if="location || query || type || company">ilanlar</template>
+      </h2>
       <job-listing
         :is-loading="isLoading"
         :posts="posts"

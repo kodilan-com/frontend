@@ -40,7 +40,7 @@ export default {
             @keypress.enter="handleSearch"
             type="text"
             class="ico-01"
-            placeholder="pozisyon adı, şirket adı, teknoloji adı"
+            placeholder="pozisyon adı, teknoloji adı"
           />
           <input
             v-model="location"

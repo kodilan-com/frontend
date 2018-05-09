@@ -4700,6 +4700,10 @@ span.temporary {
   }
 }
 
+.listing-type a {
+  color: inherit;
+}
+
 .listing.full-time .listing-type {
   color: #186fc9;
   border-color: #186fc9;
