@@ -149,6 +149,10 @@ header.transparent .sf-with-ul::after {
   color: rgba(255, 255, 255, 0.8);
 }
 
+#banner {
+  background-image: url(/static/images/banner.jpg);
+}
+
 #banner.with-transparent-header {
   max-height: 710px;
   background-attachment: fixed;
