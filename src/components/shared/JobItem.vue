@@ -9,11 +9,6 @@ export default {
     },
   },
   computed: {
-    postTypeClassName() {
-      return {
-        'full-time': true,
-      };
-    },
     detailsUrl() {
       return `/ilan-detay/${this.post.slug}`;
     },
@@ -22,6 +17,30 @@ export default {
     },
     timeago() {
       return formatDate(this.post.created_at);
+    },
+    jobType() {
+      const TYPE_MAP = {
+        0: 'Tam zamanlı',
+        1: 'Tam zamanlı',
+        2: 'Yarı zamanlı',
+        3: 'Stajyer',
+        4: 'Freelance',
+      };
+
+      return TYPE_MAP[this.post.type] || '';
+    },
+    postTypeClassName() {
+      const CLASS_MAP = {
+        0: 'full-time',
+        1: 'full-time',
+        2: 'part-time',
+        3: 'internship',
+        4: 'freelance',
+      };
+
+      return {
+        [CLASS_MAP[this.post.type]]: true,
+      };
     },
   },
 };
@@ -42,7 +61,12 @@ export default {
     <div class="listing-title">
       <h4>
         {{post.position}}
-        <span class="listing-type">Full-Time</span>
+        <span
+          v-if="jobType"
+          class="listing-type"
+        >
+          {{jobType}}
+        </span>
         <span class="timeago">{{timeago}}</span>
       </h4>
       <ul class="listing-icons">
