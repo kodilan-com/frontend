@@ -1,6 +1,7 @@
 <script>
 import { mapState, mapActions } from 'vuex';
 import JobListing from '../shared/JobListing';
+import Loader from '../shared/Loader';
 
 export default {
   data() {
@@ -11,6 +12,7 @@ export default {
   },
   components: {
     JobListing,
+    Loader,
   },
   computed: {
     location() {
@@ -29,6 +31,7 @@ export default {
   methods: {
     ...mapActions(['search']),
     handleSearch() {
+      this.isLoading = true;
       this.search(this.$route.query)
         .then((res) => {
           this.isLoading = false;
@@ -47,8 +50,9 @@ export default {
 
 <template>
   <div class="container">
+    <loader v-if="isLoading" />
     <div
-      v-if="posts.length"
+      v-if="posts.length && !isLoading"
       class="columns sixteen">
       <h2 class="margin-bottom-25">
         <template v-if="company">
@@ -67,12 +71,12 @@ export default {
         <template v-if="location || query || type || company">ilanlar</template>
       </h2>
       <job-listing
-        :is-loading="isLoading"
+        :is-loading="false"
         :posts="posts"
       />
     </div>
     <div
-      v-else
+      v-if="!posts.length && !isLoading"
       class="notification warning"
     >
       <p>Bu aramaya göre ilan bulamadık.</p>
