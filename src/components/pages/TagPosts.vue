@@ -35,6 +35,7 @@ export default {
     this.handleSearch();
   },
   beforeRouteUpdate(to, from, next) {
+    this.isLoading = true;
     this.slug = to.params.slug;
     this.handleSearch();
 
