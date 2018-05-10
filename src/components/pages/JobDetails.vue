@@ -1,7 +1,8 @@
 <script>
 import { mapActions } from 'vuex';
-import Loader from '../shared/Loader';
+import JobTypeBadge from '../shared/JobTypeBadge';
 import ApplyLink from '../shared/ApplyLink';
+import Loader from '../shared/Loader';
 
 export default {
   props: {
@@ -26,6 +27,7 @@ export default {
     };
   },
   components: {
+    JobTypeBadge,
     ApplyLink,
     Loader,
   },
@@ -78,7 +80,7 @@ export default {
             <div class="ten columns">
               <h2>
                 {{postData.position}}
-                <span class="full-time">Full-Time</span>
+                <job-type-badge :post="postData" />
               </h2>
             </div>
             <div class="six columns">
@@ -201,6 +203,15 @@ export default {
 
 <style lang="scss">
 .job-details {
+  .listing-type {
+    right: 0;
+
+    a {
+      font-size: inherit !important;
+      color: inherit !important;
+    }
+  }
+
   &.preview {
     width: 1200px;
     margin: 0 auto;
