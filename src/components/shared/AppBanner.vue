@@ -1,29 +1,22 @@
 <script>
+import queryUtils from '../../utils/query';
+
 export default {
   data() {
     return {
-      query: '',
-      location: '',
+      params: {
+        query: '',
+        location: '',
+      },
     };
   },
   methods: {
     handleSearch() {
-      const { query, location } = this;
-      const params = {};
+      const params = queryUtils.getParams(this.params);
 
-      if (!query && !location) {
-        return;
+      if (params) {
+        this.$router.push({ path: 'ilan-ara', query: params });
       }
-
-      if (query) {
-        params.query = query;
-      }
-
-      if (location) {
-        params.location = location;
-      }
-
-      this.$router.push({ path: 'ilan-ara', query: params });
     },
   },
 };
@@ -36,18 +29,18 @@ export default {
         <div class="search-container">
           <h2>İlan Ara</h2>
           <input
-            v-model="query"
+            v-model="params.query"
             @keypress.enter="handleSearch"
             type="text"
             class="ico-01"
-            placeholder="pozisyon adı, teknoloji adı"
+            placeholder="Pozisyon adı, teknoloji adı"
           />
           <input
-            v-model="location"
+            v-model="params.location"
             @keypress.enter="handleSearch"
             type="text"
             class="ico-02"
-            placeholder="şehir"
+            placeholder="Şehir"
           />
           <button @click="handleSearch">
             <i class="fa fa-search"></i>

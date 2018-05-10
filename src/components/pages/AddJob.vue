@@ -174,7 +174,7 @@ export default {
               <p class="note">Bu ilan uzaktan çalışmaya izin veriyorsa lokasyon olarak Remote yazabilirsiniz.</p>
             </div>
             <div class="form">
-              <h5>Job Type</h5>
+              <h5>İlan Tipi</h5>
               <select v-model="model.type">
                 <option value="1">Tam zamanlı</option>
                 <option value="2">Yarı zamanlı</option>
@@ -266,10 +266,6 @@ export default {
 .add-job {
   .button-container {
     text-align: right;
-  }
-
-  select {
-    height: 48px;
   }
 
   .awesomplete {

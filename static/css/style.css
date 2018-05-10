@@ -7291,7 +7291,7 @@ a.post-img:hover:before {
 ---------------------------------------------------------------------- */
 
 .widget {
-  margin-bottom: 42px;
+  margin-bottom: 15px;
 }
 
 .widget input {
@@ -8863,4 +8863,13 @@ body ul.tabs-nav li:last-child a {
 .center.notification {
   width: 800px;
   margin: 40px auto;
+}
+
+.button-right {
+  text-align: right;
+}
+
+select {
+  height: 48px;
+  text-indent: 12px;
 }
