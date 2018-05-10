@@ -41,6 +41,16 @@ export default {
     twitterUrl() {
       return `https://twitter.com/${this.postData.company.twitter}`;
     },
+    twitterShareUrl() {
+      const meta = `https://kodilan.com/ilan-detay/${this.postData.slug} @kodilancom`;
+      const encoded = encodeURI(
+        `kodilan.com'da yayınlanan ${
+          this.postData.position
+        } başlıklı ilan ilginizi çekebilir. ${meta}`
+      );
+
+      return `https://twitter.com/intent/tweet?text=${encoded.trim()}`;
+    },
   },
   created() {
     if (!this.preview) {
@@ -84,7 +94,11 @@ export default {
               </h2>
             </div>
             <div class="six columns">
-              <a href="#" class="button dark">
+              <a
+                :href="twitterShareUrl"
+                class="button dark"
+                target="_blank"
+              >
                 <i class="fa fa-twitter"></i> Paylaş
               </a>
             </div>
