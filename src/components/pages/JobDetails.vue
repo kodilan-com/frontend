@@ -127,7 +127,7 @@ export default {
                       :href="twitterUrl"
                       target="_blank"
                     >
-                      <i class="fa fa-twitter"></i> @{{postData.company.twitter}}
+                      <i class="fa fa-twitter"></i> @{{postData.company.twitter.replace('@', '')}}
                     </a>
                   </span>
                   <span v-if="postData.company.linkedin">
