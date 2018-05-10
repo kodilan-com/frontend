@@ -24,3 +24,8 @@ export default {
     <app-footer />
   </div>
 </template>
+
+<style>
+@import '../static/css/style.css';
+@import '../static/css/colors/green.css';
+</style>
