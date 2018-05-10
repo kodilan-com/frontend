@@ -16,6 +16,15 @@ export default {
       return res.data;
     });
   },
+  fetchFeaturedPosts({ commit }) {
+    const endpoint = `${API_ROOT}/posts?limit=3&is_featured=1`;
+
+    return axios.get(endpoint).then((res) => {
+      commit('SET_FEATURED', res.data.data);
+
+      return res.data;
+    });
+  },
   fetchAllPosts({ commit }) {
     const endpoint = `${API_ROOT}/posts`;
 

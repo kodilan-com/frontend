@@ -10,6 +10,9 @@ export default {
   [constants.SET_ALL_POSTS](state, allPosts) {
     Object.assign(state, { allPosts });
   },
+  [constants.SET_FEATURED](state, featuredPosts) {
+    Object.assign(state, { featuredPosts });
+  },
   [constants.SET_TAGS](state, tags) {
     Object.assign(state, { tags });
   },

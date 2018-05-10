@@ -4772,15 +4772,29 @@ span.temporary {
   text-transform: none !important;
   font-size: 12px !important;
   font-weight: 500 !important;
-  line-height: 26px;
 }
 
 li .job-spotlight p {
   color: #888;
 }
 
-.job-spotlight a h4 {
+.job-spotlight a.job-title {
   line-height: 29px;
+  font-size: 18px;
+}
+
+.job-spotlight .listing-type {
+  position: relative;
+  left: 5px;
+  top: -2px;
+}
+
+.job-spotlight .details {
+  margin-top: 8px;
+}
+
+.job-spotlight i {
+  color: #FFF;
 }
 
 .listing-date {
@@ -4998,7 +5012,7 @@ li .job-spotlight p {
   width: 100%;
   text-align: center;
   box-sizing: border-box;
-  margin: 20px 0 0 0;
+  margin: 10px 0 0 0;
 }
 
 /* Icons Fix */
