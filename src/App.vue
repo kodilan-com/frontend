@@ -1,13 +1,11 @@
 <script>
-import AppHeader from './components/shared//AppHeader';
-import InfoBanner from './components/shared/InfoBanner';
+import AppHeader from './components/shared/AppHeader';
 import AppFooter from './components/shared/AppFooter';
 
 export default {
   name: 'App',
   components: {
     AppHeader,
-    InfoBanner,
     AppFooter,
   },
 };
