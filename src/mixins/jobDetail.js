@@ -1,4 +1,5 @@
 import formatDate from '../utils/date';
+import { JOB_TYPE_MAP } from '../store/constants';
 
 export default {
   props: {
@@ -18,15 +19,7 @@ export default {
       return formatDate(this.post.created_at);
     },
     jobType() {
-      const TYPE_MAP = {
-        0: 'Tam zamanlı',
-        1: 'Tam zamanlı',
-        2: 'Yarı zamanlı',
-        3: 'Stajyer',
-        4: 'Freelance',
-      };
-
-      return TYPE_MAP[this.post.type] || '';
+      return JOB_TYPE_MAP[this.post.type] || '';
     },
     postTypeClassName() {
       const CLASS_MAP = {

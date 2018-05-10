@@ -2,6 +2,7 @@
 import { mapState, mapActions } from 'vuex';
 import JobListing from '../shared/JobListing';
 import Loader from '../shared/Loader';
+import { JOB_TYPE_MAP } from '../../store/constants';
 
 export default {
   data() {
@@ -26,6 +27,9 @@ export default {
     },
     company() {
       return this.$route.query.company;
+    },
+    jobTypeString() {
+      return JOB_TYPE_MAP[this.type];
     },
   },
   methods: {
@@ -59,7 +63,7 @@ export default {
           <strong>{{company}}</strong> firmasındaki
         </template>
         <template v-if="type">
-          <strong>{{type}}</strong> tipindeki
+          <strong>{{jobTypeString}}</strong> çalışma tipindeki
         </template>
         <template v-if="location">
           <strong>{{location}}</strong>
