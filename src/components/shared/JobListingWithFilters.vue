@@ -17,9 +17,9 @@ export default {
   data() {
     return {
       params: {
-        query: '',
-        location: '',
-        type: 0,
+        query: this.$route.query.query || '',
+        location: this.$route.query.location || '',
+        type: this.$route.query.type || 0,
       },
     };
   },
@@ -29,10 +29,10 @@ export default {
   computed: {
     countText() {
       if (this.$route.path === '/tum-ilanlar') {
-        return `Toplam ${this.posts.length} ilan bulduk.`;
+        return `Toplam ${this.posts.length} ilan bulunuyor`;
       }
 
-      return `Bu kriterlere uygun ${this.posts.length} ilan bulduk.`;
+      return `Bu kriterlere uygun ${this.posts.length} ilan bulunuyor`;
     },
   },
   methods: {

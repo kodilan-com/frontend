@@ -65,7 +65,7 @@ export default {
       </template>
       <template v-if="location">
         <strong>{{location}}</strong>
-        <template v-if="location.toLowerCase() !== 'remote'">bölgesindeki</template>
+        <template v-if="location.toLowerCase() !== 'remote'">bölgesinde bulunan</template>
       </template>
       <template v-if="query">
         <strong>{{query}}</strong> anahtar kelimesine sahip
