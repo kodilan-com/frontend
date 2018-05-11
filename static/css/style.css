@@ -7772,14 +7772,13 @@ a.close-form i {
 ---------------------------------------------------------------------- */
 
 #main-wrapper {
-  min-height: calc(100vh - 425px);
+  min-height: calc(100vh - 337px);
 }
 
 #footer {
   background-color: #202020;
-  padding: 50px 0 0 0;
+  padding: 50px 0;
   color: #999;
-  height: 320px;
   margin-top: 55px;
 }
 
@@ -7840,8 +7839,6 @@ ul.footer-links {
 /* Footer Bottom */
 
 .footer-bottom {
-  border-top: 1px solid #333;
-  margin-top: 35px;
   text-align: center;
   padding: 30px 0;
   display: inline-block;
