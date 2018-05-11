@@ -8873,3 +8873,13 @@ select {
   height: 48px;
   text-indent: 12px;
 }
+
+.job-listing .widget {
+  margin-top: 15px;
+}
+
+.job-listing .widget h4 {
+  font-size: 22px;
+  line-height: 44px;
+  margin: 18px 0 15px;
+}

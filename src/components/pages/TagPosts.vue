@@ -1,6 +1,6 @@
 <script>
 import { mapState, mapActions } from 'vuex';
-import JobListing from '../shared/JobListing';
+import JobListingWithFilters from '../shared/JobListingWithFilters';
 
 export default {
   data() {
@@ -11,7 +11,7 @@ export default {
     };
   },
   components: {
-    JobListing,
+    JobListingWithFilters,
   },
   computed: {
     tag() {
@@ -45,24 +45,14 @@ export default {
 </script>
 
 <template>
-  <div class="container">
-    <div
-      v-if="posts.length"
-      class="columns sixteen">
-      <h3 class="margin-bottom-25">
-        <strong>{{tag}}</strong> etiketli ilanlar</h3>
-      <job-listing
-        :is-loading="isLoading"
-        :posts="posts"
-      />
-    </div>
-    <div
-      v-else
-      class="notification warning"
-    >
-      <p>
-        <span>{{tag}}</span> etiketiyle ilgili ilan bulunamadı.
-      </p>
-    </div>
-  </div>
+  <job-listing-with-filters
+    :posts="posts"
+    :is-loading="isLoading"
+    :has-header="true"
+    widget-header-text="İlan arama"
+  >
+    <h2 slot="headerText">
+      <strong>{{tag}}</strong> etiketli ilanlar
+    </h2>
+  </job-listing-with-filters>
 </template>

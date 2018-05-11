@@ -1,7 +1,6 @@
 <script>
 import { mapState, mapActions } from 'vuex';
-import JobListing from '../shared/JobListing';
-import Loader from '../shared/Loader';
+import JobListingWithFilters from '../shared/JobListingWithFilters';
 import { JOB_TYPE_MAP } from '../../store/constants';
 
 export default {
@@ -12,8 +11,7 @@ export default {
     };
   },
   components: {
-    JobListing,
-    Loader,
+    JobListingWithFilters,
   },
   computed: {
     location() {
@@ -53,37 +51,26 @@ export default {
 </script>
 
 <template>
-  <div class="container">
-    <loader v-if="isLoading" />
-    <div
-      v-if="posts.length && !isLoading"
-      class="columns sixteen">
-      <h2 class="margin-bottom-25">
-        <template v-if="company">
-          <strong>{{company}}</strong> firmasındaki
-        </template>
-        <template v-if="type">
-          <strong>{{jobTypeString}}</strong> çalışma tipindeki
-        </template>
-        <template v-if="location">
-          <strong>{{location}}</strong>
-          <template v-if="location !== 'Remote'">bölgesindeki</template>
-        </template>
-        <template v-if="query">
-          <strong>{{query}}</strong> anahtar kelimesine sahip
-        </template>
-        <template v-if="location || query || type || company">ilanlar</template>
-      </h2>
-      <job-listing
-        :is-loading="false"
-        :posts="posts"
-      />
-    </div>
-    <div
-      v-if="!posts.length && !isLoading"
-      class="notification warning"
-    >
-      <p>Bu aramaya göre ilan bulamadık.</p>
-    </div>
-  </div>
+  <job-listing-with-filters
+    :posts="posts"
+    :is-loading="isLoading"
+    :has-header="true"
+  >
+    <h2 slot="headerText">
+      <template v-if="company">
+        <strong>{{company}}</strong> firmasındaki
+      </template>
+      <template v-if="type">
+        <strong>{{jobTypeString}}</strong> çalışma tipindeki
+      </template>
+      <template v-if="location">
+        <strong>{{location}}</strong>
+        <template v-if="location.toLowerCase() !== 'remote'">bölgesindeki</template>
+      </template>
+      <template v-if="query">
+        <strong>{{query}}</strong> anahtar kelimesine sahip
+      </template>
+      <template v-if="location || query || type || company">ilanlar</template>
+    </h2>
+  </job-listing-with-filters>
 </template>
