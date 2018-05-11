@@ -1,5 +1,6 @@
 <script>
 import { mapState, mapActions } from 'vuex';
+import Loader from './Loader';
 import JobTypeBadge from './JobTypeBadge';
 
 const CAROUSEL_ITEM_WIDTH = 375;
@@ -13,6 +14,7 @@ export default {
   },
   components: {
     JobTypeBadge,
+    Loader,
   },
   computed: {
     ...mapState(['featuredPosts']),
@@ -61,80 +63,83 @@ export default {
 <template>
   <div class="five columns">
     <h3 class="margin-bottom-5">Öne çıkan ilanlar</h3>
-    <div
-      v-if="featuredPosts.length > 1"
-      class="showbiz-navigation">
+    <loader v-if="isLoading" />
+    <template v-else>
       <div
-        @click="navigateLeft"
-        class="sb-navigation-left"
-      >
-        <i class="fa fa-angle-left"></i>
-      </div>
-      <div
-        @click="navigateRight"
-        class="sb-navigation-right"
-      >
-        <i class="fa fa-angle-right"></i>
-      </div>
-    </div>
-    <div class="clearfix"></div>
-    <div id="job-spotlight">
-      <div class="showbiz">
-        <div class="wrapper">
-          <ul ref="carousel" :style="initialCarouselState">
-            <li
-              v-for="post in featuredPosts"
-              :key="post.slug"
-            >
-              <div class="job-spotlight">
-                <router-link
-                  :to="`/ilan-detay/${post.slug}`"
-                  class="job-title"
-                >
-                  {{post.position}}
-                </router-link>
-                <job-type-badge :post="post" />
-                <div class="details">
-                  <span>
-                    <i class="fa fa-briefcase"></i>
-                    <router-link
-                      :to="`/ilan-ara?company=${post.company.slug}`"
-                    >
-                      {{post.company.name}}
-                    </router-link>
-                  </span>
-                  <span>
-                    <i class="fa fa-map-marker"></i>
-                    <router-link
-                      :to="`/ilan-ara?location=${post.location}`"
-                    >
-                      {{post.location}}
-                    </router-link>
-                  </span>
-                  <p>{{getPostSummary(post.description)}}</p>
-                  <div
-                    v-for="tag in post.tags"
-                    :key="tag.slug"
-                    class="listing-date post-tag"
-                  >
-                    <router-link :to="`/etiket/${tag.slug}`">
-                      {{tag.name}}
-                    </router-link>
-                  </div>
-                  <router-link
-                    :to="`/ilan-detay/${post.slug}`"
-                    class="button"
-                  >
-                    İlana git &nbsp;&nbsp;<i class="fa fa-angle-right"></i>
-                  </router-link>
-                </div>
-              </div>
-            </li>
-          </ul>
-          <div class="clearfix"></div>
+        v-if="featuredPosts.length > 1"
+        class="showbiz-navigation">
+        <div
+          @click="navigateLeft"
+          class="sb-navigation-left"
+        >
+          <i class="fa fa-angle-left"></i>
+        </div>
+        <div
+          @click="navigateRight"
+          class="sb-navigation-right"
+        >
+          <i class="fa fa-angle-right"></i>
         </div>
       </div>
-    </div>
+      <div class="clearfix"></div>
+      <div id="job-spotlight">
+        <div class="showbiz">
+          <div class="wrapper">
+            <ul ref="carousel" :style="initialCarouselState">
+              <li
+                v-for="post in featuredPosts"
+                :key="post.slug"
+              >
+                <div class="job-spotlight">
+                  <router-link
+                    :to="`/ilan-detay/${post.slug}`"
+                    class="job-title"
+                  >
+                    {{post.position}}
+                  </router-link>
+                  <job-type-badge :post="post" />
+                  <div class="details">
+                    <span>
+                      <i class="fa fa-briefcase"></i>
+                      <router-link
+                        :to="`/ilan-ara?company=${post.company.slug}`"
+                      >
+                        {{post.company.name}}
+                      </router-link>
+                    </span>
+                    <span>
+                      <i class="fa fa-map-marker"></i>
+                      <router-link
+                        :to="`/ilan-ara?location=${post.location}`"
+                      >
+                        {{post.location}}
+                      </router-link>
+                    </span>
+                    <p>{{getPostSummary(post.description)}}</p>
+                    <div
+                      v-for="tag in post.tags"
+                      :key="tag.slug"
+                      class="listing-date post-tag"
+                    >
+                      <router-link :to="`/etiket/${tag.slug}`">
+                        {{tag.name}}
+                      </router-link>
+                    </div>
+                    <router-link
+                      :to="`/ilan-detay/${post.slug}`"
+                      class="button"
+                    >
+                      İlana git &nbsp;&nbsp;<i class="fa fa-angle-right"></i>
+                    </router-link>
+                  </div>
+                </div>
+              </li>
+            </ul>
+            <div class="clearfix"></div>
+          </div>
+        </div>
+      </div>
+    </template>
   </div>
 </template>
 
