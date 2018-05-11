@@ -13,11 +13,6 @@ export default {
       required: false,
       default: false,
     },
-    hasHeader: {
-      type: Boolean,
-      required: false,
-      default: false,
-    },
   },
   data() {
     return {
@@ -30,6 +25,15 @@ export default {
   },
   components: {
     JobListing,
+  },
+  computed: {
+    countText() {
+      if (this.$route.path === '/tum-ilanlar') {
+        return `Toplam ${this.posts.length} ilan bulduk.`;
+      }
+
+      return `Bu kriterlere uygun ${this.posts.length} ilan bulduk.`;
+    },
   },
   methods: {
     search() {
@@ -47,58 +51,66 @@ export default {
 </script>
 
 <template>
-  <div class="container job-listing">
-    <div class="eleven columns">
-      <div class="padding-right">
-        <div class="listings-container">
-          <slot
-            v-if="!isLoading"
-            name="headerText"
-          />
-          <job-listing
-            :is-loading="isLoading"
-            :posts="posts"
-          />
-        </div>
-        <div class="clearfix"></div>
-      </div>
-    </div>
+  <section id="page">
     <div
       v-if="!isLoading"
-      class="five columns"
+      id="titlebar"
     >
-      <div class="widget">
-        <h4>İlan arama</h4>
-        <input
-          v-model="params.query"
-          @keypress.enter="search"
-          type="text"
-          class="ico-01"
-          placeholder="Pozisyon adı, teknoloji adı"
-        />
-        <input
-          v-model="params.location"
-          @keypress.enter="search"
-          type="text"
-          class="ico-02"
-          placeholder="Şehir"
-        />
-        <select v-model="params.type">
-          <option value="0">Çalışma tipi seçiniz...</option>
-          <option value="1">Tam zamanlı</option>
-          <option value="2">Yarı zamanlı</option>
-          <option value="3">Stajyer</option>
-          <option value="4">Freelance</option>
-        </select>
-      </div>
-      <div class="button-right">
-        <button
-          @click="search"
-          class="button"
-        >
-          Ara
-        </button>
+      <div class="container">
+        <div class="sixteen columns">
+          <slot name="headerText" />
+          <span>{{countText}}</span>
+        </div>
       </div>
     </div>
-  </div>
+    <div class="container job-listing">
+      <div class="eleven columns">
+        <div class="padding-right">
+          <div class="listings-container">
+            <job-listing
+              :is-loading="isLoading"
+              :posts="posts"
+            />
+          </div>
+          <div class="clearfix"></div>
+        </div>
+      </div>
+      <div
+        v-if="!isLoading"
+        class="five columns"
+      >
+        <div class="widget">
+          <input
+            v-model="params.query"
+            @keypress.enter="search"
+            type="text"
+            class="ico-01"
+            placeholder="Pozisyon adı, teknoloji adı"
+          />
+          <input
+            v-model="params.location"
+            @keypress.enter="search"
+            type="text"
+            class="ico-02"
+            placeholder="Şehir"
+          />
+          <select v-model="params.type">
+            <option value="0">Çalışma tipi seçiniz...</option>
+            <option value="1">Tam zamanlı</option>
+            <option value="2">Yarı zamanlı</option>
+            <option value="3">Stajyer</option>
+            <option value="4">Freelance</option>
+          </select>
+        </div>
+        <div class="button-right">
+          <button
+            @click="search"
+            class="button"
+          >
+            Ara
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
 </template>

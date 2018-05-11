@@ -29,7 +29,6 @@ export default {
   <job-listing-with-filters
     :is-loading="isLoading"
     :posts="allPosts"
-    widget-header-text="İlan arama"
   >
     <h2 slot="headerText">
       Tüm ilanlar

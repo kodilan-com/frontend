@@ -49,7 +49,6 @@ export default {
     :posts="posts"
     :is-loading="isLoading"
     :has-header="true"
-    widget-header-text="İlan arama"
   >
     <h2 slot="headerText">
       <strong>{{tag}}</strong> etiketli ilanlar
