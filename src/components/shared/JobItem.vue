@@ -24,11 +24,11 @@ export default {
     </div>
     <div class="listing-title">
       <h4>
-        {{post.position}}
+        <span class="title">{{post.position}}</span>
         <job-type-badge
           :post="post"
         />
-        <span class="timeago">{{timeago}}</span>
+        <span class="timeago wide">{{timeago}}</span>
       </h4>
       <ul class="listing-icons">
         <li>
@@ -38,6 +38,10 @@ export default {
         <li>
           <i class="ln ln-icon-Map2"></i>
           <router-link :to="`/ilan-ara?location=${post.location}`">{{post.location}}</router-link>
+        </li>
+        <li class="timeago-item">
+          <i class="ln ln-icon-Clock"></i>
+          <span>{{timeago}}</span>
         </li>
         <li>
           <div
@@ -72,7 +76,15 @@ export default {
     top: 30px;
   }
 
-  .timeago {
+  .timeago-item {
+    display: none;
+
+    span {
+      color: #26ae61;
+    }
+  }
+
+  .timeago.wide {
     font-size: 12px;
     color: #808080;
     position: absolute;

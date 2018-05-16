@@ -523,138 +523,6 @@ ul li ul a.sf-with-ul:after {
   letter-spacing: 0px !important;
 }
 
-/* ------------------------------------------------------------------- */
-
-/* Mobile Navigation
----------------------------------------------------------------------- */
-
-#mobile-navigation {
-  display: none;
-}
-
-@media only screen and (max-width: 990px) {
-  #mobile-navigation {
-    display: block;
-  }
-  #responsive {
-    display: none;
-  }
-  a.menu-trigger,
-  a.menu-trigger i {
-    -webkit-transition: all 0.2s ease-in-out;
-    -moz-transition: all 0.2s ease-in-out;
-    -o-transition: all 0.2s ease-in-out;
-    -ms-transition: all 0.2s ease-in-out;
-    transition: all 0.2s ease-in-out;
-  }
-  a.menu-trigger {
-    color: #fff;
-    background-color: #282828;
-    display: block;
-    float: left;
-    z-index: 100;
-    position: relative;
-    margin: 0 0 30px 0;
-    width: 100%;
-    box-sizing: border-box;
-    font-size: 16px;
-    text-transform: uppercase;
-    font-weight: 600;
-  }
-  a.menu-trigger:hover {
-    color: #fff;
-    background-color: #505050;
-  }
-  a.menu-trigger i {
-    font-size: 18px;
-    padding: 17px 17px 18px 17px;
-    margin: 0px 10px 0px 0px;
-    background-color: rgba(255, 255, 255, 0.08);
-    font-weight: 500;
-  }
-  a.menu-trigger:hover i {
-    background-color: rgba(0, 0, 0, 0.08);
-  }
-  body[data-menu-position="open"] a.menu-trigger i.fa.fa-reorder:before {
-    content: "";
-  }
-  body[data-menu-position="closed"] a.menu-trigger i.fa.fa-reorder:before {
-    content: "";
-  }
-  #navigation ul.float-right {
-    position: relative;
-    text-transform: uppercase;
-    font-weight: 600;
-    display: inline-block;
-    width: 100%;
-    right: 0;
-  }
-  #navigation {
-    float: none;
-  }
-  #navigation ul.float-right a {
-    color: #333;
-    margin: 20px 25px 20px 0;
-    display: inline-block;
-    font-size: 14px;
-  }
-  #navigation ul.float-right a:hover {
-    color: #333;
-    margin: 20px 25px 20px 0;
-    display: inline-block;
-    font-size: 14px;
-  }
-  ul.float-right li {
-    display: inline-block;
-    widows: ;
-  }
-  #logo {
-    width: 100%;
-    position: relative;
-    box-sizing: border-box;
-    display: inline-block;
-    border-bottom: 1px solid #e0e0e0;
-    padding-bottom: 27px;
-  }
-}
-
-#jPanelMenu-menu {
-  background-color: #282828;
-}
-
-#jPanelMenu-menu #current:after,
-#jPanelMenu-menu .sf-sub-indicator {
-  display: none;
-}
-
-#jPanelMenu-menu li a {
-  display: block;
-  padding: 12px 20px !important;
-  background-color: #333;
-  color: #aaa;
-  font-weight: 500;
-  -webkit-transition: all 0.1s ease-in-out;
-  -moz-transition: all 0.1s ease-in-out;
-  -o-transition: all 0.1s ease-in-out;
-  -ms-transition: all 0.1s ease-in-out;
-  transition: all 0.1s ease-in-out;
-  outline: none;
-  line-height: 21px;
-}
-
-#jPanelMenu-menu #current,
-#jPanelMenu-menu li a:hover {
-  background-color: #505050;
-  color: #fff;
-}
-
-#jPanelMenu-menu li li a {
-  background-color: #282828;
-  padding-left: 30px !important;
-}
-
-/* ------------------------------------------------------------------- */
-
 /* Homepage Banner
 ---------------------------------------------------------------------- */
 
@@ -4761,8 +4629,9 @@ li .job-spotlight p {
 
 .job-spotlight .listing-type {
   position: relative;
-  left: 5px;
-  top: -2px;
+  left: 0px;
+  top: 0px;
+  margin-top: 10px;
 }
 
 .job-spotlight .details {
@@ -4917,6 +4786,10 @@ li .job-spotlight p {
   width: calc(100% * (1/5));
 }
 
+.add-post.button i {
+  display: none;
+}
+
 @media only screen and (min-width: 960px) and (max-width: 1289px) {
   .category-small-box {
     width: calc(100% * (1/4) - 60px);
@@ -4932,6 +4805,33 @@ li .job-spotlight p {
 @media only screen and (max-width: 767px) {
   .category-small-box {
     width: 100%;
+  }
+  .add-post.button span {
+    display: none;
+  }
+  .add-post.button i {
+    display: inline-block;
+  }
+  .listings-container .listing-type {
+    position: relative;
+    top: 0 !important;
+    left: 0;
+    display: inline-block;
+  }
+  .listing-title .title {
+    display: block;
+  }
+  .listing .listing-title .timeago {
+    position: relative;
+    top: 0;
+    right: 0;
+    margin-left: 5px;
+  }
+  .listing .timeago.wide {
+    display: none;
+  }
+  .listing .listing-icons .timeago-item {
+    display: block;
   }
 }
 
@@ -6588,8 +6488,8 @@ html[xmlns] .flexslider .slides {
   -webkit-transform: translateZ(10);
   -webkit-backface-visibility: hidden;
   -webkit-perspective: 1000;
-  margin-right: 20px;
   margin-top: 20px;
+  width: 50%;
 }
 
 .showbiz .overflowholder {

@@ -34,7 +34,8 @@ export default {
                   class="add-post button"
                   to="/ilan-ekle"
                 >
-                  Ücretsiz İlan Ekle
+                  <i class="fa fa-plus"></i>
+                  <span>Ücretsiz İlan Ekle</span>
                 </router-link>
               </li>
             </ul>

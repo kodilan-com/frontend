@@ -3,8 +3,6 @@ import { mapState, mapActions } from 'vuex';
 import Loader from './Loader';
 import JobTypeBadge from './JobTypeBadge';
 
-const CAROUSEL_ITEM_WIDTH = 375;
-
 export default {
   data() {
     return {
@@ -20,14 +18,9 @@ export default {
     ...mapState(['featuredPosts']),
     leftPosition() {
       const index = this.navCounter % this.featuredPosts.length;
+      const wrapperWidth = this.$refs.carouselWrapper.offsetWidth || 0;
 
-      return index * CAROUSEL_ITEM_WIDTH * -1;
-    },
-    initialCarouselState() {
-      return {
-        left: 0,
-        width: `${CAROUSEL_ITEM_WIDTH * this.featuredPosts.length}px`,
-      };
+      return index * wrapperWidth * -1;
     },
   },
   methods: {
@@ -51,11 +44,24 @@ export default {
     navigateRight() {
       this.navigate('RIGHT');
     },
+    setCarouselWidth() {
+      const wrapperWidth = this.$refs.carouselWrapper.offsetWidth || 0;
+      this.$refs.carousel.style.left = this.$refs.carousel.style.left || 0;
+      this.$refs.carousel.style.width = `${wrapperWidth * this.featuredPosts.length}px`;
+    },
   },
   created() {
     this.fetchFeaturedPosts().then(() => {
       this.isLoading = false;
+      this.$nextTick(() => {
+        this.setCarouselWidth();
+      });
     });
+
+    window.addEventListener('resize', this.setCarouselWidth);
+  },
+  beforeDestroy() {
+    window.removeEventListener('resize', this.setCarouselWidth);
   },
 };
 </script>
@@ -84,8 +90,8 @@ export default {
       <div class="clearfix"></div>
       <div id="job-spotlight">
         <div class="showbiz">
-          <div class="wrapper">
-            <ul ref="carousel" :style="initialCarouselState">
+          <div class="wrapper" ref="carouselWrapper">
+            <ul ref="carousel">
               <li
                 v-for="post in featuredPosts"
                 :key="post.slug"
@@ -97,7 +103,6 @@ export default {
                   >
                     {{post.position}}
                   </router-link>
-                  <job-type-badge :post="post" />
                   <div class="details">
                     <span>
                       <i class="fa fa-briefcase"></i>
@@ -115,6 +120,7 @@ export default {
                         {{post.location}}
                       </router-link>
                     </span>
+                    <job-type-badge :post="post" />
                     <p>{{getPostSummary(post.description)}}</p>
                     <div
                       v-for="tag in post.tags"
@@ -157,7 +163,6 @@ export default {
 
     li {
       float: left;
-      width: 355px;
     }
   }
 
