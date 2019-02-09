@@ -10,8 +10,9 @@
               </a>
             </li>
           </ul>
-          <div class="copyrights">© Copyright {{ new Date().getFullYear() }} by
-            <router-link to="/">kodilan.com</router-link>.
+          <div class="copyrights">
+            Kodilan.com ilan yayınlama sitesidir. Başvurular ilgili firmaya direkt olarak yapılmakta olup Kodilan.com üzerinden hiçbir veri gönderilmemektedir.<br />
+            © Copyright {{ new Date().getFullYear() }} <router-link to="/">kodilan.com</router-link>. Tüm hakları saklıdır.
           </div>
         </div>
       </div>
