@@ -3,6 +3,7 @@ import { mapGetters, mapActions } from 'vuex';
 import { VueEditor } from 'vue2-editor';
 import autocomplete from '../../utils/autocomplete';
 import JobDetails from './JobDetails';
+import validationMixin from '../../mixins/validator';
 
 export default {
   data() {
@@ -10,7 +11,7 @@ export default {
       isPreview: false,
       isSaved: false,
       isSaving: false,
-      model: {
+      formData: {
         position: '',
         description: '',
         apply_email: '',
@@ -18,17 +19,26 @@ export default {
         location: '',
         type: 1,
         tags: '',
-        company: {
-          name: '',
-          email: '',
-          logo: '',
-          www: '',
-          twitter: '',
-          linkedin: '',
-        },
+        company_name: '',
+        company_email: '',
+        company_logo: '',
+        company_www: '',
+        company_twitter: '',
+        company_linkedin: '',
+      },
+      rules: {
+        company_name: { required: true, message: 'Firma adı boş bırakılamaz.' },
+        company_email: { required: true, message: 'E-posta adresi boş bırakılamaz.' },
+        company_logo: { required: true, message: 'Logo URL boş bırakılamaz.' },
+        company_www: { required: true, message: 'Website boş bırakılamaz.' },
+        position: { required: true, message: 'Pozisyon boş bırakılamaz.' },
+        description: { required: true, message: 'İlan açıklaması boş bırakılamaz.' },
+        location: { required: true, message: 'Lokasyon boş bırakılamaz.' },
+        tags: { required: true, message: 'Etiketler boş bırakılamaz.' },
       },
     };
   },
+  mixins: [validationMixin],
   components: {
     JobDetails,
     VueEditor,
@@ -36,15 +46,22 @@ export default {
   methods: {
     ...mapActions(['fetchTags', 'savePost']),
     togglePreview() {
+      if (!this.validateForm()) {
+        const messages = Object.values(this.validationErrorMessages).join('\n');
+        alert(messages);
+
+        return;
+      }
+
       this.isPreview = !this.isPreview;
     },
     save() {
       const postData = {
-        ...this.model,
+        ...this.formData,
         tags: this.normalizedTags,
       };
 
-      postData.company.twitter = postData.company.twitter.replace('@', '');
+      postData.company_twitter = (postData.company_twitter || '').replace('@', '');
 
       this.isSaving = true;
       this.savePost(postData)
@@ -52,8 +69,13 @@ export default {
           this.isSaved = true;
           this.isSaving = false;
         })
-        .catch(() => {
-          alert('Hata: İlanınız kaydedilemedi, lütfen geri dönüp gerekli alanları doldurduğunuzdan emin olunuz.');
+        .catch((e) => {
+          const details = Object.values(e.response.data.errors || [])
+            .map(item => item[0])
+            .join('\n');
+
+          alert(`Hata: İlanınız kaydedilemedi. Lütfen geri dönüp gerekli alanları doldurduğunuzdan emin olunuz. \n\n${details}`);
+
           this.isSaving = false;
         });
     },
@@ -61,7 +83,7 @@ export default {
   computed: {
     ...mapGetters(['autocompleteTags']),
     normalizedTags() {
-      return this.model.tags
+      return this.formData.tags
         .split(',')
         .filter((tag) => {
           return tag.trim().length;
@@ -75,8 +97,17 @@ export default {
         return { name: t, slug: t };
       });
 
+      const company = Object.keys(this.formData).reduce((acc, key) => {
+        if (key.indexOf('company_') > -1) {
+          acc.company[key.replace('company_', '')] = this.formData[key];
+        }
+
+        return acc;
+      }, { company: {} });
+
       return {
-        ...this.model,
+        ...this.formData,
+        ...company,
         tags: tagsArr,
       };
     },
@@ -150,34 +181,34 @@ export default {
             <div class="form">
               <h5>E-posta Adresiniz</h5>
               <input
-                v-model="model.company.email"
+                v-model="formData.company_email"
                 class="search-field" type="text" placeholder="mail@example.com"
               />
             </div>
             <div class="form">
               <h5>Pozisyon</h5>
               <input
-                v-model="model.position"
+                v-model="formData.position"
                 class="search-field" type="text"
               />
             </div>
             <div class="form">
               <h5>İlan Açıklaması</h5>
               <vue-editor
-                v-model="model.description"
+                v-model="formData.description"
               />
             </div>
             <div class="form">
               <h5>Lokasyon</h5>
               <input
-                v-model="model.location"
+                v-model="formData.location"
                 class="search-field" type="text"
               />
               <p class="note">Bu ilan uzaktan çalışmaya izin veriyorsa lokasyon olarak Remote yazabilirsiniz.</p>
             </div>
             <div class="form">
               <h5>İlan Tipi</h5>
-              <select v-model="model.type">
+              <select v-model="formData.type">
                 <option value="1">Tam zamanlı</option>
                 <option value="2">Yarı zamanlı</option>
                 <option value="3">Stajyer</option>
@@ -187,7 +218,7 @@ export default {
             <div class="form">
               <h5>Etiketler</h5>
               <input
-                v-model="model.tags"
+                v-model="formData.tags"
                 ref="tagsInput"
                 class="tags-input" type="text" data-multiple
               />
@@ -198,13 +229,13 @@ export default {
             <div class="form">
               <h5>Başvuru bilgileri</h5>
               <input
-                v-model="model.apply_url"
+                v-model="formData.apply_url"
                 placeholder="URL"
                 class="margin-bottom-10"
                 type="text"
               />
               <input
-                v-model="model.apply_email"
+                v-model="formData.apply_email"
                 placeholder="E-posta"
                 type="text"
               />
@@ -216,21 +247,21 @@ export default {
             <div class="form">
               <h5>Firma adı</h5>
               <input
-                v-model="model.company.name"
+                v-model="formData.company_name"
                 type="text"
               />
             </div>
             <div class="form">
               <h5>Website</h5>
               <input
-                v-model="model.company.www"
+                v-model="formData.company_www"
                 type="text" placeholder="https://"
               />
             </div>
             <div class="form">
               <h5>Logo URL</h5>
               <input
-                v-model="model.company.logo"
+                v-model="formData.company_logo"
                 type="text" placeholder="https://"
               />
               <p class="note">Logo kare olarak gösterilecektir.</p>
@@ -238,14 +269,14 @@ export default {
             <div class="form">
               <h5>Twitter Kullanıcı adı <span>(opsiyonel)</span></h5>
               <input
-                v-model="model.company.twitter"
+                v-model="formData.company_twitter"
                 type="text" placeholder="@twitter"
               />
             </div>
             <div class="form">
               <h5>Linkedin URL <span>(opsiyonel)</span></h5>
               <input
-                v-model="model.company.linkedin"
+                v-model="formData.company_linkedin"
                 type="text" placeholder="https://"
               />
             </div>
