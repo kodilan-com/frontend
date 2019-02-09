@@ -53,6 +53,7 @@ export default {
   created() {
     this.fetchFeaturedPosts().then(() => {
       this.isLoading = false;
+
       this.$nextTick(() => {
         this.setCarouselWidth();
       });
@@ -148,7 +149,6 @@ export default {
     </template>
   </div>
 </template>
-
 
 <style lang="scss">
 #job-spotlight {

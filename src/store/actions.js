@@ -1,7 +1,7 @@
 import axios from 'axios';
 import * as constants from './constants';
 
-const API_ROOT = 'https://api.kodilan.com/';
+const API_ROOT = 'https://api.kodilan.com';
 
 export default {
   toggleLoading({ commit }) {

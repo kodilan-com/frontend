@@ -10,7 +10,7 @@
               </a>
             </li>
           </ul>
-          <div class="copyrights">© Copyright {{new Date().getFullYear()}} by
+          <div class="copyrights">© Copyright {{ new Date().getFullYear() }} by
             <router-link to="/">kodilan.com</router-link>.
           </div>
         </div>

@@ -24,24 +24,24 @@ export default {
     </div>
     <div class="listing-title">
       <h4>
-        <span class="title">{{post.position}}</span>
+        <span class="title">{{ post.position }}</span>
         <job-type-badge
           :post="post"
         />
-        <span class="timeago wide">{{timeago}}</span>
+        <span class="timeago wide">{{ timeago }}</span>
       </h4>
       <ul class="listing-icons">
         <li>
           <i class="ln ln-icon-Management"></i>
-          <router-link :to="`/ilan-ara?company=${company.slug}`">{{company.name}}</router-link>
+          <router-link :to="`/ilan-ara?company=${company.slug}`">{{ company.name }}</router-link>
         </li>
         <li>
           <i class="ln ln-icon-Map2"></i>
-          <router-link :to="`/ilan-ara?location=${post.location}`">{{post.location}}</router-link>
+          <router-link :to="`/ilan-ara?location=${post.location}`">{{ post.location }}</router-link>
         </li>
         <li class="timeago-item">
           <i class="ln ln-icon-Clock"></i>
-          <span>{{timeago}}</span>
+          <span>{{ timeago }}</span>
         </li>
         <li>
           <div
@@ -49,10 +49,8 @@ export default {
             :key="tag.slug"
             class="listing-date post-tag"
           >
-            <router-link
-              :to="`/etiket/${tag.slug}`"
-            >
-              {{tag.name}}
+            <router-link :to="`/etiket/${tag.slug}`">
+              {{ tag.name }}
             </router-link>
           </div>
         </li>

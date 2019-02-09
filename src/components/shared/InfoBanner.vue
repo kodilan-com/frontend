@@ -1,5 +1,18 @@
+<script>
+export default {
+  data() {
+    return {
+      shouldRender: false,
+    };
+  },
+  created() {
+    console.log('amcam was here');
+  },
+};
+</script>
+
 <template>
-  <div class="container">
+  <div class="container" v-if="shouldRender">
     <div class="sixteen columns">
       <div class="info-banner">
         <div class="info-content">
