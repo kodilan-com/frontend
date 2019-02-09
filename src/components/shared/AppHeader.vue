@@ -23,7 +23,7 @@ export default {
           <div id="logo">
             <h1>
               <router-link to="/">
-                Kod İlan
+                <span class="token">{ </span>kod<span class="token">, </span>ilan<span class="token"> }</span>
               </router-link>
             </h1>
           </div>
@@ -55,6 +55,16 @@ export default {
 .app-header {
   #logo h1 {
     line-height: 98px;
+    font-size: 36px;
+
+    a {
+      color: #333;
+
+      .token {
+        color: #26ae61;
+        font-weight: 500;
+      }
+    }
   }
 
   .add-post {
