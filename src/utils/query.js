@@ -15,7 +15,7 @@ export default {
       params.location = location;
     }
 
-    if (type) {
+    if (parseInt(type, 10)) {
       params.type = type;
     }
 

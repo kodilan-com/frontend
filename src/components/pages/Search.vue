@@ -21,7 +21,7 @@ export default {
       return this.$route.query.query;
     },
     type() {
-      return this.$route.query.type;
+      return parseInt(this.$route.query.type, 10);
     },
     company() {
       return this.$route.query.company;
@@ -34,6 +34,7 @@ export default {
     ...mapActions(['search']),
     handleSearch() {
       this.isLoading = true;
+
       this.search(this.$route.query)
         .then((res) => {
           this.isLoading = false;
@@ -47,6 +48,11 @@ export default {
   created() {
     this.handleSearch();
   },
+  watch: {
+    $route() {
+      this.handleSearch();
+    },
+  },
 };
 </script>
 
@@ -58,18 +64,22 @@ export default {
   >
     <h2 slot="headerText">
       <template v-if="company">
-        <strong>{{company}}</strong> firmasındaki
+        <strong>{{company}}</strong> firmasına ait
       </template>
+
       <template v-if="type">
         <strong>{{jobTypeString}}</strong> çalışma tipindeki
       </template>
+
       <template v-if="location">
         <strong>{{location}}</strong>
         <template v-if="location.toLowerCase() !== 'remote'">bölgesinde bulunan</template>
       </template>
+
       <template v-if="query">
         <strong>{{query}}</strong> anahtar kelimesine sahip
       </template>
+
       <template v-if="location || query || type || company">ilanlar</template>
     </h2>
   </job-listing-with-filters>

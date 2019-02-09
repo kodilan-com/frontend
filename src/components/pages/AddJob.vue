@@ -44,6 +44,8 @@ export default {
         tags: this.normalizedTags,
       };
 
+      postData.company.twitter = postData.company.twitter.replace('@', '');
+
       this.isSaving = true;
       this.savePost(postData)
         .then(() => {
@@ -51,7 +53,7 @@ export default {
           this.isSaving = false;
         })
         .catch(() => {
-          alert('TODO: ERROR HANDLING');
+          alert('Hata: İlanınız kaydedilemedi, lütfen geri dönüp gerekli alanları doldurduğunuzdan emin olunuz.');
           this.isSaving = false;
         });
     },
@@ -65,7 +67,7 @@ export default {
           return tag.trim().length;
         })
         .map((tag) => {
-          return tag.trim().toLowerCase();
+          return tag.trim().toLowerCase().replace(/ /g, '-');
         });
     },
     previewData() {
@@ -103,7 +105,7 @@ export default {
       class="notification success center"
     >
       <p>
-        <span>İlanınız başarılı bir şekilde kaydedildi!</span><br />
+        <span>İlanınız başarılı bir şekilde kaydedildi!</span><br /><br />
         İlanınızın yayınlanabilmesi için gönderilen e-postadaki onay linkine tıklamanız gerekmektedir.
       </p>
     </div>
@@ -189,7 +191,9 @@ export default {
                 ref="tagsInput"
                 class="tags-input" type="text" data-multiple
               />
-              <p class="note">Bu pozisyon için gerekli olan yeti ve teknolojileri seçebilirsiniz ya da ekleme yapabilirsiniz.</p>
+              <p class="note">
+                Bu pozisyon için gerekli olan yeti ve teknolojileri listeden seçebilirsiniz ya da virgul ile ekleme yapabilirsiniz.
+              </p>
             </div>
             <div class="form">
               <h5>Başvuru bilgileri</h5>

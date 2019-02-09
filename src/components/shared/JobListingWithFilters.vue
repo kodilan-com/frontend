@@ -28,11 +28,9 @@ export default {
   },
   computed: {
     countText() {
-      if (this.$route.path === '/tum-ilanlar') {
-        return `Toplam ${this.posts.length} ilan bulunuyor`;
-      }
+      const prefix = this.$route.path === '/tum-ilanlar' ? 'Toplam' : 'Bu kriterlere uygun';
 
-      return `Bu kriterlere uygun ${this.posts.length} ilan bulunuyor`;
+      return `${prefix} ${this.posts.length} ilan bulunuyor`;
     },
   },
   methods: {

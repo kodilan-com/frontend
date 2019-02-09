@@ -6,6 +6,7 @@ import JobDetails from '@/components/pages/JobDetails';
 import JobList from '@/components/pages/JobList';
 import TagPosts from '@/components/pages/TagPosts';
 import Search from '@/components/pages/Search';
+import Confirmation from '@/components/pages/Confirmation';
 import NotFound from '@/components/pages/NotFound';
 
 Vue.use(Router);
@@ -45,6 +46,11 @@ export default new Router({
       path: '/ilan-ara',
       name: 'Search',
       component: Search,
+    },
+    {
+      path: '/ilan/dogrulandi',
+      name: 'Confirmation',
+      component: Confirmation,
     },
     {
       path: '*',
