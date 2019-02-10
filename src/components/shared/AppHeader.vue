@@ -2,15 +2,15 @@
 import AppBanner from './AppBanner';
 
 export default {
+  components: {
+    AppBanner,
+  },
   props: {
     withBanner: {
       type: Boolean,
       required: false,
       default: false,
     },
-  },
-  components: {
-    AppBanner,
   },
 };
 </script>
@@ -23,18 +23,27 @@ export default {
           <div id="logo">
             <h1>
               <router-link to="/">
-                <span class="token">{ </span>kod<span class="token">, </span>ilan<span class="token"> }</span>
+                <span class="token">
+                  {
+                </span>kod<span class="token">
+                  ,
+                </span>ilan<span class="token">
+                  }
+                </span>
               </router-link>
             </h1>
           </div>
-          <nav id="navigation" class="menu">
+          <nav
+            id="navigation"
+            class="menu"
+          >
             <ul class="responsive float-right">
               <li>
                 <router-link
                   class="add-post button"
                   to="/ilan-ekle"
                 >
-                  <i class="fa fa-plus"></i>
+                  <i class="fa fa-plus" />
                   <span>Ücretsiz İlan Ekle</span>
                 </router-link>
               </li>
@@ -43,7 +52,7 @@ export default {
         </div>
       </div>
     </header>
-    <div class="clearfix"></div>
+    <div class="clearfix" />
 
     <app-banner
       v-if="withBanner"

@@ -1,5 +1,5 @@
 <script>
-import jobDetailMixin from '../../mixins/jobDetail.js';
+import jobDetailMixin from '../../mixins/jobDetail';
 
 export default {
   mixins: [jobDetailMixin],
@@ -13,7 +13,7 @@ export default {
     class="listing-type"
   >
     <router-link :to="`/ilan-ara?type=${post.type}`">
-      {{jobType}}
+      {{ jobType }}
     </router-link>
   </span>
 </template>

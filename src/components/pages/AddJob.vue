@@ -6,6 +6,11 @@ import JobDetails from './JobDetails';
 import validationMixin from '../../mixins/validator';
 
 export default {
+  mixins: [validationMixin],
+  components: {
+    JobDetails,
+    VueEditor,
+  },
   data() {
     return {
       isPreview: false,
@@ -38,17 +43,38 @@ export default {
       },
     };
   },
-  mixins: [validationMixin],
-  components: {
-    JobDetails,
-    VueEditor,
+  computed: {
+    ...mapGetters(['autocompleteTags']),
+    normalizedTags() {
+      return this.formData.tags
+        .split(',')
+        .filter(tag => tag.trim().length)
+        .map(tag => tag.trim().toLowerCase().replace(/ /g, '-'));
+    },
+    previewData() {
+      const tagsArr = this.normalizedTags.map(t => ({ name: t, slug: t }));
+
+      const company = Object.keys(this.formData).reduce((acc, key) => {
+        if (key.indexOf('company_') > -1) {
+          acc.company[key.replace('company_', '')] = this.formData[key];
+        }
+
+        return acc;
+      }, { company: {} });
+
+      return {
+        ...this.formData,
+        ...company,
+        tags: tagsArr,
+      };
+    },
   },
   methods: {
     ...mapActions(['fetchTags', 'savePost']),
     togglePreview() {
       if (!this.validateForm()) {
         const messages = Object.values(this.validationErrorMessages).join('\n');
-        alert(messages);
+        alert(messages); // eslint-disable-line no-alert
 
         return;
       }
@@ -74,42 +100,11 @@ export default {
             .map(item => item[0])
             .join('\n');
 
+          // eslint-disable-next-line
           alert(`Hata: İlanınız kaydedilemedi. Lütfen geri dönüp gerekli alanları doldurduğunuzdan emin olunuz. \n\n${details}`);
 
           this.isSaving = false;
         });
-    },
-  },
-  computed: {
-    ...mapGetters(['autocompleteTags']),
-    normalizedTags() {
-      return this.formData.tags
-        .split(',')
-        .filter((tag) => {
-          return tag.trim().length;
-        })
-        .map((tag) => {
-          return tag.trim().toLowerCase().replace(/ /g, '-');
-        });
-    },
-    previewData() {
-      const tagsArr = this.normalizedTags.map((t) => {
-        return { name: t, slug: t };
-      });
-
-      const company = Object.keys(this.formData).reduce((acc, key) => {
-        if (key.indexOf('company_') > -1) {
-          acc.company[key.replace('company_', '')] = this.formData[key];
-        }
-
-        return acc;
-      }, { company: {} });
-
-      return {
-        ...this.formData,
-        ...company,
-        tags: tagsArr,
-      };
     },
   },
   mounted() {
@@ -122,11 +117,14 @@ export default {
 
 <template>
   <div class="add-job">
-    <div id="titlebar" class="single submit-page">
+    <div
+      id="titlebar"
+      class="single submit-page"
+    >
       <div class="container">
         <div class="sixteen columns">
           <h2>
-            <i class="fa fa-plus-circle"></i> Yeni İlan Ekle
+            <i class="fa fa-plus-circle" /> Yeni İlan Ekle
           </h2>
         </div>
       </div>
@@ -136,8 +134,9 @@ export default {
       class="notification success center"
     >
       <p>
-        <span>İlanınız başarılı bir şekilde kaydedildi!</span><br /><br />
-        İlanınızın yayınlanabilmesi için gönderilen e-postadaki onay linkine tıklamanız gerekmektedir.
+        <span>İlanınız başarılı bir şekilde kaydedildi!</span><br><br>
+        İlanınızın yayınlanabilmesi için gönderilen e-postadaki
+        onay linkine tıklamanız gerekmektedir.
       </p>
     </div>
     <template v-else>
@@ -152,7 +151,7 @@ export default {
             class="button big back-button"
             type="button"
           >
-            <i class="fa fa-arrow-left"></i> Geri dön
+            <i class="fa fa-arrow-left" /> Geri dön
           </button>
           <button
             @click="save"
@@ -160,7 +159,7 @@ export default {
             class="button big save-button"
             type="button"
           >
-            Kaydet <i class="fa fa-check"></i>
+            Kaydet <i class="fa fa-check" />
           </button>
         </div>
       </template>
@@ -173,24 +172,28 @@ export default {
             <div class="notification notice margin-bottom-40">
               <p>
                 <span>Önemli hatırlatma!</span>
-                İlan ekleyebilmek için belirtmiş olduğunuz firma ismiyle uyumlu bir e-posta adresi vermeniz gerekiyor.
-                İlan ekledikten sonra doğrulama işlemi için belirtmiş olduğunuz e-posta adresine bir onay e-postası gönderilecektir.
-                İlanınız size gelen e-postadaki doğrulama linkine tıkladıktan sonra yayına alınacaktır.
+                İlan ekleyebilmek için belirtmiş olduğunuz firma ismiyle uyumlu bir e-posta adresi
+                vermeniz gerekiyor. İlan ekledikten sonra doğrulama işlemi için belirtmiş olduğunuz
+                e-posta adresine bir onay e-postası gönderilecektir. İlanınız size gelen e-postadaki
+                doğrulama linkine tıkladıktan sonra yayına alınacaktır.
               </p>
             </div>
             <div class="form">
               <h5>E-posta Adresiniz</h5>
               <input
                 v-model="formData.company_email"
-                class="search-field" type="text" placeholder="mail@example.com"
-              />
+                class="search-field"
+                type="text"
+                placeholder="mail@example.com"
+              >
             </div>
             <div class="form">
               <h5>Pozisyon</h5>
               <input
                 v-model="formData.position"
-                class="search-field" type="text"
-              />
+                class="search-field"
+                type="text"
+              >
             </div>
             <div class="form">
               <h5>İlan Açıklaması</h5>
@@ -202,17 +205,28 @@ export default {
               <h5>Lokasyon</h5>
               <input
                 v-model="formData.location"
-                class="search-field" type="text"
-              />
-              <p class="note">Bu ilan uzaktan çalışmaya izin veriyorsa lokasyon olarak Remote yazabilirsiniz.</p>
+                class="search-field"
+                type="text"
+              >
+              <p class="note">
+                Bu ilan uzaktan çalışmaya izin veriyorsa lokasyon olarak Remote yazabilirsiniz.
+              </p>
             </div>
             <div class="form">
               <h5>İlan Tipi</h5>
               <select v-model="formData.type">
-                <option value="1">Tam zamanlı</option>
-                <option value="2">Yarı zamanlı</option>
-                <option value="3">Stajyer</option>
-                <option value="4">Freelance</option>
+                <option value="1">
+                  Tam zamanlı
+                </option>
+                <option value="2">
+                  Yarı zamanlı
+                </option>
+                <option value="3">
+                  Stajyer
+                </option>
+                <option value="4">
+                  Freelance
+                </option>
               </select>
             </div>
             <div class="form">
@@ -220,10 +234,13 @@ export default {
               <input
                 v-model="formData.tags"
                 ref="tagsInput"
-                class="tags-input" type="text" data-multiple
-              />
+                class="tags-input"
+                type="text"
+                data-multiple
+              >
               <p class="note">
-                Bu pozisyon için gerekli olan yeti ve teknolojileri listeden seçebilirsiniz ya da virgul ile ekleme yapabilirsiniz.
+                Bu pozisyon için gerekli olan yeti ve teknolojileri listeden seçebilirsiniz
+                ya da virgul ile ekleme yapabilirsiniz.
               </p>
             </div>
             <div class="form">
@@ -233,12 +250,12 @@ export default {
                 placeholder="URL"
                 class="margin-bottom-10"
                 type="text"
-              />
+              >
               <input
                 v-model="formData.apply_email"
                 placeholder="E-posta"
                 type="text"
-              />
+              >
             </div>
 
             <div class="divider">
@@ -249,36 +266,42 @@ export default {
               <input
                 v-model="formData.company_name"
                 type="text"
-              />
+              >
             </div>
             <div class="form">
               <h5>Website</h5>
               <input
                 v-model="formData.company_www"
-                type="text" placeholder="https://"
-              />
+                type="text"
+                placeholder="https://"
+              >
             </div>
             <div class="form">
               <h5>Logo URL</h5>
               <input
                 v-model="formData.company_logo"
-                type="text" placeholder="https://"
-              />
-              <p class="note">Logo kare olarak gösterilecektir.</p>
+                type="text"
+                placeholder="https://"
+              >
+              <p class="note">
+                Logo kare olarak gösterilecektir.
+              </p>
             </div>
             <div class="form">
               <h5>Twitter Kullanıcı adı <span>(opsiyonel)</span></h5>
               <input
                 v-model="formData.company_twitter"
-                type="text" placeholder="@twitter"
-              />
+                type="text"
+                placeholder="@twitter"
+              >
             </div>
             <div class="form">
               <h5>Linkedin URL <span>(opsiyonel)</span></h5>
               <input
                 v-model="formData.company_linkedin"
-                type="text" placeholder="https://"
-              />
+                type="text"
+                placeholder="https://"
+              >
             </div>
 
             <div class="button-container">
@@ -287,7 +310,7 @@ export default {
                 class="button big margin-top-5"
                 type="button"
               >
-                Önizleme <i class="fa fa-arrow-circle-right"></i>
+                Önizleme <i class="fa fa-arrow-circle-right" />
               </button>
             </div>
           </div>

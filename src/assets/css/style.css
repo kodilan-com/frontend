@@ -150,7 +150,7 @@ header.transparent .sf-with-ul::after {
 }
 
 #banner {
-  background-image: url(/static/images/banner.jpg);
+  background-image: url(../images/banner.jpg);
 }
 
 #banner.with-transparent-header {
@@ -5924,7 +5924,7 @@ body .recent-post a h4 {
 #testimonials {
   position: relative;
   margin-top: 0;
-  background: url('/static/images/banner.jpg') no-repeat 50%;
+  background: url('../images/banner.jpg') no-repeat 50%;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;

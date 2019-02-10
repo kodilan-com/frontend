@@ -1,8 +1,11 @@
 <script>
-import JobListing from '../shared/JobListing';
+import JobListing from './JobListing';
 import queryUtils from '../../utils/query';
 
 export default {
+  components: {
+    JobListing,
+  },
   props: {
     posts: {
       type: Array,
@@ -22,9 +25,6 @@ export default {
         type: this.$route.query.type || 0,
       },
     };
-  },
-  components: {
-    JobListing,
   },
   computed: {
     countText() {
@@ -57,7 +57,7 @@ export default {
       <div class="container">
         <div class="sixteen columns">
           <slot name="headerText" />
-          <span>{{countText}}</span>
+          <span>{{ countText }}</span>
         </div>
       </div>
     </div>
@@ -70,7 +70,7 @@ export default {
               :posts="posts"
             />
           </div>
-          <div class="clearfix"></div>
+          <div class="clearfix" />
         </div>
       </div>
       <div
@@ -84,20 +84,30 @@ export default {
             type="text"
             class="ico-01"
             placeholder="Pozisyon adı, teknoloji adı"
-          />
+          >
           <input
             v-model="params.location"
             @keypress.enter="search"
             type="text"
             class="ico-02"
             placeholder="Şehir"
-          />
+          >
           <select v-model="params.type">
-            <option value="0">Çalışma tipi seçiniz...</option>
-            <option value="1">Tam zamanlı</option>
-            <option value="2">Yarı zamanlı</option>
-            <option value="3">Stajyer</option>
-            <option value="4">Freelance</option>
+            <option value="0">
+              Çalışma tipi seçiniz...
+            </option>
+            <option value="1">
+              Tam zamanlı
+            </option>
+            <option value="2">
+              Yarı zamanlı
+            </option>
+            <option value="3">
+              Stajyer
+            </option>
+            <option value="4">
+              Freelance
+            </option>
           </select>
         </div>
         <div class="button-right">

@@ -1,6 +1,6 @@
 <script>
 import JobTypeBadge from './JobTypeBadge';
-import jobDetail from '../../mixins/jobDetail.js';
+import jobDetail from '../../mixins/jobDetail';
 
 export default {
   mixins: [jobDetail],
@@ -20,27 +20,35 @@ export default {
       <img
         :src="company.logo"
         :alt="company.name"
-      />
+      >
     </div>
     <div class="listing-title">
       <h4>
-        <span class="title">{{ post.position }}</span>
+        <span class="title">
+          {{ post.position }}
+        </span>
         <job-type-badge
           :post="post"
         />
-        <span class="timeago wide">{{ timeago }}</span>
+        <span class="timeago wide">
+          {{ timeago }}
+        </span>
       </h4>
       <ul class="listing-icons">
         <li>
-          <i class="ln ln-icon-Management"></i>
-          <router-link :to="`/ilan-ara?company=${company.slug}`">{{ company.name }}</router-link>
+          <i class="ln ln-icon-Management" />
+          <router-link :to="`/ilan-ara?company=${company.slug}`">
+            {{ company.name }}
+          </router-link>
         </li>
         <li>
-          <i class="ln ln-icon-Map2"></i>
-          <router-link :to="`/ilan-ara?location=${post.location}`">{{ post.location }}</router-link>
+          <i class="ln ln-icon-Map2" />
+          <router-link :to="`/ilan-ara?location=${post.location}`">
+            {{ post.location }}
+          </router-link>
         </li>
         <li class="timeago-item">
-          <i class="ln ln-icon-Clock"></i>
+          <i class="ln ln-icon-Clock" />
           <span>{{ timeago }}</span>
         </li>
         <li>

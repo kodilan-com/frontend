@@ -10,7 +10,7 @@ export default {
     mailToUrl() {
       const { post } = this;
       const encoded = encodeURI(`${post.company.name} ${post.position} İlan Başvurusu`);
-      const body = encodeURI(`\n\n\n\n-\nkodilan.com aracılığıyla gönderilmiştir.`);
+      const body = encodeURI('\n\n\n\n-\nkodilan.com aracılığıyla gönderilmiştir.');
 
       return `mailto:${post.apply_email}?subject=${encoded}&body=${body}`;
     },
@@ -29,7 +29,7 @@ export default {
       target="_blank"
       class="button"
     >
-      <i class="fa fa-envelope-o"></i> E-posta ile başvur
+      <i class="fa fa-envelope-o" /> E-posta ile başvur
     </a>
     <a
       v-if="post.apply_url"
@@ -40,7 +40,7 @@ export default {
       <i
         v-if="post.apply_email"
         class="fa fa-link"
-      ></i> {{urlButtonText}}
+      /> {{ urlButtonText }}
     </a>
   </div>
 </template>

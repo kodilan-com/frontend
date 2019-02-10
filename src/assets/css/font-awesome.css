@@ -8,8 +8,8 @@
 
 @font-face {
   font-family: 'FontAwesome';
-  src: url('/static/fonts/fontawesome-webfont.eot?v=4.4.0');
-  src: url('/static/fonts/fontawesome-webfont.eot?#iefix&v=4.4.0') format('embedded-opentype'), url('/static/fonts/fontawesome-webfont.woff2?v=4.4.0') format('woff2'), url('/static/fonts/fontawesome-webfont.woff?v=4.4.0') format('woff'), url('/static/fonts/fontawesome-webfont.ttf?v=4.4.0') format('truetype'), url('/static/fonts/fontawesome-webfont.svg?v=4.4.0#fontawesomeregular') format('svg');
+  src: url('../fonts/fontawesome-webfont.eot?v=4.4.0');
+  src: url('../fonts/fontawesome-webfont.eot?#iefix&v=4.4.0') format('embedded-opentype'), url('../fonts/fontawesome-webfont.woff2?v=4.4.0') format('woff2'), url('../fonts/fontawesome-webfont.woff?v=4.4.0') format('woff'), url('../fonts/fontawesome-webfont.ttf?v=4.4.0') format('truetype'), url('../fonts/fontawesome-webfont.svg?v=4.4.0#fontawesomeregular') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -2656,8 +2656,8 @@
 
 @font-face {
   font-family: 'linearicons';
-  src: url('/static/fonts/linearicons.eot?-rdmvgc');
-  src: url('/static/fonts/linearicons.eot?#iefix-rdmvgc') format('embedded-opentype'), url('/static/fonts/linearicons.woff?-rdmvgc') format('woff'), url('/static/fonts/linearicons.ttf?-rdmvgc') format('truetype'), url('/static/fonts/linearicons.svg?-rdmvgc#linearicons') format('svg');
+  src: url('../fonts/linearicons.eot?-rdmvgc');
+  src: url('../fonts/linearicons.eot?#iefix-rdmvgc') format('embedded-opentype'), url('../fonts/linearicons.woff?-rdmvgc') format('woff'), url('../fonts/linearicons.ttf?-rdmvgc') format('truetype'), url('../fonts/linearicons.svg?-rdmvgc#linearicons') format('svg');
   font-weight: normal;
   font-style: normal;
 }

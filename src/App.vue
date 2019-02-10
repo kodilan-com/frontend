@@ -24,6 +24,6 @@ export default {
 </template>
 
 <style>
-@import '../static/css/style.css';
-@import '../static/css/colors/green.css';
+@import './assets/css/style.css';
+@import './assets/css/colors/green.css';
 </style>

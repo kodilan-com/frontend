@@ -34,16 +34,16 @@ export default {
             type="text"
             class="ico-01"
             placeholder="Pozisyon adı, teknoloji adı"
-          />
+          >
           <input
             v-model="params.location"
             @keypress.enter="handleSearch"
             type="text"
             class="ico-02"
             placeholder="Şehir"
-          />
+          >
           <button @click="handleSearch">
-            <i class="fa fa-search"></i>
+            <i class="fa fa-search" />
           </button>
         </div>
       </div>

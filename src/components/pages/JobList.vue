@@ -3,13 +3,13 @@ import { mapState, mapActions } from 'vuex';
 import JobListingWithFilters from '../shared/JobListingWithFilters';
 
 export default {
+  components: {
+    JobListingWithFilters,
+  },
   data() {
     return {
       isLoading: true,
     };
-  },
-  components: {
-    JobListingWithFilters,
   },
   computed: {
     ...mapState(['allPosts']),

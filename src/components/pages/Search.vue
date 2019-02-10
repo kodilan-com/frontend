@@ -1,17 +1,17 @@
 <script>
-import { mapState, mapActions } from 'vuex';
+import { mapActions } from 'vuex';
 import JobListingWithFilters from '../shared/JobListingWithFilters';
 import { JOB_TYPE_MAP } from '../../store/constants';
 
 export default {
+  components: {
+    JobListingWithFilters,
+  },
   data() {
     return {
       isLoading: true,
       posts: [],
     };
-  },
-  components: {
-    JobListingWithFilters,
   },
   computed: {
     location() {
@@ -45,13 +45,13 @@ export default {
         });
     },
   },
-  created() {
-    this.handleSearch();
-  },
   watch: {
     $route() {
       this.handleSearch();
     },
+  },
+  created() {
+    this.handleSearch();
   },
 };
 </script>
@@ -64,23 +64,27 @@ export default {
   >
     <h2 slot="headerText">
       <template v-if="company">
-        <strong>{{company}}</strong> firmasına ait
+        <strong>{{ company }}</strong> firmasına ait
       </template>
 
       <template v-if="type">
-        <strong>{{jobTypeString}}</strong> çalışma tipindeki
+        <strong>{{ jobTypeString }}</strong> çalışma tipindeki
       </template>
 
       <template v-if="location">
-        <strong>{{location}}</strong>
-        <template v-if="location.toLowerCase() !== 'remote'">bölgesinde bulunan</template>
+        <strong>{{ location }}</strong>
+        <template v-if="location.toLowerCase() !== 'remote'">
+          bölgesinde bulunan
+        </template>
       </template>
 
       <template v-if="query">
-        <strong>{{query}}</strong> anahtar kelimesine sahip
+        <strong>{{ query }}</strong> anahtar kelimesine sahip
       </template>
 
-      <template v-if="location || query || type || company">ilanlar</template>
+      <template v-if="location || query || type || company">
+        ilanlar
+      </template>
     </h2>
   </job-listing-with-filters>
 </template>

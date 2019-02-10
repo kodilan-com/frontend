@@ -1,17 +1,17 @@
 <script>
-import { mapState, mapActions } from 'vuex';
+import { mapActions } from 'vuex';
 import JobListingWithFilters from '../shared/JobListingWithFilters';
 
 export default {
+  components: {
+    JobListingWithFilters,
+  },
   data() {
     return {
       isLoading: true,
       slug: null,
       posts: [],
     };
-  },
-  components: {
-    JobListingWithFilters,
   },
   computed: {
     tag() {
@@ -51,7 +51,7 @@ export default {
     :has-header="true"
   >
     <h2 slot="headerText">
-      <strong>{{tag}}</strong> etiketli ilanlar
+      <strong>{{ tag }}</strong> etiketli ilanlar
     </h2>
   </job-listing-with-filters>
 </template>

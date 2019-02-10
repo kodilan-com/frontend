@@ -4,15 +4,15 @@ import Loader from './Loader';
 import JobTypeBadge from './JobTypeBadge';
 
 export default {
+  components: {
+    JobTypeBadge,
+    Loader,
+  },
   data() {
     return {
       isLoading: true,
       navCounter: 0,
     };
-  },
-  components: {
-    JobTypeBadge,
-    Loader,
   },
   computed: {
     ...mapState(['featuredPosts']),
@@ -34,10 +34,10 @@ export default {
     },
     navigate(direction) {
       this.navCounter = direction === 'LEFT' ? this.navCounter - 1 : this.navCounter + 1;
-      this.$refs.carousel.style.left = this.leftPosition + 'px';
+      this.$refs.carousel.style.left = `${this.leftPosition}px`;
     },
     navigateLeft() {
-      if (this.navCounter != 0) {
+      if (this.navCounter !== 0) {
         this.navigate('LEFT');
       }
     },
@@ -69,29 +69,35 @@ export default {
 
 <template>
   <div class="five columns">
-    <h3 class="margin-bottom-5">Öne çıkan ilanlar</h3>
+    <h3 class="margin-bottom-5">
+      Öne çıkan ilanlar
+    </h3>
     <loader v-if="isLoading" />
     <template v-else>
       <div
         v-if="featuredPosts.length > 1"
-        class="showbiz-navigation">
+        class="showbiz-navigation"
+      >
         <div
           @click="navigateLeft"
           class="sb-navigation-left"
         >
-          <i class="fa fa-angle-left"></i>
+          <i class="fa fa-angle-left" />
         </div>
         <div
           @click="navigateRight"
           class="sb-navigation-right"
         >
-          <i class="fa fa-angle-right"></i>
+          <i class="fa fa-angle-right" />
         </div>
       </div>
-      <div class="clearfix"></div>
+      <div class="clearfix" />
       <div id="job-spotlight">
         <div class="showbiz">
-          <div class="wrapper" ref="carouselWrapper">
+          <div
+            class="wrapper"
+            ref="carouselWrapper"
+          >
             <ul ref="carousel">
               <li
                 v-for="post in featuredPosts"
@@ -102,47 +108,47 @@ export default {
                     :to="`/ilan-detay/${post.slug}`"
                     class="job-title"
                   >
-                    {{post.position}}
+                    {{ post.position }}
                   </router-link>
                   <div class="details">
                     <span>
-                      <i class="fa fa-briefcase"></i>
+                      <i class="fa fa-briefcase" />
                       <router-link
                         :to="`/ilan-ara?company=${post.company.slug}`"
                       >
-                        {{post.company.name}}
+                        {{ post.company.name }}
                       </router-link>
                     </span>
                     <span>
-                      <i class="fa fa-map-marker"></i>
+                      <i class="fa fa-map-marker" />
                       <router-link
                         :to="`/ilan-ara?location=${post.location}`"
                       >
-                        {{post.location}}
+                        {{ post.location }}
                       </router-link>
                     </span>
                     <job-type-badge :post="post" />
-                    <p>{{getPostSummary(post.description)}}</p>
+                    <p>{{ getPostSummary(post.description) }}</p>
                     <div
                       v-for="tag in post.tags"
                       :key="tag.slug"
                       class="listing-date post-tag"
                     >
                       <router-link :to="`/etiket/${tag.slug}`">
-                        {{tag.name}}
+                        {{ tag.name }}
                       </router-link>
                     </div>
                     <router-link
                       :to="`/ilan-detay/${post.slug}`"
                       class="button"
                     >
-                      İlana git &nbsp;&nbsp;<i class="fa fa-angle-right"></i>
+                      İlana git &nbsp;&nbsp;<i class="fa fa-angle-right" />
                     </router-link>
                   </div>
                 </div>
               </li>
             </ul>
-            <div class="clearfix"></div>
+            <div class="clearfix" />
           </div>
         </div>
       </div>

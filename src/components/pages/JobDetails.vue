@@ -5,6 +5,11 @@ import ApplyLink from '../shared/ApplyLink';
 import Loader from '../shared/Loader';
 
 export default {
+  components: {
+    JobTypeBadge,
+    ApplyLink,
+    Loader,
+  },
   props: {
     preview: {
       type: Boolean,
@@ -14,9 +19,7 @@ export default {
     previewData: {
       type: Object,
       required: false,
-      default: () => {
-        return {};
-      },
+      default: () => ({}),
     },
   },
   data() {
@@ -25,14 +28,6 @@ export default {
       isLoading: true,
       notFound: false,
     };
-  },
-  components: {
-    JobTypeBadge,
-    ApplyLink,
-    Loader,
-  },
-  methods: {
-    ...mapActions(['fetchBySlug']),
   },
   computed: {
     postData() {
@@ -46,11 +41,14 @@ export default {
       const encoded = encodeURI(
         `kodilan.com'da yayınlanan ${
           this.postData.position
-        } başlıklı ilan ilginizi çekebilir. ${meta}`
+        } başlıklı ilan ilginizi çekebilir. ${meta}`,
       );
 
       return `https://twitter.com/intent/tweet?text=${encoded.trim()}`;
     },
+  },
+  methods: {
+    ...mapActions(['fetchBySlug']),
   },
   created() {
     if (!this.preview) {
@@ -89,7 +87,7 @@ export default {
           <div class="container">
             <div class="ten columns">
               <h2>
-                {{postData.position}}
+                {{ postData.position }}
                 <job-type-badge :post="postData" />
               </h2>
             </div>
@@ -99,7 +97,7 @@ export default {
                 class="button dark"
                 target="_blank"
               >
-                <i class="fa fa-twitter"></i> Paylaş
+                <i class="fa fa-twitter" /> Paylaş
               </a>
             </div>
           </div>
@@ -111,15 +109,15 @@ export default {
                 <img
                   :src="postData.company.logo"
                   :alt="postData.company.name"
-                />
+                >
                 <div class="content">
-                  <h4>{{postData.company.name}}</h4>
+                  <h4>{{ postData.company.name }}</h4>
                   <span>
                     <a
                       :href="postData.company.www"
                       target="_blank"
                     >
-                      <i class="fa fa-link"></i> Website
+                      <i class="fa fa-link" /> Website
                     </a>
                   </span>
                   <span v-if="postData.company.twitter">
@@ -127,7 +125,7 @@ export default {
                       :href="twitterUrl"
                       target="_blank"
                     >
-                      <i class="fa fa-twitter"></i> @{{postData.company.twitter.replace('@', '')}}
+                      <i class="fa fa-twitter" /> @{{ postData.company.twitter.replace('@', '') }}
                     </a>
                   </span>
                   <span v-if="postData.company.linkedin">
@@ -135,13 +133,13 @@ export default {
                       :href="postData.company.linkedin"
                       target="_blank"
                     >
-                      <i class="fa fa-linkedin"></i> {{postData.company.name}}
+                      <i class="fa fa-linkedin" /> {{ postData.company.name }}
                     </a>
                   </span>
                 </div>
-                <div class="clearfix"></div>
+                <div class="clearfix" />
               </div>
-              <div v-html="postData.description"></div>
+              <div v-html="postData.description" />
             </div>
           </div>
           <div class="five columns">
@@ -149,21 +147,21 @@ export default {
               <div class="job-overview">
                 <ul>
                   <li>
-                    <i class="fa fa-user"></i>
+                    <i class="fa fa-user" />
                     <div>
                       <strong>Pozisyon</strong>
-                      <span>{{postData.position}}</span>
+                      <span>{{ postData.position }}</span>
                     </div>
                   </li>
                   <li>
-                    <i class="fa fa-map-marker"></i>
+                    <i class="fa fa-map-marker" />
                     <div>
                       <strong>Lokasyon</strong>
-                      <span>{{postData.location}}</span>
+                      <span>{{ postData.location }}</span>
                     </div>
                   </li>
                   <li>
-                    <i class="ln ln-icon-Globe"></i>
+                    <i class="ln ln-icon-Globe" />
                     <div>
                       <strong>Website</strong>
                       <span>
@@ -171,13 +169,13 @@ export default {
                           :href="postData.company.www"
                           target="_blank"
                         >
-                          {{postData.company.www}}
+                          {{ postData.company.www }}
                         </a>
                       </span>
                     </div>
                   </li>
                   <li>
-                    <i class="ln ln-icon-Tag-3"></i>
+                    <i class="ln ln-icon-Tag-3" />
                     <div>
                       <p>
                         <strong>Etiketler</strong>
@@ -191,7 +189,7 @@ export default {
                           :to="`/etiket/${tag.slug}`"
                           class="listing-date"
                         >
-                          {{tag.name}}
+                          {{ tag.name }}
                         </router-link>
                       </span>
                     </div>

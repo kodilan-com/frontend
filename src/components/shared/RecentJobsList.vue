@@ -3,13 +3,13 @@ import { mapState, mapActions } from 'vuex';
 import JobListing from './JobListing';
 
 export default {
+  components: {
+    JobListing,
+  },
   data() {
     return {
       isLoading: true,
     };
-  },
-  components: {
-    JobListing,
   },
   computed: {
     ...mapState(['recentPosts']),
@@ -28,7 +28,9 @@ export default {
 <template>
   <div class="eleven columns">
     <div class="padding-right">
-      <h3 class="margin-bottom-25">En son eklenen ilanlar</h3>
+      <h3 class="margin-bottom-25">
+        En son eklenen ilanlar
+      </h3>
       <job-listing
         :is-loading="isLoading"
         :posts="recentPosts"
@@ -38,10 +40,10 @@ export default {
         class="button centered"
         v-if="!isLoading && recentPosts.length"
       >
-        <i class="fa fa-plus-circle"></i>
+        <i class="fa fa-plus-circle" />
         Tüm ilanları gör
       </router-link>
-      <div class="margin-bottom-55"></div>
+      <div class="margin-bottom-55" />
     </div>
   </div>
 </template>

@@ -3,6 +3,10 @@ import Loader from './Loader';
 import JobItem from './JobItem';
 
 export default {
+  components: {
+    Loader,
+    JobItem,
+  },
   props: {
     isLoading: {
       type: Boolean,
@@ -13,10 +17,6 @@ export default {
       type: Array,
       required: true,
     },
-  },
-  components: {
-    Loader,
-    JobItem,
   },
 };
 </script>
