@@ -2,12 +2,14 @@
 import RecentJobsList from '../shared/RecentJobsList';
 import JobSpotlight from '../shared/JobSpotlight';
 import InfoBanner from '../shared/InfoBanner';
+import Subscribe from '../shared/Subscribe';
 
 export default {
   components: {
     RecentJobsList,
     JobSpotlight,
     InfoBanner,
+    Subscribe,
   },
 };
 </script>
@@ -19,5 +21,30 @@ export default {
       <job-spotlight />
     </div>
     <info-banner />
+    <div class="container subscribe">
+      <div class="sixteen columns">
+        <div class="info-banner">
+          <subscribe />
+        </div>
+      </div>
+    </div>
   </div>
 </template>
+
+<style lang="scss">
+.container.subscribe {
+  margin-top: 8px;
+
+  .subscribe-widget * {
+    display: block !important;
+    width: 100% !important;
+    margin-bottom: 8px !important;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .container.subscribe {
+    display: none;
+  }
+}
+</style>

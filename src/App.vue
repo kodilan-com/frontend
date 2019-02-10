@@ -1,12 +1,14 @@
 <script>
 import AppHeader from './components/shared/AppHeader';
 import AppFooter from './components/shared/AppFooter';
+import Subscribe from './components/shared/Subscribe';
 
 export default {
   name: 'App',
   components: {
     AppHeader,
     AppFooter,
+    Subscribe,
   },
 };
 </script>
@@ -20,6 +22,7 @@ export default {
       <router-view />
     </div>
     <app-footer />
+    <subscribe :fixed="true" />
   </div>
 </template>
 

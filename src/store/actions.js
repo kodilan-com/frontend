@@ -42,5 +42,7 @@ export default {
   savePost(_, data) {
     return axios.post('/posts', data);
   },
+  subscribe(_, data) {
+    return axios.post('/newsletters', data);
   },
 };

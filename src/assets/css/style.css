@@ -1340,7 +1340,6 @@ table.manage-table td.action a:hover {
 #backtotop {
   position: fixed;
   right: 0;
-  display: none;
   bottom: 20px;
   margin: 0 20px 0 0;
 }
@@ -7677,7 +7676,7 @@ a.close-form i {
 
 #footer {
   background-color: #202020;
-  padding: 50px 0;
+  padding: 10px 0 60px 0;
   color: #999;
   margin-top: 55px;
 }
