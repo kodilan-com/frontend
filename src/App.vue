@@ -26,4 +26,12 @@ export default {
 <style>
 @import './assets/css/style.css';
 @import './assets/css/colors/green.css';
+
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .5s;
+}
+
+.fade-enter, .fade-leave-to {
+  opacity: 0;
+}
 </style>
