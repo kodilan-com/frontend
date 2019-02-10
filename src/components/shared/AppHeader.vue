@@ -23,13 +23,7 @@ export default {
           <div id="logo">
             <h1>
               <router-link to="/">
-                <span class="token">
-                  {
-                </span>kod<span class="token">
-                  ,
-                </span>ilan<span class="token">
-                  }
-                </span>
+                <span>{ </span>kod<span>, </span>ilan<span> }</span>
               </router-link>
             </h1>
           </div>
@@ -53,10 +47,7 @@ export default {
       </div>
     </header>
     <div class="clearfix" />
-
-    <app-banner
-      v-if="withBanner"
-    />
+    <app-banner v-if="withBanner" />
   </section>
 </template>
 
@@ -69,7 +60,7 @@ export default {
     a {
       color: #333;
 
-      .token {
+      span {
         color: #26ae61;
         font-weight: 500;
       }

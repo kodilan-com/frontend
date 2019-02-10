@@ -43,6 +43,17 @@ export default {
     return axios.post('/posts', data);
   },
   subscribe(_, data) {
-    return axios.post('/newsletters', data);
+    return axios.post('/newsletters', data)
+      .then(() => {
+        alert('Email listesine kaydınız gerçekleştirildi.'); // eslint-disable-line
+      })
+      .catch((e) => {
+        const details = Object.values(e.response.data.errors || [])
+          .map(item => item[0])
+          .join('\n');
+
+        // eslint-disable-next-line
+        alert(`Hata: Kaydınız gerçekleştirilemedi. \n\n${details || ''}`);
+      });
   },
 };

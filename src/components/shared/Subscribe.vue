@@ -31,15 +31,14 @@ export default {
     handleSubscribe() {
       const { frequency, name, email } = this;
 
-      this.subscribe({ frequency, name, email })
-        .then(console.log);
+      this.subscribe({ frequency, name, email });
     },
     close() {
       this.isClosed = true;
       localStorage.setItem('subscribeClosed', true);
     },
   },
-}
+};
 </script>
 
 <template>
@@ -50,19 +49,29 @@ export default {
   >
     <span>Yeni iş ilanlarını</span>
     <select v-model="frequency">
-      <option disabled value="daily">günlük</option>
-      <option value="weekly">haftalık</option>
-      <option value="monthly">aylık</option>
+      <option disabled value="daily">
+        günlük
+      </option>
+      <option value="weekly">
+        haftalık
+      </option>
+      <option value="monthly">
+        aylık
+      </option>
     </select>
     <span>olarak almak için</span>
-    <input type="text" v-model="name" placeholder="İsim soyisim" class="username" />
-    <input type="text" v-model="email" placeholder="Email" />
-    <button class="button" @click="handleSubscribe">Abone ol!</button>
+    <input type="text" v-model="name" placeholder="İsim soyisim" class="username">
+    <input type="text" v-model="email" placeholder="Email">
+    <button class="button" @click="handleSubscribe">
+      Abone ol!
+    </button>
     <span
       v-if="fixed"
       class="close"
       @click="close"
-    >Bir daha gösterme :(</span>
+    >
+      Bir daha gösterme :(
+    </span>
   </div>
 </template>
 

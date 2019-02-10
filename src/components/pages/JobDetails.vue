@@ -139,7 +139,7 @@ export default {
                 </div>
                 <div class="clearfix" />
               </div>
-              <div v-html="postData.description" />
+              <div class="job-description" v-html="postData.description" />
             </div>
           </div>
           <div class="five columns">
@@ -252,6 +252,12 @@ export default {
   .tag {
     display: inline-block;
     margin: 0 5px 5px 0;
+  }
+
+  .job-description li {
+    line-height: 22px;
+    list-style-type: disc;
+    list-style-position: inside;
   }
 }
 </style>

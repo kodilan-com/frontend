@@ -42,5 +42,18 @@ export default {
         class="fa fa-link"
       /> {{ urlButtonText }}
     </a>
+    <span class="small">
+      İlan başvurunuzda <router-link to="/">
+        kodilan.com
+      </router-link>'a referans vererek
+      bize katkıda bulunabilirsiniz.
+    </span>
   </div>
 </template>
+
+<style lang="scss">
+.small {
+  font-size: 12px;
+  opacity: .8;
+}
+</style>
