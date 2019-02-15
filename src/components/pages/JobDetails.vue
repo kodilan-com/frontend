@@ -37,11 +37,13 @@ export default {
       return `https://twitter.com/${this.postData.company.twitter}`;
     },
     twitterShareUrl() {
-      const meta = `https://kodilan.com/ilan-detay/${this.postData.slug} @kodilancom`;
+      const { twitter } = this.postData.company;
+      const twitterHandle = twitter ? `@${twitter}` : '';
+      const meta = `https://kodilan.com/ilan-detay/${this.postData.slug} ${twitterHandle}`;
       const encoded = encodeURI(
         `kodilan.com'da yayınlanan ${
           this.postData.position
-        } başlıklı ilan ilginizi çekebilir. ${meta}`,
+        } başlıklı ilan ilginizi çekebilir. ${meta} @kodilancom`,
       );
 
       return `https://twitter.com/intent/tweet?text=${encoded.trim()}`;
