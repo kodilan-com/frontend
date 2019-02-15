@@ -209,7 +209,8 @@ export default {
                 type="text"
               >
               <p class="note">
-                Lokasyon olarak sadece şehir belirtiniz. Uzaktan çalışmaya elverişli bir ilansa Remote yazabilirsiniz.
+                Lokasyon olarak sadece şehir belirtiniz.
+                Uzaktan çalışmaya elverişli bir ilansa Remote yazabilirsiniz.
               </p>
             </div>
             <div class="form">

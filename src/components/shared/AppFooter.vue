@@ -23,19 +23,25 @@ export default {
       <div class="seven columns">
         <h4>Hakkında</h4>
         <p>
-          <router-link to="/">Kodilan.com</router-link> ilan yayınlama sitesidir.
+          <router-link to="/">
+            Kodilan.com
+          </router-link> ilan yayınlama sitesidir.
           Başvurular ilgili firmaya direkt olarak yapılmakta olup
-          <router-link to="/">Kodilan.com</router-link> üzerinden hiçbir veri gönderilmemektedir.
+          <router-link to="/">
+            Kodilan.com
+          </router-link> üzerinden hiçbir veri gönderilmemektedir.
           Sitemizde yayınlanan ilanlar tamamen ücretsizdir ve ilan sahipleri ile sitemizin
-          hiçbir ilişkisi yoktur. <br />
-          Görüş ve önerileriniz için <a href="mailto:info@kodilan.com">info@kodilan.com</a>
+          hiçbir ilişkisi yoktur. <br>
+          Görüş ve önerileriniz için <a href="mailto:info@kodilan.com">
+            info@kodilan.com
+          </a>
           adresine e-posta gönderebilirsiniz.
         </p>
         <div class="footer-bottom compact">
           <ul class="social-icons">
             <li>
               <a class="twitter" href="https://twitter.com/kodilancom" target="_blank">
-                <i class="icon-twitter"></i>
+                <i class="icon-twitter" />
               </a>
             </li>
           </ul>
@@ -44,28 +50,76 @@ export default {
       <div class="three columns">
         <h4>Pozisyona göre ilanlar</h4>
         <ul class="footer-links">
-          <li><router-link to="/etiket/frontend">Frontend developer ilanları</router-link></li>
-          <li><router-link to="/etiket/backend">Backend developer ilanları</router-link></li>
-          <li><router-link to="/etiket/mobile">Mobile developer ilanları</router-link></li>
-          <li><router-link to="/etiket/designer">Designer ilanları</router-link></li>
-          <li><router-link to="/etiket/qa">QA ilanları</router-link></li>
+          <li>
+            <router-link to="/etiket/frontend">
+              Frontend developer ilanları
+            </router-link>
+          </li>
+          <li>
+            <router-link to="/etiket/backend">
+              Backend developer ilanları
+            </router-link>
+          </li>
+          <li>
+            <router-link to="/etiket/mobile">
+              Mobile developer ilanları
+            </router-link>
+          </li>
+          <li>
+            <router-link to="/etiket/designer">
+              Designer ilanları
+            </router-link>
+          </li>
+          <li>
+            <router-link to="/etiket/qa">
+              QA ilanları
+            </router-link>
+          </li>
         </ul>
       </div>
       <div class="three columns">
         <h4>Şehirlere göre ilanlar</h4>
         <ul class="footer-links">
-          <li><router-link to="/ilan-ara?location=istanbul">İstanbul iş ilanları</router-link></li>
-          <li><router-link to="/ilan-ara?location=ankara">Ankara iş ilanları</router-link></li>
-          <li><router-link to="/ilan-ara?location=izmir">İzmir iş ilanları</router-link></li>
-          <li><router-link to="/ilan-ara?location=remote">Uzaktan çalışmaya uygun iş ilanları</router-link></li>
+          <li>
+            <router-link to="/ilan-ara?location=istanbul">
+              İstanbul iş ilanları
+            </router-link>
+          </li>
+          <li>
+            <router-link to="/ilan-ara?location=ankara">
+              Ankara iş ilanları
+            </router-link>
+          </li>
+          <li>
+            <router-link to="/ilan-ara?location=izmir">
+              İzmir iş ilanları
+            </router-link>
+          </li>
+          <li>
+            <router-link to="/ilan-ara?location=remote">
+              Uzaktan çalışmaya uygun iş ilanları
+            </router-link>
+          </li>
         </ul>
       </div>
       <div class="three columns">
         <h4>İlan tipine göre ilanlar</h4>
         <ul class="footer-links">
-          <li><router-link to="/ilan-ara?type=1">Tam zamanlı iş ilanları</router-link></li>
-          <li><router-link to="/ilan-ara?type=2">Yarı zamanlı iş ilanları</router-link></li>
-          <li><router-link to="/ilan-ara?type=3">Stajyer iş ilanları</router-link></li>
+          <li>
+            <router-link to="/ilan-ara?type=1">
+              Tam zamanlı iş ilanları
+            </router-link>
+          </li>
+          <li>
+            <router-link to="/ilan-ara?type=2">
+              Yarı zamanlı iş ilanları
+            </router-link>
+          </li>
+          <li>
+            <router-link to="/ilan-ara?type=3">
+              Stajyer iş ilanları
+            </router-link>
+          </li>
         </ul>
       </div>
     </div>
@@ -74,7 +128,9 @@ export default {
         <div class="sixteen columns">
           <div class="copyrights">
             © Copyright {{ new Date().getFullYear() }}
-            <router-link to="/"> kodilan.com</router-link>
+            <router-link to="/">
+              kodilan.com
+            </router-link>
             Tüm hakları saklıdır.
           </div>
         </div>
