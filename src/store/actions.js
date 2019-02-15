@@ -8,21 +8,21 @@ export default {
     commit(constants.TOGGLE_LOADING);
   },
   fetchRecentPosts({ commit }) {
-    return axios.get('/posts?limit=10').then((res) => {
+    return axios.get('/posts?get=10').then((res) => {
       commit('SET_RECENT_POSTS', res.data.data);
 
       return res.data;
     });
   },
   fetchFeaturedPosts({ commit }) {
-    return axios.get('/posts?limit=3&is_featured=1').then((res) => {
+    return axios.get('/posts?get=3&is_featured=1').then((res) => {
       commit('SET_FEATURED', res.data.data);
 
       return res.data;
     });
   },
   fetchAllPosts({ commit }) {
-    return axios.get('/posts').then((res) => {
+    return axios.get('/posts?get=100').then((res) => {
       commit('SET_ALL_POSTS', res.data.data);
 
       return res.data;
