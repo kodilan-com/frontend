@@ -7676,9 +7676,13 @@ a.close-form i {
 
 #footer {
   background-color: #202020;
-  padding: 10px 0 60px 0;
+  padding: 50px 0 0 0;
   color: #999;
   margin-top: 55px;
+}
+
+#footer.has-widget {
+  padding-bottom: 60px;
 }
 
 #footer h4 {
@@ -7741,6 +7745,15 @@ ul.footer-links {
   text-align: center;
   padding: 30px 0;
   display: inline-block;
+}
+
+.footer-bottom.compact {
+  text-align: left;
+  padding: 0;
+}
+
+.footer-bottom.compact .social-icons {
+  margin-bottom: 0;
 }
 
 .footer-bottom h4 {

@@ -3,6 +3,7 @@ export default {
   data() {
     return {
       isBackToTopVisible: false,
+      isFooterSubscribeVisible: !localStorage.getItem('subscribeClosed'),
     };
   },
   methods: {
@@ -17,31 +18,64 @@ export default {
 </script>
 
 <template>
-  <div id="footer">
+  <div id="footer" :class="{ 'has-widget': isFooterSubscribeVisible }">
     <div class="container">
-      <div class="footer-bottom">
-        <div class="sixteen columns">
+      <div class="seven columns">
+        <h4>Hakkında</h4>
+        <p>
+          <router-link to="/">Kodilan.com</router-link> ilan yayınlama sitesidir.
+          Başvurular ilgili firmaya direkt olarak yapılmakta olup
+          <router-link to="/">Kodilan.com</router-link> üzerinden hiçbir veri gönderilmemektedir.
+          Sitemizde yayınlanan ilanlar tamamen ücretsizdir ve ilan sahipleri ile sitemizin
+          hiçbir ilişkisi yoktur. <br />
+          Görüş ve önerileriniz için <a href="mailto:info@kodilan.com">info@kodilan.com</a>
+          adresine e-posta gönderebilirsiniz.
+        </p>
+        <div class="footer-bottom compact">
           <ul class="social-icons">
             <li>
-              <a
-                class="twitter"
-                target="_blank"
-                href="https://twitter.com/kodilancom"
-              >
-                <i class="icon-twitter" />
+              <a class="twitter" href="https://twitter.com/kodilancom" target="_blank">
+                <i class="icon-twitter"></i>
               </a>
             </li>
           </ul>
+        </div>
+      </div>
+      <div class="three columns">
+        <h4>Pozisyona göre ilanlar</h4>
+        <ul class="footer-links">
+          <li><router-link to="/etiket/frontend">Frontend developer ilanları</router-link></li>
+          <li><router-link to="/etiket/backend">Backend developer ilanları</router-link></li>
+          <li><router-link to="/etiket/mobile">Mobile developer ilanları</router-link></li>
+          <li><router-link to="/etiket/designer">Designer ilanları</router-link></li>
+          <li><router-link to="/etiket/qa">QA ilanları</router-link></li>
+        </ul>
+      </div>
+      <div class="three columns">
+        <h4>Şehirlere göre ilanlar</h4>
+        <ul class="footer-links">
+          <li><router-link to="/ilan-ara?location=istanbul">İstanbul iş ilanları</router-link></li>
+          <li><router-link to="/ilan-ara?location=ankara">Ankara iş ilanları</router-link></li>
+          <li><router-link to="/ilan-ara?location=izmir">İzmir iş ilanları</router-link></li>
+          <li><router-link to="/ilan-ara?location=remote">Uzaktan çalışmaya uygun iş ilanları</router-link></li>
+        </ul>
+      </div>
+      <div class="three columns">
+        <h4>İlan tipine göre ilanlar</h4>
+        <ul class="footer-links">
+          <li><router-link to="/ilan-ara?type=1">Tam zamanlı iş ilanları</router-link></li>
+          <li><router-link to="/ilan-ara?type=2">Yarı zamanlı iş ilanları</router-link></li>
+          <li><router-link to="/ilan-ara?type=3">Stajyer iş ilanları</router-link></li>
+        </ul>
+      </div>
+    </div>
+    <div class="container">
+      <div class="footer-bottom">
+        <div class="sixteen columns">
           <div class="copyrights">
-            Kodilan.com ilan yayınlama sitesidir. Başvurular ilgili firmaya direkt olarak yapılmakta
-            olup Kodilan.com üzerinden hiçbir veri gönderilmemektedir. Görüş ve önerileriniz için
-            <a href="mailto:info@kodilan.com">
-              info@kodilan.com
-            </a>
-            adresine e-posta gönderebilirsiniz. <br><br>
-            © Copyright {{ new Date().getFullYear() }} <router-link to="/">
-              kodilan.com
-            </router-link>. Tüm hakları saklıdır.
+            © Copyright {{ new Date().getFullYear() }}
+            <router-link to="/"> kodilan.com</router-link>
+            Tüm hakları saklıdır.
           </div>
         </div>
       </div>
