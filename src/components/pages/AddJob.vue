@@ -209,7 +209,7 @@ export default {
                 type="text"
               >
               <p class="note">
-                Bu ilan uzaktan çalışmaya izin veriyorsa lokasyon olarak Remote yazabilirsiniz.
+                Lokasyon olarak sadece şehir belirtiniz. Uzaktan çalışmaya elverişli bir ilansa Remote yazabilirsiniz.
               </p>
             </div>
             <div class="form">
