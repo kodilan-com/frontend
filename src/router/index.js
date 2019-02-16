@@ -11,7 +11,7 @@ import NotFound from '@/components/pages/NotFound';
 
 Vue.use(Router);
 
-export default new Router({
+const router = new Router({
   mode: 'history',
   routes: [
     {
@@ -59,3 +59,9 @@ export default new Router({
     },
   ],
 });
+
+router.afterEach(() => {
+  window.scrollTo(0, 0);
+});
+
+export default router;
