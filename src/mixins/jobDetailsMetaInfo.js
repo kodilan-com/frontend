@@ -44,7 +44,7 @@ export default {
           content: this.post.post_url,
         },
         {
-          name: 'twitter:card',
+          name: 'twitter:description',
           content: description,
         },
         {
