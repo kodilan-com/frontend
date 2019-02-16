@@ -28,7 +28,7 @@ export default {
   },
   computed: {
     countText() {
-      const prefix = this.$route.path === '/tum-ilanlar' ? 'Toplam' : 'Bu kriterlere uygun';
+      const prefix = this.$route.path === '/ilanlar' ? 'Toplam' : 'Bu kriterlere uygun';
 
       return `${prefix} ${this.posts.length} ilan bulunuyor`;
     },

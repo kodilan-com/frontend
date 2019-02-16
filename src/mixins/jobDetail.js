@@ -10,7 +10,7 @@ export default {
   },
   computed: {
     detailsUrl() {
-      return `/ilan-detay/${this.post.slug}`;
+      return `/ilanlar/${this.post.slug}`;
     },
     company() {
       return this.post.company;

@@ -30,12 +30,12 @@ const router = new Router({
       component: AddJob,
     },
     {
-      path: '/ilan-detay/:slug',
+      path: '/ilanlar/:slug',
       name: 'JobDetails',
       component: JobDetails,
     },
     {
-      path: '/tum-ilanlar',
+      path: '/ilanlar',
       name: 'JobList',
       component: JobList,
     },

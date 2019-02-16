@@ -105,7 +105,7 @@ export default {
               >
                 <div class="job-spotlight">
                   <router-link
-                    :to="`/ilan-detay/${post.slug}`"
+                    :to="`/ilanlar/${post.slug}`"
                     class="job-title"
                   >
                     {{ post.position }}
@@ -139,7 +139,7 @@ export default {
                       </router-link>
                     </div>
                     <router-link
-                      :to="`/ilan-detay/${post.slug}`"
+                      :to="`/ilanlar/${post.slug}`"
                       class="button"
                     >
                       İlana git &nbsp;&nbsp;<i class="fa fa-angle-right" />

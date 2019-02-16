@@ -41,7 +41,7 @@ export default {
     twitterShareUrl() {
       const { twitter } = this.postData.company;
       const twitterHandle = twitter ? `@${twitter}` : '';
-      const meta = `https://kodilan.com/ilan-detay/${this.postData.slug} ${twitterHandle}`;
+      const meta = `https://kodilan.com/ilanlar/${this.postData.slug} ${twitterHandle}`;
       const encoded = encodeURI(
         `kodilan.com'da yayınlanan ${
           this.postData.position

@@ -36,7 +36,7 @@ export default {
         :posts="recentPosts"
       />
       <router-link
-        to="/tum-ilanlar"
+        to="/ilanlar"
         class="button centered"
         v-if="!isLoading && recentPosts.length"
       >
