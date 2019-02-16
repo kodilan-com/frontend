@@ -7,9 +7,10 @@ export default {
     const { position } = this.post;
     const companyName = this.post.company.name;
     const defaultKeywords = ['iş ilanları, yazılım iş ilanları, bilişim iş ilanları'];
-    const description = `${companyName} ${position} pozisyonunda eleman arıyor`;
+    const description = `${companyName} ${position} pozisyonunda takım arkadaşı arıyor`;
     const { twitter } = this.post.company;
     const twitterHandle = twitter ? `@${twitter}` : '';
+    const ogTitle = `${companyName} ${position} iş ilanı`;
 
     const keywords = this.post.tags.map(tag => tag.name)
       .concat(defaultKeywords)
@@ -31,16 +32,24 @@ export default {
           content: this.post.company.logo,
         },
         {
+          name: 'og:description',
+          content: description,
+        },
+        {
+          name: 'og:title',
+          content: ogTitle,
+        },
+        {
+          name: 'og:url',
+          content: this.post.post_url,
+        },
+        {
           name: 'twitter:card',
           content: description,
         },
         {
           name: 'twitter:creator',
           content: twitterHandle,
-        },
-        {
-          name: 'og:url',
-          content: this.post.post_url,
         },
       ],
     };
