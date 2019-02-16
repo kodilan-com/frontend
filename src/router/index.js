@@ -1,4 +1,5 @@
 import Vue from 'vue';
+import Meta from 'vue-meta';
 import Router from 'vue-router';
 import Home from '@/components/pages/Home';
 import AddJob from '@/components/pages/AddJob';
@@ -10,6 +11,7 @@ import Confirmation from '@/components/pages/Confirmation';
 import NotFound from '@/components/pages/NotFound';
 
 Vue.use(Router);
+Vue.use(Meta);
 
 const router = new Router({
   mode: 'history',

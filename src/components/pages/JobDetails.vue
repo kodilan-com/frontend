@@ -3,8 +3,10 @@ import { mapActions } from 'vuex';
 import JobTypeBadge from '../shared/JobTypeBadge';
 import ApplyLink from '../shared/ApplyLink';
 import Loader from '../shared/Loader';
+import jobDetailsMetaInfoMixin from '../../mixins/jobDetailsMetaInfo';
 
 export default {
+  mixins: [jobDetailsMetaInfoMixin],
   components: {
     JobTypeBadge,
     ApplyLink,
