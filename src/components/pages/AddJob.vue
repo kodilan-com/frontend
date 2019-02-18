@@ -2,6 +2,7 @@
 import { mapGetters, mapActions } from 'vuex';
 import { VueEditor } from 'vue2-editor';
 import autocomplete from '../../utils/autocomplete';
+import { normalizeUrl } from '../../utils/url';
 import JobDetails from './JobDetails';
 import validationMixin from '../../mixins/validator';
 
@@ -80,6 +81,7 @@ export default {
       }
 
       this.isPreview = !this.isPreview;
+      window.scrollTo(0, 0);
     },
     save() {
       const postData = {
@@ -88,6 +90,8 @@ export default {
       };
 
       postData.company_twitter = (postData.company_twitter || '').replace('@', '');
+      postData.company_www = normalizeUrl(postData.company_www);
+      postData.apply_url = normalizeUrl(postData.apply_url);
 
       this.isSaving = true;
       this.savePost(postData)
