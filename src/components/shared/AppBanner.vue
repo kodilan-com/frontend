@@ -45,6 +45,17 @@ export default {
           <button @click="handleSearch">
             <i class="fa fa-search" />
           </button>
+          <div class="browse-jobs">
+            <router-link to="/etiket/frontend">Frontend</router-link>
+            <router-link to="/etiket/backend">Backend</router-link>
+            <router-link to="/etiket/mobile">Mobile</router-link>
+          </div>
+          <div class="browse-jobs next-line">
+            <router-link to="/ilan-ara?location=istanbul">İstanbul</router-link>
+            <router-link to="/ilan-ara?location=ankara">Ankara</router-link>
+            <router-link to="/ilan-ara?location=izmir">İzmir</router-link>
+            <router-link to="/ilan-ara?location=remote">Remote</router-link>
+          </div>
         </div>
       </div>
     </div>

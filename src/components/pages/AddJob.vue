@@ -262,7 +262,6 @@ export default {
                 type="text"
               >
             </div>
-
             <div class="divider">
               <h3>Firma Bilgileri</h3>
             </div>
