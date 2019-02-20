@@ -8,7 +8,7 @@ export default {
   },
   data() {
     return {
-      isLoading: true,
+      isLoading: false,
     };
   },
   computed: {
@@ -18,9 +18,12 @@ export default {
     ...mapActions(['fetchRecentPosts']),
   },
   created() {
-    this.fetchRecentPosts().then(() => {
-      this.isLoading = false;
-    });
+    this.isLoading = true;
+
+    this.fetchRecentPosts()
+      .then(() => {
+        this.isLoading = false;
+      });
   },
 };
 </script>
