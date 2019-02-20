@@ -38,7 +38,7 @@ export default {
       const params = queryUtils.getParams(this.params);
 
       if (params) {
-        this.$router.push({ path: 'ilan-ara', query: params });
+        this.$router.push({ path: '/ilan-ara', query: params });
       }
     },
   },
