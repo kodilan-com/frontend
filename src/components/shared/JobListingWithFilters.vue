@@ -1,10 +1,12 @@
 <script>
 import JobListing from './JobListing';
+import CountrySelect from './CountrySelect';
 import queryUtils from '../../utils/query';
 
 export default {
   components: {
     JobListing,
+    CountrySelect,
   },
   props: {
     posts: {
@@ -82,13 +84,9 @@ export default {
             class="ico-01"
             placeholder="Pozisyon adı, teknoloji adı"
           >
-          <input
+          <country-select
             v-model="params.location"
-            @keypress.enter="search"
-            type="text"
-            class="ico-02"
-            placeholder="Şehir"
-          >
+          />
           <select v-model="params.type">
             <option value="0">
               Çalışma tipi seçiniz...

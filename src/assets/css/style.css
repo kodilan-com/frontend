@@ -554,7 +554,8 @@ ul li ul a.sf-with-ul:after {
   letter-spacing: -1px;
 }
 
-.search-container input {
+.search-container input,
+.search-container select {
   font-weight: 500;
   font-size: 16px;
   min-height: 60px;
@@ -565,6 +566,7 @@ ul li ul a.sf-with-ul:after {
   margin-right: 2%;
   width: 44.5%;
   float: left;
+  height: 60px;
 }
 
 /* Form Icons */
@@ -7181,7 +7183,7 @@ a.post-img:hover:before {
   margin-bottom: 15px;
 }
 
-.widget input {
+.widget input, .widget select {
   margin-bottom: 15px;
 }
 
@@ -8251,7 +8253,8 @@ body #style-switcher h2 {
   .search-container input.ico-01 {
     width: 49%;
   }
-  .search-container input.ico-02 {
+  .search-container input.ico-02,
+  .search-container select {
     width: 37%;
   }
   .search-container button {
@@ -8380,7 +8383,8 @@ body #style-switcher h2 {
     width: 100%;
     margin: 0 0 15px 0;
   }
-  .search-container input.ico-02 {
+  .search-container input.ico-02,
+  .search-container select {
     width: 100%;
     margin: 0 0 15px 0;
   }

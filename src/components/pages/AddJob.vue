@@ -1,9 +1,10 @@
 <script>
 import { mapGetters, mapActions } from 'vuex';
 import { VueEditor } from 'vue2-editor';
-import autocomplete from '../../utils/autocomplete';
-import { normalizeUrl } from '../../utils/url';
+import CountrySelect from '../shared/CountrySelect';
 import JobDetails from './JobDetails';
+import { normalizeUrl } from '../../utils/url';
+import autocomplete from '../../utils/autocomplete';
 import validationMixin from '../../mixins/validator';
 
 export default {
@@ -11,6 +12,7 @@ export default {
   components: {
     JobDetails,
     VueEditor,
+    CountrySelect,
   },
   data() {
     return {
@@ -112,9 +114,10 @@ export default {
     },
   },
   mounted() {
-    this.fetchTags().then(() => {
-      autocomplete.init(this.$refs.tagsInput, this.autocompleteTags);
-    });
+    this.fetchTags()
+      .then(() => {
+        autocomplete.init(this.$refs.tagsInput, this.autocompleteTags);
+      });
   },
 };
 </script>
@@ -212,9 +215,9 @@ export default {
                 class="search-field"
                 type="text"
               >
+              <country-select v-model="formData.location" />
               <p class="note">
-                Lokasyon olarak sadece şehir belirtiniz.
-                Uzaktan çalışmaya elverişli bir ilansa Remote yazabilirsiniz.
+                Uzaktan çalışmaya elverişli bir ilansa Remote seçiniz.
               </p>
             </div>
             <div class="form">

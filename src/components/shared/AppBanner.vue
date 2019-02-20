@@ -1,7 +1,11 @@
 <script>
 import queryUtils from '../../utils/query';
+import CountrySelect from './CountrySelect';
 
 export default {
+  components: {
+    CountrySelect,
+  },
   data() {
     return {
       params: {
@@ -35,13 +39,7 @@ export default {
             class="ico-01"
             placeholder="Pozisyon adı, teknoloji adı"
           >
-          <input
-            v-model="params.location"
-            @keypress.enter="handleSearch"
-            type="text"
-            class="ico-02"
-            placeholder="Şehir"
-          >
+          <country-select v-model="params.location" />
           <button @click="handleSearch">
             <i class="fa fa-search" />
           </button>
