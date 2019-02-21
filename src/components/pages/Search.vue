@@ -1,9 +1,11 @@
 <script>
 import { mapActions } from 'vuex';
 import JobListingWithFilters from '../shared/JobListingWithFilters';
+import searchPageMetaInfoMixin from '../../mixins/searchPageMetaInfo';
 import { JOB_TYPE_MAP } from '../../store/constants';
 
 export default {
+  mixins: [searchPageMetaInfoMixin],
   components: {
     JobListingWithFilters,
   },
