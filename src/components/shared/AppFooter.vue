@@ -81,18 +81,18 @@ export default {
         <h4>Şehirlere göre ilanlar</h4>
         <ul class="footer-links">
           <li>
-            <router-link to="/ilan-ara?location=istanbul">
+            <router-link to="/ilan-ara?location=İstanbul">
               İstanbul iş ilanları
             </router-link>
           </li>
           <li>
-            <router-link to="/ilan-ara?location=ankara">
-              Ankara iş ilanları
+            <router-link to="/ilan-ara?location=İzmir">
+              İzmir iş ilanları
             </router-link>
           </li>
           <li>
-            <router-link to="/ilan-ara?location=izmir">
-              İzmir iş ilanları
+            <router-link to="/ilan-ara?location=Ankara">
+              Ankara iş ilanları
             </router-link>
           </li>
           <li>

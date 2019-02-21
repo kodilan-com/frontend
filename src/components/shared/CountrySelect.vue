@@ -19,7 +19,9 @@ export default {
     ref="select"
     @change="handleChange"
   >
-    <option value="" selected>Şehir seçiniz...</option>
+    <option value="" selected>
+      Şehir seçiniz...
+    </option>
     <option
       v-for="country in countries"
       :value="country.name"
