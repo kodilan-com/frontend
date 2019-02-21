@@ -53,6 +53,9 @@ export default {
             <router-link to="/etiket/mobile">
               Mobile
             </router-link>
+            <router-link to="/etiket/devops">
+              DevOps
+            </router-link>
           </div>
           <div class="browse-jobs next-line">
             <router-link to="/ilan-ara?location=istanbul">
