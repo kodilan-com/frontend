@@ -210,11 +210,6 @@ export default {
             </div>
             <div class="form">
               <h5>Lokasyon</h5>
-              <input
-                v-model="formData.location"
-                class="search-field"
-                type="text"
-              >
               <country-select v-model="formData.location" />
               <p class="note">
                 Uzaktan çalışmaya elverişli bir ilansa Remote seçiniz.
