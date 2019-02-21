@@ -90,10 +90,10 @@ export default {
         <div id="titlebar">
           <div class="container">
             <div class="ten columns">
-              <h2>
+              <h1>
                 {{ postData.position }}
                 <job-type-badge :post="postData" />
-              </h2>
+              </h1>
             </div>
             <div class="six columns">
               <a

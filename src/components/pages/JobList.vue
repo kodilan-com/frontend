@@ -30,8 +30,8 @@ export default {
     :is-loading="isLoading"
     :posts="allPosts"
   >
-    <h2 slot="headerText">
+    <h1 slot="headerText">
       Tüm ilanlar
-    </h2>
+    </h1>
   </job-listing-with-filters>
 </template>

@@ -21,11 +21,11 @@ export default {
       <div class="container">
         <div class="sixteen columns">
           <div id="logo">
-            <h1>
+            <h2>
               <router-link to="/">
                 <span>{ </span>kod<span>, </span>ilan<span> }</span>
               </router-link>
-            </h1>
+            </h2>
           </div>
           <nav
             id="navigation"
@@ -53,7 +53,7 @@ export default {
 
 <style lang="scss">
 .app-header {
-  #logo h1 {
+  #logo h2 {
     line-height: 98px;
     font-size: 36px;
 

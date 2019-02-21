@@ -62,7 +62,7 @@ export default {
     :is-loading="isLoading"
     :has-header="true"
   >
-    <h2 slot="headerText">
+    <h1 slot="headerText" ref="headline">
       <template v-if="company">
         <strong>{{ company }}</strong> firmasına ait
       </template>
@@ -85,6 +85,6 @@ export default {
       <template v-if="location || query || type || company">
         ilanlar
       </template>
-    </h2>
+    </h1>
   </job-listing-with-filters>
 </template>

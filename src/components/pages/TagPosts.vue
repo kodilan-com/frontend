@@ -50,8 +50,8 @@ export default {
     :is-loading="isLoading"
     :has-header="true"
   >
-    <h2 slot="headerText">
+    <h1 slot="headerText" ref="headline">
       <strong>{{ tag }}</strong> etiketli ilanlar
-    </h2>
+    </h1>
   </job-listing-with-filters>
 </template>

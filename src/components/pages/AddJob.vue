@@ -130,9 +130,9 @@ export default {
     >
       <div class="container">
         <div class="sixteen columns">
-          <h2>
+          <h1>
             <i class="fa fa-plus-circle" /> Yeni İlan Ekle
-          </h2>
+          </h1>
         </div>
       </div>
     </div>

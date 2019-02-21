@@ -714,6 +714,7 @@ ul li ul a.sf-with-ul:after {
   margin-top: 55px;
 }
 
+#titlebar h1,
 #titlebar h2 {
   font-size: 30px;
   line-height: 40px;
@@ -4260,6 +4261,7 @@ screen and (max-height: 300px) {
 /* Job Types */
 
 .job-spotlight h4 span,
+#titlebar h1 span,
 #titlebar h2 span,
 .job-list h4 span {
   color: #fff;
@@ -4273,6 +4275,7 @@ screen and (max-height: 300px) {
   top: -2px;
 }
 
+#titlebar h1 span,
 #titlebar h2 span {
   padding: 2px 10px;
   position: relative;
@@ -4280,6 +4283,7 @@ screen and (max-height: 300px) {
   font-size: 12px;
 }
 
+#titlebar.photo-bg h1 span,
 #titlebar.photo-bg h2 span {
   top: -7px;
 }
@@ -8206,6 +8210,7 @@ a.button,
 .trigger a,
 .skills span,
 .job-spotlight h4 span,
+#titlebar h1 span,
 #titlebar h2 span,
 .job-list h4 span,
 .caption h3,
