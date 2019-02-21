@@ -30,9 +30,15 @@ export default {
   },
   computed: {
     countText() {
+      const { length } = this.posts;
+
+      if (!length) {
+        return 'Bu kritere uygun ilan bulunamadı.';
+      }
+
       const prefix = this.$route.path === '/ilanlar' ? 'Toplam' : 'Bu kriterlere uygun';
 
-      return `${prefix} ${this.posts.length} ilan bulunuyor`;
+      return `${prefix} ${length} ilan bulunuyor`;
     },
   },
   methods: {
