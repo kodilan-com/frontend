@@ -244,6 +244,10 @@ export default {
               <p class="note">
                 Bu pozisyon için gerekli olan yeti ve teknolojileri listeden seçebilirsiniz
                 ya da virgul ile ekleme yapabilirsiniz.
+                <br>
+                İlanınıza <code>frontend</code>, <code>backend</code>, <code>mobile</code>,
+                <code>designer</code>, <code>qa</code> etiklerinden birini ekleyip
+                ilgili kategoride yer almasını sağlayabilirsiniz.
               </p>
             </div>
             <div class="form">
@@ -339,6 +343,14 @@ export default {
   .save-button {
     position: absolute;
     right: 0;
+  }
+
+  code {
+    font-family: monospace;
+    padding: 2px 4px;
+    color: #c0341d;
+    background-color: #fbe5e1;
+    border-radius: 4px;
   }
 }
 </style>
