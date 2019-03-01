@@ -40,7 +40,7 @@ export default {
       />
       <router-link
         to="/ilanlar"
-        class="button centered"
+        class="button centered tag-all-posts"
         v-if="!isLoading && recentPosts.length"
       >
         <i class="fa fa-plus-circle" />

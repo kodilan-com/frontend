@@ -10,7 +10,7 @@ export default {
   <span
     v-if="jobType"
     :class="postTypeClassName"
-    class="listing-type"
+    class="listing-type tag-post-type"
   >
     <router-link :to="`/ilan-ara?type=${post.type}`">
       {{ jobType }}

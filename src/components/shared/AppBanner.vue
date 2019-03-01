@@ -40,34 +40,34 @@ export default {
             placeholder="Pozisyon adı, teknoloji adı"
           >
           <country-select v-model="params.location" />
-          <button @click="handleSearch">
+          <button  @click="handleSearch" class="tag-search-btn">
             <i class="fa fa-search" />
           </button>
           <div class="browse-jobs">
-            <router-link to="/etiket/frontend">
+            <router-link to="/etiket/frontend" class="tag-header-tags">
               Frontend
             </router-link>
-            <router-link to="/etiket/backend">
+            <router-link to="/etiket/backend" class="tag-header-tags">
               Backend
             </router-link>
-            <router-link to="/etiket/mobile">
+            <router-link to="/etiket/mobile" class="tag-header-tags">
               Mobile
             </router-link>
-            <router-link to="/etiket/devops">
+            <router-link to="/etiket/devops" class="tag-header-tags">
               DevOps
             </router-link>
           </div>
           <div class="browse-jobs next-line">
-            <router-link to="/ilan-ara?location=istanbul">
+            <router-link to="/ilan-ara?location=istanbul" class="tag-header-tags">
               İstanbul
             </router-link>
-            <router-link to="/ilan-ara?location=izmir">
+            <router-link to="/ilan-ara?location=izmir" class="tag-header-tags">
               İzmir
             </router-link>
-            <router-link to="/ilan-ara?location=ankara">
+            <router-link to="/ilan-ara?location=ankara" class="tag-header-tags">
               Ankara
             </router-link>
-            <router-link to="/ilan-ara?location=remote">
+            <router-link to="/ilan-ara?location=remote" class="tag-header-tags">
               Remote
             </router-link>
           </div>

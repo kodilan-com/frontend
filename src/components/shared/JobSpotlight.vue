@@ -140,7 +140,7 @@ export default {
                     </div>
                     <router-link
                       :to="`/ilanlar/${post.slug}`"
-                      class="button"
+                      class="button tag-go-featured-post"
                     >
                       İlana git &nbsp;&nbsp;<i class="fa fa-angle-right" />
                     </router-link>

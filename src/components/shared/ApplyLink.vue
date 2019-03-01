@@ -27,7 +27,7 @@ export default {
       v-if="post.apply_email"
       :href="mailToUrl"
       target="_blank"
-      class="button"
+      class="button tag-apply-link"
     >
       <i class="fa fa-envelope-o" /> E-posta ile başvur
     </a>
@@ -35,7 +35,7 @@ export default {
       v-if="post.apply_url"
       :href="post.apply_url"
       target="_blank"
-      class="button"
+      class="button tag-apply-link"
     >
       <i
         v-if="post.apply_email"

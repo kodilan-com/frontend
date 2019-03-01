@@ -34,7 +34,7 @@ export default {
             <ul class="responsive float-right">
               <li>
                 <router-link
-                  class="add-post button"
+                  class="add-post button tag-create-post"
                   to="/ilan-ekle"
                 >
                   <i class="fa fa-plus" />

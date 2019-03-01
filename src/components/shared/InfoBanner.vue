@@ -8,7 +8,7 @@
         </div>
         <router-link
           to="/ilan-ekle"
-          class="button"
+          class="button tag-create-post"
         >
           Ücretsiz İlan Ekle
         </router-link>

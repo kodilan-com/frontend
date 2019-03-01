@@ -14,17 +14,18 @@ export default {
   <router-link
     :to="detailsUrl"
     :class="postTypeClassName"
-    class="listing"
+    class="listing tag-post-link"
   >
     <div class="listing-logo">
       <img
         :src="company.logo"
         :alt="company.name"
+        class="tag-post-link"
       >
     </div>
     <div class="listing-title">
       <h4>
-        <span class="title">
+        <span class="title tag-post-link">
           {{ post.position }}
         </span>
         <job-type-badge
@@ -55,7 +56,7 @@ export default {
           <div
             v-for="tag in post.tags"
             :key="tag.slug"
-            class="listing-date post-tag"
+            class="listing-date post-tag tag-post-tag"
           >
             <router-link :to="`/etiket/${tag.slug}`">
               {{ tag.name }}
