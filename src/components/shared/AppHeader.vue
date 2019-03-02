@@ -38,7 +38,7 @@ export default {
                   to="/ilan-ekle"
                 >
                   <i class="fa fa-plus" />
-                  <span>Ücretsiz İlan Ekle</span>
+                  <span class="tag-create-post">Ücretsiz İlan Ekle</span>
                 </router-link>
               </li>
             </ul>

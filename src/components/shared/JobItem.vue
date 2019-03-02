@@ -16,14 +16,14 @@ export default {
     :class="postTypeClassName"
     class="listing tag-post-link"
   >
-    <div class="listing-logo">
+    <div class="listing-logo tag-post-link">
       <img
         :src="company.logo"
         :alt="company.name"
         class="tag-post-link"
       >
     </div>
-    <div class="listing-title">
+    <div class="listing-title tag-post-link">
       <h4>
         <span class="title tag-post-link">
           {{ post.position }}
@@ -58,7 +58,7 @@ export default {
             :key="tag.slug"
             class="listing-date post-tag tag-post-tag"
           >
-            <router-link :to="`/etiket/${tag.slug}`">
+            <router-link :to="`/etiket/${tag.slug}`" class="tag-post-tag">
               {{ tag.name }}
             </router-link>
           </div>

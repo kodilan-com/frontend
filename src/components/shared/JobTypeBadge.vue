@@ -12,7 +12,7 @@ export default {
     :class="postTypeClassName"
     class="listing-type tag-post-type"
   >
-    <router-link :to="`/ilan-ara?type=${post.type}`">
+    <router-link :to="`/ilan-ara?type=${post.type}`" class="tag-post-type">
       {{ jobType }}
     </router-link>
   </span>
