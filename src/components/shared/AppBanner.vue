@@ -40,7 +40,7 @@ export default {
             placeholder="Pozisyon adı, teknoloji adı"
           >
           <country-select v-model="params.location" />
-          <button  @click="handleSearch" class="tag-search-btn">
+          <button @click="handleSearch" class="tag-search-btn">
             <i class="fa fa-search tag-search-btn" />
           </button>
           <div class="browse-jobs">
