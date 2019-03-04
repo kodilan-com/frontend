@@ -11,17 +11,10 @@ export default {
   data() {
     return {
       isLoading: true,
-      navCounter: 0,
     };
   },
   computed: {
     ...mapState(['featuredPosts']),
-    leftPosition() {
-      const index = this.navCounter % this.featuredPosts.length;
-      const wrapperWidth = this.$refs.carouselWrapper.offsetWidth || 0;
-
-      return index * wrapperWidth * -1;
-    },
   },
   methods: {
     ...mapActions(['fetchFeaturedPosts']),
@@ -32,37 +25,12 @@ export default {
 
       return descText.length > 200 ? `${descText.slice(0, 200)}...` : descText;
     },
-    navigate(direction) {
-      this.navCounter = direction === 'LEFT' ? this.navCounter - 1 : this.navCounter + 1;
-      this.$refs.carousel.style.left = `${this.leftPosition}px`;
-    },
-    navigateLeft() {
-      if (this.navCounter !== 0) {
-        this.navigate('LEFT');
-      }
-    },
-    navigateRight() {
-      this.navigate('RIGHT');
-    },
-    setCarouselWidth() {
-      const wrapperWidth = this.$refs.carouselWrapper.offsetWidth || 0;
-      this.$refs.carousel.style.left = this.$refs.carousel.style.left || 0;
-      this.$refs.carousel.style.width = `${wrapperWidth * this.featuredPosts.length}px`;
-    },
   },
   created() {
-    this.fetchFeaturedPosts().then(() => {
-      this.isLoading = false;
-
-      this.$nextTick(() => {
-        this.setCarouselWidth();
+    this.fetchFeaturedPosts()
+      .then(() => {
+        this.isLoading = false;
       });
-    });
-
-    window.addEventListener('resize', this.setCarouselWidth);
-  },
-  beforeDestroy() {
-    window.removeEventListener('resize', this.setCarouselWidth);
   },
 };
 </script>
@@ -74,31 +42,10 @@ export default {
     </h3>
     <loader v-if="isLoading" />
     <template v-else>
-      <div
-        v-if="featuredPosts.length > 1"
-        class="showbiz-navigation"
-      >
-        <div
-          @click="navigateLeft"
-          class="sb-navigation-left"
-        >
-          <i class="fa fa-angle-left" />
-        </div>
-        <div
-          @click="navigateRight"
-          class="sb-navigation-right"
-        >
-          <i class="fa fa-angle-right" />
-        </div>
-      </div>
-      <div class="clearfix" />
       <div id="job-spotlight">
         <div class="showbiz">
-          <div
-            class="wrapper"
-            ref="carouselWrapper"
-          >
-            <ul ref="carousel">
+          <div class="wrapper">
+            <ul>
               <li
                 v-for="post in featuredPosts"
                 :key="post.slug"
@@ -169,6 +116,7 @@ export default {
 
     li {
       float: left;
+      width: 100%;
     }
   }
 
