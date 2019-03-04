@@ -2,18 +2,18 @@ import * as constants from './constants';
 
 export default {
   [constants.TOGGLE_LOADING](state) {
-    Object.assign(state, { isLoading: !state.isLoading });
+    state.isLoading = !state.isLoading;
   },
   [constants.SET_RECENT_POSTS](state, recentPosts) {
-    Object.assign(state, { recentPosts });
+    state.recentPosts = recentPosts;
   },
   [constants.SET_ALL_POSTS](state, allPosts) {
-    Object.assign(state, { allPosts });
+    state.allPosts = allPosts;
   },
   [constants.SET_FEATURED](state, featuredPosts) {
-    Object.assign(state, { featuredPosts });
+    state.featuredPosts = featuredPosts;
   },
   [constants.SET_TAGS](state, tags) {
-    Object.assign(state, { tags });
+    state.tags = tags;
   },
 };
