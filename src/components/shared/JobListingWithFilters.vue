@@ -114,7 +114,7 @@ export default {
         <div class="button-right">
           <button
             @click="search"
-            class="button"
+            class="button tag-search-btn"
           >
             Ara
           </button>
