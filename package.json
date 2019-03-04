@@ -12,6 +12,7 @@
     "async-validator": "^1.10.1",
     "awesomplete": "^1.1.4",
     "axios": "^0.18.0",
+    "axios-extensions": "^3.0.5",
     "date-fns": "^1.30.1",
     "vue": "^2.5.22",
     "vue-meta": "^1.5.8",
