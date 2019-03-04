@@ -60,10 +60,9 @@ const router = new Router({
       component: NotFound,
     },
   ],
-});
-
-router.afterEach(() => {
-  window.scrollTo(0, 0);
+  scrollBehavior(to, from, savedPosition) {
+    return savedPosition || { x: 0, y: 0 };
+  },
 });
 
 export default router;
