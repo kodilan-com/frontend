@@ -21,9 +21,9 @@ export default {
     },
   },
   methods: {
-    ...mapActions(['search']),
+    ...mapActions(['fetchByTag']),
     handleSearch() {
-      this.search({ tag: this.tag })
+      this.fetchByTag(this.tag)
         .then((res) => {
           this.isLoading = false;
           this.posts = res.data;

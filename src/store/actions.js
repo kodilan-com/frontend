@@ -39,8 +39,12 @@ export default {
     return http.get(`/posts/${slug}`)
       .then(res => res.data);
   },
-  fetchByCompany(_, slug) {
-    return http.get(`/companies/${slug}/posts`)
+  fetchByCompany(_, company) {
+    return http.get(`/companies/${company}/posts`)
+      .then(res => res.data);
+  },
+  fetchByTag(_, tag) {
+    return http.get(`/tags/${tag}/posts`)
       .then(res => res.data);
   },
   search(_, params) {
