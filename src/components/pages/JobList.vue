@@ -26,12 +26,15 @@ export default {
 </script>
 
 <template>
-  <job-listing-with-filters
-    :is-loading="isLoading"
-    :posts="allPosts"
-  >
-    <h1 slot="headerText">
-      Tüm ilanlar
-    </h1>
-  </job-listing-with-filters>
+  <div>
+    <job-listing-with-filters
+      :is-loading="isLoading"
+      :posts="allPosts"
+    >
+      <h1 slot="headerText">
+        Tüm ilanlar
+      </h1>
+    </job-listing-with-filters>
+    didem
+  </div>
 </template>

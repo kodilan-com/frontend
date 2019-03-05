@@ -9,6 +9,7 @@ import TagPosts from '@/components/pages/TagPosts';
 import Search from '@/components/pages/Search';
 import Confirmation from '@/components/pages/Confirmation';
 import NotFound from '@/components/pages/NotFound';
+import CompanyPosts from '@/components/pages/CompanyPosts';
 
 Vue.use(Router);
 Vue.use(Meta);
@@ -53,6 +54,11 @@ const router = new Router({
       path: '/ilan/dogrulandi',
       name: 'Confirmation',
       component: Confirmation,
+    },
+    {
+      path: '/firmalar/:slug',
+      name: 'CompanyPosts',
+      component: CompanyPosts,
     },
     {
       path: '*',

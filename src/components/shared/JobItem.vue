@@ -38,7 +38,7 @@ export default {
       <ul class="listing-icons">
         <li>
           <i class="ln ln-icon-Management" />
-          <router-link :to="`/ilan-ara?company=${company.slug}`">
+          <router-link :to="`/firmalar/${company.slug}`">
             {{ company.name }}
           </router-link>
         </li>

@@ -17,6 +17,11 @@ export default {
       type: Array,
       required: true,
     },
+    notFoundText: {
+      type: String,
+      required: false,
+      default: 'İlan bulunamadı.',
+    },
   },
 };
 </script>
@@ -32,12 +37,9 @@ export default {
           :post="post"
         />
       </div>
-      <div
-        v-else
-        class="notification notice"
-      >
+      <div v-else class="notification notice">
         <p>
-          <span>İlan bulunamadı.</span>
+          <span>{{ notFoundText }}</span>
         </p>
       </div>
     </div>
