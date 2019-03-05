@@ -35,6 +35,5 @@ export default {
         Tüm ilanlar
       </h1>
     </job-listing-with-filters>
-    didem
   </div>
 </template>
