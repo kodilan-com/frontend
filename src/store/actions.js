@@ -39,6 +39,10 @@ export default {
     return http.get(`/posts/${slug}`)
       .then(res => res.data);
   },
+  fetchByCompany(_, slug) {
+    return http.get(`/companies/${slug}/posts`)
+      .then(res => res.data);
+  },
   search(_, params) {
     return http.get('/search', { params })
       .then(res => res.data);

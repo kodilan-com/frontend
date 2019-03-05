@@ -14,13 +14,13 @@ export default {
     };
   },
   methods: {
-    ...mapActions(['search']),
+    ...mapActions(['fetchByCompany']),
   },
   created() {
     this.isLoading = true;
     const company = this.$route.params.slug;
 
-    this.search({ company }).then((res) => {
+    this.fetchByCompany(company).then((res) => {
       this.posts = res.data;
       this.isLoading = false;
     });
