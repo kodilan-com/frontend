@@ -6,6 +6,7 @@ import JobDetails from './JobDetails';
 import { normalizeUrl } from '../../utils/url';
 import autocomplete from '../../utils/autocomplete';
 import validationMixin from '../../mixins/validator';
+import { defaultEditorToolbar } from '../../config';
 
 export default {
   mixins: [validationMixin],
@@ -70,6 +71,9 @@ export default {
         ...company,
         tags: tagsArr,
       };
+    },
+    editorToolbar() {
+      return defaultEditorToolbar;
     },
   },
   methods: {
@@ -206,6 +210,7 @@ export default {
               <h5>İlan Açıklaması</h5>
               <vue-editor
                 v-model="formData.description"
+                :editor-toolbar="editorToolbar"
               />
             </div>
             <div class="form">
