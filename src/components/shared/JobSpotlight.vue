@@ -61,7 +61,7 @@ export default {
                     <span>
                       <i class="fa fa-briefcase" />
                       <router-link
-                        :to="`/ilan-ara?company=${post.company.slug}`"
+                        :to="`/firmalar/${post.company.slug}`"
                       >
                         {{ post.company.name }}
                       </router-link>
