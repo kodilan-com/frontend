@@ -12,7 +12,7 @@ export default {
     commit(constants.TOGGLE_LOADING);
   },
   fetchRecentPosts({ commit }) {
-    return http.get('/posts?get=10')
+    return http.get('/posts?get=25')
       .then((res) => {
         commit('SET_RECENT_POSTS', res.data.data);
 
@@ -28,7 +28,7 @@ export default {
       });
   },
   fetchAllPosts({ commit }) {
-    return http.get('/posts?get=100')
+    return http.get('/posts?get=300')
       .then((res) => {
         commit('SET_ALL_POSTS', res.data.data);
 
