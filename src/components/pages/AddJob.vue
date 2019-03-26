@@ -248,10 +248,10 @@ export default {
               >
               <p class="note">
                 Bu pozisyon için gerekli olan yeti ve teknolojileri listeden seçebilirsiniz
-                ya da virgul ile ekleme yapabilirsiniz.
+                ya da virgul ile ekleme yapabilirsiniz. En fazla 10 etiket ekleyebilirsiniz.
                 <br>
                 İlanınıza <code>frontend</code>, <code>backend</code>, <code>mobile</code>,
-                <code>designer</code>, <code>qa</code> etiklerinden birini ekleyip
+                <code>designer</code>, <code>qa</code> etiketlerinden birini ekleyip
                 ilgili kategoride yer almasını sağlayabilirsiniz.
               </p>
             </div>
