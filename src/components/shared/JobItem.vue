@@ -1,9 +1,10 @@
 <script>
 import JobTypeBadge from './JobTypeBadge';
 import jobDetail from '../../mixins/jobDetail';
+import image from '../../mixins/image';
 
 export default {
-  mixins: [jobDetail],
+  mixins: [jobDetail, image],
   components: {
     JobTypeBadge,
   },
@@ -20,6 +21,8 @@ export default {
       <img
         :src="company.logo"
         :alt="company.name"
+        ref="logo"
+        @error="handleImageError"
         class="tag-post-link"
       >
     </div>

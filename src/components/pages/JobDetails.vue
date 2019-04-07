@@ -3,10 +3,11 @@ import { mapActions } from 'vuex';
 import JobTypeBadge from '../shared/JobTypeBadge';
 import ApplyLink from '../shared/ApplyLink';
 import Loader from '../shared/Loader';
+import image from '../../mixins/image';
 import jobDetailsMetaInfoMixin from '../../mixins/jobDetailsMetaInfo';
 
 export default {
-  mixins: [jobDetailsMetaInfoMixin],
+  mixins: [jobDetailsMetaInfoMixin, image],
   components: {
     JobTypeBadge,
     ApplyLink,
@@ -113,6 +114,8 @@ export default {
                 <img
                   :src="postData.company.logo"
                   :alt="postData.company.name"
+                  ref="logo"
+                  @error="handleImageError"
                 >
                 <div class="content">
                   <h4>{{ postData.company.name }}</h4>
