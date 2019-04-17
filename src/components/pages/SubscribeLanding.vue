@@ -10,7 +10,6 @@ export default {
 }
 </script>
 
-
 <template>
   <div class="container subscribe-landing">
     <subscribe class="section-background" />
@@ -22,13 +21,18 @@ export default {
 .subscribe-landing {
   .subscribe-widget {
     text-align: left;
-    padding: 40px;
+    padding: 30px;
     margin-top: 0;
     background: #f4f4f4;
 
     input {
       width: 100% !important;
       margin-bottom: 10px;
+    }
+
+    span {
+      display: block;
+      margin: 10px 0;
     }
   }
 

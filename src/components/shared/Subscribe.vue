@@ -47,7 +47,7 @@ export default {
     :class="{ fixed: fixed }"
     class="subscribe-widget"
   >
-    <span>Yeni iş ilanlarını</span>
+    <span>Güncel iş ilanlarını</span>
     <select v-model="frequency">
       <option disabled value="daily">
         günlük
