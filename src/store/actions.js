@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { cacheAdapterEnhancer } from 'axios-extensions';
 import * as constants from './constants';
+import helpers from './helpers';
 
 const http = axios.create({
   baseURL: 'https://api.kodilan.com',
@@ -56,6 +57,14 @@ export default {
       .then((res) => {
         commit('SET_TAGS', res.data.data);
       });
+  },
+  fetchRelatedPosts({ dispatch }, post) {
+    const postTags = post.tags.map(t => t.slug);
+    const categoryTags = ['frontend', 'backend', 'mobile', 'designer', 'qa'];
+    const mainCategories = postTags.filter(t => categoryTags.indexOf(t) > -1);
+
+    return dispatch('fetchByTag', mainCategories[0])
+      .then(res => helpers.rankPosts(post, postTags, res.data));
   },
   savePost(_, data) {
     return http.post('/posts', data);

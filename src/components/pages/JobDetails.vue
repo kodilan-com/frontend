@@ -1,6 +1,7 @@
 <script>
 import { mapActions } from 'vuex';
 import JobTypeBadge from '../shared/JobTypeBadge';
+import JobListing from '../shared/JobListing';
 import ApplyLink from '../shared/ApplyLink';
 import Loader from '../shared/Loader';
 import image from '../../mixins/image';
@@ -9,9 +10,10 @@ import jobDetailsMetaInfoMixin from '../../mixins/jobDetailsMetaInfo';
 export default {
   mixins: [jobDetailsMetaInfoMixin, image],
   components: {
-    JobTypeBadge,
-    ApplyLink,
     Loader,
+    ApplyLink,
+    JobTypeBadge,
+    JobListing,
   },
   props: {
     preview: {
@@ -30,6 +32,7 @@ export default {
       post: null,
       isLoading: true,
       notFound: false,
+      relatedPosts: [],
     };
   },
   computed: {
@@ -53,20 +56,35 @@ export default {
     },
   },
   methods: {
-    ...mapActions(['fetchBySlug']),
+    ...mapActions(['fetchBySlug', 'fetchRelatedPosts']),
+    fetchData() {
+      if (!this.preview) {
+        this.fetchBySlug(this.$route.params.slug)
+          .then((res) => {
+            this.isLoading = false;
+            this.post = res;
+
+            this.fetchRelatedPosts(this.post)
+              .then((posts) => {
+                this.relatedPosts = posts;
+              });
+          })
+          .catch(() => {
+            this.isLoading = false;
+            this.notFound = true;
+          });
+      }
+    },
+  },
+  watch: {
+    $route(from, to) {
+      if (to.name === 'JobDetails' && from.params.slug !== to.params.slug) {
+        this.fetchData();
+      }
+    },
   },
   created() {
-    if (!this.preview) {
-      this.fetchBySlug(this.$route.params.slug)
-        .then((res) => {
-          this.isLoading = false;
-          this.post = res;
-        })
-        .catch(() => {
-          this.isLoading = false;
-          this.notFound = true;
-        });
-    }
+    this.fetchData();
   },
 };
 </script>
@@ -206,6 +224,12 @@ export default {
               </div>
             </div>
           </div>
+          <div class="sixteen columns" v-if="relatedPosts.length">
+            <h3 class="margin-bottom-25">
+              Benzer ilanlar
+            </h3>
+            <job-listing :posts="relatedPosts" />
+          </div>
         </div>
       </template>
       <div
@@ -222,7 +246,7 @@ export default {
 
 <style lang="scss">
 .job-details {
-  .listing-type {
+  #titlebar .listing-type {
     right: 0;
 
     a {

@@ -253,6 +253,9 @@ export default {
                 İlanınıza <code>frontend</code>, <code>backend</code>, <code>mobile</code>,
                 <code>designer</code>, <code>qa</code> etiketlerinden birini ekleyip
                 ilgili kategoride yer almasını sağlayabilirsiniz.
+                <br>
+                Doğru ve etkili etiketler seçmek ilanınızın ilan detay sayfasındaki
+                "Benzer İlanlar" arasında gözükme şansını arttıracaktır.
               </p>
             </div>
             <div class="form">

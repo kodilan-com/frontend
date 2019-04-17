@@ -4,16 +4,16 @@ import Loader from './Loader';
 import JobTypeBadge from './JobTypeBadge';
 
 export default {
+  components: {
+    JobTypeBadge,
+    Loader,
+  },
   props: {
     contentLength: {
       type: Number,
       required: false,
       default: 200,
     },
-  },
-  components: {
-    JobTypeBadge,
-    Loader,
   },
   data() {
     return {

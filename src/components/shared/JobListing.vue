@@ -29,7 +29,7 @@ export default {
 <template>
   <div class="listings-container">
     <loader v-if="isLoading" />
-    <div v-else>
+    <template v-else>
       <div v-if="posts.length">
         <job-item
           v-for="post in posts"
@@ -42,6 +42,6 @@ export default {
           <span>{{ notFoundText }}</span>
         </p>
       </div>
-    </div>
+    </template>
   </div>
 </template>

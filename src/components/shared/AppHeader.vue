@@ -31,8 +31,10 @@ export default {
             <ul class="responsive float-right">
               <li class="header-subs">
                 <router-link to="/abone-ol">
-                  <i class="fa fa-bullhorn"></i>
-                  <span class>Abone ol!</span>
+                  <i class="fa fa-bullhorn" />
+                  <span class>
+                    Abone ol!
+                  </span>
                 </router-link>
               </li>
               <li>

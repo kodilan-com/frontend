@@ -69,13 +69,10 @@ export default {
     <div class="container job-listing">
       <div class="eleven columns">
         <div class="padding-right">
-          <div class="listings-container">
-            <job-listing
-              :is-loading="isLoading"
-              :posts="posts"
-            />
-          </div>
-          <div class="clearfix" />
+          <job-listing
+            :is-loading="isLoading"
+            :posts="posts"
+          />
         </div>
       </div>
       <div
