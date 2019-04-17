@@ -143,7 +143,7 @@ header.transparent .sf-with-ul::after {
 }
 
 #banner.with-transparent-header .search-container {
-  padding: 150px 0;
+  padding: 75px 0;
   margin-top: 45px;
 }
 
@@ -163,7 +163,7 @@ header.transparent #logo {
 
 @media only screen and (min-width: 960px) and (max-width: 1289px) {
   #banner.with-transparent-header .search-container {
-    margin-top: 65px;
+    margin-top: 30px;
   }
 }
 
@@ -187,7 +187,7 @@ header.transparent #logo {
     box-shadow: none;
   }
   #banner.with-transparent-header .search-container {
-    margin-top: 65px;
+    margin-top: 30px;
   }
 }
 
@@ -204,7 +204,7 @@ header.transparent #logo {
     text-align: center;
   }
   #banner.with-transparent-header .search-container {
-    padding: 150px 0;
+    padding: 75px 0;
     margin-top: 35px;
   }
   #banner.with-transparent-header {
@@ -511,7 +511,7 @@ ul li ul a.sf-with-ul:after {
 ---------------------------------------------------------------------- */
 
 #banner {
-  max-height: 640px;
+  max-height: 500px;
   width: 100%;
   display: inline-block;
   position: relative;
@@ -537,20 +537,20 @@ ul li ul a.sf-with-ul:after {
   display: block;
   width: 100%;
   position: relative;
-  padding: 140px 0;
+  padding: 70px 0;
   margin-top: -10px;
 }
 
 @media only screen and (min-width: 1367px) {
   .search-container {
-    padding: 150px 0;
+    padding: 75px 0;
   }
 }
 
 .search-container h2 {
-  font-size: 42px;
+  font-size: 34px;
   color: #fff;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
   letter-spacing: -1px;
 }
 
@@ -8235,7 +8235,7 @@ body #style-switcher h2 {
 
 @media only screen and (min-width: 960px) and (max-width: 1289px) {
   .search-container {
-    padding: 150px 0;
+    padding: 75px 0;
   }
   input.ico-01 {
     background-position: 95.5% 20px;
@@ -8272,7 +8272,7 @@ body #style-switcher h2 {
     background-position: 93% 20px;
   }
   .search-container {
-    padding: 120px 0;
+    padding: 60px 0;
   }
   .job-list img {
     margin-left: 30px;
@@ -8382,7 +8382,7 @@ body #style-switcher h2 {
     transform: translateY(0) !important;
   }
   .search-container h2 {
-    font-size: 40px;
+    font-size: 34px;
   }
   .search-container input.ico-01 {
     width: 100%;
@@ -8403,7 +8403,7 @@ body #style-switcher h2 {
     background-position: 94% 20px;
   }
   .search-container {
-    padding: 100px 0;
+    padding: 50px 0;
   }
   #popular-categories li a {
     width: 100%;
