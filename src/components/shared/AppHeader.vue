@@ -27,16 +27,16 @@ export default {
               </router-link>
             </h2>
           </div>
-          <nav
-            id="navigation"
-            class="menu"
-          >
+          <nav id="navigation" class="menu">
             <ul class="responsive float-right">
+              <li class="header-subs">
+                <router-link to="/abone-ol">
+                  <i class="fa fa-bullhorn"></i>
+                  <span class>Abone ol!</span>
+                </router-link>
+              </li>
               <li>
-                <router-link
-                  class="add-post button tag-create-post"
-                  to="/ilan-ekle"
-                >
+                <router-link class="add-post button tag-create-post" to="/ilan-ekle">
                   <i class="fa fa-plus" />
                   <span class="tag-create-post">
                     Ücretsiz İlan Ekle
@@ -69,11 +69,21 @@ export default {
     }
   }
 
-  .add-post {
-    background: #26ae61;
-    color: #fff;
-    font-size: 16px;
-    padding: 12px 22px;
+  #navigation {
+    a {
+      background: #26ae61;
+      color: #fff;
+      font-size: 16px;
+      padding: 12px 22px;
+    }
+
+    .header-subs a {
+      background: #666;
+    }
+
+    i {
+      margin-right: 10px !important;
+    }
   }
 }
 </style>

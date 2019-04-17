@@ -4,6 +4,13 @@ import Loader from './Loader';
 import JobTypeBadge from './JobTypeBadge';
 
 export default {
+  props: {
+    contentLength: {
+      type: Number,
+      required: false,
+      default: 200,
+    },
+  },
   components: {
     JobTypeBadge,
     Loader,
@@ -22,8 +29,9 @@ export default {
       const tmp = document.createElement('div');
       tmp.innerHTML = description;
       const descText = tmp.textContent || tmp.innerText || '';
+      const cl = this.contentLength;
 
-      return descText.length > 200 ? `${descText.slice(0, 200)}...` : descText;
+      return descText.length > cl ? `${descText.slice(0, cl)}...` : descText;
     },
   },
   created() {
@@ -36,7 +44,7 @@ export default {
 </script>
 
 <template>
-  <div class="five columns">
+  <div class="columns">
     <h3 class="margin-bottom-5">
       Öne çıkan ilanlar
     </h3>
@@ -46,49 +54,32 @@ export default {
         <div class="showbiz">
           <div class="wrapper">
             <ul>
-              <li
-                v-for="post in featuredPosts"
-                :key="post.slug"
-              >
+              <li v-for="post in featuredPosts" :key="post.slug">
                 <div class="job-spotlight">
-                  <router-link
-                    :to="`/ilanlar/${post.slug}`"
-                    class="job-title"
-                  >
+                  <router-link :to="`/ilanlar/${post.slug}`" class="job-title">
                     {{ post.position }}
                   </router-link>
                   <div class="details">
                     <span>
                       <i class="fa fa-briefcase" />
-                      <router-link
-                        :to="`/firmalar/${post.company.slug}`"
-                      >
+                      <router-link :to="`/firmalar/${post.company.slug}`">
                         {{ post.company.name }}
                       </router-link>
                     </span>
                     <span>
                       <i class="fa fa-map-marker" />
-                      <router-link
-                        :to="`/ilan-ara?location=${post.location}`"
-                      >
+                      <router-link :to="`/ilan-ara?location=${post.location}`">
                         {{ post.location }}
                       </router-link>
                     </span>
                     <job-type-badge :post="post" />
                     <p>{{ getPostSummary(post.description) }}</p>
-                    <div
-                      v-for="tag in post.tags"
-                      :key="tag.slug"
-                      class="listing-date post-tag"
-                    >
+                    <div v-for="tag in post.tags" :key="tag.slug" class="listing-date post-tag">
                       <router-link :to="`/etiket/${tag.slug}`">
                         {{ tag.name }}
                       </router-link>
                     </div>
-                    <router-link
-                      :to="`/ilanlar/${post.slug}`"
-                      class="button tag-go-featured-post"
-                    >
+                    <router-link :to="`/ilanlar/${post.slug}`" class="button tag-go-featured-post">
                       İlana git &nbsp;&nbsp;<i class="fa fa-angle-right" />
                     </router-link>
                   </div>

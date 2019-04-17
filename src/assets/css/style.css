@@ -4799,6 +4799,12 @@ li .job-spotlight p {
   .category-small-box {
     width: 100%;
   }
+  .header-subs {
+    display: none;
+  }
+  .add-post.button {
+    margin-top: 3px;
+  }
   .add-post.button span {
     display: none;
   }

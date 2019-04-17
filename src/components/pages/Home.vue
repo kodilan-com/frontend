@@ -18,7 +18,7 @@ export default {
   <div>
     <div class="container">
       <recent-jobs-list />
-      <job-spotlight />
+      <job-spotlight class="five" />
     </div>
     <info-banner />
     <div class="container subscribe">

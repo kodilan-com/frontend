@@ -8,6 +8,7 @@ import JobList from '@/components/pages/JobList';
 import TagPosts from '@/components/pages/TagPosts';
 import Search from '@/components/pages/Search';
 import Confirmation from '@/components/pages/Confirmation';
+import SubscribeLanding from '@/components/pages/SubscribeLanding';
 import NotFound from '@/components/pages/NotFound';
 import CompanyPosts from '@/components/pages/CompanyPosts';
 
@@ -59,6 +60,11 @@ const router = new Router({
       path: '/firmalar/:slug',
       name: 'CompanyPosts',
       component: CompanyPosts,
+    },
+    {
+      path: '/abone-ol',
+      name: 'Subscribe',
+      component: SubscribeLanding,
     },
     {
       path: '*',
