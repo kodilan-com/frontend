@@ -2,7 +2,7 @@
 import { mapActions } from 'vuex';
 import JobListingWithFilters from '../shared/JobListingWithFilters';
 import searchPageMetaInfoMixin from '../../mixins/searchPageMetaInfo';
-import { JOB_TYPE_MAP, JOB_SLUG_TO_JOB_ID_MAP } from '../../store/constants';
+import { JOB_TYPE_MAP, JOB_TYPE_SLUG_TO_ID_MAP } from '../../store/constants';
 
 export default {
   mixins: [searchPageMetaInfoMixin],
@@ -32,7 +32,7 @@ export default {
     parsedJobId() {
       if (this.$route.matched.length > 1) {
         const slug = this.$route.path.replace('/ilan-ara/', '');
-        const id = JOB_SLUG_TO_JOB_ID_MAP[slug];
+        const id = JOB_TYPE_SLUG_TO_ID_MAP[slug];
 
         if (id) {
           return id;
