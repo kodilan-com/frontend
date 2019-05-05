@@ -10,3 +10,9 @@ export const JOB_TYPE_MAP = {
   3: 'Stajyer',
   4: 'Freelance',
 };
+export const JOB_SLUG_TO_JOB_ID_MAP = {
+  'tam-zamanli': 1,
+  'yari-zamanli': 2,
+  stajyer: 3,
+  freelance: 4,
+};

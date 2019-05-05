@@ -106,17 +106,17 @@ export default {
         <h4>İlan tipine göre ilanlar</h4>
         <ul class="footer-links">
           <li>
-            <router-link to="/ilan-ara?type=1">
+            <router-link to="/ilan-ara/tam-zamanli">
               Tam zamanlı iş ilanları
             </router-link>
           </li>
           <li>
-            <router-link to="/ilan-ara?type=2">
+            <router-link to="/ilan-ara/yari-zamanli">
               Yarı zamanlı iş ilanları
             </router-link>
           </li>
           <li>
-            <router-link to="/ilan-ara?type=3">
+            <router-link to="/ilan-ara/stajyer">
               Stajyer iş ilanları
             </router-link>
           </li>

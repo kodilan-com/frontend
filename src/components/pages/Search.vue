@@ -2,7 +2,7 @@
 import { mapActions } from 'vuex';
 import JobListingWithFilters from '../shared/JobListingWithFilters';
 import searchPageMetaInfoMixin from '../../mixins/searchPageMetaInfo';
-import { JOB_TYPE_MAP } from '../../store/constants';
+import { JOB_TYPE_MAP, JOB_SLUG_TO_JOB_ID_MAP } from '../../store/constants';
 
 export default {
   mixins: [searchPageMetaInfoMixin],
@@ -22,7 +22,30 @@ export default {
     query() {
       return this.$route.query.query;
     },
+    queryString() {
+      if (this.parsedJobId) {
+        return { type: this.parsedJobId };
+      }
+
+      return this.$route.query;
+    },
+    parsedJobId() {
+      if (this.$route.matched.length > 1) {
+        const slug = this.$route.path.replace('/ilan-ara/', '');
+        const id = JOB_SLUG_TO_JOB_ID_MAP[slug];
+
+        if (id) {
+          return id;
+        }
+      }
+
+      return null;
+    },
     type() {
+      if (this.parsedJobId) {
+        return this.parsedJobId;
+      }
+
       return parseInt(this.$route.query.type, 10);
     },
     company() {
@@ -37,7 +60,7 @@ export default {
     handleSearch() {
       this.isLoading = true;
 
-      this.search(this.$route.query)
+      this.search(this.queryString)
         .then((res) => {
           this.isLoading = false;
           this.posts = res.data;

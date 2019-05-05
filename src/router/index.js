@@ -50,6 +50,24 @@ const router = new Router({
       path: '/ilan-ara',
       name: 'Search',
       component: Search,
+      children: [
+        {
+          path: '?type=1',
+          alias: 'tam-zamanli',
+        },
+        {
+          path: '?type=2',
+          alias: 'yari-zamanli',
+        },
+        {
+          path: '?type=3',
+          alias: 'stajyer',
+        },
+        {
+          path: '?type=4',
+          alias: 'freelance',
+        },
+      ],
     },
     {
       path: '/ilan/dogrulandi',
