@@ -18,4 +18,4 @@ deploy:
   - mkdir -p ~/.ssh
   - chmod 700 ~/.ssh
   - rm dist/js/*.map
-  - scp -o stricthostkeychecking=no -r dist/* forge@206.189.21.105:/home/forge/kodilan.com/dist
+  - scp -o stricthostkeychecking=no -r dist/* $SSH_CONNECTION_STRING
