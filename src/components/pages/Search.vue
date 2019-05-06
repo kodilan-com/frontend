@@ -24,7 +24,10 @@ export default {
     },
     queryString() {
       if (this.parsedJobId) {
-        return { type: this.parsedJobId };
+        return {
+          ...this.$route.query,
+          type: this.parsedJobId
+        };
       }
 
       return this.$route.query;
