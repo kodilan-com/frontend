@@ -26,7 +26,7 @@ export default {
       if (this.parsedJobId) {
         return {
           ...this.$route.query,
-          type: this.parsedJobId
+          type: this.parsedJobId,
         };
       }
 

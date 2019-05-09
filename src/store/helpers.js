@@ -5,9 +5,9 @@ export default {
     const POINTS = {
       fromSameCompany: 2,
       createdInTenDays: 3,
-      inSameLocation: 4,
       hasSamePostType: 4,
       hasSameTag: 5,
+      inSameLocation: 6,
     };
 
     return relatedPosts
