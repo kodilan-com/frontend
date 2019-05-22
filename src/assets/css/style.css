@@ -4978,117 +4978,50 @@ body .job-spotlight .fa-calendar:before {
 
 /* Testimonials
 ------------------------------------- */
+.feedbacks {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.feedback {
+  max-width: 440px;
+  text-align: center;
+  min-height: 180px;
+  margin: 30px;
+  font-size: 13px;
+}
 
 .testimonial-box {
-  background: transparent;
-  border-radius: 6px;
-  padding: 38px;
-  text-align: center;
   color: #888;
-  position: relative;
-  margin: 18px 0;
-  box-shadow: none;
-  transition: 0.4s;
-}
-
-.testimonial-carousel .slick-slide {
-  margin: 0 20px 0px 20px;
-  opacity: 0.5;
-  transition: 0.4s;
-  pointer-events: all;
-  cursor: grabbing;
-  cursor: -webkit-grab;
-}
-
-.testimonial-carousel.slick-dotted.slick-slider {
-  margin-bottom: -10px;
-}
-
-.testimonial-carousel .slick-slide.slick-active .testimonial-box {
-  background: #282828;
-  color: #fff;
-}
-
-.testimonial-carousel .slick-slide.slick-active .testimonial:before {
-  color: #282828;
-}
-
-.testimonial:before {
-  position: absolute;
-  margin: 0 auto;
-  display: block;
-  width: 100%;
-  text-align: center;
-  bottom: -9px;
-  left: 0;
-  content: "\f0dd";
-  font-family: "FontAwesome";
-  font-size: 42px;
-  color: transparent;
-  background-color: transparent;
-  cursor: default;
-}
-
-.testimonial:after {
-  position: absolute;
-  top: 47px;
-  left: 42px;
-  content: "\f10d";
-  font-family: "FontAwesome";
-  font-size: 38px;
-  opacity: 0.3;
-  color: #222;
-  background-color: transparent;
-  cursor: default;
-  display: none;
-}
-
-.testimonial-carousel .slick-slide.slick-active .testimonial:after {
-  color: #fff;
-  opacity: 1;
-}
-
-.testimonial,
-.testimonial p {
-  font-size: 14px;
-  font-weight: 400;
-  line-height: 28px;
+  margin-bottom: 18px;
 }
 
 .testimonial-author {
-  display: block;
-  width: 100%;
-  padding: 20px 0 15px 0;
-  text-align: center;
-  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+}
+
+.testimonial-author-name {
+  text-align: left;
+  margin-left: 10px;
 }
 
 .testimonial-author img {
-  width: 60px;
-  display: inline-block;
-  text-align: center;
-  height: auto;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
-  margin: 0 auto;
+  display: inline;
 }
 
-.testimonial-author h4 {
-  display: block;
-  width: 100%;
-  font-size: 16px;
-  line-height: 24px;
-  padding: 0;
-  margin-top: 15px;
-  color: #333;
-  font-weight: 600;
+.testimonial-author p {
+  font-size: 12px;
+  margin-bottom: 0;
+  line-height: 20px;
 }
 
-.testimonial-author h4 span {
-  display: block;
-  color: #888;
-  line-height: 24px;
-  padding: 0;
-  font-weight: 400;
+.testimonial-author p.name {
+  font-weight: 500;
   font-size: 14px;
 }
 
@@ -5100,7 +5033,7 @@ body .job-spotlight .fa-calendar:before {
 }
 
 .fullwidth-testimonial {
-  padding: 60px 0;
+  padding: 40px 0;
   padding-bottom: 55px;
   background-color: #f9f9f9;
 }
@@ -5110,10 +5043,6 @@ h3.headline {
   width: 100%;
   line-height: 32px;
   margin: 0 0 30px 0;
-}
-
-.fullwidth-testimonial h3.headline {
-  margin: 0 0 10px 0;
 }
 
 span.headline-detail {
@@ -7678,7 +7607,6 @@ a.close-form i {
   background-color: #202020;
   padding: 50px 0 0 0;
   color: #999;
-  margin-top: 55px;
 }
 
 #footer.has-widget {

@@ -1,6 +1,7 @@
 <script>
 import RecentJobsList from '../shared/RecentJobsList';
 import JobSpotlight from '../shared/JobSpotlight';
+import Testimonials from '../shared/Testimonials';
 import InfoBanner from '../shared/InfoBanner';
 import Subscribe from '../shared/Subscribe';
 
@@ -8,6 +9,7 @@ export default {
   components: {
     RecentJobsList,
     JobSpotlight,
+    Testimonials,
     InfoBanner,
     Subscribe,
   },
@@ -28,6 +30,7 @@ export default {
         </div>
       </div>
     </div>
+    <testimonials />
   </div>
 </template>
 
