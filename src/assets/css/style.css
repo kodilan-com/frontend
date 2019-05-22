@@ -4532,8 +4532,19 @@ span.temporary {
     margin: 8px 0;
     display: inline-block;
   }
+
   .listing .listing-title {
-    padding-right: 20px;
+    padding-right: 0;
+  }
+
+  .listing .listing-logo {
+    width: 40px;
+    min-width: 40px;
+  }
+
+  .listing .listing-logo img {
+    width: 40px;
+    height: 40px;
   }
 }
 

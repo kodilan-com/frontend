@@ -17,7 +17,7 @@ export default {
 </script>
 
 <template>
-  <div>
+  <div id="home">
     <div class="container">
       <recent-jobs-list />
       <job-spotlight class="five" />
