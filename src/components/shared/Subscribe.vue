@@ -31,7 +31,18 @@ export default {
     handleSubscribe() {
       const { frequency, name, email } = this;
 
-      this.subscribe({ frequency, name, email });
+      this.subscribe({ frequency, name, email })
+        .then(() => {
+          this.showDialog('Email listesine kaydınız gerçekleştirildi.');
+        })
+        .catch((e) => {
+          const details = Object.values(e.response.data.errors || []).map(r => `<li>${r[0]}</li>`);
+
+          this.showDialog('Hata: Kaydınız gerçekleştirilemedi.', `<ul>${details || ''}</ul>`);
+        });
+    },
+    showDialog(title, text, buttons = [{ title: 'Kapat' }]) {
+      this.$modal.show('dialog', { title, text, buttons });
     },
     close() {
       this.isClosed = true;
