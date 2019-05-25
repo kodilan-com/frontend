@@ -11,11 +11,8 @@ export default {
     };
 
     return relatedPosts
+      .filter(p => p.slug !== post.slug)
       .map((p) => {
-        if (p.slug === post.slug) {
-          return { score: 0, post: p };
-        }
-
         let score = 0;
 
         score += p.location === post.location ? POINTS.inSameLocation : 0;
