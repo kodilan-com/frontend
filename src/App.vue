@@ -23,6 +23,7 @@ export default {
     </div>
     <app-footer />
     <subscribe :fixed="true" />
+    <v-dialog />
   </div>
 </template>
 

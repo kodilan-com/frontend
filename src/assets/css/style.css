@@ -8741,3 +8741,17 @@ select {
 .job-description ul ul {
   padding-left: 20px;
 }
+
+.dialog-content ul {
+  margin: 15px 0 10px;
+}
+
+.dialog-content li {
+  margin-left: 32px;
+  line-height: 1.5;
+  list-style: circle;
+}
+
+.vue-dialog-button a {
+  display: block;
+}

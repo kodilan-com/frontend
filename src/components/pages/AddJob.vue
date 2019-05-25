@@ -11,8 +11,8 @@ import { defaultEditorToolbar } from '../../config';
 export default {
   mixins: [validationMixin],
   components: {
-    JobDetails,
     VueEditor,
+    JobDetails,
     CountrySelect,
   },
   data() {
@@ -80,8 +80,10 @@ export default {
     ...mapActions(['fetchTags', 'savePost']),
     togglePreview() {
       if (!this.validateForm()) {
-        const messages = Object.values(this.validationErrorMessages).join('\n');
-        alert(messages); // eslint-disable-line no-alert
+        const messages = Object.values(this.validationErrorMessages).map(e => `<li>${e}</li>`);
+        const errorBody = `Lütfen aşağıdaki alanları kontrol ediniz.<ul>${messages.join('')}</ul>`;
+
+        this.showErrorDialog(errorBody);
 
         return;
       }
@@ -106,15 +108,24 @@ export default {
           this.isSaving = false;
         })
         .catch((e) => {
-          const details = Object.values(e.response.data.errors || [])
-            .map(item => item[0])
-            .join('\n');
+          const details = Object.values(e.response.data.errors || []).map(err => `<li>${err}</li>`);
+          const errorMsg = `Lütfen gerekli alanları doldurduğunuzdan emin olunuz.<ul>${details.join('')}</ul>`;
 
-          // eslint-disable-next-line
-          alert(`Hata: İlanınız kaydedilemedi. Lütfen geri dönüp gerekli alanları doldurduğunuzdan emin olunuz. \n\n${details}`);
-
+          this.showErrorDialog(errorMsg);
           this.isSaving = false;
         });
+    },
+    showErrorDialog(text) {
+      const subject = encodeURI('İlan Eklerken Hata');
+
+      this.$modal.show('dialog', {
+        text,
+        title: 'İlan ekleme başarısız!',
+        buttons: [
+          { title: `<a href="mailto:info@kodilan.com?subject=${subject}" >Hata bildir!</a>` },
+          { title: 'Kapat' },
+        ],
+      });
     },
   },
   mounted() {
