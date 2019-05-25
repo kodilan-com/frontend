@@ -16,4 +16,7 @@ export default {
   [constants.SET_TAGS](state, tags) {
     state.tags = tags;
   },
+  [constants.SET_LOCATIONS](state, locations) {
+    state.locations = locations.map(l => l.location);
+  },
 };

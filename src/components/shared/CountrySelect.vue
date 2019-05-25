@@ -1,14 +1,18 @@
 <script>
-import countries from '../../assets/data/countries';
+import { mapState, mapActions } from 'vuex';
 
 export default {
+  computed: {
+    ...mapState(['locations']),
+  },
   methods: {
+    ...mapActions(['fetchLocations']),
     handleChange() {
       this.$emit('input', this.$refs.select.value);
     },
   },
   created() {
-    this.countries = countries;
+    this.fetchLocations();
   },
 };
 </script>
@@ -23,12 +27,11 @@ export default {
       Şehir seçiniz...
     </option>
     <option
-      v-for="country in countries"
-      :value="country.name"
-      :disabled="country.disabled"
-      :key="country.id"
+      v-for="location in locations"
+      :value="location"
+      :key="location"
     >
-      {{ country.name }}
+      {{ location }}
     </option>
   </select>
 </template>
