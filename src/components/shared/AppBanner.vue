@@ -67,7 +67,7 @@ export default {
             <router-link to="/ilan-ara?location=ankara" class="tag-header-tags">
               Ankara
             </router-link>
-            <router-link to="/ilan-ara?location=remote" class="tag-header-tags">
+            <router-link to="/ilan-ara?location=Remote" class="tag-header-tags">
               Remote
             </router-link>
           </div>

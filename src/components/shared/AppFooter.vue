@@ -96,7 +96,7 @@ export default {
             </router-link>
           </li>
           <li>
-            <router-link to="/ilan-ara?location=remote">
+            <router-link to="/ilan-ara?location=Remote">
               Uzaktan çalışmaya uygun iş ilanları
             </router-link>
           </li>
