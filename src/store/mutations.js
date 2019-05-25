@@ -16,7 +16,13 @@ export default {
   [constants.SET_TAGS](state, tags) {
     state.tags = tags;
   },
-  [constants.SET_LOCATIONS](state, locations) {
-    state.locations = locations.map(l => l.location);
+  [constants.SET_AVAILABLE_LOCATIONS](state, locations) {
+    state.availableLocations = locations.reduce((arr, loc) => {
+      if (loc.location !== 'Remote') {
+        arr.push(loc.location);
+      }
+
+      return arr;
+    }, ['Remote']);
   },
 };

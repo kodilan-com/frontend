@@ -66,10 +66,10 @@ export default {
     return dispatch('fetchByTag', mainCategories[0])
       .then(res => helpers.rankPosts(post, postTags, res.data));
   },
-  fetchLocations({ commit }) {
+  fetchAvailableLocations({ commit }) {
     return http.get('/posts/locations')
       .then((res) => {
-        commit('SET_LOCATIONS', res.data);
+        commit('SET_AVAILABLE_LOCATIONS', res.data);
       });
   },
   savePost(_, data) {

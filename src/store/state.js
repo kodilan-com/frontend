@@ -4,5 +4,5 @@ export default {
   featuredPosts: [],
   allPosts: [],
   tags: [],
-  locations: ['İstanbul', 'İzmir', 'Ankara', 'Bursa', 'Remote'],
+  availableLocations: ['Remote', 'İstanbul', 'İzmir', 'Ankara', 'Bursa'],
 };
