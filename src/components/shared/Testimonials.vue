@@ -18,20 +18,23 @@ export default {
       </div>
     </div>
     <div class="feedbacks">
-      <div
-        v-for="feedback in feedbacks"
-        :key="feedback.fullName"
-        class="feedback">
-          <div class="testimonial-box">
-            <div class="testimonial">{{ feedback.feedback }}</div>
+      <div v-for="feedback in feedbacks" :key="feedback.fullName" class="feedback">
+        <div class="testimonial-box">
+          <div class="testimonial">
+            {{ feedback.feedback }}
           </div>
-          <div class="testimonial-author">
-            <img :src="feedback.avatar" :alt="feedback.fullName">
-            <div class="testimonial-author-name">
-              <p class="name">{{ feedback.fullName }}</p>
-              <p>{{ feedback.company }}, {{ feedback.title }}</p>
-            </div>
+        </div>
+        <div class="testimonial-author">
+          <img :src="feedback.avatar" :alt="feedback.fullName">
+          <div class="testimonial-author-name">
+            <p class="name">
+              {{ feedback.fullName }}
+            </p>
+            <p>
+              {{ feedback.company }}, {{ feedback.title }}
+            </p>
           </div>
+        </div>
       </div>
     </div>
   </section>
