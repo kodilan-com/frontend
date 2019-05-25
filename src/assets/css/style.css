@@ -7519,6 +7519,9 @@ a.post-img:hover:before {
 #titlebar.single.submit-page h2 {
   font-size: 32px;
 }
+.submit-page {
+  margin-bottom: 40px;
+}
 
 .submit-page h5 {
   margin-bottom: 9px;

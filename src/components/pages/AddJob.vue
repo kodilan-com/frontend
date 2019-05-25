@@ -156,7 +156,7 @@ export default {
           :preview="true"
           :preview-data="previewData"
         />
-        <div class="container margin-top-40">
+        <div class="container margin-top-40 margin-bottom-40">
           <button
             @click="togglePreview"
             class="button big back-button"
