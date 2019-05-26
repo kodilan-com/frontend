@@ -8,8 +8,8 @@ deploy:
   only:
   - master
   script:
-  - yarn
-  - yarn lint
+  - yarn install
+  - yarn lint --no-fix
   - yarn build
   - 'which ssh-agent || ( apt-get update -y && apt-get install openssh-client -y )'
   - mkdir -p ~/.ssh
