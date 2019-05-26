@@ -35,11 +35,8 @@ export default {
     parsedJobId() {
       if (this.$route.matched.length > 1) {
         const slug = this.$route.path.replace('/ilan-ara/', '');
-        const id = JOB_TYPE_SLUG_TO_ID_MAP[slug];
 
-        if (id) {
-          return id;
-        }
+        return JOB_TYPE_SLUG_TO_ID_MAP[slug];
       }
 
       return null;
@@ -65,10 +62,9 @@ export default {
 
       this.search(this.queryString)
         .then((res) => {
-          this.isLoading = false;
           this.posts = res.data;
         })
-        .catch(() => {
+        .finally(() => {
           this.isLoading = false;
         });
     },
@@ -88,7 +84,6 @@ export default {
   <job-listing-with-filters
     :posts="posts"
     :is-loading="isLoading"
-    :has-header="true"
   >
     <h1 slot="headerText" ref="headline">
       <template v-if="company">

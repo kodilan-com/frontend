@@ -8728,6 +8728,10 @@ select {
   text-indent: 12px;
 }
 
+.job-listing.empty {
+  margin-bottom: 40px;
+}
+
 .job-listing .widget {
   margin-top: 15px;
 }

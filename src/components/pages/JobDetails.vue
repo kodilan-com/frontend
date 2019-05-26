@@ -96,10 +96,7 @@ export default {
   >
     <loader v-if="isLoading && !preview" />
     <template v-else>
-      <div
-        v-if="preview"
-        class="notification preview warning"
-      >
+      <div v-if="preview" class="notification preview warning">
         <p>
           <span>Dikkat!</span>
           Bu sadece bir önizlemedir. İlanınızı yayınlamak için lütfen kaydettiğinizden emin olun.
@@ -115,11 +112,7 @@ export default {
               </h1>
             </div>
             <div class="six columns">
-              <a
-                :href="twitterShareUrl"
-                class="button dark"
-                target="_blank"
-              >
+              <a :href="twitterShareUrl" class="button dark" target="_blank">
                 <i class="fa fa-twitter" /> Paylaş
               </a>
             </div>
@@ -138,26 +131,17 @@ export default {
                 <div class="content">
                   <h4>{{ postData.company.name }}</h4>
                   <span>
-                    <a
-                      :href="postData.company.www"
-                      target="_blank"
-                    >
+                    <a :href="postData.company.www" target="_blank">
                       <i class="fa fa-link" /> Website
                     </a>
                   </span>
                   <span v-if="postData.company.twitter">
-                    <a
-                      :href="twitterUrl"
-                      target="_blank"
-                    >
+                    <a :href="twitterUrl" target="_blank">
                       <i class="fa fa-twitter" /> @{{ postData.company.twitter.replace('@', '') }}
                     </a>
                   </span>
                   <span v-if="postData.company.linkedin">
-                    <a
-                      :href="postData.company.linkedin"
-                      target="_blank"
-                    >
+                    <a :href="postData.company.linkedin" target="_blank">
                       <i class="fa fa-linkedin" /> {{ postData.company.name }}
                     </a>
                   </span>
@@ -190,10 +174,7 @@ export default {
                     <div>
                       <strong>Website</strong>
                       <span>
-                        <a
-                          :href="postData.company.www"
-                          target="_blank"
-                        >
+                        <a :href="postData.company.www" target="_blank">
                           {{ postData.company.www }}
                         </a>
                       </span>
@@ -210,10 +191,7 @@ export default {
                         :key="tag.slug"
                         class="tag"
                       >
-                        <router-link
-                          :to="`/etiket/${tag.slug}`"
-                          class="listing-date"
-                        >
+                        <router-link :to="`/etiket/${tag.slug}`" class="listing-date">
                           {{ tag.name }}
                         </router-link>
                       </span>
@@ -232,10 +210,7 @@ export default {
           </div>
         </div>
       </template>
-      <div
-        v-else
-        class="notification notice center"
-      >
+      <div v-else class="notification notice center">
         <p>
           <span>Böyle bir ilan bulunamadı.</span>
         </p>

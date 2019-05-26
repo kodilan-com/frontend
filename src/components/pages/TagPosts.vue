@@ -25,10 +25,9 @@ export default {
     handleSearch() {
       this.fetchByTag(this.tag)
         .then((res) => {
-          this.isLoading = false;
           this.posts = res.data;
         })
-        .catch(() => {
+        .finally(() => {
           this.isLoading = false;
         });
     },
@@ -50,7 +49,6 @@ export default {
   <job-listing-with-filters
     :posts="posts"
     :is-loading="isLoading"
-    :has-header="true"
   >
     <h1 slot="headerText" ref="headline">
       <strong>{{ tag }}</strong> etiketli ilanlar

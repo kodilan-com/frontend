@@ -31,9 +31,7 @@ export default {
         <span class="title tag-post-link">
           {{ post.position }}
         </span>
-        <job-type-badge
-          :post="post"
-        />
+        <job-type-badge :post="post" />
         <span class="timeago wide">
           {{ timeago }}
         </span>

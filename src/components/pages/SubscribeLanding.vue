@@ -16,7 +16,7 @@ export default {
       <subscribe class="section-background" />
     </div>
 
-    <job-spotlight class="" :content-length="600" />
+    <job-spotlight :content-length="600" />
   </div>
 </template>
 

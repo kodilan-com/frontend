@@ -66,7 +66,7 @@ export default {
         </div>
       </div>
     </div>
-    <div class="container job-listing">
+    <div class="container job-listing" :class="{ empty: !posts.length }">
       <div class="eleven columns">
         <div class="padding-right">
           <job-listing

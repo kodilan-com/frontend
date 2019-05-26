@@ -1,4 +1,5 @@
 <script>
+/* eslint-disable vue/singleline-html-element-content-newline */
 export default {
   props: {
     post: {
@@ -13,9 +14,6 @@ export default {
       const body = encodeURI('\n\n\n\n-\nkodilan.com aracılığıyla gönderilmiştir.');
 
       return `mailto:${post.apply_email}?subject=${encoded}&body=${body}`;
-    },
-    urlButtonText() {
-      return this.post.apply_email ? 'Site üzerinden başvur' : 'Bu pozisyona başvur';
     },
   },
 };
@@ -37,15 +35,10 @@ export default {
       target="_blank"
       class="button tag-apply-link"
     >
-      <i
-        v-if="post.apply_email"
-        class="fa fa-link"
-      /> {{ urlButtonText }}
+      <i v-if="post.apply_email" class="fa fa-link" /> Site üzerinden başvur
     </a>
     <span class="small">
-      İlan başvurunuzda <router-link to="/">
-        kodilan.com
-      </router-link>'a referans vererek
+      İlan başvurunuzda <router-link to="/">kodilan.com</router-link>'a referans vererek
       bize katkıda bulunabilirsiniz.
     </span>
   </div>
@@ -53,7 +46,7 @@ export default {
 
 <style lang="scss">
 .small {
-  font-size: 12px;
+  font-size: 13px;
   opacity: .8;
 }
 </style>

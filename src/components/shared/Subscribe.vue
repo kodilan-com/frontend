@@ -60,9 +60,6 @@ export default {
   >
     <span>Güncel iş ilanlarını</span>
     <select v-model="frequency">
-      <option disabled value="daily">
-        günlük
-      </option>
       <option value="weekly">
         haftalık
       </option>
