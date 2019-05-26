@@ -1,5 +1,4 @@
 /* eslint-disable global-require */
-
 export default [
   {
     fullName: 'Halil İbrahim Kalkan',

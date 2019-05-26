@@ -57,7 +57,6 @@ export default {
     },
     previewData() {
       const tagsArr = this.normalizedTags.map(t => ({ name: t, slug: t }));
-
       const company = Object.keys(this.formData).reduce((acc, key) => {
         if (key.indexOf('company_') > -1) {
           acc.company[key.replace('company_', '')] = this.formData[key];
@@ -78,20 +77,21 @@ export default {
   },
   methods: {
     ...mapActions(['fetchTags', 'savePost']),
-    togglePreview() {
+    showPreview() {
       if (!this.validateForm()) {
         const messages = Object.values(this.validationErrorMessages).map(e => `<li>${e}</li>`);
         const errorBody = `Lütfen aşağıdaki alanları kontrol ediniz.<ul>${messages.join('')}</ul>`;
 
-        this.showErrorDialog(errorBody);
-
-        return;
+        return this.showErrorDialog(errorBody);
       }
 
+      return this.togglePreview();
+    },
+    togglePreview() {
       this.isPreview = !this.isPreview;
       window.scrollTo(0, 0);
     },
-    save() {
+    getPostData() {
       const postData = {
         ...this.formData,
         tags: this.normalizedTags,
@@ -101,17 +101,19 @@ export default {
       postData.company_www = normalizeUrl(postData.company_www);
       postData.apply_url = normalizeUrl(postData.apply_url);
 
+      return postData;
+    },
+    save() {
       this.isSaving = true;
-      this.savePost(postData)
+      this.savePost(this.getPostData())
         .then(() => {
           this.isSaved = true;
-          this.isSaving = false;
         })
         .catch((e) => {
-          const details = Object.values(e.response.data.errors || []).map(err => `<li>${err}</li>`);
-          const errorMsg = `Lütfen gerekli alanları doldurduğunuzdan emin olunuz.<ul>${details.join('')}</ul>`;
-
-          this.showErrorDialog(errorMsg);
+          const errors = this.parseErrors(e);
+          this.showErrorDialog(`Lütfen gerekli alanları doldurduğunuzdan emin olunuz.${errors}`);
+        })
+        .finally(() => {
           this.isSaving = false;
         });
     },
@@ -126,6 +128,14 @@ export default {
           { title: 'Kapat' },
         ],
       });
+    },
+    parseErrors(e) {
+      const errors = e.response.data.errors || [];
+      const details = Object.values(errors)
+        .reduce((arr, err) => arr.concat(err), [])
+        .map(err => `<li>${err}</li>`);
+
+      return `<ul>${details.join('')}</ul>`;
     },
   },
   mounted() {
@@ -331,7 +341,7 @@ export default {
 
             <div class="button-container">
               <button
-                @click="togglePreview"
+                @click="showPreview"
                 class="button big margin-top-5"
                 type="button"
               >

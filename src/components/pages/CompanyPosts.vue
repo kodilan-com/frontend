@@ -20,14 +20,13 @@ export default {
     this.isLoading = true;
     const company = this.$route.params.slug;
 
-    this.fetchByCompany(company).then((res) => {
-      this.posts = res.data;
+    this.fetchByCompany(company).then(({ data }) => {
+      this.posts = data;
       this.isLoading = false;
     });
   },
 };
 </script>
-
 
 <template>
   <div>
