@@ -44,6 +44,11 @@ export default {
                 <i class="icon-twitter" />
               </a>
             </li>
+            <li>
+              <a class="github" href="https://github.com/kodilan-com/frontend" target="_blank">
+                <i class="icon-github" />
+              </a>
+            </li>
           </ul>
         </div>
       </div>
@@ -132,6 +137,15 @@ export default {
               kodilan.com
             </router-link>
             Tüm hakları saklıdır.
+          </div>
+          <div>
+            <router-link to="/">
+              kodilan.com
+            </router-link>
+            açık kaynak bir girişimdir.
+            <a href="https://github.com/kodilan-com/frontend" target="_blank">
+              Katkıda bulunun!
+            </a>
           </div>
         </div>
       </div>
