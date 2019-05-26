@@ -1,34 +1,30 @@
-# kodilan
+<img src="./public/logo_c.png" />
 
-## Project setup
-```
-yarn install
-```
+----
 
-### Compiles and hot-reloads for development
-```
-yarn run serve
-```
+[![pipeline status](https://gitlab.com/kodilan/frontend/badges/master/pipeline.svg)](https://gitlab.com/kodilan/frontend/commits/master)
 
-### Compiles and minifies for production
-```
-yarn run build
-```
+This project is the official Frontend codebase of [kodilan.com](https://kodilan.com) which is a software related job board for Turkey.
 
-### Run your tests
-```
-yarn run test
-```
+### Tech Stack
 
-### Lints and fixes files
-```
-yarn run lint
-```
+This project based on [Vue](https://github.com/vuejs/vue) stack and uses [Vuex](https://github.com/vuejs/vuex), [Vue Router](https://github.com/vuejs/vue-router) and [Vue CLI](https://github.com/vuejs/vue-cli).
 
-### Run your unit tests
-```
-yarn run test:unit
-```
+#### Ajax Requests
+To handle AJAX requests, we use [axios](https://github.com/axios/axios). The data we fetch from the server will unlikely change during a user session, so we cache responses using an Axios Middleware called [axios-extensions](https://github.com/kuitos/axios-extensions). This makes our app blazingly fast in between page changes. For the best user experience, we also [maintain the scroll position](https://gitlab.com/kodilan/frontend/blob/master/src/router/index.js#L93-95) between pages changes, thanks to [Vue Router's Scroll Behavior](https://router.vuejs.org/guide/advanced/scroll-behavior.html) feature.
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+#### SEO
+Since [kodilan.com](https://kodilan.com) is a Single Page Application job posting board, SEO plays a very critical role in our organic growth. To generate dynamic page title, keywords, meta tags and Open Graph tags, we use [vue-meta](https://github.com/nuxt/vue-meta) from Nuxt team. On top of that, we use [Prerender.io](https://prerender.io) to serve SEO friendly HTML to search engines.
+
+### Running project locally
+
+We use [yarn](https://yarnpkg.com/en/) as our package manager and you should have yarn installed on your machine to be able to run this project locally. After that you can run the following commands in order.
+
+- yarn install
+- yarn serve
+
+### More content
+
+You can take a look the following video to deep dive into the codebase.
+
+[![cover](https://i3.ytimg.com/vi/3Zbd7ELMOtw/maxresdefault.jpg)](https://www.youtube.com/watch?v=3Zbd7ELMOtw)

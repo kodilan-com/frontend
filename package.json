@@ -1,6 +1,7 @@
 {
   "name": "kodilan",
-  "version": "0.1.0",
+  "author": "Fatih Acet <acetfatih@gmail.com>",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
