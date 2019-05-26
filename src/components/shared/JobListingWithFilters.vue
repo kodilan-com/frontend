@@ -4,10 +4,6 @@ import CountrySelect from './CountrySelect';
 import queryUtils from '../../utils/query';
 
 export default {
-  components: {
-    JobListing,
-    CountrySelect,
-  },
   props: {
     posts: {
       type: Array,
@@ -18,6 +14,10 @@ export default {
       required: false,
       default: false,
     },
+  },
+  components: {
+    JobListing,
+    CountrySelect,
   },
   data() {
     return {

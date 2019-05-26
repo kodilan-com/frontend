@@ -8,13 +8,6 @@ import image from '../../mixins/image';
 import jobDetailsMetaInfoMixin from '../../mixins/jobDetailsMetaInfo';
 
 export default {
-  mixins: [jobDetailsMetaInfoMixin, image],
-  components: {
-    Loader,
-    ApplyLink,
-    JobTypeBadge,
-    JobListing,
-  },
   props: {
     preview: {
       type: Boolean,
@@ -26,6 +19,13 @@ export default {
       required: false,
       default: () => ({}),
     },
+  },
+  mixins: [jobDetailsMetaInfoMixin, image],
+  components: {
+    Loader,
+    ApplyLink,
+    JobTypeBadge,
+    JobListing,
   },
   data() {
     return {

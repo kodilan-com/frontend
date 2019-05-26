@@ -2,15 +2,15 @@
 import AppBanner from './AppBanner';
 
 export default {
-  components: {
-    AppBanner,
-  },
   props: {
     withBanner: {
       type: Boolean,
       required: false,
       default: false,
     },
+  },
+  components: {
+    AppBanner,
   },
 };
 </script>
