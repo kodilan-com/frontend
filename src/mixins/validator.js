@@ -7,16 +7,6 @@ export default {
       validationErrorMessages: {},
     };
   },
-  watch: {
-    formData: {
-      deep: true,
-      handler() {
-        if (this.isDirty) {
-          this.validateForm();
-        }
-      },
-    },
-  },
   created() {
     if (!this.rules && !this.formData) {
       return;
