@@ -23,6 +23,16 @@ We use [yarn](https://yarnpkg.com/en/) as our package manager and you should hav
 - yarn install
 - yarn serve
 
+### CHANGELOG
+
+Please take a look at the [CHANGELOG](https://gitlab.com/kodilan/frontend/blob/master/CHANGELOG.md) file.
+
+### Contributors
+
+- [Fatih Acet](https://twitter.com/fatihacet)
+- [Emir Karşıyakalı](https://twitter.com/emirkarsiyakali)
+- [Didem Acet](https://twitter.com/didemacet)
+
 ### More content
 
 You can take a look the following video to deep dive into the codebase.
