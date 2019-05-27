@@ -1,7 +1,7 @@
 <script>
 import { mapGetters, mapActions } from 'vuex';
 import { VueEditor } from 'vue2-editor';
-import CountrySelect from '../shared/CountrySelect';
+import LocationSelect from '../shared/LocationSelect';
 import JobDetails from './JobDetails';
 import { normalizeUrl } from '../../utils/url';
 import autocomplete from '../../utils/autocomplete';
@@ -13,7 +13,7 @@ export default {
   components: {
     VueEditor,
     JobDetails,
-    CountrySelect,
+    LocationSelect,
   },
   data() {
     return {
@@ -236,7 +236,7 @@ export default {
             </div>
             <div class="form">
               <h5>Lokasyon</h5>
-              <country-select v-model="formData.location" :show-all="true" />
+              <location-select v-model="formData.location" :show-all="true" />
               <p class="note">
                 Uzaktan çalışmaya elverişli bir ilansa Remote seçiniz.
               </p>

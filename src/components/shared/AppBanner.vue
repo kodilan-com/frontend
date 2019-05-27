@@ -1,10 +1,10 @@
 <script>
 import queryUtils from '../../utils/query';
-import CountrySelect from './CountrySelect';
+import LocationSelect from './LocationSelect';
 
 export default {
   components: {
-    CountrySelect,
+    LocationSelect,
   },
   data() {
     return {
@@ -39,7 +39,7 @@ export default {
             class="ico-01"
             placeholder="Pozisyon adı, teknoloji adı"
           >
-          <country-select v-model="params.location" />
+          <location-select v-model="params.location" />
           <button @click="handleSearch" class="tag-search-btn">
             <i class="fa fa-search tag-search-btn" />
           </button>
