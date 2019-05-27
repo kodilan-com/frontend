@@ -93,6 +93,8 @@ export default {
   <div
     :class="{ preview: preview }"
     class="job-details"
+    itemscope
+    itemtype="http://schema.org/JobPosting"
   >
     <loader v-if="isLoading && !preview" />
     <template v-else>
@@ -106,7 +108,7 @@ export default {
         <div id="titlebar">
           <div class="container">
             <div class="ten columns">
-              <h1>
+              <h1 itemprop="title">
                 {{ postData.position }}
                 <job-type-badge :post="postData" />
               </h1>
@@ -121,16 +123,24 @@ export default {
         <div class="container">
           <div class="eleven columns">
             <div class="padding-right">
-              <div class="company-info">
+              <div class="company-info"
+                   itemprop="hiringOrganization"
+                   itemscope
+                   itemtype="http://schema.org/Organization"
+              >
                 <img
+                  itemprop="logo"
                   :src="postData.company.logo"
                   :alt="postData.company.name"
                   ref="logo"
                   @error="handleImageError"
                 >
                 <div class="content">
-                  <h4>{{ postData.company.name }}</h4>
+                  <h4 itemprop="name">
+                    {{ postData.company.name }}
+                  </h4>
                   <span>
+                    <span itemprop="sameAs" :content="postData.company.www" />
                     <a :href="postData.company.www" target="_blank">
                       <i class="fa fa-link" /> Website
                     </a>
@@ -148,7 +158,7 @@ export default {
                 </div>
                 <div class="clearfix" />
               </div>
-              <div class="job-description" v-html="postData.description" />
+              <div class="job-description" itemprop="description" v-html="postData.description" />
             </div>
           </div>
           <div class="five columns">
@@ -166,9 +176,20 @@ export default {
                     <i class="fa fa-map-marker" />
                     <div>
                       <strong>Lokasyon</strong>
-                      <span>{{ postData.location }}</span>
+                      <span itemprop="jobLocation"
+                            itemscope
+                            itemtype="http://schema.org/Place"
+                      >
+                        <span itemprop="address"
+                              itemscope
+                              itemtype="http://schema.org/PostalAddress"
+                        >
+                          <span itemprop="addressLocality">{{ postData.location }}</span>
+                        </span>
+                      </span>
                     </div>
                   </li>
+                  <span itemprop="datePosted" :content="postData.created_at" />
                   <li>
                     <i class="ln ln-icon-Globe" />
                     <div>

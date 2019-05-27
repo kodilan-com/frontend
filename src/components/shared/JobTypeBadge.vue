@@ -18,7 +18,7 @@ export default {
     :class="postTypeClassName"
     class="listing-type tag-post-type"
   >
-    <router-link :to="postTypeLink" class="tag-post-type">
+    <router-link :to="postTypeLink" class="tag-post-type" itemprop="employmentType">
       {{ jobType }}
     </router-link>
   </span>
