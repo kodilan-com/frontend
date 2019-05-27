@@ -15,7 +15,7 @@ export default {
   fetchRecentPosts({ commit }) {
     return http.get('/posts?get=25')
       .then((res) => {
-        commit('SET_RECENT_POSTS', res.data.data);
+        commit(constants.SET_RECENT_POSTS, res.data.data);
 
         return res.data;
       });
@@ -23,7 +23,7 @@ export default {
   fetchFeaturedPosts({ commit }) {
     return http.get('/posts?get=3&is_featured=1')
       .then((res) => {
-        commit('SET_FEATURED', res.data.data);
+        commit(constants.SET_FEATURED, res.data.data);
 
         return res.data;
       });
@@ -31,7 +31,7 @@ export default {
   fetchAllPosts({ commit }) {
     return http.get('/posts?get=300')
       .then((res) => {
-        commit('SET_ALL_POSTS', res.data.data);
+        commit(constants.SET_ALL_POSTS, res.data.data);
 
         return res.data;
       });
@@ -55,7 +55,7 @@ export default {
   fetchTags({ commit }) {
     return http.get('/tags')
       .then((res) => {
-        commit('SET_TAGS', res.data.data);
+        commit(constants.SET_TAGS, res.data.data);
       });
   },
   fetchRelatedPosts({ dispatch }, post) {
@@ -69,7 +69,7 @@ export default {
   fetchAvailableLocations({ commit }) {
     return http.get('/posts/locations')
       .then((res) => {
-        commit('SET_AVAILABLE_LOCATIONS', res.data);
+        commit(constants.SET_AVAILABLE_LOCATIONS, res.data);
       });
   },
   savePost(_, data) {
