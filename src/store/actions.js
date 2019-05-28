@@ -61,9 +61,13 @@ export default {
   fetchRelatedPosts({ dispatch }, post) {
     const postTags = post.tags.map(t => t.slug);
     const categoryTags = ['frontend', 'backend', 'mobile', 'designer', 'qa', 'devops'];
-    const mainCategories = postTags.filter(t => categoryTags.indexOf(t) > -1);
+    const [mainTag] = postTags.filter(t => categoryTags.indexOf(t) > -1);
 
-    return dispatch('fetchByTag', mainCategories[0])
+    if (!mainTag) {
+      return Promise.resolve([]);
+    }
+
+    return dispatch('fetchByTag', mainTag)
       .then(res => helpers.rankPosts(post, postTags, res.data));
   },
   fetchAvailableLocations({ commit }) {
