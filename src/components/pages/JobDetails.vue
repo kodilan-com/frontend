@@ -184,7 +184,9 @@ export default {
                               itemscope
                               itemtype="http://schema.org/PostalAddress"
                         >
-                          <span itemprop="addressLocality">{{ postData.location }}</span>
+                          <span itemprop="addressLocality">
+                            {{ postData.location }}
+                          </span>
                         </span>
                       </span>
                     </div>

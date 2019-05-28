@@ -4,8 +4,8 @@ export const defaultEditorToolbar = [
   }],
   ['bold', 'italic', 'underline', 'strike'],
   [
-    { color: [] }, 
-    { background: [] }
+    { color: [] },
+    { background: [] },
   ],
   [
     { align: '' },
@@ -14,13 +14,13 @@ export const defaultEditorToolbar = [
     { align: 'justify' },
   ],
   [
-    { list: 'ordered' }, 
+    { list: 'ordered' },
     { list: 'bullet' },
-    { list: 'check' }
+    { list: 'check' },
   ],
   [
-    { indent: '-1' }, 
-    { indent: '+1' }
+    { indent: '-1' },
+    { indent: '+1' },
   ],
   ['link', 'video'],
   ['blockquote', 'code-block'],
