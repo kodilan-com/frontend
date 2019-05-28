@@ -1,6 +1,6 @@
 <script>
 import { mapState, mapActions } from 'vuex';
-import countries from '../../assets/data/countries';
+import allLocations from '../../assets/data/locations';
 
 export default {
   props: {
@@ -13,7 +13,7 @@ export default {
   computed: {
     ...mapState(['availableLocations']),
     locations() {
-      return this.showAll ? countries : this.availableLocations;
+      return this.showAll ? allLocations : this.availableLocations;
     },
   },
   methods: {

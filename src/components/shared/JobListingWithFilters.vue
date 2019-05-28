@@ -1,6 +1,6 @@
 <script>
 import JobListing from './JobListing';
-import CountrySelect from './CountrySelect';
+import LocationSelect from './LocationSelect';
 import queryUtils from '../../utils/query';
 
 export default {
@@ -17,7 +17,7 @@ export default {
   },
   components: {
     JobListing,
-    CountrySelect,
+    LocationSelect,
   },
   data() {
     return {
@@ -87,7 +87,7 @@ export default {
             class="ico-01"
             placeholder="Pozisyon adı, teknoloji adı"
           >
-          <country-select
+          <location-select
             v-model="params.location"
           />
           <select v-model="params.type">
