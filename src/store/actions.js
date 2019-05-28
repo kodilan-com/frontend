@@ -60,7 +60,7 @@ export default {
   },
   fetchRelatedPosts({ dispatch }, post) {
     const postTags = post.tags.map(t => t.slug);
-    const categoryTags = ['frontend', 'backend', 'mobile', 'designer', 'qa'];
+    const categoryTags = ['frontend', 'backend', 'mobile', 'designer', 'qa', 'devops'];
     const mainCategories = postTags.filter(t => categoryTags.indexOf(t) > -1);
 
     return dispatch('fetchByTag', mainCategories[0])
