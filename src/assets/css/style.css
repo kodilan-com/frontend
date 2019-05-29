@@ -1352,13 +1352,10 @@ table.manage-table td.action a:hover {
 #backtotop a:after {
   content: "";
   font-family: "FontAwesome";
-  position: relative;
-  display: block;
-  top: 9px;
-  left: 15px;
   transform: translate3d(0, 0, 0) rotate(0deg);
   transition: all 0.3s;
   display: inline-block;
+  line-height: 46px;
 }
 
 #backtotop a:hover {

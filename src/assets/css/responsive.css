@@ -362,6 +362,9 @@ body.boxed {
   select {
     text-indent: 0;
   }
+  input {
+    text-indent: 2px;
+  }
   button {
     padding-left: 18px;
     padding-right: 18px;
@@ -439,6 +442,9 @@ body.boxed {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+  }
+  .search-container input, .search-container select {
+    font-size: 14px;
   }
 }
 
