@@ -321,7 +321,9 @@ body.boxed {
 
 @media only screen and (max-width: 767px) {
   .container {
-    width: 300px;
+    width: 100%;
+    padding: 0 12px;
+    box-sizing: border-box;
   }
   .container .columns,
   .container .column {
@@ -350,7 +352,93 @@ body.boxed {
   .container .twelve.sidebar-left.columns,
   .container .five.sidebar-right.columns,
   .container .eleven.sidebar-right.columns {
-    width: 300px;
+    width: 100%;
+  }
+  .search-container input, .search-container select {
+    min-height: 44px;
+    height: 44px;
+    padding: 12px 20px;
+  }
+  select {
+    text-indent: 0;
+  }
+  button {
+    padding-left: 18px;
+    padding-right: 18px;
+  }
+  .search-container button {
+    height: 44px;
+  }
+  .app-header #navigation i {
+    margin-right: 0 !important;
+  }
+  .search-container h2 {
+    font-size: 26px;
+    margin-bottom: 8px;
+  }
+  .app-header #logo h2 {
+    line-height: 80px;
+  }
+  header {
+    height: 80px;
+  }
+  .menu ul {
+    margin: 20px 0 0 25px;
+  }
+  #home > .container > .columns > .padding-right,
+  .job-listing > .columns > .padding-right {
+    padding: 0;
+  }
+  #titlebar {
+    padding: 70px 12px;
+  }
+  #titlebar h1 b,
+  #titlebar h1 strong {
+    display: block;
+  }
+  .listing {
+    padding: 24px 12px;
+    flex-direction: row-reverse;
+  }
+  .listing .listing-title {
+    padding-left: 12px;
+    flex: 1;
+  }
+  .listing-logo {
+    position: absolute;
+  }
+  .listing .listing-title h4 {
+    padding-right: 50px;
+  }
+  .detail-content-container > .columns > .padding-right  {
+    padding-right: 0;
+  }
+  .tag-search-btn {
+    height: 44px;
+    margin-bottom: 12px;
+    display: block;
+    width: 100%;
+  }
+  #titlebar h1, #titlebar h2 {
+    font-size: 24px;
+  }
+  .job-overview, .job-spotlight {
+    padding: 24px;
+  }
+  .info-banner {
+    padding: 24px;
+  }
+  .subscribe-widget {
+    padding: 0;
+  }
+  #footer {
+    text-align: center;
+  }
+  .footer-links {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
   }
 }
 
