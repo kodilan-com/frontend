@@ -357,10 +357,12 @@ body.boxed {
   .search-container input, .search-container select {
     min-height: 44px;
     height: 44px;
-    padding: 12px 20px;
+    padding: 12px 6px;
   }
   select {
     text-indent: 0;
+    word-wrap: normal;
+    text-transform: none;
   }
   input {
     text-indent: 2px;
@@ -445,6 +447,12 @@ body.boxed {
   }
   .search-container input, .search-container select {
     font-size: 14px;
+  }
+  .fake-input, input[type="text"], input[type="password"], input[type="email"], input[type="number"], textarea, select {
+    padding: 12px 6px;
+  }
+  .subscribe-widget input[type="text"] {
+    padding: 12px 6px;
   }
 }
 
