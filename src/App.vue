@@ -28,6 +28,7 @@ export default {
 <style>
 @import './assets/css/style.css';
 @import './assets/css/theme.css';
+@import './assets/css/responsive.css';
 
 .fade-enter-active, .fade-leave-active {
   transition: opacity .5s;
