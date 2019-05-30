@@ -1,5 +1,4 @@
 @import url("base.css");
-@import url("responsive.css");
 @import url("font-awesome.css");
 @import url("https://fonts.googleapis.com/css?family=Montserrat:400,500,600");
 @import url("https://fonts.googleapis.com/css?family=Lato:400,700,300");
@@ -1353,13 +1352,10 @@ table.manage-table td.action a:hover {
 #backtotop a:after {
   content: "";
   font-family: "FontAwesome";
-  position: relative;
-  display: block;
-  top: 9px;
-  left: 15px;
   transform: translate3d(0, 0, 0) rotate(0deg);
   transition: all 0.3s;
   display: inline-block;
+  line-height: 46px;
 }
 
 #backtotop a:hover {
