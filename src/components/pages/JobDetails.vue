@@ -120,7 +120,7 @@ export default {
             </div>
           </div>
         </div>
-        <div class="container">
+        <div class="container detail-content-container">
           <div class="eleven columns">
             <div class="padding-right">
               <div class="company-info"
