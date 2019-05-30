@@ -43,6 +43,7 @@ export default {
           <button @click="handleSearch" class="tag-search-btn">
             <i class="fa fa-search tag-search-btn" />
           </button>
+          <div class="clearfix" />
           <div class="browse-jobs">
             <router-link to="/etiket/frontend" class="tag-header-tags">
               Frontend
