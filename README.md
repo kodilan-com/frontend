@@ -32,6 +32,7 @@ Please take a look at the [CHANGELOG](https://gitlab.com/kodilan/frontend/blob/m
 - [Fatih Acet](https://twitter.com/fatihacet)
 - [Emir Karşıyakalı](https://twitter.com/emirkarsiyakali)
 - [Didem Acet](https://twitter.com/didemacet)
+- [Erdoğan Bulut](https://github.com/erdoganbulut)
 
 ### More content
 
