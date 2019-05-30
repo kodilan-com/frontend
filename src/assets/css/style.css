@@ -4519,7 +4519,7 @@ span.temporary {
   min-width: 76px;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 767px) {
   .listing-type {
     position: relative;
     left: 0;
