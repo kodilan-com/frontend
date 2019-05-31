@@ -4519,7 +4519,7 @@ span.temporary {
   min-width: 76px;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 767px) {
   .listing-type {
     position: relative;
     left: 0;
@@ -4806,13 +4806,8 @@ li .job-spotlight p {
   .category-small-box {
     width: 100%;
   }
-  .header-subs {
-    display: none;
-  }
-  .add-post.button {
-    margin-top: 3px;
-  }
-  .add-post.button span {
+  .add-post.button span,
+  .header-subs span {
     display: none;
   }
   .add-post.button i {
@@ -8204,10 +8199,11 @@ body #style-switcher h2 {
   }
   .search-container input.ico-02,
   .search-container select {
-    width: 37%;
+    width: 38%;
   }
   .search-container button {
     width: 8.5%;
+    float: right;
   }
   input.ico-01 {
     background-position: 95% 20px;
