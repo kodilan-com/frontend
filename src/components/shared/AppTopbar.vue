@@ -2,13 +2,13 @@
 export default {
   data() {
     return {
-      isActive: localStorage.getItem('kodIlanTopbarStatus') !== 'closed',
+      isActive: !!(localStorage.getItem('isTopbarClosed')),
     };
   },
   methods: {
     handleClickClose() {
-      this.isActive = false;
-      localStorage.setItem('kodIlanTopbarStatus', 'closed')
+      this.isActive = true;
+      localStorage.setItem('isTopbarClosed', true);
     },
   },
 };
@@ -16,7 +16,7 @@ export default {
 
 
 <template>
-  <section class="component is-topbar" v-if="isActive">
+  <section class="component is-topbar" v-if="!isActive">
     <div class="container">
       <div class="topbar--cols">
         <a
