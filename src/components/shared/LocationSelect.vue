@@ -1,5 +1,6 @@
 <script>
 import { mapState, mapActions } from 'vuex';
+import Multiselect from 'vue-multiselect'
 import allLocations from '../../assets/data/locations';
 
 export default {
@@ -29,16 +30,21 @@ export default {
 </script>
 
 <template>
+  <multiselect
+    v-model="value"
+    :options="locations"
+    :searchable="false"
+    :close-on-select="false"
+    :show-labels="false"
+    placeholder="Şehir seçiniz..."
+    @input="handleChange(value)"
+  />
   <select
     v-bind="$attrs"
     ref="select"
     @change="handleChange"
   >
-    <option value="" selected>
-      Şehir seçiniz...
-    </option>
     <option
-      v-for="location in locations"
       :value="location"
       :key="location"
     >
