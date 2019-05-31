@@ -14,17 +14,12 @@ export default {
     AppBanner,
     AppTopbar,
   },
-  computed: {
-    doneTodosCount() {
-      return this.$store.getters.topbarStatus;
-    },
-  },
 };
 </script>
 
 <template>
   <section>
-    <app-topbar v-if="doneTodosCount" />
+    <app-topbar />
     <header class="app-header sticky-header">
       <div class="container">
         <div class="sixteen columns">

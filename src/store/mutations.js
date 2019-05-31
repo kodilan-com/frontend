@@ -25,8 +25,4 @@ export default {
       return arr;
     }, ['Remote']);
   },
-  [constants.SET_TOPBAR_STATUS](state, status) {
-    state.topbarStatus = status;
-    localStorage.setItem('kodIlanTopbarStatus', status);
-  },
 };

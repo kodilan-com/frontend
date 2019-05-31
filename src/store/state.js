@@ -5,5 +5,4 @@ export default {
   allPosts: [],
   tags: [],
   availableLocations: ['Remote', 'İstanbul', 'İzmir', 'Ankara', 'Bursa'],
-  topbarStatus: localStorage.getItem('kodIlanTopbarStatus'), // open, closed or null
 };

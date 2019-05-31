@@ -1,8 +1,14 @@
 <script>
 export default {
+  data() {
+    return {
+      isActive: localStorage.getItem('kodIlanTopbarStatus') !== 'closed',
+    };
+  },
   methods: {
     handleClickClose() {
-      this.$store.dispatch('setTopbarStatus', 'closed');
+      this.isActive = false;
+      localStorage.setItem('kodIlanTopbarStatus', 'closed')
     },
   },
 };
@@ -10,7 +16,7 @@ export default {
 
 
 <template>
-  <section class="component is-topbar">
+  <section class="component is-topbar" v-if="isActive">
     <div class="container">
       <div class="topbar--cols">
         <a

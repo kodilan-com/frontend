@@ -25,5 +25,3 @@ export const JOB_TYPE_ID_TO_SLUG_MAP = {
   3: 'stajyer',
   4: 'freelance',
 };
-
-export const SET_TOPBAR_STATUS = 'SET_TOPBAR_STATUS';
