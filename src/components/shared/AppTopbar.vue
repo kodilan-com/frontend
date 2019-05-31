@@ -2,21 +2,20 @@
 export default {
   data() {
     return {
-      isActive: !!(localStorage.getItem('isTopbarClosed')),
+      isVisible: !!(localStorage.getItem('isTopbarClosed')),
     };
   },
   methods: {
     handleClickClose() {
-      this.isActive = true;
+      this.isVisible = true;
       localStorage.setItem('isTopbarClosed', true);
     },
   },
 };
 </script>
 
-
 <template>
-  <section class="component is-topbar" v-if="!isActive">
+  <section class="component is-topbar" v-if="!isVisible">
     <div class="container">
       <div class="topbar--cols">
         <a
@@ -35,8 +34,8 @@ export default {
           </p>
         </div>
         <a
-          href="javascript:;"
-          @click="handleClickClose"
+          href="#"
+          @click.prevent="handleClickClose"
           title="Bir daha gösterme."
           class="topbar--cols__elm is-action"
         >
@@ -49,25 +48,32 @@ export default {
 
 <style lang="scss" scoped>
   $this: 'topbar';
+
   section.component {
     &.is-#{$this} {
       background: #231F20;
       color: #fff;
+
       a {
         &:hover {
-          color: #4078c0;
+          color: #fff;
         }
       }
+
       p {
         margin: 0;
       }
+
       .#{$this}--cols {
         display: flex;
         align-items: center;
+
         &__elm {
           padding: 8px;
+
           &.is-content {
             flex: 1;
+
             @media (max-width: 767px) {
               text-align: center;
             }
@@ -75,6 +81,7 @@ export default {
           &.is-icon {
             font-size: 24px;
           }
+
           &.is-action {
             font-size: 18px;
           }
