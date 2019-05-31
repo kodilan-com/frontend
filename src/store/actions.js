@@ -82,4 +82,7 @@ export default {
   subscribe(_, data) {
     return http.post('/newsletters', data);
   },
+  setTopbarStatus({ commit }, status) {
+    commit(constants.SET_TOPBAR_STATUS, status);
+  },
 };

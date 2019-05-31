@@ -1,5 +1,6 @@
 <script>
 import AppBanner from './AppBanner';
+import AppTopbar from './AppTopbar';
 
 export default {
   props: {
@@ -11,12 +12,19 @@ export default {
   },
   components: {
     AppBanner,
+    AppTopbar,
+  },
+  computed: {
+    doneTodosCount() {
+      return this.$store.getters.topbarStatus;
+    },
   },
 };
 </script>
 
 <template>
   <section>
+    <app-topbar v-if="doneTodosCount" />
     <header class="app-header sticky-header">
       <div class="container">
         <div class="sixteen columns">
