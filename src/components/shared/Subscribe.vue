@@ -116,7 +116,7 @@ export default {
     width: 100%;
     height: 70px;
     color: #fff;
-    background: #202020;
+    background: #231F20;
     border-top: 1px solid #474646;
     line-height: 50px;
 

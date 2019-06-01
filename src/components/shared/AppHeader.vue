@@ -1,5 +1,6 @@
 <script>
 import AppBanner from './AppBanner';
+import AppTopbar from './AppTopbar';
 
 export default {
   props: {
@@ -11,12 +12,14 @@ export default {
   },
   components: {
     AppBanner,
+    AppTopbar,
   },
 };
 </script>
 
 <template>
   <section>
+    <app-topbar />
     <header class="app-header sticky-header">
       <div class="container">
         <div class="sixteen columns">

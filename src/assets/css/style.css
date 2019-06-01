@@ -1341,6 +1341,7 @@ table.manage-table td.action a:hover {
 }
 
 #backtotop a {
+  text-align: center;
   text-decoration: none;
   border: 0 none;
   display: block;

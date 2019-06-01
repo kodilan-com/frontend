@@ -142,7 +142,7 @@ export default {
             <router-link to="/">
               kodilan.com
             </router-link>
-            açık kaynak bir girişimdir.
+            açık kaynaklı bir girişimdir.
             <a href="https://github.com/kodilan-com/frontend" target="_blank">
               Katkıda bulunun!
             </a>
