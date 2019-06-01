@@ -568,6 +568,12 @@ ul li ul a.sf-with-ul:after {
   height: 60px;
 }
 
+.search-container .banner--location-select {
+  width: 44.5%;
+  float: left;
+  margin-right: 2%;
+}
+
 /* Form Icons */
 
 .search-container input:focus {
@@ -8198,7 +8204,8 @@ body #style-switcher h2 {
     width: 49%;
   }
   .search-container input.ico-02,
-  .search-container select {
+  .search-container select,
+  .search-container .banner--location-select {
     width: 38%;
   }
   .search-container button {
@@ -8329,7 +8336,8 @@ body #style-switcher h2 {
     margin: 0 0 15px 0;
   }
   .search-container input.ico-02,
-  .search-container select {
+  .search-container select,
+  .search-container .banner--location-select {
     width: 100%;
     margin: 0 0 15px 0;
   }
@@ -8750,4 +8758,113 @@ select {
 
 .vue-dialog-button a {
   display: block;
+}
+
+.multiselect__tags {
+  font-size: 14px;
+  line-height: 20px;
+  padding: 13px 18px;
+  background: #fff;
+  border-radius: 3px;
+  font-weight: 500;
+  color: #909090;
+  border: 1px solid #e0e0e0;
+}
+
+.multiselect {
+  position: relative;
+  z-index: 1000;
+  outline: none;
+}
+
+.multiselect--active {
+  z-index: 1001;
+}
+
+.multiselect * {
+  box-sizing: border-box;
+}
+
+.multiselect__content-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: #fff;
+  font-size: 14px;
+  line-height: 20px;
+  background: #fff;
+  overflow: auto;
+  border-radius: 3px;
+  border: 1px solid #e0e0e0;
+}
+
+.multiselect--above .multiselect__content-wrapper {
+  top: auto;
+  bottom: 0;
+}
+
+.multiselect__option {
+  display: block;
+  width: 100%;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+.multiselect__option:hover {
+  background: rgba(0, 0, 0, 0.05);
+}
+
+.multiselect__option--selected,
+.multiselect__option--selected:hover {
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.multiselect__element:first-child .multiselect__option {
+  margin-top: 10px;
+}
+.multiselect__element:last-child .multiselect__option {
+  margin-bottom: 10px;
+}
+
+.multiselect__content {
+  display: block !important;
+}
+
+.multiselect__element {
+  display: block !important;
+}
+
+.multiselect__select {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  top: 0;
+  bottom: 0;
+  right: 20px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.multiselect__select:after {
+  content: '';
+  display: block;
+  border-style: solid;
+  border-width: 5px 5px 0;
+  border-color: #999 transparent transparent;
+}
+
+.search-container .multiselect__tags {
+  border: none;
+  padding: 20px;
+  font-size: 16px;
+}
+
+.search-container .multiselect__content-wrapper {
+  border: none;
+  font-size: 16px;
+}
+
+.widget .multiselect {
+  margin-bottom: 15px;
 }

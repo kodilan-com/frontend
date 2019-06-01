@@ -39,7 +39,9 @@ export default {
             class="ico-01"
             placeholder="Pozisyon adı, teknoloji adı"
           >
-          <location-select v-model="params.location" />
+          <div class="banner--location-select">
+            <location-select v-model="params.location" />
+          </div>
           <button @click="handleSearch" class="tag-search-btn">
             <i class="fa fa-search tag-search-btn" />
           </button>

@@ -26,6 +26,25 @@ export default {
         location: this.$route.query.location || '',
         type: this.$route.query.type || 0,
       },
+      type: null,
+      typeOptions: [
+        {
+          id: 1,
+          text: 'Tam zamanlı',
+        },
+        {
+          id: 2,
+          text: 'Yarı zamanlı',
+        },
+        {
+          id: 3,
+          text: 'Stajyer',
+        },
+        {
+          id: 4,
+          text: 'Freelance',
+        },
+      ],
     };
   },
   computed: {
@@ -43,12 +62,23 @@ export default {
   },
   methods: {
     search() {
+      this.params.type = this.type ? this.type.id : 0;
+
       const params = queryUtils.getParams(this.params);
 
       if (params) {
         this.$router.push({ path: '/ilan-ara', query: params });
       }
     },
+  },
+  created() {
+    const type = parseInt(this.$route.query.type, 10);
+    if (type) {
+      this.type = {
+        id: type,
+        text: this.typeOptions.find(o => o.id === type).text,
+      };
+    }
   },
 };
 </script>
@@ -90,23 +120,14 @@ export default {
           <location-select
             v-model="params.location"
           />
-          <select v-model="params.type">
-            <option value="0">
-              Çalışma tipi seçiniz...
-            </option>
-            <option value="1">
-              Tam zamanlı
-            </option>
-            <option value="2">
-              Yarı zamanlı
-            </option>
-            <option value="3">
-              Stajyer
-            </option>
-            <option value="4">
-              Freelance
-            </option>
-          </select>
+          <multiselect
+            v-model="type"
+            :options="typeOptions"
+            label="text"
+            :searchable="false"
+            :close-on-select="true"
+            placeholder="Çalışma tipi seçiniz..."
+          />
         </div>
         <div class="button-right">
           <button

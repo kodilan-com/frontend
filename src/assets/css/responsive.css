@@ -460,6 +460,26 @@ body.boxed {
   .menu ul li {
     margin-left: 6px;
   }
+  .multiselect__tags,
+  .search-container .multiselect__tags {
+    padding: 11px 8px;
+  }
+  .multiselect__option,
+  .search-container .multiselect__option {
+    padding: 11px 8px;
+  }
+  .multiselect__element:first-child .multiselect__option,
+  .search-container .multiselect__element:first-child .multiselect__option {
+    margin: 0;
+  }
+  .multiselect__element:last-child .multiselect__option,
+  .search-container .multiselect__element:last-child .multiselect__option {
+    margin: 0;
+  }
+  .search-container .multiselect__tags,
+  .search-container .multiselect__option {
+    font-size: 14px;
+  }
 }
 
 /* #Mobile (Landscape)

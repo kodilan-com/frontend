@@ -15,6 +15,20 @@ export default {
       name: '',
       email: '',
       isClosed: false,
+      frequencyModel: {
+        value: 'weekly',
+        text: 'haftalık',
+      },
+      frequencyOptions: [
+        {
+          value: 'weekly',
+          text: 'haftalık',
+        },
+        {
+          value: 'monthly',
+          text: 'aylık',
+        },
+      ],
     };
   },
   computed: {
@@ -29,6 +43,8 @@ export default {
   methods: {
     ...mapActions(['subscribe']),
     handleSubscribe() {
+      this.frequency = this.frequencyModel.value;
+
       const { frequency, name, email } = this;
 
       this.subscribe({ frequency, name, email })
@@ -59,14 +75,15 @@ export default {
     class="subscribe-widget"
   >
     <span>Güncel iş ilanlarını</span>
-    <select v-model="frequency">
-      <option value="weekly">
-        haftalık
-      </option>
-      <option value="monthly">
-        aylık
-      </option>
-    </select>
+    <div class="subscribe--select">
+      <multiselect
+        v-model="frequencyModel"
+        :options="frequencyOptions"
+        label="text"
+        :searchable="false"
+        :close-on-select="true"
+      />
+    </div>
     <span>olarak almak için</span>
     <input type="text" v-model="name" placeholder="İsim soyisim" class="username">
     <input type="text" v-model="email" placeholder="Email">
@@ -113,10 +130,13 @@ export default {
       }
     }
 
-    select {
-      display: inline;
+    select,
+    .subscribe--select {
+      display: inline-block;
       width: 100px;
       margin: 0 6px;
+      color: #202020;
+      text-align: left;
     }
 
     .close {

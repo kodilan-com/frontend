@@ -26,7 +26,7 @@ export default {
         apply_email: '',
         apply_url: '',
         location: '',
-        type: 1,
+        type: null,
         tags: '',
         company_name: '',
         company_email: '',
@@ -45,6 +45,28 @@ export default {
         location: { required: true, message: 'Lokasyon boş bırakılamaz.' },
         tags: { required: true, message: 'Etiketler boş bırakılamaz.' },
       },
+      type: {
+        id: 1,
+        text: 'Tam zamanlı',
+      },
+      typeOptions: [
+        {
+          id: 1,
+          text: 'Tam zamanlı',
+        },
+        {
+          id: 2,
+          text: 'Yarı zamanlı',
+        },
+        {
+          id: 3,
+          text: 'Stajyer',
+        },
+        {
+          id: 4,
+          text: 'Freelance',
+        },
+      ],
     };
   },
   computed: {
@@ -78,6 +100,7 @@ export default {
   methods: {
     ...mapActions(['fetchTags', 'savePost']),
     showPreview() {
+      this.formData.type = this.type.id || -1;
       if (!this.validateForm()) {
         const messages = Object.values(this.validationErrorMessages).map(e => `<li>${e}</li>`);
         const errorBody = `Lütfen aşağıdaki alanları kontrol ediniz.<ul>${messages.join('')}</ul>`;
@@ -243,20 +266,14 @@ export default {
             </div>
             <div class="form">
               <h5>İlan Tipi</h5>
-              <select v-model="formData.type">
-                <option value="1">
-                  Tam zamanlı
-                </option>
-                <option value="2">
-                  Yarı zamanlı
-                </option>
-                <option value="3">
-                  Stajyer
-                </option>
-                <option value="4">
-                  Freelance
-                </option>
-              </select>
+              <multiselect
+                v-model="type"
+                :options="typeOptions"
+                label="text"
+                :searchable="false"
+                :close-on-select="true"
+                placeholder="Seçiniz..."
+              />
             </div>
             <div class="form">
               <h5>Etiketler</h5>
