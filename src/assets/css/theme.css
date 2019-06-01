@@ -105,3 +105,119 @@ table.manage-table tr:hover td,
 .resumes-list.alternative li:before,
 .category-small-box:hover { background-color: #26ae61; }
 .category-small-box i { color: #26ae61; }
+
+/* Customized vue multiselect */
+.multi-select-wrapper {
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box; 
+	margin-right: 2%;
+	width: 44.5%;
+	float: left;
+	height: 60px;
+	font-family: "Montserrat", "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
+} 
+
+.multi-select-wrapper .multiselect {
+	min-height: 60px;
+	background: #fcfcfc;
+	border-radius: 3px;
+}
+
+.multi-select-wrapper .multiselect.multiselect--active {
+	border-radius: 3px 3px 0 0;
+}
+
+.multi-select-wrapper .multiselect__tags {
+	background: none;
+	border: none;
+	min-height: 60px;
+	padding: 6px 40px 0 20px;
+}
+
+.multi-select-wrapper .multiselect__tags-wrap::before,
+.multi-select-wrapper .multiselect__tags-wrap::after {
+	display: table;
+	content: "";
+}
+
+.multi-select-wrapper .multiselect__tags-wrap::after {
+	clear: both;
+}
+
+.multi-select-wrapper .multiselect__tag {
+	float: left;
+	background: #26ae61;
+	margin-top: 14px;
+}
+
+.multi-select-wrapper .multiselect__placeholder {
+	margin-bottom: 0;
+	font-size: 16px;
+	color: #909090;
+	font-weight: 500;
+	padding-top: 10px;
+}
+
+.multi-select-wrapper .multiselect__select {
+	height: 60px;
+	top: 0;
+}
+
+.multi-select-wrapper .multiselect__select::before {	
+	top: 60%;
+}
+
+.multi-select-wrapper .multiselect__input {
+	font-size: 16px;
+	padding: 14px 0;
+	background: none;
+	border:none;
+}
+
+.multi-select-wrapper .multiselect__option--highlight {
+	background: #26ae61;
+}
+
+.widget .multi-select-wrapper {
+	margin-bottom: 15px;
+	min-height: 48px;
+	width: 100%;
+	height: auto;
+}
+
+.widget .multi-select-wrapper .multiselect {
+	border: 1px solid #e0e0e0;
+}
+
+.widget .multi-select-wrapper .multiselect {
+	min-height: 48px;
+}
+
+.widget .multi-select-wrapper .multiselect__tags {
+	min-height: 48px;
+	padding-left: 18px;
+}
+
+.widget .multi-select-wrapper .multiselect__tag {
+	margin-top: 7px;
+}
+
+.widget .multi-select-wrapper .multiselect__placeholder {
+	padding-top: 4px;
+	font-size: 14px;
+}
+
+.widget .multi-select-wrapper .multiselect__input {
+	border: none;
+	font-size: 14px;
+	padding: 7px 0;
+	margin-bottom: 0;
+}
+
+.widget .multi-select-wrapper .multiselect__select {
+	height: 48px;
+}
+
+.widget .multi-select-wrapper .multiselect__element {
+	font-size: 14px;
+}

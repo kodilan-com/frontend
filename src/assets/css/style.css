@@ -553,7 +553,7 @@ ul li ul a.sf-with-ul:after {
   letter-spacing: -1px;
 }
 
-.search-container input,
+.search-container input.ico-01,
 .search-container select {
   font-weight: 500;
   font-size: 16px;

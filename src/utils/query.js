@@ -12,7 +12,7 @@ export default {
     }
 
     if (location) {
-      params.location = location;
+      params.location = location.join();
     }
 
     if (parseInt(type, 10)) {
