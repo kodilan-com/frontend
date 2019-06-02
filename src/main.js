@@ -1,10 +1,15 @@
 import Vue from 'vue';
+
+import Multiselect from 'vue-multiselect';
+
 import VModal from 'vue-js-modal';
 import App from './App';
 import store from './store';
 import router from './router';
 
 Vue.config.productionTip = false;
+
+Vue.component('multiselect', Multiselect);
 
 Vue.use(VModal, { dialog: true });
 
