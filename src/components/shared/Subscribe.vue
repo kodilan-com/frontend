@@ -107,6 +107,11 @@ export default {
   font-size: 16px;
   text-align: center;
 
+
+  .subscribe--select {
+    text-align: left;
+  }
+
   &.fixed {
     position: fixed;
     bottom: 0;
@@ -136,7 +141,6 @@ export default {
       width: 100px;
       margin: 0 6px;
       color: #202020;
-      text-align: left;
     }
 
     .close {
