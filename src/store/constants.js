@@ -25,3 +25,22 @@ export const JOB_TYPE_ID_TO_SLUG_MAP = {
   3: 'stajyer',
   4: 'freelance',
 };
+
+export const JOB_TYPES_FOR_DROPDOWN = [
+  {
+    id: 1,
+    text: 'Tam zamanlı',
+  },
+  {
+    id: 2,
+    text: 'Yarı zamanlı',
+  },
+  {
+    id: 3,
+    text: 'Stajyer',
+  },
+  {
+    id: 4,
+    text: 'Freelance',
+  },
+];

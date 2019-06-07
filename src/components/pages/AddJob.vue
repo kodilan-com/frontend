@@ -7,6 +7,7 @@ import { normalizeUrl } from '../../utils/url';
 import autocomplete from '../../utils/autocomplete';
 import validationMixin from '../../mixins/validator';
 import { defaultEditorToolbar } from '../../config';
+import { JOB_TYPES_FOR_DROPDOWN } from '../../store/constants';
 
 export default {
   mixins: [validationMixin],
@@ -45,28 +46,8 @@ export default {
         location: { required: true, message: 'Lokasyon boş bırakılamaz.' },
         tags: { required: true, message: 'Etiketler boş bırakılamaz.' },
       },
-      type: {
-        id: 1,
-        text: 'Tam zamanlı',
-      },
-      typeOptions: [
-        {
-          id: 1,
-          text: 'Tam zamanlı',
-        },
-        {
-          id: 2,
-          text: 'Yarı zamanlı',
-        },
-        {
-          id: 3,
-          text: 'Stajyer',
-        },
-        {
-          id: 4,
-          text: 'Freelance',
-        },
-      ],
+      type: JOB_TYPES_FOR_DROPDOWN[0],
+      typeOptions: JOB_TYPES_FOR_DROPDOWN,
     };
   },
   computed: {
@@ -100,13 +81,14 @@ export default {
   methods: {
     ...mapActions(['fetchTags', 'savePost']),
     showPreview() {
-      this.formData.type = this.type.id || -1;
       if (!this.validateForm()) {
         const messages = Object.values(this.validationErrorMessages).map(e => `<li>${e}</li>`);
         const errorBody = `Lütfen aşağıdaki alanları kontrol ediniz.<ul>${messages.join('')}</ul>`;
 
         return this.showErrorDialog(errorBody);
       }
+
+      this.formData.type = this.type.id || -1;
 
       return this.togglePreview();
     },
@@ -184,10 +166,7 @@ export default {
         </div>
       </div>
     </div>
-    <div
-      v-if="isSaved"
-      class="notification success center"
-    >
+    <div v-if="isSaved" class="notification success center">
       <p>
         <span>İlanınız başarılı bir şekilde kaydedildi!</span><br><br>
         İlanınızın yayınlanabilmesi için gönderilen e-postadaki
@@ -201,19 +180,10 @@ export default {
           :preview-data="previewData"
         />
         <div class="container margin-top-40 margin-bottom-40">
-          <button
-            @click="togglePreview"
-            class="button big back-button"
-            type="button"
-          >
+          <button @click="togglePreview" class="button big back-button" type="button">
             <i class="fa fa-arrow-left" /> Geri dön
           </button>
-          <button
-            @click="save"
-            :disabled="isSaving"
-            class="button big save-button"
-            type="button"
-          >
+          <button @click="save" :disabled="isSaving" class="button big save-button" type="button">
             Kaydet <i class="fa fa-check" />
           </button>
         </div>
@@ -244,18 +214,11 @@ export default {
             </div>
             <div class="form">
               <h5>Pozisyon</h5>
-              <input
-                v-model="formData.position"
-                class="search-field"
-                type="text"
-              >
+              <input v-model="formData.position" class="search-field" type="text">
             </div>
             <div class="form">
               <h5>İlan Açıklaması</h5>
-              <vue-editor
-                v-model="formData.description"
-                :editor-toolbar="editorToolbar"
-              />
+              <vue-editor v-model="formData.description" :editor-toolbar="editorToolbar" />
             </div>
             <div class="form">
               <h5>Lokasyon</h5>
@@ -304,64 +267,36 @@ export default {
                 class="margin-bottom-10"
                 type="text"
               >
-              <input
-                v-model="formData.apply_email"
-                placeholder="E-posta"
-                type="text"
-              >
+              <input v-model="formData.apply_email" placeholder="E-posta" type="text">
             </div>
             <div class="divider">
               <h3>Firma Bilgileri</h3>
             </div>
             <div class="form">
               <h5>Firma adı</h5>
-              <input
-                v-model="formData.company_name"
-                type="text"
-              >
+              <input v-model="formData.company_name" type="text">
             </div>
             <div class="form">
               <h5>Website</h5>
-              <input
-                v-model="formData.company_www"
-                type="text"
-                placeholder="https://"
-              >
+              <input v-model="formData.company_www" type="text" placeholder="https://">
             </div>
             <div class="form">
               <h5>Logo URL</h5>
-              <input
-                v-model="formData.company_logo"
-                type="text"
-                placeholder="https://"
-              >
+              <input v-model="formData.company_logo" type="text" placeholder="https://">
               <p class="note">
                 Logo kare olarak gösterilecektir.
               </p>
             </div>
             <div class="form">
               <h5>Twitter Kullanıcı adı <span>(opsiyonel)</span></h5>
-              <input
-                v-model="formData.company_twitter"
-                type="text"
-                placeholder="@twitter"
-              >
+              <input v-model="formData.company_twitter" type="text" placeholder="@twitter">
             </div>
             <div class="form">
               <h5>Linkedin URL <span>(opsiyonel)</span></h5>
-              <input
-                v-model="formData.company_linkedin"
-                type="text"
-                placeholder="https://"
-              >
+              <input v-model="formData.company_linkedin" type="text" placeholder="https://">
             </div>
-
             <div class="button-container">
-              <button
-                @click="showPreview"
-                class="button big margin-top-5"
-                type="button"
-              >
+              <button @click="showPreview" class="button big margin-top-5" type="button">
                 Önizleme <i class="fa fa-arrow-circle-right" />
               </button>
             </div>
