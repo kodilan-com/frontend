@@ -9,6 +9,11 @@ export default {
       required: false,
       default: false,
     },
+    searchable: {
+      type: Boolean,
+      required: false,
+      default: false,
+    }
   },
   data() {
     return {
@@ -37,7 +42,7 @@ export default {
   <multiselect
     v-model="selected"
     :options="locations"
-    :searchable="false"
+    :searchable="searchable"
     :close-on-select="true"
     :show-labels="false"
     placeholder="Şehir seçiniz..."
