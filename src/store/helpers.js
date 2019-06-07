@@ -3,8 +3,8 @@ export default {
     const DAY_IN_MS = 1000 * 60 * 60 * 24;
     const TODAY = new Date();
     const POINTS = {
-      fromSameCompany: 2,
-      createdInTenDays: 3,
+      createdInTenDays: 2,
+      fromSameCompany: 3,
       hasSamePostType: 4,
       hasSameTag: 5,
       inSameLocation: 6,
