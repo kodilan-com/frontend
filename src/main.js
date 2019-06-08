@@ -26,4 +26,4 @@ const isDeveloper = document.cookie.indexOf('is_dev') > -1;
 
 if (isLocal || isDeveloper) {
   window['ga-disable-UA-134225660-1'] = true;
-}
+};
