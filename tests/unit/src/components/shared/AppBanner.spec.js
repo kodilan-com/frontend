@@ -110,6 +110,6 @@ describe('AppBanner.vue', () => {
       wrapper.find('button.tag-search-btn').trigger('click');
 
       expect(wrapper.vm.handleSearch).toHaveBeenCalledTimes(1);
-    })
+    });
   });
 })
