@@ -99,6 +99,12 @@ describe('AppFooter.vue', () => {
       });
     }
 
+    it('should match the snapshot', () => {
+      const wrapper = shallowAppFooter();
+
+      expect(wrapper.vm.$el).toMatchSnapshot();
+    });
+
     it('should not render .has-widget div which its id is #footer, if subscribeClosed is true', () => {
       localStorage.getItem.mockReturnValue(true);
 

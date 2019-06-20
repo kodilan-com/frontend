@@ -1,7 +1,6 @@
 import { shallowMount, createLocalVue } from '@vue/test-utils';
 import AppBanner from '@/components/shared/AppBanner.vue';
 import queryUtils from '@/utils/query';
-import LocationSelect from '@/components/shared/LocationSelect.vue';
 
 describe('AppBanner.vue', () => {
   afterEach(() => {
@@ -68,33 +67,9 @@ describe('AppBanner.vue', () => {
       });
     });
 
-    it('should render 4 job position links for browse jobs', () => {
-      const jobCategoryLinks = wrapper.findAll('.browse-jobs:not(.next-line) .tag-header-tags')
-      const categories = jobCategoryLinks.wrappers.map(link => {
-        return link.text();
-      });
-
-      expect(jobCategoryLinks.length).toEqual(4);
-      expect(categories).toEqual([
-        'Frontend', 'Backend', 'Mobile', 'DevOps'
-      ])
+    it('should match the snapshot', () => {
+      expect(wrapper.vm.$el).toMatchSnapshot();
     });
-
-    it('should render 4 job location links for browse jobs', () => {
-      const jobCategoryLinks = wrapper.findAll('.browse-jobs.next-line .tag-header-tags')
-      const categories = jobCategoryLinks.wrappers.map(link => {
-        return link.text();
-      });
-
-      expect(jobCategoryLinks.length).toEqual(4);
-      expect(categories).toEqual([
-        'İstanbul', 'İzmir', 'Ankara', 'Remote'
-      ])
-    }),
-
-      it('should render LocationSelect component', () => {
-        expect(wrapper.find(LocationSelect).exists()).toEqual(true);
-      });
 
     it('should execute "handleSearch" method if enter is pressed in searchbox', () => {
       wrapper.setMethods({ handleSearch: jest.fn() })
