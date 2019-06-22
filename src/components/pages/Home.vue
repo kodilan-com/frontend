@@ -38,7 +38,7 @@ export default {
 .container.subscribe {
   margin-top: 8px;
 
-  .subscribe-widget * {
+  .subscribe-widget > * {
     display: block !important;
     width: 100% !important;
     margin-bottom: 8px !important;

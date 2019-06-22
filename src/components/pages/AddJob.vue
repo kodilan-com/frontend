@@ -7,6 +7,7 @@ import { normalizeUrl } from '../../utils/url';
 import autocomplete from '../../utils/autocomplete';
 import validationMixin from '../../mixins/validator';
 import { defaultEditorToolbar } from '../../config';
+import { JOB_TYPES_FOR_DROPDOWN } from '../../store/constants';
 
 export default {
   mixins: [validationMixin],
@@ -26,7 +27,7 @@ export default {
         apply_email: '',
         apply_url: '',
         location: '',
-        type: 1,
+        type: null,
         tags: '',
         company_name: '',
         company_email: '',
@@ -45,6 +46,8 @@ export default {
         location: { required: true, message: 'Lokasyon boş bırakılamaz.' },
         tags: { required: true, message: 'Etiketler boş bırakılamaz.' },
       },
+      type: JOB_TYPES_FOR_DROPDOWN[0],
+      typeOptions: JOB_TYPES_FOR_DROPDOWN,
     };
   },
   computed: {
@@ -84,6 +87,8 @@ export default {
 
         return this.showErrorDialog(errorBody);
       }
+
+      this.formData.type = this.type.id || -1;
 
       return this.togglePreview();
     },
@@ -161,10 +166,7 @@ export default {
         </div>
       </div>
     </div>
-    <div
-      v-if="isSaved"
-      class="notification success center"
-    >
+    <div v-if="isSaved" class="notification success center">
       <p>
         <span>İlanınız başarılı bir şekilde kaydedildi!</span><br><br>
         İlanınızın yayınlanabilmesi için gönderilen e-postadaki
@@ -178,19 +180,10 @@ export default {
           :preview-data="previewData"
         />
         <div class="container margin-top-40 margin-bottom-40">
-          <button
-            @click="togglePreview"
-            class="button big back-button"
-            type="button"
-          >
+          <button @click="togglePreview" class="button big back-button" type="button">
             <i class="fa fa-arrow-left" /> Geri dön
           </button>
-          <button
-            @click="save"
-            :disabled="isSaving"
-            class="button big save-button"
-            type="button"
-          >
+          <button @click="save" :disabled="isSaving" class="button big save-button" type="button">
             Kaydet <i class="fa fa-check" />
           </button>
         </div>
@@ -221,42 +214,29 @@ export default {
             </div>
             <div class="form">
               <h5>Pozisyon</h5>
-              <input
-                v-model="formData.position"
-                class="search-field"
-                type="text"
-              >
+              <input v-model="formData.position" class="search-field" type="text">
             </div>
             <div class="form">
               <h5>İlan Açıklaması</h5>
-              <vue-editor
-                v-model="formData.description"
-                :editor-toolbar="editorToolbar"
-              />
+              <vue-editor v-model="formData.description" :editor-toolbar="editorToolbar" />
             </div>
             <div class="form">
               <h5>Lokasyon</h5>
-              <location-select v-model="formData.location" :show-all="true" />
+              <location-select v-model="formData.location" :show-all="true" :searchable="true" />
               <p class="note">
                 Uzaktan çalışmaya elverişli bir ilansa Remote seçiniz.
               </p>
             </div>
             <div class="form">
               <h5>İlan Tipi</h5>
-              <select v-model="formData.type">
-                <option value="1">
-                  Tam zamanlı
-                </option>
-                <option value="2">
-                  Yarı zamanlı
-                </option>
-                <option value="3">
-                  Stajyer
-                </option>
-                <option value="4">
-                  Freelance
-                </option>
-              </select>
+              <multiselect
+                v-model="type"
+                :options="typeOptions"
+                label="text"
+                :searchable="false"
+                :close-on-select="true"
+                placeholder="Seçiniz..."
+              />
             </div>
             <div class="form">
               <h5>Etiketler</h5>
@@ -287,64 +267,36 @@ export default {
                 class="margin-bottom-10"
                 type="text"
               >
-              <input
-                v-model="formData.apply_email"
-                placeholder="E-posta"
-                type="text"
-              >
+              <input v-model="formData.apply_email" placeholder="E-posta" type="text">
             </div>
             <div class="divider">
               <h3>Firma Bilgileri</h3>
             </div>
             <div class="form">
               <h5>Firma adı</h5>
-              <input
-                v-model="formData.company_name"
-                type="text"
-              >
+              <input v-model="formData.company_name" type="text">
             </div>
             <div class="form">
               <h5>Website</h5>
-              <input
-                v-model="formData.company_www"
-                type="text"
-                placeholder="https://"
-              >
+              <input v-model="formData.company_www" type="text" placeholder="https://">
             </div>
             <div class="form">
               <h5>Logo URL</h5>
-              <input
-                v-model="formData.company_logo"
-                type="text"
-                placeholder="https://"
-              >
+              <input v-model="formData.company_logo" type="text" placeholder="https://">
               <p class="note">
                 Logo kare olarak gösterilecektir.
               </p>
             </div>
             <div class="form">
               <h5>Twitter Kullanıcı adı <span>(opsiyonel)</span></h5>
-              <input
-                v-model="formData.company_twitter"
-                type="text"
-                placeholder="@twitter"
-              >
+              <input v-model="formData.company_twitter" type="text" placeholder="@twitter">
             </div>
             <div class="form">
               <h5>Linkedin URL <span>(opsiyonel)</span></h5>
-              <input
-                v-model="formData.company_linkedin"
-                type="text"
-                placeholder="https://"
-              >
+              <input v-model="formData.company_linkedin" type="text" placeholder="https://">
             </div>
-
             <div class="button-container">
-              <button
-                @click="showPreview"
-                class="button big margin-top-5"
-                type="button"
-              >
+              <button @click="showPreview" class="button big margin-top-5" type="button">
                 Önizleme <i class="fa fa-arrow-circle-right" />
               </button>
             </div>

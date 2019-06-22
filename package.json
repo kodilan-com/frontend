@@ -7,7 +7,8 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
-    "test:unit": "vue-cli-service test:unit"
+    "test:unit": "vue-cli-service test:unit",
+    "test": "echo NULL"
   },
   "dependencies": {
     "async-validator": "^1.11.2",
@@ -20,6 +21,7 @@
     "vue-meta": "^1.6.0",
     "vue-router": "^3.0.6",
     "vue2-editor": "^2.7.2",
+    "vue-multiselect": "^2.1.6",
     "vuex": "^3.1.1"
   },
   "devDependencies": {

@@ -9,6 +9,16 @@ export default {
       required: false,
       default: false,
     },
+    searchable: {
+      type: Boolean,
+      required: false,
+      default: false,
+    },
+  },
+  data() {
+    return {
+      selected: null,
+    };
   },
   computed: {
     ...mapState(['availableLocations']),
@@ -18,8 +28,8 @@ export default {
   },
   methods: {
     ...mapActions(['fetchAvailableLocations']),
-    handleChange() {
-      this.$emit('input', this.$refs.select.value);
+    handleChange(value) {
+      this.$emit('input', value);
     },
   },
   created() {
@@ -29,20 +39,13 @@ export default {
 </script>
 
 <template>
-  <select
-    v-bind="$attrs"
-    ref="select"
-    @change="handleChange"
-  >
-    <option value="" selected>
-      Şehir seçiniz...
-    </option>
-    <option
-      v-for="location in locations"
-      :value="location"
-      :key="location"
-    >
-      {{ location }}
-    </option>
-  </select>
+  <multiselect
+    v-model="selected"
+    :options="locations"
+    :searchable="searchable"
+    :close-on-select="true"
+    :show-labels="false"
+    placeholder="Şehir seçiniz..."
+    @input="handleChange"
+  />
 </template>

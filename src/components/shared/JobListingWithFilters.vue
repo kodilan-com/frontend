@@ -2,6 +2,7 @@
 import JobListing from './JobListing';
 import LocationSelect from './LocationSelect';
 import queryUtils from '../../utils/query';
+import { JOB_TYPES_FOR_DROPDOWN } from '../../store/constants';
 
 export default {
   props: {
@@ -24,8 +25,10 @@ export default {
       params: {
         query: this.$route.query.query || '',
         location: this.$route.query.location || '',
-        type: this.$route.query.type || 0,
+        type: this.$route.query.type || 1,
       },
+      type: null,
+      typeOptions: JOB_TYPES_FOR_DROPDOWN,
     };
   },
   computed: {
@@ -43,6 +46,8 @@ export default {
   },
   methods: {
     search() {
+      this.params.type = this.type ? this.type.id : 0;
+
       const params = queryUtils.getParams(this.params);
 
       if (params) {
@@ -50,15 +55,22 @@ export default {
       }
     },
   },
+  created() {
+    const type = parseInt(this.$route.query.type, 10);
+
+    if (type) {
+      this.type = {
+        id: type,
+        text: this.typeOptions.find(o => o.id === type).text,
+      };
+    }
+  },
 };
 </script>
 
 <template>
   <section id="page">
-    <div
-      v-if="!isLoading"
-      id="titlebar"
-    >
+    <div v-if="!isLoading" id="titlebar">
       <div class="container">
         <div class="sixteen columns">
           <slot name="headerText" />
@@ -69,16 +81,10 @@ export default {
     <div class="container job-listing" :class="{ empty: !posts.length }">
       <div class="eleven columns">
         <div class="padding-right">
-          <job-listing
-            :is-loading="isLoading"
-            :posts="posts"
-          />
+          <job-listing :is-loading="isLoading" :posts="posts" />
         </div>
       </div>
-      <div
-        v-if="!isLoading"
-        class="five columns"
-      >
+      <div v-if="!isLoading" class="five columns">
         <div class="widget">
           <input
             v-model="params.query"
@@ -87,32 +93,18 @@ export default {
             class="ico-01"
             placeholder="Pozisyon adı, teknoloji adı"
           >
-          <location-select
-            v-model="params.location"
+          <location-select v-model="params.location" />
+          <multiselect
+            v-model="type"
+            :options="typeOptions"
+            label="text"
+            :searchable="false"
+            :close-on-select="true"
+            placeholder="Çalışma tipi seçiniz..."
           />
-          <select v-model="params.type">
-            <option value="0">
-              Çalışma tipi seçiniz...
-            </option>
-            <option value="1">
-              Tam zamanlı
-            </option>
-            <option value="2">
-              Yarı zamanlı
-            </option>
-            <option value="3">
-              Stajyer
-            </option>
-            <option value="4">
-              Freelance
-            </option>
-          </select>
         </div>
         <div class="button-right">
-          <button
-            @click="search"
-            class="button tag-search-btn"
-          >
+          <button @click="search" class="button tag-search-btn">
             Ara
           </button>
         </div>
