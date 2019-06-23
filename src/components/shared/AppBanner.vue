@@ -40,7 +40,11 @@ export default {
             placeholder="Pozisyon adı, teknoloji adı"
           >
           <div class="banner--location-select">
-            <location-select v-model="params.location" />
+            <location-select
+              v-model="params.location"
+              :value="params.location"
+              :searchable="true"
+            />
           </div>
           <button @click="handleSearch" class="tag-search-btn">
             <i class="fa fa-search tag-search-btn" />
