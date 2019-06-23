@@ -222,7 +222,12 @@ export default {
             </div>
             <div class="form">
               <h5>Lokasyon</h5>
-              <location-select v-model="formData.location" :value="formData.location" :show-all="true" :searchable="true" />
+              <location-select
+                v-model="formData.location"
+                :value="formData.location"
+                :show-all="true"
+                :searchable="true"
+              />
               <p class="note">
                 Uzaktan çalışmaya elverişli bir ilansa Remote seçiniz.
               </p>
