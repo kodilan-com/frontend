@@ -14,6 +14,11 @@ export default {
       required: false,
       default: false,
     },
+    value: {
+      type: String,
+      required: false,
+      default: null,
+    },
   },
   data() {
     return {
@@ -34,12 +39,14 @@ export default {
   },
   created() {
     this.fetchAvailableLocations();
+    if (this.value) this.selected = this.value;
   },
 };
 </script>
 
 <template>
   <multiselect
+    :class="{ 'is-searchable': searchable }"
     v-model="selected"
     :options="locations"
     :searchable="searchable"

@@ -480,6 +480,19 @@ body.boxed {
   .search-container .multiselect__option {
     font-size: 14px;
   }
+
+  .multiselect.is-searchable .multiselect__content-wrapper {
+    top: 36px;
+  }
+  .multiselect.is-searchable.multiselect--above .multiselect__content-wrapper {
+    bottom: 36px;
+  }
+  .search-container .multiselect.is-searchable .multiselect__content-wrapper {
+    top: 36px;
+  }
+  .search-container .multiselect.is-searchable.multiselect--above .multiselect__content-wrapper {
+    bottom: 36px;
+  }  
 }
 
 /* #Mobile (Landscape)

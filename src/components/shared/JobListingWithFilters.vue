@@ -93,7 +93,7 @@ export default {
             class="ico-01"
             placeholder="Pozisyon adı, teknoloji adı"
           >
-          <location-select v-model="params.location" />
+          <location-select v-model="params.location" :value="params.location" :searchable="true" />
           <multiselect
             v-model="type"
             :options="typeOptions"
