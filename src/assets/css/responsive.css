@@ -492,7 +492,10 @@ body.boxed {
   }
   .search-container .multiselect.is-searchable.multiselect--above .multiselect__content-wrapper {
     bottom: 36px;
-  }  
+  }
+  .job-overview {
+    margin-top: 24px;
+  }
 }
 
 /* #Mobile (Landscape)
