@@ -2,6 +2,7 @@
 import { mapState, mapActions } from 'vuex';
 import JobListing from './JobListing';
 import JobPeriodSelector from './JobPeriodSelector';
+import { PERIODS } from '../../store/constants';
 
 export default {
   components: {
@@ -17,7 +18,7 @@ export default {
     ...mapState(['recentPosts', 'activePeriod']),
   },
   methods: {
-    ...mapActions(['fetchRecentPosts']),
+    ...mapActions(['fetchRecentPosts', 'setPeriod']),
     fetch() {
       this.isLoading = true;
 
@@ -26,14 +27,21 @@ export default {
           this.isLoading = false;
         });
     },
-  },
-  watch: {
-    activePeriod() {
+    handlerSetPeriod() {
+      const period = PERIODS.find(p => p.slug === this.$route.params.slug);
+      if (period) {
+        this.setPeriod(period.type);
+      }
       this.fetch();
     },
   },
+  watch: {
+    $route(to, from) {
+      if (to.params.slug !== from.params.slug) this.handlerSetPeriod();
+    },
+  },
   created() {
-    this.fetch();
+    this.handlerSetPeriod();
   },
 };
 </script>

@@ -14,11 +14,26 @@ export const JOB_TYPE_MAP = {
   4: 'Freelance',
 };
 
-export const PERIODS = {
-  daily: 'daily',
-  weekly: 'weekly',
-  monthly: 'monthly',
-};
+export const PERIODS = [
+  {
+    type: 'daily',
+    text: 'Bugün',
+    slug: 'bugun',
+    isDefault: false,
+  },
+  {
+    type: 'weekly',
+    text: 'Bu hafta',
+    slug: 'bu-hafta',
+    isDefault: false,
+  },
+  {
+    type: 'monthly',
+    text: 'Bu ay',
+    slug: 'bu-ay',
+    isDefault: true,
+  },
+];
 
 export const JOB_TYPE_SLUG_TO_ID_MAP = {
   'tam-zamanli': 1,

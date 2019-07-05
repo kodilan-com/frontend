@@ -11,6 +11,7 @@ import Confirmation from '@/components/pages/Confirmation';
 import SubscribeLanding from '@/components/pages/SubscribeLanding';
 import NotFound from '@/components/pages/NotFound';
 import CompanyPosts from '@/components/pages/CompanyPosts';
+import { PERIODS } from '../store/constants';
 
 Vue.use(Router);
 Vue.use(Meta);
@@ -25,6 +26,19 @@ const router = new Router({
       meta: {
         hasBanner: true,
       },
+    },
+    {
+      path: '/:slug',
+      name: 'HomePeriod',
+      component: Home,
+      meta: {
+        hasBanner: true,
+      },
+      beforeEnter: (to, from, next) => (
+        PERIODS.find(
+          period => period.slug === to.params.slug,
+        ) ? next() : router.push({ name: 'NotFound' })
+      ),
     },
     {
       path: '/ilan-ekle',
@@ -85,9 +99,13 @@ const router = new Router({
       component: SubscribeLanding,
     },
     {
-      path: '*',
+      path: '/404',
       name: 'NotFound',
       component: NotFound,
+    },
+    {
+      path: '*',
+      redirect: '/404',
     },
   ],
   scrollBehavior(to, from, savedPosition) {
