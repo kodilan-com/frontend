@@ -19,13 +19,11 @@ export const PERIODS = [
     type: 'daily',
     text: 'Bugün',
     slug: 'bugun',
-    isDefault: false,
   },
   {
     type: 'weekly',
     text: 'Bu hafta',
     slug: 'bu-hafta',
-    isDefault: false,
   },
   {
     type: 'monthly',
