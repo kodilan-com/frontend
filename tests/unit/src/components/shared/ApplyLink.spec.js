@@ -1,16 +1,14 @@
-import { shallowMount, createLocalVue } from '@vue/test-utils';
-import ApplyLink from '@/components/shared/ApplyLink.vue';
+import { shallowMount } from '@vue/test-utils';
+import ApplyLink from '@/components/shared/ApplyLink';
 
 describe('ApplyLink.vue', () => {
-  const generateWrapper = (propsData = {}, computed) => {
-    return shallowMount(ApplyLink, {
-      propsData,
-      computed,
-      stubs: [
-        'router-link'
-      ]
-    });
-  }
+  const generateWrapper = (propsData = {}, computed) => shallowMount(ApplyLink, {
+    propsData,
+    computed,
+    stubs: [
+      'router-link',
+    ],
+  });
 
   describe('computed', () => {
     describe('mailToUrl', () => {
@@ -19,16 +17,16 @@ describe('ApplyLink.vue', () => {
         const wrapper = generateWrapper({
           post: {
             company: {
-              name: 'Test Company'
+              name: 'Test Company',
             },
             apply_email: 'Email',
-            position: 'Test Position'
-          }
+            position: 'Test Position',
+          },
         });
 
         expect(wrapper.vm.mailToUrl).toEqual(expected);
       });
-    })
+    });
   });
 
   describe('template', () => {
@@ -36,10 +34,10 @@ describe('ApplyLink.vue', () => {
       const wrapper = generateWrapper(
         {
           post: {
-            apply_email: 'dummy'
-          }
+            apply_email: 'dummy',
+          },
         },
-        { mailToUrl: () => 'test' }
+        { mailToUrl: () => 'test' },
       );
 
       expect(wrapper.find('a.tag-apply-link').exists()).toBe(true);
@@ -48,9 +46,9 @@ describe('ApplyLink.vue', () => {
     it('should not render email apply link, if apply_email is not given in post props data', () => {
       const wrapper = generateWrapper(
         {
-          post: {}
+          post: {},
         },
-        { mailToUrl: () => 'test' }
+        { mailToUrl: () => 'test' },
       );
 
       expect(wrapper.find('a.tag-apply-link').exists()).toBe(false);
@@ -60,10 +58,10 @@ describe('ApplyLink.vue', () => {
       const wrapper = generateWrapper(
         {
           post: {
-            apply_url: 'url'
-          }
+            apply_url: 'url',
+          },
         },
-        { mailToUrl: () => 'test' }
+        { mailToUrl: () => 'test' },
       );
       const aTag = wrapper.find('a.tag-apply-link');
 
@@ -74,9 +72,9 @@ describe('ApplyLink.vue', () => {
     it('should not render url apply link, if apply_url is not given in post props data', () => {
       const wrapper = generateWrapper(
         {
-          post: {}
+          post: {},
         },
-        { mailToUrl: () => 'test' }
+        { mailToUrl: () => 'test' },
       );
 
       expect(wrapper.find('a.tag-apply-link').exists()).toBe(false);
@@ -88,10 +86,10 @@ describe('ApplyLink.vue', () => {
         {
           post: {
             apply_url: 'url',
-            apply_email: 'email'
-          }
+            apply_email: 'email',
+          },
         },
-        { mailToUrl: () => 'test' }
+        { mailToUrl: () => 'test' },
       );
       const aTag = wrapper.findAll('a.tag-apply-link').at(1);
 
@@ -105,9 +103,9 @@ describe('ApplyLink.vue', () => {
         {
           post: {
             apply_url: 'url',
-          }
+          },
         },
-        { mailToUrl: () => 'test' }
+        { mailToUrl: () => 'test' },
       );
       const aTag = wrapper.find('a.tag-apply-link');
 
@@ -116,4 +114,4 @@ describe('ApplyLink.vue', () => {
       expect(aTag.find('i.fa-link').exists()).toBe(false);
     });
   });
-})
+});

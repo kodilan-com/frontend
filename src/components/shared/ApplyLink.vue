@@ -37,7 +37,7 @@ export default {
     >
       <i v-if="post.apply_email" class="fa fa-link" /> Site üzerinden başvur
     </a>
-    <span class="small">  
+    <span class="small">
       İlan başvurunuzda <router-link to="/">kodilan.com</router-link>'a referans vererek
       bize katkıda bulunabilirsiniz.
     </span>

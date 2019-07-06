@@ -1,21 +1,18 @@
-import { shallowMount, createLocalVue } from '@vue/test-utils';
-import AppHeader from '@/components/shared/AppHeader.vue';
-import AppBanner from '@/components/shared/AppBanner.vue';
-import AppTopbar from '@/components/shared/AppTopbar.vue';
+import { shallowMount } from '@vue/test-utils';
+import AppHeader from '@/components/shared/AppHeader';
+import AppBanner from '@/components/shared/AppBanner';
 
-describe('AppBanner.vue', () => {
-  const generateWrapper = (propsData = {}) => {
-    return shallowMount(AppHeader, {
-      propsData,
-      stubs: [
-        'router-link'
-      ]
-    });
-  }
+describe('AppBanner', () => {
+  const generateWrapper = (propsData = {}) => shallowMount(AppHeader, {
+    propsData,
+    stubs: [
+      'router-link',
+    ],
+  });
   describe('props', () => {
     it('should render AppBanner component if withBanner props is given as true', () => {
       const wrapper = generateWrapper({
-        withBanner: true
+        withBanner: true,
       });
 
       expect(wrapper.find(AppBanner).exists()).toBe(true);
@@ -23,7 +20,7 @@ describe('AppBanner.vue', () => {
 
     it('should not render AppBanner component if withBanner props is given as false', () => {
       const wrapper = generateWrapper({
-        withBanner: false
+        withBanner: false,
       });
 
       expect(wrapper.find(AppBanner).exists()).toBe(false);
@@ -44,4 +41,4 @@ describe('AppBanner.vue', () => {
       expect(wrapper.vm.$el).toMatchSnapshot();
     });
   });
-})
+});

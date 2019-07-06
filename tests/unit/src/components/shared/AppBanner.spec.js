@@ -1,5 +1,5 @@
-import { shallowMount, createLocalVue } from '@vue/test-utils';
-import AppBanner from '@/components/shared/AppBanner.vue';
+import { shallowMount } from '@vue/test-utils';
+import AppBanner from '@/components/shared/AppBanner';
 import queryUtils from '@/utils/query';
 
 describe('AppBanner.vue', () => {
@@ -12,13 +12,13 @@ describe('AppBanner.vue', () => {
       const defaultComponentState = {
         params: {
           query: '',
-          location: ''
-        }
+          location: '',
+        },
       };
       const componentState = AppBanner.data();
 
       expect(defaultComponentState).toEqual(componentState);
-    })
+    });
   });
 
   describe('methods', () => {
@@ -30,32 +30,36 @@ describe('AppBanner.vue', () => {
           stubs: ['router-link'],
           mocks: {
             $router: {
-              push: jest.fn()
-            }
-          }
+              push: jest.fn(),
+            },
+          },
         });
+      });
+
+      afterEach(() => {
+        wrapper.destroy();
       });
 
       it('should not push to router the "ilan-ara" path, if "params" is false', () => {
         queryUtils.getParams = jest.fn(() => false);
 
         wrapper.vm.handleSearch();
-        queryUtils.getParams.mockRestore()
+        queryUtils.getParams.mockRestore();
         expect(wrapper.vm.$router.push).not.toHaveBeenCalled();
-      })
+      });
 
       it('should push to router the "ilan-ara" path with "test-param" query string, if "params" is return "test-param"', () => {
-        queryUtils.getParams = jest.fn(() => "test-params");
+        queryUtils.getParams = jest.fn(() => 'test-params');
 
         wrapper.vm.handleSearch();
 
         expect(wrapper.vm.$router.push).toHaveBeenCalledTimes(1);
         expect(wrapper.vm.$router.push).toBeCalledWith({
           path: 'ilan-ara',
-          query: 'test-params'
+          query: 'test-params',
         });
-      })
-    })
+      });
+    });
   });
 
   describe('template', () => {
@@ -67,24 +71,28 @@ describe('AppBanner.vue', () => {
       });
     });
 
+    afterEach(() => {
+      wrapper.destroy();
+    });
+
     it('should match the snapshot', () => {
       expect(wrapper.vm.$el).toMatchSnapshot();
     });
 
     it('should execute "handleSearch" method if enter is pressed in searchbox', () => {
-      wrapper.setMethods({ handleSearch: jest.fn() })
-      
+      wrapper.setMethods({ handleSearch: jest.fn() });
+
       wrapper.find('input.ico-01').trigger('keypress.enter');
 
       expect(wrapper.vm.handleSearch).toHaveBeenCalledTimes(1);
     });
 
     it('should execute "handleSearch" method if click the search button', () => {
-      wrapper.setMethods({ handleSearch: jest.fn() })
+      wrapper.setMethods({ handleSearch: jest.fn() });
 
       wrapper.find('button.tag-search-btn').trigger('click');
 
       expect(wrapper.vm.handleSearch).toHaveBeenCalledTimes(1);
     });
   });
-})
+});

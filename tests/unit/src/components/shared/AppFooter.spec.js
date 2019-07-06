@@ -1,46 +1,37 @@
-import { shallowMount, createLocalVue } from '@vue/test-utils';
-import AppFooter from '@/components/shared/AppFooter.vue';
+import { shallowMount } from '@vue/test-utils';
+import AppFooter from '@/components/shared/AppFooter';
 
 describe('AppFooter.vue', () => {
   afterEach(() => {
     jest.clearAllMocks();
   });
 
-  beforeAll(() => {
-    Object.defineProperty(window, 'localStorage', {
-      value: {
-        getItem: jest.fn(),
-        writable: true
-      }
-    })
-  });
-
   describe('data', () => {
     it('should have "isBackToTopVisible" as false value', () => {
       const componentState = AppFooter.data();
-      
+
       expect(componentState.isBackToTopVisible).toEqual(false);
     });
 
-    it('should have "isFooterSubscribeVisible" as true value if "subscribeClosed" value is falsey', () => {
+    it('should have "isFooterSubscribeVisible" as true value if "subscribeClosed" value is false', () => {
       const componentState = AppFooter.data();
-      
+
       expect(componentState.isFooterSubscribeVisible).toEqual(true);
     });
 
-    it('should have "isFooterSubscribeVisible" as true value if "subscribeClosed" value is falsey', () => {
+    it('should have "isFooterSubscribeVisible" as true value if "subscribeClosed" value is false', () => {
       localStorage.getItem.mockReturnValue(false);
-      
+
       const componentState = AppFooter.data();
-      
+
       expect(componentState.isFooterSubscribeVisible).toEqual(true);
     });
 
     it('should have "isFooterSubscribeVisible" as false value if "subscribeClosed" value is true', () => {
       localStorage.getItem.mockReturnValue(true);
-      
+
       const componentState = AppFooter.data();
-      
+
       expect(componentState.isFooterSubscribeVisible).toEqual(false);
     });
   });
@@ -49,8 +40,8 @@ describe('AppFooter.vue', () => {
     describe('handleScroll', () => {
       const setScrollY = (value) => {
         Object.defineProperty(window, 'scrollY', {
-          value: value,
-          writable: true
+          value,
+          writable: true,
         });
       };
 
@@ -93,14 +84,20 @@ describe('AppFooter.vue', () => {
   });
 
   describe('templates', () => {
-    const shallowAppFooter = () => {
-      return shallowMount(AppFooter, {
+    let wrapper;
+
+    const generateWrapper = () => {
+      wrapper = shallowMount(AppFooter, {
         stubs: ['router-link'],
       });
-    }
+    };
+
+    afterEach(() => {
+      wrapper.destroy();
+    });
 
     it('should match the snapshot', () => {
-      const wrapper = shallowAppFooter();
+      generateWrapper();
 
       expect(wrapper.vm.$el).toMatchSnapshot();
     });
@@ -108,35 +105,35 @@ describe('AppFooter.vue', () => {
     it('should not render .has-widget div which its id is #footer, if subscribeClosed is true', () => {
       localStorage.getItem.mockReturnValue(true);
 
-      const wrapper = shallowAppFooter();
+      generateWrapper();
       const footer = wrapper.find('#footer');
 
-      expect(footer.classes('has-widget')).toBe(false)
+      expect(footer.classes('has-widget')).toBe(false);
     });
 
     it('should render .has-widget div which its id is #footer, if subscribeClosed is false', () => {
       localStorage.getItem.mockReturnValue(false);
 
-      const wrapper = shallowAppFooter();
+      generateWrapper();
       const footer = wrapper.find('#footer');
 
-      expect(footer.classes('has-widget')).toBe(true )
+      expect(footer.classes('has-widget')).toBe(true);
     });
 
     it('should show "backtotop" div, if isBackToTopVisible is true', () => {
-      const wrapper = shallowAppFooter();
+      generateWrapper();
 
-      wrapper.setData({isBackToTopVisible: true});
+      wrapper.setData({ isBackToTopVisible: true });
 
       expect(wrapper.find('#backtotop').exists()).toBe(true);
     });
 
     it('should not show "backtotop" div, if isBackToTopVisible is false', () => {
-      const wrapper = shallowAppFooter();
+      generateWrapper();
 
-      wrapper.setData({isBackToTopVisible: false});
+      wrapper.setData({ isBackToTopVisible: false });
 
       expect(wrapper.find('#backtotop').exists()).toBe(false);
     });
   });
-})
+});

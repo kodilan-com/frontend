@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`AppBanner.vue template should match the snapshot 1`] = `
+exports[`AppBanner template should match the snapshot 1`] = `
 <section>
   <app-topbar-stub />
    
