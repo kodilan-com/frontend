@@ -31,6 +31,9 @@ const router = new Router({
       children: PERIODS.map(period => ({
         path: period.slug,
         component: Home,
+        meta: {
+          period: period.type,
+        },
       })),
     },
     {
