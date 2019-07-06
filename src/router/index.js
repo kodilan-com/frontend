@@ -33,6 +33,7 @@ const router = new Router({
         component: Home,
         meta: {
           period: period.type,
+          hasBanner: true,
         },
       })),
     },
