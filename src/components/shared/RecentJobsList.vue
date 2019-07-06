@@ -27,7 +27,7 @@ export default {
           this.isLoading = false;
         });
     },
-    handlerSetPeriod() {
+    setPeriodHandler() {
       const period = PERIODS.find(p => p.type === this.$route.meta.period);
       if (period) {
         this.setPeriod(period.type);
@@ -37,11 +37,11 @@ export default {
   },
   watch: {
     $route(to, from) {
-      if (to.meta.period !== from.meta.period) this.handlerSetPeriod();
+      if (to.meta.period !== from.meta.period) this.setPeriodHandler();
     },
   },
   created() {
-    this.handlerSetPeriod();
+    this.setPeriodHandler();
   },
 };
 </script>
