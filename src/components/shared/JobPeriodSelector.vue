@@ -29,9 +29,10 @@ export default {
       </li>
     </ul>
     <div class="ul tabs-nav is-right">
-      <li>
+      <li class="active">
         <router-link to="/ilanlar">
-          Tüm İlanlar
+          <i class="fa fa-plus-circle"></i>
+          Tüm İlanları Gör
         </router-link>
       </li>
     </div>
@@ -40,12 +41,19 @@ export default {
 
 <style lang="scss" scoped>
   section {
-    display: flex;
-    justify-content: space-between;
+    @media (min-width: 768px) {
+      display: flex;
+      justify-content: space-between;
+    }
     .tabs-nav {
       width: auto;
       @media (max-width: 767px) {
+        display: flex;
+        margin-bottom: 8px;
         li {
+          float: none;
+          flex: 1;
+          text-align: center;
           line-height: 40px;
           a {
             padding: 0 12px;
