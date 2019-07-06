@@ -16,6 +16,7 @@ import { PERIODS } from '../store/constants';
 Vue.use(Router);
 Vue.use(Meta);
 
+
 const router = new Router({
   mode: 'history',
   routes: [
@@ -26,19 +27,11 @@ const router = new Router({
       meta: {
         hasBanner: true,
       },
-    },
-    {
-      path: '/:slug',
-      name: 'HomePeriod',
-      component: Home,
-      meta: {
-        hasBanner: true,
-      },
-      beforeEnter: (to, from, next) => (
-        PERIODS.find(
-          period => period.slug === to.params.slug,
-        ) ? next() : router.push({ name: 'NotFound' })
-      ),
+      // For SEO concern, we want to have period slugs as a root route
+      children: PERIODS.map(period => ({
+        path: period.slug,
+        component: Home,
+      })),
     },
     {
       path: '/ilan-ekle',
