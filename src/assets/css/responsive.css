@@ -589,3 +589,7 @@ body.boxed {
   width: 0;
   height: 0;
 }
+
+.job-listing {
+  margin-bottom: 50px;
+}
