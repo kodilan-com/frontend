@@ -47,27 +47,18 @@ export default {
 
       const { frequency, name, email } = this;
 
-      this.subscribe({
-        frequency,
-        name,
-        email,
-      })
+      this.subscribe({ frequency, name, email })
         .then(() => {
           this.showDialog('Email listesine kaydınız gerçekleştirildi.');
           this.close();
         })
         .catch((e) => {
-          const details = Object.values(e.response.data.errors || [])
-            .map(r => `<li>${r[0]}</li>`);
+          const details = Object.values(e.response.data.errors || []).map(r => `<li>${r[0]}</li>`);
           this.showDialog('Hata: Kaydınız gerçekleştirilemedi.', `<ul>${details || ''}</ul>`);
         });
     },
     showDialog(title, text, buttons = [{ title: 'Kapat' }]) {
-      this.$modal.show('dialog', {
-        title,
-        text,
-        buttons,
-      });
+      this.$modal.show('dialog', { title, text, buttons });
     },
     close() {
       this.isClosed = true;
@@ -112,11 +103,12 @@ export default {
 </template>
 
 <style lang="scss">
-  .subscribe-widget {
-    padding: 10px;
-    box-sizing: border-box;
-    font-size: 16px;
-    text-align: center;
+.subscribe-widget {
+  padding: 10px;
+  box-sizing: border-box;
+  font-size: 16px;
+  text-align: center;
+
 
   .subscribe--select {
     text-align: left;
@@ -135,83 +127,83 @@ export default {
     border-top: 1px solid #474646;
     line-height: 50px;
 
-      input[type=text] {
-        margin-right: 6px;
-        width: 120px;
-        display: inline;
-
-        &.username {
-          margin-left: 6px;
-        }
-      }
-
-      select,
-      .subscribe--select {
-        display: inline-block;
-        width: 100px;
-        margin: 0 6px;
-        color: #202020;
-      }
-
-      .close {
-        display: block;
-        color: #5c5c5c;
-        font-size: 12px;
-        position: absolute;
-        top: 10px;
-        right: 10px;
-        line-height: 12px;
-        cursor: pointer;
-
-        &:hover {
-          color: #ccc;
-        }
-      }
-    }
-
     input[type=text] {
-      padding: 11px 10px;
+      margin-right: 6px;
+      width: 120px;
+      display: inline;
+
+      &.username {
+        margin-left: 6px;
+      }
     }
 
-    select {
-      height: 42px;
+    select,
+    .subscribe--select {
+      display: inline-block;
+      width: 100px;
+      margin: 0 6px;
+      color: #202020;
     }
 
-    button {
+    .close {
+      display: block;
+      color: #5c5c5c;
+      font-size: 12px;
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      line-height: 12px;
+      cursor: pointer;
+
       &:hover {
-        background-color: #26ae61;
+        color: #ccc;
       }
     }
   }
 
-  @media only screen and (max-width: 768px) {
-    #footer {
-      padding-bottom: 10px !important;
-    }
-
-    .subscribe-widget.fixed {
-      display: none;
-    }
+  input[type=text] {
+    padding: 11px 10px;
   }
 
-  @media only screen and (max-width: 998px) {
-    .subscribe-widget.fixed {
-      height: 80px;
-    }
-    .subscribe-widget form {
-      margin-top: 10px;
-    }
-    .subscribe-widget.fixed form span.close {
-      top: 7px;
-    }
+  select {
+    height: 42px;
   }
 
-  @media only screen and (min-width: 990px) {
-
-    .subscribe-widget input[type=text] {
-      width: 140px !important;
+  button {
+    &:hover {
+      background-color: #26ae61;
     }
   }
+}
+
+@media only screen and (max-width: 768px) {
+  #footer {
+    padding-bottom: 10px !important;
+  }
+
+  .subscribe-widget.fixed {
+    display: none;
+  }
+}
+@media only screen and (max-width: 989px) {
+  .subscribe-widget.fixed {
+    height: 80px;
+  }
+
+  .subscribe-widget form {
+    margin-top: 10px;
+  }
+
+  .subscribe-widget.fixed form span.close {
+    top: 7px;
+  }
+}
+
+@media only screen and (min-width: 990px) {
+  .subscribe-widget input[type=text] {
+    width: 140px !important;
+  }
+}
 
 @media only screen and (min-width: 1180px) {
   .subscribe-widget input[type=text] {
