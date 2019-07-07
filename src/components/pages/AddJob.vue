@@ -113,6 +113,7 @@ export default {
       this.savePost(this.getPostData())
         .then(() => {
           this.isSaved = true;
+          this.saveToLocalStorage();
         })
         .catch((e) => {
           const errors = this.parseErrors(e);
@@ -142,12 +143,39 @@ export default {
 
       return `<ul>${details.join('')}</ul>`;
     },
+    saveToLocalStorage() {
+      const postData = this.getPostData();
+      const storageData = {
+        apply_email: postData.apply_email,
+        apply_url: postData.apply_url,
+        location: postData.location,
+        type: postData.type,
+        company_name: postData.company_name,
+        company_email: postData.company_email,
+        company_logo: postData.company_logo,
+        company_www: postData.company_www,
+        company_twitter: postData.company_twitter,
+        company_linkedin: postData.company_linkedin,
+      };
+      localStorage.setItem('listingData', JSON.stringify(storageData));
+    },
+    readFromLocalStorage() {
+      let storageData;
+      try {
+        storageData = JSON.parse(localStorage.getItem('listingData'));
+      } catch (e) {
+        storageData = {};
+        localStorage.setItem('listingData', JSON.stringify({}));
+      }
+      this.formData = { ...this.formData, ...storageData };
+    },
   },
   mounted() {
     this.fetchTags()
       .then(() => {
         autocomplete.init(this.$refs.tagsInput, this.autocompleteTags);
       });
+    this.readFromLocalStorage();
   },
 };
 </script>
