@@ -44,7 +44,7 @@ export default {
     ...mapActions(['subscribe']),
     handleSubscribe() {
       this.frequency = this.frequencyModel.value;
-
+      console.log("Handling subscribe");
       const { frequency, name, email } = this;
 
       this.subscribe({ frequency, name, email })
@@ -56,6 +56,9 @@ export default {
           const details = Object.values(e.response.data.errors || []).map(r => `<li>${r[0]}</li>`);
           this.showDialog('Hata: Kaydınız gerçekleştirilemedi.', `<ul>${details || ''}</ul>`);
         });
+    },
+    handleEnter(){
+      this.handleSubscribe();
     },
     showDialog(title, text, buttons = [{ title: 'Kapat' }]) {
       this.$modal.show('dialog', { title, text, buttons });
@@ -86,7 +89,7 @@ export default {
     </div>
     <span>olarak almak için</span>
     <input type="text" v-model="name" placeholder="İsim soyisim" class="username">
-    <input @keyup.enter="handleSubscribe" type="text" v-model="email" placeholder="Email">
+    <input @keyup.enter="handleEnter" type="text" v-model="email" placeholder="Email">
     <button class="button" @click="handleSubscribe">
       Abone ol!
     </button>
