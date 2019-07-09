@@ -146,10 +146,6 @@ export default {
     saveToLocalStorage() {
       const postData = this.getPostData();
       const storageData = {
-        apply_email: postData.apply_email,
-        apply_url: postData.apply_url,
-        location: postData.location,
-        type: postData.type,
         company_name: postData.company_name,
         company_email: postData.company_email,
         company_logo: postData.company_logo,
@@ -160,13 +156,7 @@ export default {
       localStorage.setItem('listingData', JSON.stringify(storageData));
     },
     readFromLocalStorage() {
-      let storageData;
-      try {
-        storageData = JSON.parse(localStorage.getItem('listingData'));
-      } catch (e) {
-        storageData = {};
-        localStorage.setItem('listingData', JSON.stringify({}));
-      }
+      const storageData = JSON.parse(localStorage.getItem('listingData'));
       this.formData = { ...this.formData, ...storageData };
     },
   },
