@@ -56,7 +56,7 @@ export default {
           this.showDialog('Hata: Kaydınız gerçekleştirilemedi.', `<ul>${details || ''}</ul>`);
         });
     },
-    handleEnter(){
+    handleEnter() {
       this.handleSubscribe();
     },
     showDialog(title, text, buttons = [{ title: 'Kapat' }]) {
@@ -88,8 +88,8 @@ export default {
     </div>
     <span>olarak almak için</span>
     <input type="text" v-model="name" placeholder="İsim soyisim" class="username">
-    <input @keyup.enter="handleEnter" type="text" v-model="email" placeholder="Email">
-    <button class="button" @click="handleSubscribe">
+    <input @keyup.enter.once="handleEnter" type="text" v-model="email" placeholder="Email">
+    <button class="button" @click.once="handleSubscribe">
       Abone ol!
     </button>
     <span
