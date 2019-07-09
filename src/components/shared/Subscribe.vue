@@ -74,31 +74,29 @@ export default {
     :class="{ fixed: fixed }"
     class="subscribe-widget"
   >
-    <form @submit.prevent="handleSubscribe">
-      <span>Güncel iş ilanlarını</span>
-      <div class="subscribe--select">
-        <multiselect
-          v-model="frequencyModel"
-          :options="frequencyOptions"
-          label="text"
-          :searchable="false"
-          :close-on-select="true"
-        />
-      </div>
-      <span>olarak almak için</span>
-      <input type="text" v-model="name" placeholder="İsim soyisim" class="username">
-      <input type="text" v-model="email" placeholder="Email">
-      <button class="button" @click="handleSubscribe">
-        Abone ol!
-      </button>
-      <span
-        v-if="fixed"
-        class="close"
-        @click="close"
-      >
-        Bir daha gösterme :(
-      </span>
-    </form>
+    <span>Güncel iş ilanlarını</span>
+    <div class="subscribe--select">
+      <multiselect
+        v-model="frequencyModel"
+        :options="frequencyOptions"
+        label="text"
+        :searchable="false"
+        :close-on-select="true"
+      />
+    </div>
+    <span>olarak almak için</span>
+    <input type="text" v-model="name" placeholder="İsim soyisim" class="username">
+    <input @keyup.enter="handleSubscribe" type="text" v-model="email" placeholder="Email">
+    <button class="button" @click="handleSubscribe">
+      Abone ol!
+    </button>
+    <span
+      v-if="fixed"
+      class="close"
+      @click="close"
+    >
+      Bir daha gösterme :(
+    </span>
   </div>
 </template>
 
