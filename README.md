@@ -34,6 +34,14 @@ Please take a look at the [CHANGELOG](https://gitlab.com/kodilan/frontend/blob/m
 - [Emir Karşıyakalı](https://twitter.com/emirkarsiyakali)
 - [Didem Acet](https://twitter.com/didemacet)
 - [Erdoğan Bulut](https://github.com/erdoganbulut)
+- [Mehmet Ersan Uzun](https://github.com/mersanuzun)
+- [Tugay Yaldız](https://github.com/TugayYaldiz)
+- [Olga Bulat](https://github.com/obulat)
+- [Barış Kartal](https://github.com/bskl)
+- [Ali Ertan Biberoğlu](https://github.com/AliBiberoglu)
+- [Ali Gören](https://github.com/aligoren)
+- [Furkan Köse](https://github.com/furkankose)
+- [İlker Demir](https://github.com/ilker0)
 
 ### More content
 
