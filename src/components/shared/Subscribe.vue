@@ -43,6 +43,7 @@ export default {
   methods: {
     ...mapActions(['subscribe']),
     handleSubscribe() {
+      this.isClosed = true;
       this.frequency = this.frequencyModel.value;
       const { frequency, name, email } = this;
 
@@ -54,6 +55,7 @@ export default {
         .catch((e) => {
           const details = Object.values(e.response.data.errors || []).map(r => `<li>${r[0]}</li>`);
           this.showDialog('Hata: Kaydınız gerçekleştirilemedi.', `<ul>${details || ''}</ul>`);
+          this.isClosed = false;
         });
     },
     handleEnter() {
