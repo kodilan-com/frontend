@@ -44,7 +44,6 @@ export default {
     ...mapActions(['subscribe']),
     handleSubscribe() {
       this.frequency = this.frequencyModel.value;
-      console.log("Handling subscribe");
       const { frequency, name, email } = this;
 
       this.subscribe({ frequency, name, email })
