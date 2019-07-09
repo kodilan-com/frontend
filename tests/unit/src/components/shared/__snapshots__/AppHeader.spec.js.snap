@@ -1,0 +1,93 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AppBanner template should match the snapshot 1`] = `
+<section>
+  <app-topbar-stub />
+   
+  <header
+    class="app-header sticky-header"
+  >
+    <div
+      class="container"
+    >
+      <div
+        class="sixteen columns"
+      >
+        <div
+          id="logo"
+        >
+          <h2>
+            <router-link-stub
+              to="/"
+            >
+              <span>
+                { 
+              </span>
+              kod
+              <span>
+                , 
+              </span>
+              ilan
+              <span>
+                 }
+              </span>
+            </router-link-stub>
+          </h2>
+        </div>
+         
+        <nav
+          class="menu"
+          id="navigation"
+        >
+          <ul
+            class="responsive float-right"
+          >
+            <li
+              class="header-subs"
+            >
+              <router-link-stub
+                to="/abone-ol"
+              >
+                <i
+                  class="fa fa-bullhorn"
+                />
+                 
+                <span>
+                  
+                  Abone ol!
+                
+                </span>
+              </router-link-stub>
+            </li>
+             
+            <li>
+              <router-link-stub
+                class="add-post button tag-create-post"
+                to="/ilan-ekle"
+              >
+                <i
+                  class="fa fa-plus"
+                />
+                 
+                <span
+                  class="tag-create-post"
+                >
+                  
+                  Ücretsiz İlan Ekle
+                
+                </span>
+              </router-link-stub>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </header>
+   
+  <div
+    class="clearfix"
+  />
+   
+  <!---->
+</section>
+`;
