@@ -4,6 +4,8 @@ export const SET_ALL_POSTS = 'SET_ALL_POSTS';
 export const SET_FEATURED = 'SET_FEATURED';
 export const SET_TAGS = 'SET_TAGS';
 export const SET_AVAILABLE_LOCATIONS = 'SET_AVAILABLE_LOCATIONS';
+export const SET_ACTIVE_PERIOD = 'SET_ACTIVE_PERIOD';
+export const RECENT_POST_COUNT = 25;
 export const JOB_TYPE_MAP = {
   0: 'Tam zamanlı',
   1: 'Tam zamanlı',
@@ -11,6 +13,25 @@ export const JOB_TYPE_MAP = {
   3: 'Stajyer',
   4: 'Freelance',
 };
+
+export const PERIODS = [
+  {
+    type: 'daily',
+    text: 'Bugün',
+    slug: 'bugun',
+  },
+  {
+    type: 'weekly',
+    text: 'Bu hafta',
+    slug: 'bu-hafta',
+  },
+  {
+    type: 'monthly',
+    text: 'Bu ay',
+    slug: 'bu-ay',
+    isDefault: true,
+  },
+];
 
 export const JOB_TYPE_SLUG_TO_ID_MAP = {
   'tam-zamanli': 1,

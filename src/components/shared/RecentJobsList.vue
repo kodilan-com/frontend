@@ -1,10 +1,13 @@
 <script>
 import { mapState, mapActions } from 'vuex';
 import JobListing from './JobListing';
+import JobPeriodSelector from './JobPeriodSelector';
+import { PERIODS } from '../../store/constants';
 
 export default {
   components: {
     JobListing,
+    JobPeriodSelector,
   },
   data() {
     return {
@@ -12,18 +15,33 @@ export default {
     };
   },
   computed: {
-    ...mapState(['recentPosts']),
+    ...mapState(['recentPosts', 'activePeriod']),
   },
   methods: {
-    ...mapActions(['fetchRecentPosts']),
+    ...mapActions(['fetchRecentPosts', 'setPeriod']),
+    fetch() {
+      this.isLoading = true;
+
+      this.fetchRecentPosts()
+        .then(() => {
+          this.isLoading = false;
+        });
+    },
+    setPeriodHandler() {
+      const period = PERIODS.find(p => p.type === this.$route.meta.period);
+      if (period) {
+        this.setPeriod(period.type);
+      }
+      this.fetch();
+    },
+  },
+  watch: {
+    $route(to, from) {
+      if (to.meta.period !== from.meta.period) this.setPeriodHandler();
+    },
   },
   created() {
-    this.isLoading = true;
-
-    this.fetchRecentPosts()
-      .then(() => {
-        this.isLoading = false;
-      });
+    this.setPeriodHandler();
   },
 };
 </script>
@@ -34,6 +52,7 @@ export default {
       <h3 class="margin-bottom-25">
         En son eklenen ilanlar
       </h3>
+      <job-period-selector />
       <job-listing
         :is-loading="isLoading"
         :posts="recentPosts"
