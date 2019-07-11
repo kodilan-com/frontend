@@ -32,14 +32,20 @@ const router = new Router({
       component: AddJob,
     },
     {
-      path: '/ilanlar/:slug',
-      name: 'JobDetails',
-      component: JobDetails,
-    },
-    {
       path: '/ilanlar',
       name: 'JobList',
       component: JobList,
+    },
+    {
+      path: '/ilanlar/sayfa/:page',
+      props: true,
+      name: 'JobList',
+      component: JobList,
+    },
+    {
+      path: '/ilanlar/:slug',
+      name: 'JobDetails',
+      component: JobDetails,
     },
     {
       path: '/etiket/:slug',
