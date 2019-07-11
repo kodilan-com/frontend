@@ -19,7 +19,7 @@ export default {
       return this.currentPage + 3 < this.meta.last_page;
     },
     showFirstPageButton() {
-      return this.currentPage > 2;
+      return this.currentPage > 4;
     },
   },
   methods: {
