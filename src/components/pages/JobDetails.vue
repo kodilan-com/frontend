@@ -128,7 +128,7 @@ export default {
                    itemscope
                    itemtype="http://schema.org/Organization"
               >
-                <a :href="postData.company.www" target="_blank">
+                <router-link :to="`/firmalar/${postData.company.slug}`">
                   <img
                     itemprop="logo"
                     :src="postData.company.logo"
@@ -136,7 +136,7 @@ export default {
                     ref="logo"
                     @error="handleImageError"
                   >
-                </a>
+                </router-link>              
                 <div class="content">
                   <h4 itemprop="name">
                     {{ postData.company.name }}
