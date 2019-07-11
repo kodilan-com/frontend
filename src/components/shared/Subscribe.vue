@@ -43,6 +43,9 @@ export default {
   methods: {
     ...mapActions(['subscribe']),
     handleSubscribe() {
+      if (this.isClosed) {
+        return false;
+      }
       this.isClosed = true;
       this.frequency = this.frequencyModel.value;
       const { frequency, name, email } = this;
