@@ -43,18 +43,22 @@ export default {
   methods: {
     ...mapActions(['subscribe']),
     handleSubscribe() {
+      if (this.isClosed) {
+        return;
+      }
+      this.isClosed = true;
       this.frequency = this.frequencyModel.value;
-
       const { frequency, name, email } = this;
 
       this.subscribe({ frequency, name, email })
         .then(() => {
           this.showDialog('Email listesine kaydınız gerçekleştirildi.');
+          this.close();
         })
         .catch((e) => {
           const details = Object.values(e.response.data.errors || []).map(r => `<li>${r[0]}</li>`);
-
           this.showDialog('Hata: Kaydınız gerçekleştirilemedi.', `<ul>${details || ''}</ul>`);
+          this.isClosed = false;
         });
     },
     showDialog(title, text, buttons = [{ title: 'Kapat' }]) {
@@ -86,7 +90,7 @@ export default {
     </div>
     <span>olarak almak için</span>
     <input type="text" v-model="name" placeholder="İsim soyisim" class="username">
-    <input type="text" v-model="email" placeholder="Email">
+    <input @keyup.enter="handleSubscribe" type="text" v-model="email" placeholder="Email">
     <button class="button" @click="handleSubscribe">
       Abone ol!
     </button>
@@ -181,6 +185,19 @@ export default {
 
   .subscribe-widget.fixed {
     display: none;
+  }
+}
+@media only screen and (max-width: 989px) {
+  .subscribe-widget.fixed {
+    height: 80px;
+  }
+
+  .subscribe-widget form {
+    margin-top: 10px;
+  }
+
+  .subscribe-widget.fixed form span.close {
+    top: 7px;
   }
 }
 
