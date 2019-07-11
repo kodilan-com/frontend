@@ -11,9 +11,11 @@ import Confirmation from '@/components/pages/Confirmation';
 import SubscribeLanding from '@/components/pages/SubscribeLanding';
 import NotFound from '@/components/pages/NotFound';
 import CompanyPosts from '@/components/pages/CompanyPosts';
+import { PERIODS } from '../store/constants';
 
 Vue.use(Router);
 Vue.use(Meta);
+
 
 const router = new Router({
   mode: 'history',
@@ -25,6 +27,15 @@ const router = new Router({
       meta: {
         hasBanner: true,
       },
+      // For SEO concern, we want to have period slugs as a root route
+      children: PERIODS.map(period => ({
+        path: period.slug,
+        component: Home,
+        meta: {
+          period: period.type,
+          hasBanner: true,
+        },
+      })),
     },
     {
       path: '/ilan-ekle',
@@ -91,9 +102,13 @@ const router = new Router({
       component: SubscribeLanding,
     },
     {
-      path: '*',
+      path: '/404',
       name: 'NotFound',
       component: NotFound,
+    },
+    {
+      path: '*',
+      redirect: '/404',
     },
   ],
   scrollBehavior(to, from, savedPosition) {

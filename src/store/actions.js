@@ -12,8 +12,8 @@ export default {
   toggleLoading({ commit }) {
     commit(constants.TOGGLE_LOADING);
   },
-  fetchRecentPosts({ commit }) {
-    return http.get('/posts?get=25')
+  fetchRecentPosts({ state, commit }) {
+    return http.get(`/posts?get=${constants.RECENT_POST_COUNT}&period=${state.activePeriod}`)
       .then((res) => {
         commit(constants.SET_RECENT_POSTS, res.data.data);
 
@@ -92,5 +92,8 @@ export default {
   },
   subscribe(_, data) {
     return http.post('/newsletters', data);
+  },
+  setPeriod({ commit }, period) {
+    commit('SET_ACTIVE_PERIOD', period);
   },
 };

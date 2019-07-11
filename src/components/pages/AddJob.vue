@@ -113,6 +113,7 @@ export default {
       this.savePost(this.getPostData())
         .then(() => {
           this.isSaved = true;
+          this.saveToLocalStorage();
         })
         .catch((e) => {
           const errors = this.parseErrors(e);
@@ -142,12 +143,29 @@ export default {
 
       return `<ul>${details.join('')}</ul>`;
     },
+    saveToLocalStorage() {
+      const postData = this.getPostData();
+      const storageData = {
+        company_name: postData.company_name,
+        company_email: postData.company_email,
+        company_logo: postData.company_logo,
+        company_www: postData.company_www,
+        company_twitter: postData.company_twitter,
+        company_linkedin: postData.company_linkedin,
+      };
+      localStorage.setItem('listingData', JSON.stringify(storageData));
+    },
+    readFromLocalStorage() {
+      const storageData = JSON.parse(localStorage.getItem('listingData'));
+      this.formData = { ...this.formData, ...storageData };
+    },
   },
   mounted() {
     this.fetchTags()
       .then(() => {
         autocomplete.init(this.$refs.tagsInput, this.autocompleteTags);
       });
+    this.readFromLocalStorage();
   },
 };
 </script>
@@ -222,7 +240,12 @@ export default {
             </div>
             <div class="form">
               <h5>Lokasyon</h5>
-              <location-select v-model="formData.location" :show-all="true" :searchable="true" />
+              <location-select
+                v-model="formData.location"
+                :value="formData.location"
+                :show-all="true"
+                :searchable="true"
+              />
               <p class="note">
                 Uzaktan çalışmaya elverişli bir ilansa Remote seçiniz.
               </p>

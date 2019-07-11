@@ -480,6 +480,22 @@ body.boxed {
   .search-container .multiselect__option {
     font-size: 14px;
   }
+
+  .multiselect.is-searchable .multiselect__content-wrapper {
+    top: 36px;
+  }
+  .multiselect.is-searchable.multiselect--above .multiselect__content-wrapper {
+    bottom: 36px;
+  }
+  .search-container .multiselect.is-searchable .multiselect__content-wrapper {
+    top: 36px;
+  }
+  .search-container .multiselect.is-searchable.multiselect--above .multiselect__content-wrapper {
+    bottom: 36px;
+  }
+  .job-overview {
+    margin-top: 24px;
+  }
 }
 
 /* #Mobile (Landscape)
@@ -572,4 +588,8 @@ body.boxed {
   visibility: hidden;
   width: 0;
   height: 0;
+}
+
+.job-listing {
+  margin-bottom: 50px;
 }

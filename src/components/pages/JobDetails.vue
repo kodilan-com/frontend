@@ -128,13 +128,15 @@ export default {
                    itemscope
                    itemtype="http://schema.org/Organization"
               >
-                <img
-                  itemprop="logo"
-                  :src="postData.company.logo"
-                  :alt="postData.company.name"
-                  ref="logo"
-                  @error="handleImageError"
-                >
+                <router-link :to="`/firmalar/${postData.company.slug}`">
+                  <img
+                    itemprop="logo"
+                    :src="postData.company.logo"
+                    :alt="postData.company.name"
+                    ref="logo"
+                    @error="handleImageError"
+                  >
+                </router-link>
                 <div class="content">
                   <h4 itemprop="name">
                     {{ postData.company.name }}

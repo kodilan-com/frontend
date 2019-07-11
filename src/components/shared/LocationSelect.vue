@@ -14,6 +14,11 @@ export default {
       required: false,
       default: false,
     },
+    value: {
+      type: String,
+      required: false,
+      default: null,
+    },
   },
   data() {
     return {
@@ -31,15 +36,28 @@ export default {
     handleChange(value) {
       this.$emit('input', value);
     },
+    syncValue() {
+      if (this.value) this.selected = this.value;
+    },
+  },
+  watch: {
+    value() {
+      // Here's why we use if condition:
+      // When a change occurs, the value is emit to up.
+      // When the value above changes, we do not want this watcher to work unnecessarily.
+      if (this.selected !== this.value) this.syncValue();
+    },
   },
   created() {
     this.fetchAvailableLocations();
+    this.syncValue();
   },
 };
 </script>
 
 <template>
   <multiselect
+    :class="{ 'is-searchable': searchable }"
     v-model="selected"
     :options="locations"
     :searchable="searchable"
