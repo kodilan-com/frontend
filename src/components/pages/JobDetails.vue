@@ -136,7 +136,7 @@ export default {
                     ref="logo"
                     @error="handleImageError"
                   >
-                </router-link>              
+                </router-link>
                 <div class="content">
                   <h4 itemprop="name">
                     {{ postData.company.name }}
