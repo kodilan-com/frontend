@@ -128,13 +128,15 @@ export default {
                    itemscope
                    itemtype="http://schema.org/Organization"
               >
-                <img
-                  itemprop="logo"
-                  :src="postData.company.logo"
-                  :alt="postData.company.name"
-                  ref="logo"
-                  @error="handleImageError"
-                >
+                <a :href="postData.company.www" target="_blank">
+                  <img
+                    itemprop="logo"
+                    :src="postData.company.logo"
+                    :alt="postData.company.name"
+                    ref="logo"
+                    @error="handleImageError"
+                  >
+                </a>
                 <div class="content">
                   <h4 itemprop="name">
                     {{ postData.company.name }}
