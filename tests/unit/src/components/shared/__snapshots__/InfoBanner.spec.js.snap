@@ -1,0 +1,40 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`InfoBanner.vue should match snapshot 1`] = `
+<div
+  class="container"
+>
+  <div
+    class="sixteen columns"
+  >
+    <div
+      class="info-banner"
+    >
+      <div
+        class="info-content"
+      >
+        <h3>
+          İlanınız burada listelensin!
+        </h3>
+         
+        <p>
+          Sizde iş ilanlarınızı birkaç dakika içerisinde ücretsiz olarak yayınlayabilirsiniz.
+        </p>
+      </div>
+       
+      <router-link-stub
+        class="button tag-create-post"
+        to="/ilan-ekle"
+      >
+        
+        Ücretsiz İlan Ekle
+      
+      </router-link-stub>
+       
+      <div
+        class="clearfix"
+      />
+    </div>
+  </div>
+</div>
+`;

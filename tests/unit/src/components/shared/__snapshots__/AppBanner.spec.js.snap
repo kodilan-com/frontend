@@ -1,0 +1,130 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AppBanner.vue template should match the snapshot 1`] = `
+<div
+  id="banner"
+>
+  <div
+    class="container"
+  >
+    <div
+      class="sixteen columns"
+    >
+      <div
+        class="search-container"
+      >
+        <h2>
+          İlan Ara
+        </h2>
+         
+        <input
+          class="ico-01"
+          placeholder="Pozisyon adı, teknoloji adı"
+          type="text"
+        />
+         
+        <div
+          class="banner--location-select"
+        >
+          <location-select-stub
+            searchable="true"
+            value=""
+          />
+        </div>
+         
+        <button
+          class="tag-search-btn"
+        >
+          <i
+            class="fa fa-search tag-search-btn"
+          />
+        </button>
+         
+        <div
+          class="clearfix"
+        />
+         
+        <div
+          class="browse-jobs"
+        >
+          <router-link-stub
+            class="tag-header-tags"
+            to="/etiket/frontend"
+          >
+            
+            Frontend
+          
+          </router-link-stub>
+           
+          <router-link-stub
+            class="tag-header-tags"
+            to="/etiket/backend"
+          >
+            
+            Backend
+          
+          </router-link-stub>
+           
+          <router-link-stub
+            class="tag-header-tags"
+            to="/etiket/mobile"
+          >
+            
+            Mobile
+          
+          </router-link-stub>
+           
+          <router-link-stub
+            class="tag-header-tags"
+            to="/etiket/devops"
+          >
+            
+            DevOps
+          
+          </router-link-stub>
+        </div>
+         
+        <div
+          class="browse-jobs next-line"
+        >
+          <router-link-stub
+            class="tag-header-tags"
+            to="/ilan-ara?location=istanbul"
+          >
+            
+            İstanbul
+          
+          </router-link-stub>
+           
+          <router-link-stub
+            class="tag-header-tags"
+            to="/ilan-ara?location=izmir"
+          >
+            
+            İzmir
+          
+          </router-link-stub>
+           
+          <router-link-stub
+            class="tag-header-tags"
+            to="/ilan-ara?location=ankara"
+          >
+            
+            Ankara
+          
+          </router-link-stub>
+           
+          <router-link-stub
+            class="tag-header-tags"
+            to="/ilan-ara?location=Remote"
+          >
+            
+            Remote
+          
+          </router-link-stub>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

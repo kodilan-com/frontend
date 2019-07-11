@@ -1,0 +1,114 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`JobItem.vue should match snapshot 1`] = `
+<router-link-stub
+  class="listing tag-post-link TEST_CLASS_NAME"
+>
+  <div
+    class="listing-logo tag-post-link"
+  >
+    <img
+      alt="TEST_NAME"
+      class="tag-post-link"
+      src="TEST_LOGO"
+    />
+  </div>
+   
+  <div
+    class="listing-title tag-post-link"
+  >
+    <h4>
+      <span
+        class="title tag-post-link"
+      >
+        
+        TEST_POSITION
+      
+      </span>
+       
+      <job-type-badge-stub
+        post="[object Object]"
+      />
+       
+      <span
+        class="timeago wide"
+      >
+        
+        TEST_TIME_AGO
+      
+      </span>
+    </h4>
+     
+    <ul
+      class="listing-icons"
+    >
+      <li>
+        <i
+          class="ln ln-icon-Management"
+        />
+         
+        <router-link-stub
+          to="/firmalar/TEST_SLUG"
+        >
+          
+          TEST_NAME
+        
+        </router-link-stub>
+      </li>
+       
+      <li>
+        <i
+          class="ln ln-icon-Map2"
+        />
+         
+        <router-link-stub
+          to="/ilan-ara?location=TEST_LOCATION"
+        >
+          
+          TEST_LOCATION
+        
+        </router-link-stub>
+      </li>
+       
+      <li
+        class="timeago-item"
+      >
+        <i
+          class="ln ln-icon-Clock"
+        />
+         
+        <span>
+          TEST_TIME_AGO
+        </span>
+      </li>
+       
+      <li>
+        <div
+          class="listing-date post-tag tag-post-tag"
+        >
+          <router-link-stub
+            class="tag-post-tag"
+            to="/etiket/TEST_SLUG_1"
+          >
+            
+            TEST_SLUG_NAME_1
+          
+          </router-link-stub>
+        </div>
+        <div
+          class="listing-date post-tag tag-post-tag"
+        >
+          <router-link-stub
+            class="tag-post-tag"
+            to="/etiket/TEST_SLUG_2"
+          >
+            
+            TEST_SLUG_NAME_2
+          
+          </router-link-stub>
+        </div>
+      </li>
+    </ul>
+  </div>
+</router-link-stub>
+`;
