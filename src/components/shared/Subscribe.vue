@@ -58,9 +58,6 @@ export default {
           this.isClosed = false;
         });
     },
-    handleEnter() {
-      this.handleSubscribe();
-    },
     showDialog(title, text, buttons = [{ title: 'Kapat' }]) {
       this.$modal.show('dialog', { title, text, buttons });
     },
@@ -90,8 +87,8 @@ export default {
     </div>
     <span>olarak almak için</span>
     <input type="text" v-model="name" placeholder="İsim soyisim" class="username">
-    <input @keyup.enter.once="handleEnter" type="text" v-model="email" placeholder="Email">
-    <button class="button" @click.once="handleSubscribe">
+    <input @keyup.enter="handleSubscribe" type="text" v-model="email" placeholder="Email">
+    <button class="button" @click="handleSubscribe">
       Abone ol!
     </button>
     <span
