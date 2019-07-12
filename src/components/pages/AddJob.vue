@@ -161,51 +161,49 @@ export default {
       const storageData = JSON.parse(localStorage.getItem('listingData'));
       this.formData = { ...this.formData, ...storageData };
     },
-    addTag(event){
-      //Comma[188] Tab[9] Enter[13] Backspace[8]
-      if(event.keyCode == 8 && this.formData.tags === ''){
+    addTag(event) {
+      // Comma[188] Tab[9] Enter[13] Backspace[8]
+      if (event.keyCode === 8 && this.formData.tags === '') {
         this.span_tags.pop();
       }
-      if(event.keyCode == 188 || event.keyCode == 9 || event.keyCode == 13){
-        if(this.formData.tags === '' || this.formData.tags.indexOf(',') !== -1){
+      if (event.keyCode === 188 || event.keyCode === 9 || event.keyCode === 13) {
+        if (this.formData.tags === '' || this.formData.tags.indexOf(',') !== -1) {
           this.formData.tags = '';
+
           return;
-        } 
-        var the_tag = '';
-        if(event.keyCode == 188 || event.keyCode == 9){
+        }
+        let theTag = '';
+        if (event.keyCode === 188 || event.keyCode === 9) {
           event.preventDefault();
-          the_tag = this.formData.tags;
-        }else if(event.keyCode == 13){
+          theTag = this.formData.tags;
+        } else if (event.keyCode === 13) {
           const htmllist = this.$el.querySelector('#awesomplete_list_1').children;
-          var aria_selected = false;
-          for (var i = 0, n = htmllist.length; i < n; i++)
-          {
-            aria_selected = htmllist[i].getAttribute('aria-selected') === "true";
-            if (aria_selected)
-            {
-              the_tag =  htmllist[i].innerHTML.replace(/<mark>/g,'').replace(/<\/mark>/g,'');
+          let ariaSelected = false;
+          for (let i = 0, n = htmllist.length; i < n; i += 1) {
+            ariaSelected = htmllist[i].getAttribute('aria-selected') === 'true';
+            if (ariaSelected) {
+              theTag = htmllist[i].innerHTML.replace(/<mark>/g, '').replace(/<\/mark>/g, '');
               break;
             }
           }
-          if(!aria_selected){
-            the_tag = this.formData.tags;
+          if (!ariaSelected) {
+            theTag = this.formData.tags;
           }
-
         }
-          the_tag = the_tag.split(/,| /)[0];
-          if(this.span_tags.indexOf(the_tag) !== -1){
-            this.exist_tag = the_tag;
-            setTimeout(() => { this.exist_tag = ''}, 1000)
-          }else{
-            this.span_tags.push(the_tag);
-            this.formData.tags = '';
-            this.$el.querySelector('.awesomplete').style.width = (100-(this.span_tags.length*15))+"%";
-          }
+        theTag = theTag.split(/,| /)[0].toString();
+        if (this.span_tags.indexOf(theTag) !== -1) {
+          this.exist_tag = theTag;
+          setTimeout(() => { this.exist_tag = ''; }, 1000);
+        } else {
+          this.span_tags.push(theTag);
+          this.formData.tags = '';
+          this.$el.querySelector('.awesomplete').style.width = `${100 - (this.span_tags.length * 15)}%`;
+        }
       }
     },
-    removeTag(item){
+    removeTag(item) {
       this.span_tags = this.span_tags.filter(x => x !== item);
-    }
+    },
   },
   mounted() {
     this.fetchTags()
@@ -312,17 +310,23 @@ export default {
               <h5>Etiketler</h5>
               <div class="tag-container fake-input">
                 <div class="tags">
-                  <span class="tag" v-for="tag in span_tags" :key="tag" :class="{'already-exists': exist_tag === tag }">{{ tag }} <span class="times" v-on:click="removeTag(tag)">&times;</span></span>
+                  <span class="tag"
+                        v-for="tag in span_tags"
+                        :key="tag"
+                        :class="{'already-exists': exist_tag === tag }"
+                  >
+                    {{ tag }}
+                    <span class="times" @click="removeTag(tag)">&times;</span></span>
                 </div>
                 <input
-                v-model="formData.tags"
-                ref="tagsInput"
-                class="tags-input"
-                type="text"
-                v-on:keydown="addTag"
-                :disabled="span_tags.length === 10"
-                data-multiple
-              >
+                  v-model="formData.tags"
+                  ref="tagsInput"
+                  class="tags-input"
+                  type="text"
+                  @keydown="addTag"
+                  :disabled="span_tags.length === 10"
+                  data-multiple
+                >
               </div>
               <p class="note">
                 Bu pozisyon için gerekli olan yeti ve teknolojileri listeden seçebilirsiniz
@@ -417,7 +421,7 @@ export default {
   .tag-container .tags-input{
     display: inherit !important;
     padding:0;
-    border: 0px !important;    
+    border: 0px !important;
   }
   .already-exists{
     @keyframes colors
