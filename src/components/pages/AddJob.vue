@@ -83,6 +83,7 @@ export default {
   methods: {
     ...mapActions(['fetchTags', 'savePost']),
     showPreview() {
+      this.formData.tags = this.span_tags.join(',');
       if (!this.validateForm()) {
         const messages = Object.values(this.validationErrorMessages).map(e => `<li>${e}</li>`);
         const errorBody = `Lütfen aşağıdaki alanları kontrol ediniz.<ul>${messages.join('')}</ul>`;
@@ -407,7 +408,7 @@ export default {
     right: 0;
   }
 
-  .tag{
+  .tag-container .tag{
     background-color: #26ae61;
     opacity: 0.6;
     color: white;
