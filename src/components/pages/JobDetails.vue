@@ -104,7 +104,7 @@ export default {
           Bu sadece bir önizlemedir. İlanınızı yayınlamak için lütfen kaydettiğinizden emin olun.
         </p>
       </div>
-      <template v-if="postData">
+      <template v-if="postData && postData.status == 1">
         <div id="titlebar">
           <div class="container">
             <div class="ten columns">
@@ -233,6 +233,15 @@ export default {
             </h3>
             <job-listing :posts="relatedPosts" />
           </div>
+        </div>
+      </template>
+      <template v-else-if="postData && postData.status == 2">
+        <div class="notification notice center">
+          <p>
+            <span>Bu ilan yayından kaldırılmış.</span>
+            <br>
+            Diğer <span v-for="tag in postData.tags" :key="tag.slug" class="tag"><router-link :to="`/etiket/${tag.slug}`" class="listing-date">{{ tag.name }}</router-link></span> ilanlarımızı incelemeye ne dersin?                  
+          </p>
         </div>
       </template>
       <div v-else class="notification notice center">
