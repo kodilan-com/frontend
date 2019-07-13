@@ -240,7 +240,11 @@ export default {
           <p>
             <span>Bu ilan yayından kaldırılmış.</span>
             <br>
-            Diğer <span v-for="tag in postData.tags" :key="tag.slug" class="tag"><router-link :to="`/etiket/${tag.slug}`" class="listing-date">{{ tag.name }}</router-link></span> ilanlarımızı incelemeye ne dersin?                  
+            Diğer <span v-for="tag in postData.tags" :key="tag.slug" class="tag">
+              <router-link :to="`/etiket/${tag.slug}`" class="listing-date">{
+                { tag.name }}
+              </router-link>
+            </span> ilanlarımızı incelemeye ne dersin?
           </p>
         </div>
       </template>
