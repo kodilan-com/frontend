@@ -193,7 +193,7 @@ export default {
                       </span>
                     </div>
                   </li>
-                  <span itemprop="datePosted" :content="postData.created_at" />
+                  <span itemprop="datePosted" :content="postData.updated_at" />
                   <li>
                     <i class="ln ln-icon-Globe" />
                     <div>
