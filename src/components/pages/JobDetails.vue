@@ -86,6 +86,17 @@ export default {
   created() {
     this.fetchData();
   },
+  mounted() {
+    if (this.$route.query.status === 'extended') {
+      this.$modal.show('dialog', {
+        text: 'İlanınız otuz gün uzatılmıştır. Kodilan.com kullandığınız için teşekkür ederiz.',
+        title: 'Başarılı',
+        buttons: [
+          { title: 'Kapat' },
+        ],
+      });
+    }
+  },
 };
 </script>
 
