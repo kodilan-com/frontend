@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`JobItem.vue should match snapshot 1`] = `
-<router-link-stub
+<a
   class="listing tag-post-link TEST_CLASS_NAME"
 >
   <div
@@ -47,13 +47,11 @@ exports[`JobItem.vue should match snapshot 1`] = `
           class="ln ln-icon-Management"
         />
          
-        <router-link-stub
-          to="/firmalar/TEST_SLUG"
-        >
+        <a>
           
           TEST_NAME
         
-        </router-link-stub>
+        </a>
       </li>
        
       <li>
@@ -61,13 +59,11 @@ exports[`JobItem.vue should match snapshot 1`] = `
           class="ln ln-icon-Map2"
         />
          
-        <router-link-stub
-          to="/ilan-ara?location=TEST_LOCATION"
-        >
+        <a>
           
           TEST_LOCATION
         
-        </router-link-stub>
+        </a>
       </li>
        
       <li
@@ -86,29 +82,27 @@ exports[`JobItem.vue should match snapshot 1`] = `
         <div
           class="listing-date post-tag tag-post-tag"
         >
-          <router-link-stub
+          <a
             class="tag-post-tag"
-            to="/etiket/TEST_SLUG_1"
           >
             
             TEST_SLUG_NAME_1
           
-          </router-link-stub>
+          </a>
         </div>
         <div
           class="listing-date post-tag tag-post-tag"
         >
-          <router-link-stub
+          <a
             class="tag-post-tag"
-            to="/etiket/TEST_SLUG_2"
           >
             
             TEST_SLUG_NAME_2
           
-          </router-link-stub>
+          </a>
         </div>
       </li>
     </ul>
   </div>
-</router-link-stub>
+</a>
 `;

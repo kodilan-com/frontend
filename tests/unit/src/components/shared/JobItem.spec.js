@@ -1,4 +1,4 @@
-import { shallowMount } from '@vue/test-utils';
+import { shallowMount, RouterLinkStub } from '@vue/test-utils';
 import JobItem from '@/components/shared/JobItem';
 import jobDetail from '@/mixins/jobDetail';
 import image from '@/mixins/image';
@@ -29,13 +29,16 @@ describe('JobItem.vue', () => {
     timeago = 'TEST_TIME_AGO';
 
     jobDetail.computed.company.mockReturnValue(company);
+    jobDetail.computed.detailsUrl.mockReturnValue('TEST_URL');
     jobDetail.computed.postTypeClassName.mockReturnValue('TEST_CLASS_NAME');
     jobDetail.computed.timeago.mockReturnValue(timeago);
 
     image.methods.handleImageError = jest.fn();
 
     wrapper = shallowMount(JobItem, {
-      stubs: ['router-link'],
+      stubs: {
+        RouterLink: RouterLinkStub,
+      },
       propsData: {
         post,
       },
@@ -44,6 +47,10 @@ describe('JobItem.vue', () => {
 
   it('should match snapshot', () => {
     expect(wrapper.element).toMatchSnapshot();
+  });
+
+  it('should have a router-link with "TEST_URL" href for listing', () => {
+    expect(wrapper.find(RouterLinkStub).props().to).toBe('TEST_URL');
   });
 
   it('should execute handleImageError if any error occurs while loading image', () => {
@@ -58,5 +65,25 @@ describe('JobItem.vue', () => {
     const jobTypeBadge = wrapper.find('job-type-badge-stub');
 
     expect(jobTypeBadge.props('post')).toBe(post);
+  });
+
+  it('should be correct company url for company', () => {
+    const companyLink = wrapper.find('ul.listing-icons li:nth-child(1) a');
+
+    expect(companyLink.props('to')).toEqual('/firmalar/TEST_SLUG');
+  });
+
+  it('should be correct location url icons for company', () => {
+    const companyLocationLink = wrapper.find('ul.listing-icons li:nth-child(2) a');
+
+    expect(companyLocationLink.props('to')).toEqual(`/ilan-ara?location=${post.location}`);
+  });
+
+  it('should be correct ur for company slug', () => {
+    const allLinks = wrapper.findAll('a.tag-post-tag').wrappers;
+
+    expect(
+      allLinks.map(link => link.props('to')),
+    ).toEqual(post.tags.map(tag => `/etiket/${tag.slug}`));
   });
 });
