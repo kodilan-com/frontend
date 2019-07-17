@@ -79,7 +79,7 @@ describe('JobItem.vue', () => {
     expect(companyLocationLink.props('to')).toEqual(`/ilan-ara?location=${post.location}`);
   });
 
-  it('should be correct ur for company slug', () => {
+  it('should be correct url for company slug', () => {
     const allLinks = wrapper.findAll('a.tag-post-tag').wrappers;
 
     expect(
