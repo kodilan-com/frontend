@@ -1,0 +1,108 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`JobItem.vue should match snapshot 1`] = `
+<a
+  class="listing tag-post-link TEST_CLASS_NAME"
+>
+  <div
+    class="listing-logo tag-post-link"
+  >
+    <img
+      alt="TEST_NAME"
+      class="tag-post-link"
+      src="TEST_LOGO"
+    />
+  </div>
+   
+  <div
+    class="listing-title tag-post-link"
+  >
+    <h4>
+      <span
+        class="title tag-post-link"
+      >
+        
+        TEST_POSITION
+      
+      </span>
+       
+      <job-type-badge-stub
+        post="[object Object]"
+      />
+       
+      <span
+        class="timeago wide"
+      >
+        
+        TEST_TIME_AGO
+      
+      </span>
+    </h4>
+     
+    <ul
+      class="listing-icons"
+    >
+      <li>
+        <i
+          class="ln ln-icon-Management"
+        />
+         
+        <a>
+          
+          TEST_NAME
+        
+        </a>
+      </li>
+       
+      <li>
+        <i
+          class="ln ln-icon-Map2"
+        />
+         
+        <a>
+          
+          TEST_LOCATION
+        
+        </a>
+      </li>
+       
+      <li
+        class="timeago-item"
+      >
+        <i
+          class="ln ln-icon-Clock"
+        />
+         
+        <span>
+          TEST_TIME_AGO
+        </span>
+      </li>
+       
+      <li>
+        <div
+          class="listing-date post-tag tag-post-tag"
+        >
+          <a
+            class="tag-post-tag"
+          >
+            
+            TEST_SLUG_NAME_1
+          
+          </a>
+        </div>
+        <div
+          class="listing-date post-tag tag-post-tag"
+        >
+          <a
+            class="tag-post-tag"
+          >
+            
+            TEST_SLUG_NAME_2
+          
+          </a>
+        </div>
+      </li>
+    </ul>
+  </div>
+</a>
+`;
