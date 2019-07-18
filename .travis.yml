@@ -10,3 +10,4 @@ install:
   - yarn build
   - yarn test:clear:snapshot
   - yarn test:unit --coverage
+  - ./node_modules/.bin/codecov --token="$CODECOV_TOKEN"
