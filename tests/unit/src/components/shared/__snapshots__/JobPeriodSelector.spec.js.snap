@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`JobPeriodSelector.vue should have right part 1`] = `
+<div
+  class="ul tabs-nav is-right"
+>
+  <li
+    class="active"
+  >
+    <a>
+      <i
+        class="fa fa-plus-circle"
+      />
+      
+        Tüm İlanları Gör
+      
+    </a>
+  </li>
+</div>
+`;
