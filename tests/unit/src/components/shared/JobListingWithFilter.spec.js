@@ -66,24 +66,7 @@ describe('JobListingWithFilters.vue', () => {
         type: 'test_type',
       },
       type: null,
-      typeOptions: [
-        {
-          id: 1,
-          text: 'Tam zamanlı',
-        },
-        {
-          id: 2,
-          text: 'Yarı zamanlı',
-        },
-        {
-          id: 3,
-          text: 'Stajyer',
-        },
-        {
-          id: 4,
-          text: 'Freelance',
-        },
-      ],
+      typeOptions: JOB_TYPES_FOR_DROPDOWN,
     });
   });
 
@@ -101,24 +84,7 @@ describe('JobListingWithFilters.vue', () => {
         type: 1,
       },
       type: null,
-      typeOptions: [
-        {
-          id: 1,
-          text: 'Tam zamanlı',
-        },
-        {
-          id: 2,
-          text: 'Yarı zamanlı',
-        },
-        {
-          id: 3,
-          text: 'Stajyer',
-        },
-        {
-          id: 4,
-          text: 'Freelance',
-        },
-      ],
+      typeOptions: JOB_TYPES_FOR_DROPDOWN,
     });
   });
 
