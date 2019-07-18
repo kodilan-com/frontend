@@ -18,7 +18,7 @@ export default {
         score += p.location === post.location ? POINTS.inSameLocation : 0;
         score += p.company.slug === post.company.slug ? POINTS.fromSameCompany : 0;
         score += p.type === post.type ? POINTS.hasSamePostType : 0;
-        score += (TODAY - new Date(p.created_at)) / DAY_IN_MS <= 10 ? POINTS.createdInTenDays : 0;
+        score += (TODAY - new Date(p.updated_at)) / DAY_IN_MS <= 10 ? POINTS.createdInTenDays : 0;
         p.tags.forEach((t) => {
           score += postTagSlugs.indexOf(t.slug) > -1 ? POINTS.hasSameTag : 0;
         });
