@@ -8,3 +8,4 @@ install:
   - yarn install
   - yarn lint --no-fix
   - yarn build
+  - yarn test:unit --coverage
