@@ -10,14 +10,13 @@ describe('JobSpotlight.vue', () => {
   let store;
   let jobSpotlightStore;
   let wrapper;
-  const renderComponent = (options) => {
+  const renderComponent = () => {
     wrapper = shallowMount(JobSpotlight, {
       stubs: {
         RouterLink: RouterLinkStub,
       },
       localVue,
       store,
-      ...options,
     });
   };
   const getHrefs = selector => wrapper.findAll(selector).wrappers.map(job => job.props('to'));
@@ -84,7 +83,6 @@ describe('JobSpotlight.vue', () => {
 
     renderComponent();
 
-    await localVue.nextTick();
     await localVue.nextTick();
 
     expect(wrapper.find('.details p').text().length).toBe(203);
