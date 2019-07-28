@@ -1,0 +1,112 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`JobSpotlight.vue should match snapshot 1`] = `
+<div
+  class="columns"
+>
+  <h3
+    class="margin-bottom-5"
+  >
+    
+    Öne çıkan ilanlar
+  
+  </h3>
+   
+  <div
+    id="job-spotlight"
+  >
+    <div
+      class="showbiz"
+    >
+      <div
+        class="wrapper"
+      >
+        <ul>
+          <li>
+            <div
+              class="job-spotlight"
+            >
+              <a
+                class="job-title"
+              >
+                
+                  
+                
+              </a>
+               
+              <div
+                class="details"
+              >
+                <span>
+                  <i
+                    class="fa fa-briefcase"
+                  />
+                   
+                  <a>
+                    
+                      Company Name 1
+                    
+                  </a>
+                </span>
+                 
+                <span>
+                  <i
+                    class="fa fa-map-marker"
+                  />
+                   
+                  <a>
+                    
+                      postLocation1
+                    
+                  </a>
+                </span>
+                 
+                <job-type-badge-stub
+                  post="[object Object]"
+                />
+                 
+                <p>
+                  Post Description 1
+                </p>
+                 
+                <div
+                  class="listing-date post-tag"
+                >
+                  <a>
+                    
+                      Post 1 Tag 1 Name
+                    
+                  </a>
+                </div>
+                <div
+                  class="listing-date post-tag"
+                >
+                  <a>
+                    
+                      Post 1 Tag 2 Name
+                    
+                  </a>
+                </div>
+                 
+                <a
+                  class="button tag-go-featured-post"
+                >
+                  
+                    İlana git   
+                  <i
+                    class="fa fa-angle-right"
+                  />
+                </a>
+              </div>
+            </div>
+          </li>
+        </ul>
+         
+        <div
+          class="clearfix"
+        />
+      </div>
+    </div>
+  </div>
+</div>
+`;
