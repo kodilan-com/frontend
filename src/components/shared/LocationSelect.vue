@@ -24,9 +24,9 @@ export default {
     return {
       selected: null,
       locations: null,
-      options: []
+      options: [],
     };
-  }, 
+  },
   methods: {
     ...mapActions(['fetchAvailableLocations']),
     handleChange(value) {
@@ -36,8 +36,10 @@ export default {
       if (this.value) this.selected = this.value;
     },
     searchChange(text) {
-      this.options = text.trim() ? this.locations.filter(l => l.toLocaleLowerCase().search(text.trim().toLocaleLowerCase()) !== -1) : this.locations;
-    }
+      this.options = text.trim()
+        ? this.locations.filter(l => l.toLocaleLowerCase().search(text.toLocaleLowerCase()) !== -1)
+        : this.locations;
+    },
   },
   watch: {
     value() {
@@ -49,7 +51,8 @@ export default {
   },
   created() {
     this.fetchAvailableLocations().then(() => {
-      this.locations = this.options = this.showAll ? allLocations : this.$store.state.availableLocations; 
+      this.locations = this.showAll ? allLocations : this.$store.state.availableLocations;
+      this.options = this.locations;
     });
     this.syncValue();
   },
@@ -70,7 +73,7 @@ export default {
     @input="handleChange"
   >
     <div slot="noResult">
-      Aramanızla eşleşen bir sonuç bulunamadı. 
+      Aramanızla eşleşen bir sonuç bulunamadı.
     </div>
   </multiselect>
 </template>
