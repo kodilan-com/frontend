@@ -1,5 +1,5 @@
 <script>
-import { mapState, mapActions } from 'vuex';
+import { mapActions } from 'vuex';
 import allLocations from '../../assets/data/locations';
 
 export default {
@@ -23,14 +23,10 @@ export default {
   data() {
     return {
       selected: null,
+      locations: null,
+      options: []
     };
-  },
-  computed: {
-    ...mapState(['availableLocations']),
-    locations() {
-      return this.showAll ? allLocations : this.availableLocations;
-    },
-  },
+  }, 
   methods: {
     ...mapActions(['fetchAvailableLocations']),
     handleChange(value) {
@@ -39,6 +35,9 @@ export default {
     syncValue() {
       if (this.value) this.selected = this.value;
     },
+    searchChange(text) {
+      this.options = text.trim() ? this.locations.filter(l => l.toLocaleLowerCase().search(text.trim().toLocaleLowerCase()) !== -1) : this.locations;
+    }
   },
   watch: {
     value() {
@@ -49,7 +48,9 @@ export default {
     },
   },
   created() {
-    this.fetchAvailableLocations();
+    this.fetchAvailableLocations().then(() => {
+      this.locations = this.options = this.showAll ? allLocations : this.$store.state.availableLocations; 
+    });
     this.syncValue();
   },
 };
@@ -59,11 +60,17 @@ export default {
   <multiselect
     :class="{ 'is-searchable': searchable }"
     v-model="selected"
-    :options="locations"
+    :options="options"
+    @search-change="searchChange"
+    :internal-search="false"
     :searchable="searchable"
     :close-on-select="true"
     :show-labels="false"
     placeholder="Şehir seçiniz..."
     @input="handleChange"
-  />
+  >
+    <div slot="noResult">
+      Aramanızla eşleşen bir sonuç bulunamadı. 
+    </div>
+  </multiselect>
 </template>
