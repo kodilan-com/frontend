@@ -2,15 +2,6 @@ import Vue from 'vue';
 import Meta from 'vue-meta';
 import Router from 'vue-router';
 import Home from '@/components/pages/Home';
-import AddJob from '@/components/pages/AddJob';
-import JobDetails from '@/components/pages/JobDetails';
-import JobList from '@/components/pages/JobList';
-import TagPosts from '@/components/pages/TagPosts';
-import Search from '@/components/pages/Search';
-import Confirmation from '@/components/pages/Confirmation';
-import SubscribeLanding from '@/components/pages/SubscribeLanding';
-import NotFound from '@/components/pages/NotFound';
-import CompanyPosts from '@/components/pages/CompanyPosts';
 import { PERIODS } from '../store/constants';
 
 Vue.use(Router);
@@ -40,27 +31,27 @@ const router = new Router({
     {
       path: '/ilan-ekle',
       name: 'AddJob',
-      component: AddJob,
+      component: () => import('@/components/pages/AddJob'),
     },
     {
       path: '/ilanlar/:slug',
       name: 'JobDetails',
-      component: JobDetails,
+      component: () => import('@/components/pages/JobDetails'),
     },
     {
       path: '/ilanlar',
       name: 'JobList',
-      component: JobList,
+      component: () => import('@/components/pages/JobList'),
     },
     {
       path: '/etiket/:slug',
       name: 'TagPosts',
-      component: TagPosts,
+      component: () => import('@/components/pages/TagPosts'),
     },
     {
       path: '/ilan-ara',
       name: 'Search',
-      component: Search,
+      component: () => import('@/components/pages/Search'),
       children: [
         {
           path: '?type=1',
@@ -83,22 +74,22 @@ const router = new Router({
     {
       path: '/ilan/dogrulandi',
       name: 'Confirmation',
-      component: Confirmation,
+      component: () => import('@/components/pages/Confirmation'),
     },
     {
       path: '/firmalar/:slug',
       name: 'CompanyPosts',
-      component: CompanyPosts,
+      component: () => import('@/components/pages/CompanyPosts'),
     },
     {
       path: '/abone-ol',
       name: 'Subscribe',
-      component: SubscribeLanding,
+      component: () => import('@/components/pages/SubscribeLanding'),
     },
     {
       path: '/404',
       name: 'NotFound',
-      component: NotFound,
+      component: () => import('@/components/pages/NotFound'),
     },
     {
       path: '*',
