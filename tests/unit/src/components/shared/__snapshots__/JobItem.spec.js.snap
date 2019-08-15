@@ -10,6 +10,7 @@ exports[`JobItem.vue should match snapshot 1`] = `
     <img
       alt="TEST_NAME"
       class="tag-post-link"
+      loading="lazy"
       src="TEST_LOGO"
     />
   </div>
