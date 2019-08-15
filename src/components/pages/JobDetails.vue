@@ -197,6 +197,13 @@ export default {
                   <div class="job-overview">
                     <ul>
                       <li>
+                        <i class="fa fa-calendar-check-o" />
+                        <div>
+                          <strong>Son Güncelleme</strong>
+                          <span>{{ new Date(postData.updated_at).toLocaleDateString() }}</span>
+                        </div>
+                      </li>
+                      <li>
                         <i class="fa fa-user" />
                         <div>
                           <strong>Pozisyon</strong>
