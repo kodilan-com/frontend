@@ -23,6 +23,7 @@ export default {
   data() {
     return {
       selected: null,
+      options: [],
     };
   },
   computed: {
@@ -37,7 +38,20 @@ export default {
       this.$emit('input', value);
     },
     syncValue() {
-      if (this.value) this.selected = this.value;
+      if (this.value) {
+        this.selected = this.value;
+      }
+    },
+    searchChange(text) {
+      if (text.trim() === '') {
+        this.options = this.locations;
+
+        return;
+      }
+
+      this.options = this.locations.filter(
+        l => (l.toLocaleLowerCase('tr').indexOf(text.toLocaleLowerCase('tr')) > -1),
+      );
     },
   },
   watch: {
@@ -49,8 +63,11 @@ export default {
     },
   },
   created() {
-    this.fetchAvailableLocations();
     this.syncValue();
+    this.fetchAvailableLocations()
+      .then(() => {
+        this.options = this.locations;
+      });
   },
 };
 </script>
@@ -59,11 +76,17 @@ export default {
   <multiselect
     :class="{ 'is-searchable': searchable }"
     v-model="selected"
-    :options="locations"
+    :options="options"
     :searchable="searchable"
     :close-on-select="true"
     :show-labels="false"
+    :internal-search="false"
     placeholder="Şehir seçiniz..."
     @input="handleChange"
-  />
+    @search-change="searchChange"
+  >
+    <div slot="noResult">
+      Aramanızla eşleşen bir sonuç bulunamadı.
+    </div>
+  </multiselect>
 </template>
