@@ -521,6 +521,7 @@ ul li ul a.sf-with-ul:after {
   -o-background-size: cover;
   background-size: cover;
   margin-bottom: 35px;
+  z-index: 1000;
 }
 
 #banner:before {
@@ -8793,8 +8794,6 @@ select {
   right: 0;
   background: #fff;
   font-size: 14px;
-  line-height: 20px;
-  background: #fff;
   overflow: auto;
   border-radius: 3px;
   border: 1px solid #e0e0e0;
