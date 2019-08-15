@@ -22,6 +22,7 @@ export default {
         :src="company.logo"
         :alt="company.name"
         ref="logo"
+        loading="lazy"
         @error="handleImageError"
         class="tag-post-link"
       >
