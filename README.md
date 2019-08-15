@@ -43,6 +43,7 @@ Please take a look at the [CHANGELOG](https://gitlab.com/kodilan/frontend/blob/m
 - [Ali Gören](https://github.com/aligoren)
 - [Furkan Köse](https://github.com/furkankose)
 - [İlker Demir](https://github.com/ilker0)
+- [Berkan Sivri](https://github.com/berkansivri)
 
 ### More content
 
