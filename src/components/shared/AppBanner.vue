@@ -65,16 +65,16 @@ export default {
             </router-link>
           </div>
           <div class="browse-jobs next-line">
-            <router-link to="/ilan-ara?location=istanbul" class="tag-header-tags">
+            <router-link to="/ilan-ara/İstanbul" class="tag-header-tags">
               İstanbul
             </router-link>
-            <router-link to="/ilan-ara?location=izmir" class="tag-header-tags">
+            <router-link to="/ilan-ara/İzmir" class="tag-header-tags">
               İzmir
             </router-link>
-            <router-link to="/ilan-ara?location=ankara" class="tag-header-tags">
+            <router-link to="/ilan-ara/Ankara" class="tag-header-tags">
               Ankara
             </router-link>
-            <router-link to="/ilan-ara?location=Remote" class="tag-header-tags">
+            <router-link to="/ilan-ara/Remote" class="tag-header-tags">
               Remote
             </router-link>
           </div>

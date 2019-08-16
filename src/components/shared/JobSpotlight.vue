@@ -68,7 +68,7 @@ export default {
                     </span>
                     <span>
                       <i class="fa fa-map-marker" />
-                      <router-link :to="`/ilan-ara?location=${post.location}`">
+                      <router-link :to="`/ilan-ara/${post.location}`">
                         {{ post.location }}
                       </router-link>
                     </span>

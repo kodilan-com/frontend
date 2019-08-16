@@ -107,7 +107,7 @@ describe('JobSpotlight.vue', () => {
   it('should generate post location links correctly', () => {
     expect(getHrefs('.fa.fa-map-marker + a'))
       .toEqual(
-        jobSpotlightStore.state.featuredPosts.map(post => `/ilan-ara?location=${post.location}`),
+        jobSpotlightStore.state.featuredPosts.map(post => `/ilan-ara/${post.location}`),
       );
   });
 

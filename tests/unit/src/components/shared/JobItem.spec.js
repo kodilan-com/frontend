@@ -76,7 +76,7 @@ describe('JobItem.vue', () => {
   it('should be correct location url icons for company', () => {
     const companyLocationLink = wrapper.find('ul.listing-icons li:nth-child(2) a');
 
-    expect(companyLocationLink.props('to')).toEqual(`/ilan-ara?location=${post.location}`);
+    expect(companyLocationLink.props('to')).toEqual(`/ilan-ara/${post.location}`);
   });
 
   it('should be correct url for company slug', () => {

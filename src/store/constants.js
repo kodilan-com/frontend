@@ -1,3 +1,5 @@
+import allLocations from '../assets/data/locations';
+
 export const TOGGLE_LOADING = 'TOGGLE_LOADING';
 export const SET_RECENT_POSTS = 'SET_RECENT_POSTS';
 export const SET_ALL_POSTS = 'SET_ALL_POSTS';
@@ -31,6 +33,29 @@ export const PERIODS = [
     slug: 'bu-ay',
     isDefault: true,
   },
+];
+
+export const SEARCH_TYPE_ALIAS = [
+  {
+    path: '?type=1',
+    alias: 'tam-zamanli',
+  },
+  {
+    path: '?type=2',
+    alias: 'yari-zamanli',
+  },
+  {
+    path: '?type=3',
+    alias: 'stajyer',
+  },
+  {
+    path: '?type=4',
+    alias: 'freelance',
+  },
+  ...allLocations.map(item => ({
+    path: `?location=${item}`,
+    alias: item,
+  })),
 ];
 
 export const JOB_TYPE_SLUG_TO_ID_MAP = {

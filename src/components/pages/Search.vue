@@ -17,33 +17,43 @@ export default {
   },
   computed: {
     location() {
+      if (this.parsedJob && !this.typeofParsedJob) {
+        return this.parsedJob;
+      }
+
       return this.$route.query.location;
     },
     query() {
       return this.$route.query.query;
     },
     queryString() {
-      if (this.parsedJobId) {
+      if (this.parsedJob) {
         return {
           ...this.$route.query,
-          type: this.parsedJobId,
+          type: this.typeofParsedJob ? this.parsedJob : this.$route.query.type,
+          location: !this.typeofParsedJob ? this.parsedJob : this.$route.query.location,
         };
       }
 
       return this.$route.query;
     },
-    parsedJobId() {
+    typeofParsedJob() {
+      return (typeof this.parsedJob === 'number') !== false;
+    },
+    parsedJob() {
       if (this.$route.matched.length > 1) {
         const slug = this.$route.path.replace('/ilan-ara/', '');
 
-        return JOB_TYPE_SLUG_TO_ID_MAP[slug];
+        return Object.prototype.hasOwnProperty.call(JOB_TYPE_SLUG_TO_ID_MAP, slug)
+          ? JOB_TYPE_SLUG_TO_ID_MAP[slug]
+          : slug;
       }
 
       return null;
     },
     type() {
-      if (this.parsedJobId) {
-        return this.parsedJobId;
+      if (this.parsedJob && this.typeofParsedJob) {
+        return this.parsedJob;
       }
 
       return parseInt(this.$route.query.type, 10);

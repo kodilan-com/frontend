@@ -158,7 +158,7 @@ exports[`AppFooter.vue templates should match the snapshot 1`] = `
       >
         <li>
           <router-link-stub
-            to="/ilan-ara?location=İstanbul"
+            to="/ilan-ara/İstanbul"
           >
             
             İstanbul iş ilanları
@@ -168,7 +168,7 @@ exports[`AppFooter.vue templates should match the snapshot 1`] = `
          
         <li>
           <router-link-stub
-            to="/ilan-ara?location=İzmir"
+            to="/ilan-ara/İzmir"
           >
             
             İzmir iş ilanları
@@ -178,7 +178,7 @@ exports[`AppFooter.vue templates should match the snapshot 1`] = `
          
         <li>
           <router-link-stub
-            to="/ilan-ara?location=Ankara"
+            to="/ilan-ara/Ankara"
           >
             
             Ankara iş ilanları
@@ -188,7 +188,7 @@ exports[`AppFooter.vue templates should match the snapshot 1`] = `
          
         <li>
           <router-link-stub
-            to="/ilan-ara?location=Remote"
+            to="/ilan-ara/Remote"
           >
             
             Uzaktan çalışmaya uygun iş ilanları

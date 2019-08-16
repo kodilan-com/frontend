@@ -2,7 +2,7 @@ import Vue from 'vue';
 import Meta from 'vue-meta';
 import Router from 'vue-router';
 import Home from '@/components/pages/Home';
-import { PERIODS } from '../store/constants';
+import { PERIODS, SEARCH_TYPE_ALIAS } from '../store/constants';
 
 Vue.use(Router);
 Vue.use(Meta);
@@ -52,24 +52,10 @@ const router = new Router({
       path: '/ilan-ara',
       name: 'Search',
       component: () => import('@/components/pages/Search'),
-      children: [
-        {
-          path: '?type=1',
-          alias: 'tam-zamanli',
-        },
-        {
-          path: '?type=2',
-          alias: 'yari-zamanli',
-        },
-        {
-          path: '?type=3',
-          alias: 'stajyer',
-        },
-        {
-          path: '?type=4',
-          alias: 'freelance',
-        },
-      ],
+      children: SEARCH_TYPE_ALIAS.map(search => ({
+        path: search.path,
+        alias: search.alias,
+      })),
     },
     {
       path: '/ilan/dogrulandi',

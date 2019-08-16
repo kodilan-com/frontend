@@ -89,7 +89,7 @@ exports[`AppBanner.vue template should match the snapshot 1`] = `
         >
           <router-link-stub
             class="tag-header-tags"
-            to="/ilan-ara?location=istanbul"
+            to="/ilan-ara/İstanbul"
           >
             
             İstanbul
@@ -98,7 +98,7 @@ exports[`AppBanner.vue template should match the snapshot 1`] = `
            
           <router-link-stub
             class="tag-header-tags"
-            to="/ilan-ara?location=izmir"
+            to="/ilan-ara/İzmir"
           >
             
             İzmir
@@ -107,7 +107,7 @@ exports[`AppBanner.vue template should match the snapshot 1`] = `
            
           <router-link-stub
             class="tag-header-tags"
-            to="/ilan-ara?location=ankara"
+            to="/ilan-ara/Ankara"
           >
             
             Ankara
@@ -116,7 +116,7 @@ exports[`AppBanner.vue template should match the snapshot 1`] = `
            
           <router-link-stub
             class="tag-header-tags"
-            to="/ilan-ara?location=Remote"
+            to="/ilan-ara/Remote"
           >
             
             Remote

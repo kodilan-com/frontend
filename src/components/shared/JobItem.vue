@@ -46,7 +46,7 @@ export default {
         </li>
         <li>
           <i class="ln ln-icon-Map2" />
-          <router-link :to="`/ilan-ara?location=${post.location}`">
+          <router-link :to="`/ilan-ara/${post.location}`">
             {{ post.location }}
           </router-link>
         </li>
