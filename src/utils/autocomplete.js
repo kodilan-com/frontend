@@ -11,9 +11,8 @@ export default {
       item(text, input) {
         return window.Awesomplete.ITEM(text, input.match(/[^,]*$/)[0]);
       },
-      replace(text) {
-        const before = this.input.value.match(/^.+,\s*|/)[0];
-        this.input.value = `${before + text}, `;
+      replace() {
+        return null;
       },
     });
   },

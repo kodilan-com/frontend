@@ -21,6 +21,8 @@ export default {
       isPreview: false,
       isSaved: false,
       isSaving: false,
+      span_tags: [],
+      exist_tag: '',
       formData: {
         position: '',
         description: '',
@@ -81,6 +83,7 @@ export default {
   methods: {
     ...mapActions(['fetchTags', 'savePost']),
     showPreview() {
+      this.formData.tags = this.span_tags.join(',');
       if (!this.validateForm()) {
         const messages = Object.values(this.validationErrorMessages).map(e => `<li>${e}</li>`);
         const errorBody = `Lütfen aşağıdaki alanları kontrol ediniz.<ul>${messages.join('')}</ul>`;
@@ -158,6 +161,49 @@ export default {
     readFromLocalStorage() {
       const storageData = JSON.parse(localStorage.getItem('listingData'));
       this.formData = { ...this.formData, ...storageData };
+    },
+    addTag(event) {
+      // Comma[188] Tab[9] Enter[13] Backspace[8]
+      if (event.keyCode === 8 && this.formData.tags === '') {
+        this.span_tags.pop();
+      }
+      if (event.keyCode === 188 || event.keyCode === 9 || event.keyCode === 13) {
+        if (this.formData.tags === '' || this.formData.tags.indexOf(',') !== -1) {
+          this.formData.tags = '';
+
+          return;
+        }
+        let theTag = '';
+        if (event.keyCode === 188 || event.keyCode === 9) {
+          event.preventDefault();
+          theTag = this.formData.tags;
+        } else if (event.keyCode === 13) {
+          const htmllist = this.$el.querySelector('#awesomplete_list_1').children;
+          let ariaSelected = false;
+          for (let i = 0, n = htmllist.length; i < n; i += 1) {
+            ariaSelected = htmllist[i].getAttribute('aria-selected') === 'true';
+            if (ariaSelected) {
+              theTag = htmllist[i].innerHTML.replace(/<mark>/g, '').replace(/<\/mark>/g, '');
+              break;
+            }
+          }
+          if (!ariaSelected) {
+            theTag = this.formData.tags;
+          }
+        }
+        theTag = theTag.split(/,| /)[0].toString();
+        if (this.span_tags.indexOf(theTag) !== -1) {
+          this.exist_tag = theTag;
+          setTimeout(() => { this.exist_tag = ''; }, 1000);
+        } else {
+          this.span_tags.push(theTag);
+          this.formData.tags = '';
+          this.$el.querySelector('.awesomplete').style.width = `${100 - (this.span_tags.length * 15)}%`;
+        }
+      }
+    },
+    removeTag(item) {
+      this.span_tags = this.span_tags.filter(x => x !== item);
     },
   },
   mounted() {
@@ -263,13 +309,26 @@ export default {
             </div>
             <div class="form">
               <h5>Etiketler</h5>
-              <input
-                v-model="formData.tags"
-                ref="tagsInput"
-                class="tags-input"
-                type="text"
-                data-multiple
-              >
+              <div class="tag-container fake-input">
+                <div class="tags">
+                  <span class="tag"
+                        v-for="tag in span_tags"
+                        :key="tag"
+                        :class="{'already-exists': exist_tag === tag }"
+                  >
+                    {{ tag }}
+                    <span class="times" @click="removeTag(tag)">&times;</span></span>
+                </div>
+                <input
+                  v-model="formData.tags"
+                  ref="tagsInput"
+                  class="tags-input"
+                  type="text"
+                  @keydown="addTag"
+                  :disabled="span_tags.length === 10"
+                  data-multiple
+                >
+              </div>
               <p class="note">
                 Bu pozisyon için gerekli olan yeti ve teknolojileri listeden seçebilirsiniz
                 ya da virgul ile ekleme yapabilirsiniz. En fazla 10 etiket ekleyebilirsiniz.
@@ -347,6 +406,41 @@ export default {
   .save-button {
     position: absolute;
     right: 0;
+  }
+
+  .tag-container .tag{
+    background-color: #26ae61;
+    opacity: 0.6;
+    color: white;
+    padding: 7px;
+    margin-right:8px;
+    border-radius: 3px;
+  }
+  .tags{
+    display: inline;
+  }
+  .tag-container .tags-input{
+    display: inherit !important;
+    padding:0;
+    border: 0px !important;
+  }
+  .already-exists{
+    @keyframes colors
+    {
+        0%      {background:#26ae61;}
+        25%     {background:#c0341d;}
+        50%     {background:#26ae61;}
+        75%     {background:#c0341d;}
+        100%    {background:#26ae61;}
+    }
+    animation: colors 1s 1;
+  }
+
+  .times{
+    font-size: 25px;
+    position: relative;
+    top: 4px;
+    cursor: pointer;
   }
 
   code {
