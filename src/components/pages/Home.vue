@@ -4,8 +4,10 @@ import JobSpotlight from '../shared/JobSpotlight';
 import Testimonials from '../shared/Testimonials';
 import InfoBanner from '../shared/InfoBanner';
 import Subscribe from '../shared/Subscribe';
+import homeMetaInfoMixin from '../../mixins/homeMetaInfo';
 
 export default {
+  mixins: [homeMetaInfoMixin],
   components: {
     RecentJobsList,
     JobSpotlight,
