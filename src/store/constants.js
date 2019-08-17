@@ -35,28 +35,6 @@ export const PERIODS = [
   },
 ];
 
-export const SEARCH_TYPE_ALIAS = [
-  {
-    path: '?type=1',
-    alias: 'tam-zamanli',
-  },
-  {
-    path: '?type=2',
-    alias: 'yari-zamanli',
-  },
-  {
-    path: '?type=3',
-    alias: 'stajyer',
-  },
-  {
-    path: '?type=4',
-    alias: 'freelance',
-  },
-  ...allLocations.map(item => ({
-    path: `?location=${item}`,
-    alias: item,
-  })),
-];
 
 export const JOB_TYPE_SLUG_TO_ID_MAP = {
   'tam-zamanli': 1,
@@ -71,6 +49,17 @@ export const JOB_TYPE_ID_TO_SLUG_MAP = {
   3: 'stajyer',
   4: 'freelance',
 };
+
+export const SEARCH_TYPE_ALIAS = [
+  ...Object.keys(JOB_TYPE_ID_TO_SLUG_MAP).map((type, index) => ({
+    path: `?type=${index + 1}`,
+    alias: JOB_TYPE_ID_TO_SLUG_MAP[index + 1],
+  })),
+  ...allLocations.map(item => ({
+    path: `?location=${item}`,
+    alias: item,
+  })),
+];
 
 export const JOB_TYPES_FOR_DROPDOWN = [
   {
