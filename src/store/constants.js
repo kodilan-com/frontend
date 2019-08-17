@@ -35,7 +35,6 @@ export const PERIODS = [
   },
 ];
 
-
 export const JOB_TYPE_SLUG_TO_ID_MAP = {
   'tam-zamanli': 1,
   'yari-zamanli': 2,
@@ -55,9 +54,9 @@ export const SEARCH_TYPE_ALIAS = [
     path: `?type=${index + 1}`,
     alias: JOB_TYPE_ID_TO_SLUG_MAP[index + 1],
   })),
-  ...allLocations.map(item => ({
-    path: `?location=${item}`,
-    alias: item,
+  ...allLocations.map(location => ({
+    path: `?location=${location}`,
+    alias: location,
   })),
 ];
 
