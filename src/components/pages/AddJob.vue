@@ -9,6 +9,8 @@ import validationMixin from '../../mixins/validator';
 import { defaultEditorToolbar } from '../../config';
 import { JOB_TYPES_FOR_DROPDOWN } from '../../store/constants';
 
+import { newListingEventBus } from '../../main';
+
 export default {
   mixins: [validationMixin],
   components: {
@@ -38,11 +40,17 @@ export default {
       },
       rules: {
         company_name: { required: true, message: 'Firma adı boş bırakılamaz.' },
-        company_email: { required: true, message: 'E-posta adresi boş bırakılamaz.' },
+        company_email: {
+          required: true,
+          message: 'E-posta adresi boş bırakılamaz.',
+        },
         company_logo: { required: true, message: 'Logo URL boş bırakılamaz.' },
         company_www: { required: true, message: 'Website boş bırakılamaz.' },
         position: { required: true, message: 'Pozisyon boş bırakılamaz.' },
-        description: { required: true, message: 'İlan açıklaması boş bırakılamaz.' },
+        description: {
+          required: true,
+          message: 'İlan açıklaması boş bırakılamaz.',
+        },
         location: { required: true, message: 'Lokasyon boş bırakılamaz.' },
         tags: { required: true, message: 'Etiketler boş bırakılamaz.' },
       },
@@ -56,17 +64,25 @@ export default {
       return this.formData.tags
         .split(',')
         .filter(tag => tag.trim().length)
-        .map(tag => tag.trim().toLowerCase().replace(/ /g, '-'));
+        .map(tag =>
+          tag
+            .trim()
+            .toLowerCase()
+            .replace(/ /g, '-'),
+        );
     },
     previewData() {
       const tagsArr = this.normalizedTags.map(t => ({ name: t, slug: t }));
-      const company = Object.keys(this.formData).reduce((acc, key) => {
-        if (key.indexOf('company_') > -1) {
-          acc.company[key.replace('company_', '')] = this.formData[key];
-        }
+      const company = Object.keys(this.formData).reduce(
+        (acc, key) => {
+          if (key.indexOf('company_') > -1) {
+            acc.company[key.replace('company_', '')] = this.formData[key];
+          }
 
-        return acc;
-      }, { company: {} });
+          return acc;
+        },
+        { company: {} },
+      );
 
       return {
         ...this.formData,
@@ -82,8 +98,12 @@ export default {
     ...mapActions(['fetchTags', 'savePost']),
     showPreview() {
       if (!this.validateForm()) {
-        const messages = Object.values(this.validationErrorMessages).map(e => `<li>${e}</li>`);
-        const errorBody = `Lütfen aşağıdaki alanları kontrol ediniz.<ul>${messages.join('')}</ul>`;
+        const messages = Object.values(this.validationErrorMessages).map(
+          e => `<li>${e}</li>`,
+        );
+        const errorBody = `Lütfen aşağıdaki alanları kontrol ediniz.<ul>${messages.join(
+          '',
+        )}</ul>`;
 
         return this.showErrorDialog(errorBody);
       }
@@ -102,7 +122,10 @@ export default {
         tags: this.normalizedTags,
       };
 
-      postData.company_twitter = (postData.company_twitter || '').replace('@', '');
+      postData.company_twitter = (postData.company_twitter || '').replace(
+        '@',
+        '',
+      );
       postData.company_www = normalizeUrl(postData.company_www);
       postData.apply_url = normalizeUrl(postData.apply_url);
 
@@ -117,7 +140,9 @@ export default {
         })
         .catch((e) => {
           const errors = this.parseErrors(e);
-          this.showErrorDialog(`Lütfen gerekli alanları doldurduğunuzdan emin olunuz.${errors}`);
+          this.showErrorDialog(
+            `Lütfen gerekli alanları doldurduğunuzdan emin olunuz.${errors}`,
+          );
         })
         .finally(() => {
           this.isSaving = false;
@@ -130,7 +155,9 @@ export default {
         text,
         title: 'İlan ekleme başarısız!',
         buttons: [
-          { title: `<a href="mailto:info@kodilan.com?subject=${subject}" >Hata bildir!</a>` },
+          {
+            title: `<a href="mailto:info@kodilan.com?subject=${subject}" >Hata bildir!</a>`,
+          },
           { title: 'Kapat' },
         ],
       });
@@ -161,21 +188,41 @@ export default {
     },
   },
   mounted() {
-    this.fetchTags()
-      .then(() => {
-        autocomplete.init(this.$refs.tagsInput, this.autocompleteTags);
-      });
+    this.fetchTags().then(() => {
+      autocomplete.init(this.$refs.tagsInput, this.autocompleteTags);
+    });
     this.readFromLocalStorage();
+  },
+  created() {
+    newListingEventBus.$on('addNewListing', (value) => {
+      if (this.isSaved && value) {
+        this.isPreview = false;
+        this.isSaved = false;
+        this.isSaving = false;
+        this.formData = {
+          position: '',
+          description: '',
+          apply_email: '',
+          apply_url: '',
+          location: '',
+          type: null,
+          tags: '',
+          company_name: '',
+          company_email: '',
+          company_logo: '',
+          company_www: '',
+          company_twitter: '',
+          company_linkedin: '',
+        };
+      }
+    });
   },
 };
 </script>
 
 <template>
   <div class="add-job">
-    <div
-      id="titlebar"
-      class="single submit-page"
-    >
+    <div id="titlebar" class="single submit-page">
       <div class="container">
         <div class="sixteen columns">
           <h1>
@@ -186,30 +233,26 @@ export default {
     </div>
     <div v-if="isSaved" class="notification success center">
       <p>
-        <span>İlanınız başarılı bir şekilde kaydedildi!</span><br><br>
-        İlanınızın yayınlanabilmesi için gönderilen e-postadaki
+        <span>İlanınız başarılı bir şekilde kaydedildi!</span>
+        <br >
+        <br >İlanınızın yayınlanabilmesi için gönderilen e-postadaki
         onay linkine tıklamanız gerekmektedir.
       </p>
     </div>
     <template v-else>
       <template v-if="isPreview">
-        <job-details
-          :preview="true"
-          :preview-data="previewData"
-        />
+        <job-details :preview="true" :preview-data="previewData" />
         <div class="container margin-top-40 margin-bottom-40">
           <button @click="togglePreview" class="button big back-button" type="button">
             <i class="fa fa-arrow-left" /> Geri dön
           </button>
           <button @click="save" :disabled="isSaving" class="button big save-button" type="button">
-            Kaydet <i class="fa fa-check" />
+            Kaydet
+            <i class="fa fa-check" />
           </button>
         </div>
       </template>
-      <div
-        v-else
-        class="container"
-      >
+      <div v-else class="container">
         <div class="sixteen columns">
           <div class="submit-page">
             <div class="notification notice margin-bottom-40">
@@ -232,7 +275,7 @@ export default {
             </div>
             <div class="form">
               <h5>Pozisyon</h5>
-              <input v-model="formData.position" class="search-field" type="text">
+              <input v-model="formData.position" class="search-field" type="text" >
             </div>
             <div class="form">
               <h5>İlan Açıklaması</h5>
@@ -247,8 +290,8 @@ export default {
                 :searchable="true"
               />
               <p class="note">
-                Uzaktan çalışmaya elverişli bir ilansa Remote seçiniz.
-              </p>
+Uzaktan çalışmaya elverişli bir ilansa Remote seçiniz.
+</p>
             </div>
             <div class="form">
               <h5>İlan Tipi</h5>
@@ -273,12 +316,14 @@ export default {
               <p class="note">
                 Bu pozisyon için gerekli olan yeti ve teknolojileri listeden seçebilirsiniz
                 ya da virgul ile ekleme yapabilirsiniz. En fazla 10 etiket ekleyebilirsiniz.
-                <br>
-                İlanınıza <code>frontend</code>, <code>backend</code>, <code>mobile</code>,
-                <code>designer</code>, <code>qa</code> etiketlerinden birini ekleyip
+                <br >İlanınıza
+                <code>frontend</code>,
+                <code>backend</code>,
+                <code>mobile</code>,
+                <code>designer</code>,
+                <code>qa</code> etiketlerinden birini ekleyip
                 ilgili kategoride yer almasını sağlayabilirsiniz.
-                <br>
-                Doğru ve etkili etiketler seçmek ilanınızın ilan detay sayfasındaki
+                <br >Doğru ve etkili etiketler seçmek ilanınızın ilan detay sayfasındaki
                 "Benzer İlanlar" arasında gözükme şansını arttıracaktır.
               </p>
             </div>
@@ -290,37 +335,44 @@ export default {
                 class="margin-bottom-10"
                 type="text"
               >
-              <input v-model="formData.apply_email" placeholder="E-posta" type="text">
+              <input v-model="formData.apply_email" placeholder="E-posta" type="text" >
             </div>
             <div class="divider">
               <h3>Firma Bilgileri</h3>
             </div>
             <div class="form">
               <h5>Firma adı</h5>
-              <input v-model="formData.company_name" type="text">
+              <input v-model="formData.company_name" type="text" >
             </div>
             <div class="form">
               <h5>Website</h5>
-              <input v-model="formData.company_www" type="text" placeholder="https://">
+              <input v-model="formData.company_www" type="text" placeholder="https://" >
             </div>
             <div class="form">
               <h5>Logo URL</h5>
-              <input v-model="formData.company_logo" type="text" placeholder="https://">
+              <input v-model="formData.company_logo" type="text" placeholder="https://" >
               <p class="note">
-                Logo kare olarak gösterilecektir.
-              </p>
+Logo kare olarak gösterilecektir.
+</p>
             </div>
             <div class="form">
-              <h5>Twitter Kullanıcı adı <span>(opsiyonel)</span></h5>
-              <input v-model="formData.company_twitter" type="text" placeholder="@twitter">
+              <h5>
+                Twitter Kullanıcı adı
+                <span>(opsiyonel)</span>
+              </h5>
+              <input v-model="formData.company_twitter" type="text" placeholder="@twitter" >
             </div>
             <div class="form">
-              <h5>Linkedin URL <span>(opsiyonel)</span></h5>
-              <input v-model="formData.company_linkedin" type="text" placeholder="https://">
+              <h5>
+                Linkedin URL
+                <span>(opsiyonel)</span>
+              </h5>
+              <input v-model="formData.company_linkedin" type="text" placeholder="https://" >
             </div>
             <div class="button-container">
               <button @click="showPreview" class="button big margin-top-5" type="button">
-                Önizleme <i class="fa fa-arrow-circle-right" />
+                Önizleme
+                <i class="fa fa-arrow-circle-right" />
               </button>
             </div>
           </div>

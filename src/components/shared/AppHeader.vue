@@ -2,6 +2,8 @@
 import AppBanner from './AppBanner';
 import AppTopbar from './AppTopbar';
 
+import { newListingEventBus } from '../../main';
+
 export default {
   props: {
     withBanner: {
@@ -13,6 +15,11 @@ export default {
   components: {
     AppBanner,
     AppTopbar,
+  },
+  methods: {
+    addNewListing() {
+      newListingEventBus.$emit('addNewListing', true);
+    },
   },
 };
 </script>
@@ -26,7 +33,9 @@ export default {
           <div id="logo">
             <h2>
               <router-link to="/">
-                <span>{ </span>kod<span>, </span>ilan<span> }</span>
+                <span>{</span>kod
+                <span>,</span>ilan
+                <span>}</span>
               </router-link>
             </h2>
           </div>
@@ -35,17 +44,17 @@ export default {
               <li class="header-subs">
                 <router-link to="/abone-ol">
                   <i class="fa fa-bullhorn" />
-                  <span class>
-                    Abone ol!
-                  </span>
+                  <span class>Abone ol!</span>
                 </router-link>
               </li>
               <li>
-                <router-link class="add-post button tag-create-post" to="/ilan-ekle">
+                <router-link
+                  class="add-post button tag-create-post"
+                  to="/ilan-ekle"
+                  @click.native="addNewListing"
+                >
                   <i class="fa fa-plus" />
-                  <span class="tag-create-post">
-                    Ücretsiz İlan Ekle
-                  </span>
+                  <span class="tag-create-post">Ücretsiz İlan Ekle</span>
                 </router-link>
               </li>
             </ul>
