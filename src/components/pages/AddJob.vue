@@ -64,12 +64,10 @@ export default {
       return this.formData.tags
         .split(',')
         .filter(tag => tag.trim().length)
-        .map(tag =>
-          tag
+        .map(tag => tag
             .trim()
             .toLowerCase()
-            .replace(/ /g, '-'),
-        );
+            .replace(/ /g, '-'),);
     },
     previewData() {
       const tagsArr = this.normalizedTags.map(t => ({ name: t, slug: t }));
@@ -199,21 +197,13 @@ export default {
         this.isPreview = false;
         this.isSaved = false;
         this.isSaving = false;
-        this.formData = {
-          position: '',
-          description: '',
-          apply_email: '',
-          apply_url: '',
-          location: '',
-          type: null,
-          tags: '',
-          company_name: '',
-          company_email: '',
-          company_logo: '',
-          company_www: '',
-          company_twitter: '',
-          company_linkedin: '',
-        };
+        this.formData.position = '';
+        this.formData.description = '';
+        this.formData.apply_email = '';
+        this.formData.apply_url = '';
+        this.formData.location = '';
+        this.formData.type = 1;
+        this.formData.tags = '';
       }
     });
   },
