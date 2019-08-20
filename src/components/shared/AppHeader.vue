@@ -47,9 +47,9 @@ export default {
                 </router-link>
               </li>
               <li>
-                <router-link 
-                  class="add-post button tag-create-post" 
-                  to="/ilan-ekle" 
+                <router-link
+                  class="add-post button tag-create-post"
+                  to="/ilan-ekle"
                   @click.native="addNewListing"
                 >
                   <i class="fa fa-plus" />
