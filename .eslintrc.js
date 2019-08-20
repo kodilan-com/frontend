@@ -18,6 +18,7 @@ module.exports = {
       js: 'never',
       vue: 'never',
     }],
+    'linebreak-style': ["error", "windows"],
     'no-param-reassign': ['error', {
       props: true,
       ignorePropertyModificationsFor: [

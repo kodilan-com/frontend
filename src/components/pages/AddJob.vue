@@ -8,6 +8,7 @@ import autocomplete from '../../utils/autocomplete';
 import validationMixin from '../../mixins/validator';
 import { defaultEditorToolbar } from '../../config';
 import { JOB_TYPES_FOR_DROPDOWN } from '../../store/constants';
+import { newListingEventBus } from '../../main';
 
 export default {
   mixins: [validationMixin],
@@ -166,6 +167,22 @@ export default {
         autocomplete.init(this.$refs.tagsInput, this.autocompleteTags);
       });
     this.readFromLocalStorage();
+  },
+  created() {
+    newListingEventBus.$on('addNewListing', (value) => {
+      if (this.isSaved && value) {
+        this.isPreview = false;
+        this.isSaved = false;
+        this.isSaving = false;
+        this.formData.position = '';
+        this.formData.description = '';
+        this.formData.apply_email = '';
+        this.formData.apply_url = '';
+        this.formData.location = '';
+        this.formData.type = 1;
+        this.formData.tags = '';
+      }
+    });
   },
 };
 </script>
