@@ -8,7 +8,7 @@ import autocomplete from '../../utils/autocomplete';
 import validationMixin from '../../mixins/validator';
 import { defaultEditorToolbar } from '../../config';
 import { JOB_TYPES_FOR_DROPDOWN } from '../../store/constants';
-import { newListingEventBus } from '../../main';
+import { EventBus } from '../../event-bus';
 
 export default {
   mixins: [validationMixin],
@@ -169,8 +169,8 @@ export default {
     this.readFromLocalStorage();
   },
   created() {
-    newListingEventBus.$on('addNewListing', (value) => {
-      if (this.isSaved && value) {
+    EventBus.$on('addNewListing', (payload) => {
+      if (this.isSaved && payload) {
         this.isPreview = false;
         this.isSaved = false;
         this.isSaving = false;

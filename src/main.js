@@ -13,8 +13,6 @@ Vue.component('multiselect', Multiselect);
 
 Vue.use(VModal, { dialog: true });
 
-export const newListingEventBus = new Vue();
-
 /* eslint-disable no-new */
 new Vue({
   el: '#app',

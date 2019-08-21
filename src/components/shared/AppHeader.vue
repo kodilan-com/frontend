@@ -1,7 +1,7 @@
 <script>
 import AppBanner from './AppBanner';
 import AppTopbar from './AppTopbar';
-import { newListingEventBus } from '../../main';
+import { EventBus } from '../../event-bus';
 
 export default {
   props: {
@@ -15,9 +15,12 @@ export default {
     AppBanner,
     AppTopbar,
   },
+  data() {
+    return { };
+  },
   methods: {
-    addNewListing() {
-      newListingEventBus.$emit('addNewListing', true);
+    emitNewListing() {
+      EventBus.$emit('addNewListing', true);
     },
   },
 };
@@ -49,7 +52,8 @@ export default {
               <li>
                 <router-link
                   class="add-post button tag-create-post"
-                  to="/ilan-ekle" @click.native="addNewListing"
+                  @click.native="emitNewListing"
+                  to="/ilan-ekle"
                 >
                   <i class="fa fa-plus" />
                   <span class="tag-create-post">
