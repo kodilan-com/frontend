@@ -131,7 +131,7 @@ export default {
 
     input[type=text] {
       margin-right: 6px;
-      width: 120px;
+      // width: 120px;
       display: inline;
 
       &.username {
