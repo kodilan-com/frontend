@@ -1,5 +1,3 @@
-import allLocations from '../assets/data/locations';
-
 export const TOGGLE_LOADING = 'TOGGLE_LOADING';
 export const SET_RECENT_POSTS = 'SET_RECENT_POSTS';
 export const SET_ALL_POSTS = 'SET_ALL_POSTS';
@@ -48,17 +46,6 @@ export const JOB_TYPE_ID_TO_SLUG_MAP = {
   3: 'stajyer',
   4: 'freelance',
 };
-
-export const SEARCH_TYPE_ALIAS = [
-  ...Object.keys(JOB_TYPE_ID_TO_SLUG_MAP).map((type, index) => ({
-    path: `?type=${index + 1}`,
-    alias: JOB_TYPE_ID_TO_SLUG_MAP[index + 1],
-  })),
-  ...allLocations.map(location => ({
-    path: `?location=${location}`,
-    alias: location,
-  })),
-];
 
 export const JOB_TYPES_FOR_DROPDOWN = [
   {

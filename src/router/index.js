@@ -2,7 +2,8 @@ import Vue from 'vue';
 import Meta from 'vue-meta';
 import Router from 'vue-router';
 import Home from '@/components/pages/Home';
-import { PERIODS, SEARCH_TYPE_ALIAS } from '../store/constants';
+import { PERIODS, JOB_TYPE_ID_TO_SLUG_MAP } from '../store/constants';
+import allLocations from '../assets/data/locations';
 
 Vue.use(Router);
 Vue.use(Meta);
@@ -52,10 +53,16 @@ const router = new Router({
       path: '/ilan-ara',
       name: 'Search',
       component: () => import('@/components/pages/Search'),
-      children: SEARCH_TYPE_ALIAS.map(search => ({
-        path: search.path,
-        alias: search.alias,
-      })),
+      children: [
+        ...Object.keys(JOB_TYPE_ID_TO_SLUG_MAP).map((type, index) => ({
+          path: `?type=${index + 1}`,
+          alias: JOB_TYPE_ID_TO_SLUG_MAP[index + 1],
+        })),
+        ...allLocations.map(location => ({
+          path: `?location=${location}`,
+          alias: location,
+        })),
+      ],
     },
     {
       path: '/ilan/dogrulandi',
