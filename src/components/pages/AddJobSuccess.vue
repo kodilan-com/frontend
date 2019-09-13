@@ -1,9 +1,3 @@
-<script>
-export default {
-  name: '',
-};
-</script>
-
 <template>
   <div class="add-job">
     <div
