@@ -13,9 +13,6 @@ export default {
     InfoBanner,
     Subscribe,
   },
-  metaInfo: {
-    title: "Kodilan.com"
-  }
 };
 </script>
 
