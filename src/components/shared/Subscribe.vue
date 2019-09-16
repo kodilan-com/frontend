@@ -86,6 +86,7 @@ export default {
         label="text"
         :searchable="false"
         :close-on-select="true"
+        placeholder="Seçim yapın"
       />
     </div>
     <span>olarak almak için</span>
