@@ -6,10 +6,10 @@ import companyPostsMetaInfoMixin from '../../mixins/companyPostsMetaInfo';
 
 export default {
   name: 'CompanyPosts',
+  mixins: [companyPostsMetaInfoMixin, image],
   components: {
     JobListing,
   },
-  mixins: [companyPostsMetaInfoMixin, image],
   data() {
     return {
       posts: [],
