@@ -1,10 +1,10 @@
 export default {
   metaInfo() {
-    if (this.isLoading || this.notFound) {
+    if (this.isLoading || this.notFound || this.posts.length === 0) {
       return {};
     }
 
-    const { company } = this.posts[0].company;
+    const { company } = this.posts[0];
     const companyName = company.name;
     const defaultKeywords = ['iş ilanları, yazılım iş ilanları, bilişim iş ilanları'];
     const description = `${companyName} firması takım arkadaşları arıyor`;
