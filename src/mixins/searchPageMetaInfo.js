@@ -22,6 +22,7 @@ export default {
       .join(', ');
 
     return {
+      title: headline.innerText,
       meta: [
         {
           name: 'description',
