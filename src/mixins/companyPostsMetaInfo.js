@@ -1,6 +1,6 @@
 export default {
   metaInfo() {
-    if (this.isLoading || this.notFound || this.posts.length === 0) {
+    if (this.isLoading || this.posts.length === 0) {
       return {};
     }
 
