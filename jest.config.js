@@ -32,4 +32,5 @@ module.exports = {
     'jest-watch-typeahead/testname',
   ],
   setupTestFrameworkScriptFile: '<rootDir>tests/unit/setupTests.js',
+  collectCoverageFrom: ['src/**/*.{js,vue}', '!src/main.js'],
 };

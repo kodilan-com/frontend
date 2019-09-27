@@ -8,6 +8,7 @@ export default {
     };
   },
   created() {
+    console.log(this);
     if (!this.rules && !this.formData) {
       return;
     }
