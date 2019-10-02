@@ -16,7 +16,7 @@ export default {
       return this.post.company;
     },
     timeago() {
-      return formatDate(this.post.created_at);
+      return formatDate(this.post.updated_at);
     },
     jobType() {
       return JOB_TYPE_MAP[this.post.type] || '';

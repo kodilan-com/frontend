@@ -4,6 +4,7 @@
 
 [![pipeline status](https://gitlab.com/kodilan/frontend/badges/master/pipeline.svg)](https://gitlab.com/kodilan/frontend/commits/master)
 [![Travis Status](https://travis-ci.com/kodilan-com/frontend.svg?branch=master)](https://travis-ci.com/kodilan-com/frontend)
+[![codecov](https://codecov.io/gh/kodilan-com/frontend/branch/master/graph/badge.svg)](https://codecov.io/gh/kodilan-com/frontend)
 
 This project is the official Frontend codebase of [kodilan.com](https://kodilan.com) which is a software related job board for Turkey.
 
@@ -42,6 +43,7 @@ Please take a look at the [CHANGELOG](https://gitlab.com/kodilan/frontend/blob/m
 - [Ali Gören](https://github.com/aligoren)
 - [Furkan Köse](https://github.com/furkankose)
 - [İlker Demir](https://github.com/ilker0)
+- [Berkan Sivri](https://github.com/berkansivri)
 
 ### More content
 

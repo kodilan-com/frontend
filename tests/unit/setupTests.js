@@ -1,6 +1,9 @@
+import dummy from './utils/dummy';
+
 Object.defineProperty(window, 'localStorage', {
   value: {
     getItem: jest.fn(),
+    setItem: jest.fn(),
     writable: true,
   },
 });
@@ -17,3 +20,5 @@ global.helper = {
     });
   },
 };
+
+global.dummy = dummy;

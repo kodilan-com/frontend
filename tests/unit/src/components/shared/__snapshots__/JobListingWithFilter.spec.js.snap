@@ -1,0 +1,47 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`JobListingWithFilters.vue titlebar should match snapshot with "Bu kritere uygun ilan bulunamadı." text if posts length is 0 1`] = `
+<div
+  id="titlebar"
+>
+  <div
+    class="container"
+  >
+    <div
+      class="sixteen columns"
+    >
+       
+      <span>
+        Bu kritere uygun ilan bulunamadı.
+      </span>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`JobListingWithFilters.vue widget should match snapshot input, if isLoading is false 1`] = `
+<input
+  class="ico-01"
+  placeholder="Pozisyon adı, teknoloji adı"
+  type="text"
+/>
+`;
+
+exports[`JobListingWithFilters.vue widget should render MultiSelect component with correct props, if isLoading is false 1`] = `
+<multiselect-stub
+  closeonselect="true"
+  label="text"
+  options="[object Object],[object Object],[object Object],[object Object]"
+  placeholder="Çalışma tipi seçiniz..."
+/>
+`;
+
+exports[`JobListingWithFilters.vue widget should render search button, if isLoading is false 1`] = `
+<button
+  class="button tag-search-btn"
+>
+  
+          Ara
+        
+</button>
+`;

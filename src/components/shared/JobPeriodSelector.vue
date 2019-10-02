@@ -31,7 +31,7 @@ export default {
     <div class="ul tabs-nav is-right">
       <li class="active">
         <router-link to="/ilanlar">
-          <i class="fa fa-plus-circle"></i>
+          <i class="fa fa-plus-circle" />
           Tüm İlanları Gör
         </router-link>
       </li>

@@ -27,5 +27,5 @@ module.exports = {
     'jest-watch-typeahead/filename',
     'jest-watch-typeahead/testname',
   ],
-  setupTestFrameworkScriptFile: '<rootDir>tests/unit/src/setupTests.js',
+  setupTestFrameworkScriptFile: '<rootDir>tests/unit/setupTests.js',
 };

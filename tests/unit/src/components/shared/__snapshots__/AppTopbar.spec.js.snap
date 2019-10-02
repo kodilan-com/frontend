@@ -1,0 +1,55 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AppTopbar.vue should match with snapshot, if clicked the "Bir daha gösterme." button before 1`] = `<!---->`;
+
+exports[`AppTopbar.vue should match with snapshot, if not clicked the "Bir daha gösterme." button before 1`] = `
+<section
+  class="component is-topbar"
+>
+  <div
+    class="container"
+  >
+    <div
+      class="topbar--cols"
+    >
+      <a
+        class="topbar--cols__elm is-icon"
+        href="https://github.com/kodilan-com/frontend"
+        target="_blank"
+      >
+        <i
+          class="fa fa-github"
+        />
+      </a>
+       
+      <div
+        class="topbar--cols__elm is-content"
+      >
+        <p>
+          
+          Kodilan.com açık kaynaklı bir girişimdir.
+          
+          <a
+            href="https://github.com/kodilan-com/frontend"
+            target="_blank"
+          >
+            
+            Katkıda bulunun!
+          
+          </a>
+        </p>
+      </div>
+       
+      <a
+        class="topbar--cols__elm is-action"
+        href="#"
+        title="Bir daha gösterme."
+      >
+        <i
+          class="fa fa-close"
+        />
+      </a>
+    </div>
+  </div>
+</section>
+`;

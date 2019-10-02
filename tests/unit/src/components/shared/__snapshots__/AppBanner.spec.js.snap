@@ -27,6 +27,7 @@ exports[`AppBanner.vue template should match the snapshot 1`] = `
           class="banner--location-select"
         >
           <location-select-stub
+            searchable="true"
             value=""
           />
         </div>
