@@ -4487,14 +4487,18 @@ span.temporary {
 }
 
 .listing .listing-logo {
-  width: 60px;
+  width: 100%;
   min-width: 60px;
-  flex-wrap: wrap;
+  display: flex;
+  align-items: center;
 }
 
 .listing .listing-logo img {
   border-radius: 3px;
   transform: translate3d(0, 0, 0);
+  object-fit: cover;
+  height: auto;
+  width: 100%;
 }
 
 .listing .listing-title {
