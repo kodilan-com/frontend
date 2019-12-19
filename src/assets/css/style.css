@@ -4487,7 +4487,7 @@ span.temporary {
 }
 
 .listing .listing-logo {
-  width: 100%;
+  width: 60px;
   min-width: 60px;
   display: flex;
   align-items: center;
