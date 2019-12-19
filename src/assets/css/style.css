@@ -672,7 +672,7 @@ ul li ul a.sf-with-ul:after {
 #titlebar {
   background-color: #f6f6f6;
   position: relative;
-  padding: 70px;
+  padding: 70px 0px;
   margin-bottom: 50px;
 }
 
