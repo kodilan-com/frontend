@@ -23,8 +23,7 @@
     "vue-multiselect": "^2.1.6",
     "vue-router": "^3.0.6",
     "vue2-editor": "^2.7.2",
-    "vuex": "^3.1.1",
-    "yarn": "^1.21.1"
+    "vuex": "^3.1.1"
   },
   "devDependencies": {
     "@types/jest": "^24.0.15",
