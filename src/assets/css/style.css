@@ -4139,6 +4139,7 @@ screen and (max-height: 300px) {
   margin-top: 2px;
   width: 60px;
   height: 60px;
+  object-fit: contain;
 }
 
 .resumes-list img {
@@ -4487,7 +4488,7 @@ span.temporary {
 }
 
 .listing .listing-logo {
-  width: 100%;
+  width: 60px;
   min-width: 60px;
   display: flex;
   align-items: center;
@@ -4496,9 +4497,8 @@ span.temporary {
 .listing .listing-logo img {
   border-radius: 3px;
   transform: translate3d(0, 0, 0);
-  object-fit: cover;
+  object-fit: contain;
   height: auto;
-  width: 100%;
 }
 
 .listing .listing-title {
@@ -4635,7 +4635,7 @@ li .job-spotlight p {
 }
 
 .job-spotlight a.job-title {
-  line-height: 29px;
+  line-height: 25px;
   font-size: 18px;
 }
 
@@ -4652,6 +4652,7 @@ li .job-spotlight p {
 
 .job-spotlight i {
   color: #FFF;
+  margin-right:7px;
 }
 
 .listing-date {
@@ -4879,7 +4880,7 @@ li .job-spotlight {
 }
 
 li .job-spotlight p {
-  line-height: 27px;
+  line-height: 23px;
 }
 
 .job-spotlight a h4 {
@@ -4921,6 +4922,8 @@ body .job-spotlight p {
 body .job-spotlight span {
   color: #808080;
   margin-right: 13px;
+  display: inline-flex;
+  align-items: center;
 }
 
 body .job-overview .fa-map-marker:before,
@@ -5833,6 +5836,7 @@ body .recent-post a h4 {
   height: 100px;
   width: 100px;
   margin-right: 30px;
+  object-fit: contain;
 }
 
 .company-info .content {
@@ -5840,10 +5844,11 @@ body .recent-post a h4 {
   float: left;
   margin: 23px 0 0 0px;
 }
-
-.company-info span {
+.company-info .content >span{
   margin-right: 10px;
 }
+
+
 
 .company-info span a {
   color: #666;
@@ -8231,6 +8236,7 @@ body #style-switcher h2 {
     margin-left: 30px;
     width: 50px;
     height: 50px;
+    object-fit: contain;
   }
   .resumes-list img {
     margin-left: 30px;
