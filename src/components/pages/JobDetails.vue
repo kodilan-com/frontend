@@ -245,7 +245,7 @@ export default {
                         <i class="ln ln-icon-Globe" />
                         <div>
                           <strong>Website</strong>
-                          <span>
+                          <span class="companyLink">
                             <a :href="postData.company.www" target="_blank">
                               {{ postData.company.www }}
                             </a>
