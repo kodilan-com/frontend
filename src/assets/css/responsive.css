@@ -312,6 +312,10 @@ body.boxed {
   .container .two-thirds.column {
     width: 492px;
   }
+  .companyLink {
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
 }
 
 /*  #Mobile (Portrait)
