@@ -34,6 +34,11 @@ const router = new Router({
       component: () => import('@/components/pages/AddJob'),
     },
     {
+      path: '/ilan-ekle/basarili',
+      name: 'AddJobSuccess',
+      component: () => import('@/components/pages/AddJobSuccess'),
+    },
+    {
       path: '/ilanlar/:slug',
       name: 'JobDetails',
       component: () => import('@/components/pages/JobDetails'),

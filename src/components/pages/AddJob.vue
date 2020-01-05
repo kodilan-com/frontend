@@ -19,7 +19,6 @@ export default {
   data() {
     return {
       isPreview: false,
-      isSaved: false,
       isSaving: false,
       formData: {
         position: '',
@@ -112,8 +111,8 @@ export default {
       this.isSaving = true;
       this.savePost(this.getPostData())
         .then(() => {
-          this.isSaved = true;
           this.saveToLocalStorage();
+          this.$router.push('/ilan-ekle/basarili');
         })
         .catch((e) => {
           const errors = this.parseErrors(e);
@@ -184,149 +183,140 @@ export default {
         </div>
       </div>
     </div>
-    <div v-if="isSaved" class="notification success center">
-      <p>
-        <span>İlanınız başarılı bir şekilde kaydedildi!</span><br><br>
-        İlanınızın yayınlanabilmesi için gönderilen e-postadaki
-        onay linkine tıklamanız gerekmektedir.
-      </p>
-    </div>
-    <template v-else>
-      <template v-if="isPreview">
-        <job-details
-          :preview="true"
-          :preview-data="previewData"
-        />
-        <div class="container margin-top-40 margin-bottom-40">
-          <button @click="togglePreview" class="button big back-button" type="button">
-            <i class="fa fa-arrow-left" /> Geri dön
-          </button>
-          <button @click="save" :disabled="isSaving" class="button big save-button" type="button">
-            Kaydet <i class="fa fa-check" />
-          </button>
-        </div>
-      </template>
-      <div
-        v-else
-        class="container"
-      >
-        <div class="sixteen columns">
-          <div class="submit-page">
-            <div class="notification notice margin-bottom-40">
-              <p>
-                <span>Önemli hatırlatma!</span>
-                İlan ekleyebilmek için belirtmiş olduğunuz firma ismiyle uyumlu bir e-posta adresi
-                vermeniz gerekiyor. İlan ekledikten sonra doğrulama işlemi için belirtmiş olduğunuz
-                e-posta adresine bir onay e-postası gönderilecektir. İlanınız size gelen e-postadaki
-                doğrulama linkine tıkladıktan sonra yayına alınacaktır.
-              </p>
-            </div>
-            <div class="form">
-              <h5>E-posta Adresiniz</h5>
-              <input
-                v-model="formData.company_email"
-                class="search-field"
-                type="text"
-                placeholder="mail@example.com"
-              >
-            </div>
-            <div class="form">
-              <h5>Pozisyon</h5>
-              <input v-model="formData.position" class="search-field" type="text">
-            </div>
-            <div class="form">
-              <h5>İlan Açıklaması</h5>
-              <vue-editor v-model="formData.description" :editor-toolbar="editorToolbar" />
-            </div>
-            <div class="form">
-              <h5>Lokasyon</h5>
-              <location-select
-                v-model="formData.location"
-                :value="formData.location"
-                :show-all="true"
-                :searchable="true"
-              />
-              <p class="note">
-                Uzaktan çalışmaya elverişli bir ilansa Remote seçiniz.
-              </p>
-            </div>
-            <div class="form">
-              <h5>İlan Tipi</h5>
-              <multiselect
-                v-model="type"
-                :options="typeOptions"
-                label="text"
-                :searchable="false"
-                :close-on-select="true"
-                placeholder="Seçiniz..."
-              />
-            </div>
-            <div class="form">
-              <h5>Etiketler</h5>
-              <input
-                v-model="formData.tags"
-                ref="tagsInput"
-                class="tags-input"
-                type="text"
-                data-multiple
-              >
-              <p class="note">
-                Bu pozisyon için gerekli olan yeti ve teknolojileri listeden seçebilirsiniz
-                ya da virgul ile ekleme yapabilirsiniz. En fazla 10 etiket ekleyebilirsiniz.
-                <br>
-                İlanınıza <code>frontend</code>, <code>backend</code>, <code>mobile</code>,
-                <code>designer</code>, <code>qa</code> etiketlerinden birini ekleyip
-                ilgili kategoride yer almasını sağlayabilirsiniz.
-                <br>
-                Doğru ve etkili etiketler seçmek ilanınızın ilan detay sayfasındaki
-                "Benzer İlanlar" arasında gözükme şansını arttıracaktır.
-              </p>
-            </div>
-            <div class="form">
-              <h5>Başvuru bilgileri</h5>
-              <input
-                v-model="formData.apply_url"
-                placeholder="URL"
-                class="margin-bottom-10"
-                type="text"
-              >
-              <input v-model="formData.apply_email" placeholder="E-posta" type="text">
-            </div>
-            <div class="divider">
-              <h3>Firma Bilgileri</h3>
-            </div>
-            <div class="form">
-              <h5>Firma adı</h5>
-              <input v-model="formData.company_name" type="text">
-            </div>
-            <div class="form">
-              <h5>Website</h5>
-              <input v-model="formData.company_www" type="text" placeholder="https://">
-            </div>
-            <div class="form">
-              <h5>Logo URL</h5>
-              <input v-model="formData.company_logo" type="text" placeholder="https://">
-              <p class="note">
-                Logo kare olarak gösterilecektir.
-              </p>
-            </div>
-            <div class="form">
-              <h5>Twitter Kullanıcı adı <span>(opsiyonel)</span></h5>
-              <input v-model="formData.company_twitter" type="text" placeholder="@twitter">
-            </div>
-            <div class="form">
-              <h5>Linkedin URL <span>(opsiyonel)</span></h5>
-              <input v-model="formData.company_linkedin" type="text" placeholder="https://">
-            </div>
-            <div class="button-container">
-              <button @click="showPreview" class="button big margin-top-5" type="button">
-                Önizleme <i class="fa fa-arrow-circle-right" />
-              </button>
-            </div>
+    <template v-if="isPreview">
+      <job-details
+        :preview="true"
+        :preview-data="previewData"
+      />
+      <div class="container margin-top-40 margin-bottom-40">
+        <button @click="togglePreview" class="button big back-button" type="button">
+          <i class="fa fa-arrow-left" /> Geri dön
+        </button>
+        <button @click="save" :disabled="isSaving" class="button big save-button" type="button">
+          Kaydet <i class="fa fa-check" />
+        </button>
+      </div>
+    </template>
+    <div
+      v-else
+      class="container"
+    >
+      <div class="sixteen columns">
+        <div class="submit-page">
+          <div class="notification notice margin-bottom-40">
+            <p>
+              <span>Önemli hatırlatma!</span>
+              İlan ekleyebilmek için belirtmiş olduğunuz firma ismiyle uyumlu bir e-posta adresi
+              vermeniz gerekiyor. İlan ekledikten sonra doğrulama işlemi için belirtmiş olduğunuz
+              e-posta adresine bir onay e-postası gönderilecektir. İlanınız size gelen e-postadaki
+              doğrulama linkine tıkladıktan sonra yayına alınacaktır.
+            </p>
+          </div>
+          <div class="form">
+            <h5>E-posta Adresiniz</h5>
+            <input
+              v-model="formData.company_email"
+              class="search-field"
+              type="text"
+              placeholder="mail@example.com"
+            >
+          </div>
+          <div class="form">
+            <h5>Pozisyon</h5>
+            <input v-model="formData.position" class="search-field" type="text">
+          </div>
+          <div class="form">
+            <h5>İlan Açıklaması</h5>
+            <vue-editor v-model="formData.description" :editor-toolbar="editorToolbar" />
+          </div>
+          <div class="form">
+            <h5>Lokasyon</h5>
+            <location-select
+              v-model="formData.location"
+              :value="formData.location"
+              :show-all="true"
+              :searchable="true"
+            />
+            <p class="note">
+              Uzaktan çalışmaya elverişli bir ilansa Remote seçiniz.
+            </p>
+          </div>
+          <div class="form">
+            <h5>İlan Tipi</h5>
+            <multiselect
+              v-model="type"
+              :options="typeOptions"
+              label="text"
+              :searchable="false"
+              :close-on-select="true"
+              placeholder="Seçiniz..."
+            />
+          </div>
+          <div class="form">
+            <h5>Etiketler</h5>
+            <input
+              v-model="formData.tags"
+              ref="tagsInput"
+              class="tags-input"
+              type="text"
+              data-multiple
+            >
+            <p class="note">
+              Bu pozisyon için gerekli olan yeti ve teknolojileri listeden seçebilirsiniz
+              ya da virgul ile ekleme yapabilirsiniz. En fazla 10 etiket ekleyebilirsiniz.
+              <br>
+              İlanınıza <code>frontend</code>, <code>backend</code>, <code>mobile</code>,
+              <code>designer</code>, <code>qa</code> etiketlerinden birini ekleyip
+              ilgili kategoride yer almasını sağlayabilirsiniz.
+              <br>
+              Doğru ve etkili etiketler seçmek ilanınızın ilan detay sayfasındaki
+              "Benzer İlanlar" arasında gözükme şansını arttıracaktır.
+            </p>
+          </div>
+          <div class="form">
+            <h5>Başvuru bilgileri</h5>
+            <input
+              v-model="formData.apply_url"
+              placeholder="URL"
+              class="margin-bottom-10"
+              type="text"
+            >
+            <input v-model="formData.apply_email" placeholder="E-posta" type="text">
+          </div>
+          <div class="divider">
+            <h3>Firma Bilgileri</h3>
+          </div>
+          <div class="form">
+            <h5>Firma adı</h5>
+            <input v-model="formData.company_name" type="text">
+          </div>
+          <div class="form">
+            <h5>Website</h5>
+            <input v-model="formData.company_www" type="text" placeholder="https://">
+          </div>
+          <div class="form">
+            <h5>Logo URL</h5>
+            <input v-model="formData.company_logo" type="text" placeholder="https://">
+            <p class="note">
+              Logo kare olarak gösterilecektir.
+            </p>
+          </div>
+          <div class="form">
+            <h5>Twitter Kullanıcı adı <span>(opsiyonel)</span></h5>
+            <input v-model="formData.company_twitter" type="text" placeholder="@twitter">
+          </div>
+          <div class="form">
+            <h5>Linkedin URL <span>(opsiyonel)</span></h5>
+            <input v-model="formData.company_linkedin" type="text" placeholder="https://">
+          </div>
+          <div class="button-container">
+            <button @click="showPreview" class="button big margin-top-5" type="button">
+              Önizleme <i class="fa fa-arrow-circle-right" />
+            </button>
           </div>
         </div>
       </div>
-    </template>
+    </div>
   </div>
 </template>
 

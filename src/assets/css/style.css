@@ -521,7 +521,7 @@ ul li ul a.sf-with-ul:after {
   -o-background-size: cover;
   background-size: cover;
   margin-bottom: 35px;
-  z-index: 1000;
+  z-index: 999;
 }
 
 #banner:before {
@@ -672,7 +672,7 @@ ul li ul a.sf-with-ul:after {
 #titlebar {
   background-color: #f6f6f6;
   position: relative;
-  padding: 70px;
+  padding: 70px 0px;
   margin-bottom: 50px;
 }
 
@@ -1339,6 +1339,7 @@ table.manage-table td.action a:hover {
   right: 0;
   bottom: 20px;
   margin: 0 20px 0 0;
+  z-index: 1000;
 }
 
 #backtotop a {
@@ -4489,12 +4490,16 @@ span.temporary {
 .listing .listing-logo {
   width: 60px;
   min-width: 60px;
-  flex-wrap: wrap;
+  display: flex;
+  align-items: center;
 }
 
 .listing .listing-logo img {
   border-radius: 3px;
   transform: translate3d(0, 0, 0);
+  object-fit: cover;
+  height: auto;
+  width: 100%;
 }
 
 .listing .listing-title {
@@ -8775,12 +8780,12 @@ select {
 
 .multiselect {
   position: relative;
-  z-index: 1000;
+  z-index: 900;
   outline: none;
 }
 
 .multiselect--active {
-  z-index: 1001;
+  z-index: 901;
 }
 
 .multiselect * {
