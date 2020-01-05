@@ -1339,6 +1339,7 @@ table.manage-table td.action a:hover {
   right: 0;
   bottom: 20px;
   margin: 0 20px 0 0;
+  z-index: 1000;
 }
 
 #backtotop a {
