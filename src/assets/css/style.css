@@ -6245,7 +6245,7 @@ html[xmlns] .flexslider .slides {
 ------------------------------------- */
 
 .pagination {
-  margin: 9px 0 0 0;
+  margin: 15px 0 40px 0;
   text-align: center;
   overflow: hidden;
 }
@@ -6284,7 +6284,7 @@ html[xmlns] .flexslider .slides {
 
 .pagination ul li.blank {
   color: #a0a0a0;
-  padding: 0 6px;
+  width: 42px;
 }
 
 .pagination ul li a.current-page {

@@ -1,9 +1,11 @@
 export const TOGGLE_LOADING = 'TOGGLE_LOADING';
 export const SET_RECENT_POSTS = 'SET_RECENT_POSTS';
 export const SET_ALL_POSTS = 'SET_ALL_POSTS';
+export const SET_ALL_POST_META = 'SET_ALL_POST_META';
 export const SET_FEATURED = 'SET_FEATURED';
 export const SET_TAGS = 'SET_TAGS';
 export const SET_AVAILABLE_LOCATIONS = 'SET_AVAILABLE_LOCATIONS';
+export const PER_PAGE = 25;
 export const SET_ACTIVE_PERIOD = 'SET_ACTIVE_PERIOD';
 export const RECENT_POST_COUNT = 25;
 export const JOB_TYPE_MAP = {

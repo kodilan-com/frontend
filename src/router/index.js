@@ -50,6 +50,12 @@ const router = new Router({
       component: () => import('@/components/pages/JobList'),
     },
     {
+      path: '/ilanlar/sayfa/:page',
+      props: true,
+      name: 'JobList',
+      component: () => import('@/components/pages/JobList'),
+    },
+    {
       path: '/etiket/:slug',
       name: 'TagPosts',
       component: () => import('@/components/pages/TagPosts'),

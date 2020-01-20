@@ -6,6 +6,7 @@ export default {
   activePeriod: PERIODS.find(period => period.isDefault).type,
   featuredPosts: [],
   allPosts: [],
+  allPostsMeta: {},
   tags: [],
   availableLocations: ['Remote', 'İstanbul', 'İzmir', 'Ankara', 'Bursa'],
 };

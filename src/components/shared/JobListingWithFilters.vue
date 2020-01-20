@@ -10,6 +10,10 @@ export default {
       type: Array,
       required: true,
     },
+    meta: {
+      type: Object,
+      required: false,
+    },
     isLoading: {
       type: Boolean,
       required: false,
@@ -33,7 +37,7 @@ export default {
   },
   computed: {
     countText() {
-      const { length } = this.posts;
+      const length = this.meta && this.meta.total ? this.meta.total : this.posts.length;
 
       if (!length) {
         return 'Bu kritere uygun ilan bulunamadı.';
@@ -81,7 +85,10 @@ export default {
     <div class="container job-listing" :class="{ empty: !posts.length }">
       <div class="eleven columns">
         <div class="padding-right">
-          <job-listing :is-loading="isLoading" :posts="posts" />
+          <job-listing :is-loading="isLoading"
+                       :posts="posts"
+          />
+          <slot name="paginate" />
         </div>
       </div>
       <div v-if="!isLoading" class="five columns">
