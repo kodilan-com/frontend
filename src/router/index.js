@@ -25,6 +25,7 @@ const router = new Router({
         meta: {
           period: period.type,
           hasBanner: true,
+          scroll: true,
         },
       })),
     },
@@ -102,6 +103,15 @@ const router = new Router({
     },
   ],
   scrollBehavior(to, from, savedPosition) {
+    if (to.meta.scroll) {
+      const element = document.querySelector('.router-link-exact-active');
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+
+        return {};
+      }
+    }
+
     return savedPosition || { x: 0, y: 0 };
   },
 });
