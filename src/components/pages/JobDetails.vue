@@ -6,6 +6,7 @@ import ApplyLink from '../shared/ApplyLink';
 import Loader from '../shared/Loader';
 import image from '../../mixins/image';
 import jobDetailsMetaInfoMixin from '../../mixins/jobDetailsMetaInfo';
+import formatDate from '../../utils/date';
 
 export default {
   props: {
@@ -64,6 +65,12 @@ export default {
         month: 'long',
         year: 'numeric',
       });
+    },
+    activeAndRelatedPosts() {
+      // This computed filters related posts which didn't get any update since {months} months.
+      const months = 2;
+
+      return this.relatedPosts.filter(post => parseInt(formatDate(post.updated_at).split(' ay önce')[0], 0) <= months);
     },
   },
   methods: {
@@ -275,11 +282,11 @@ export default {
                 </div>
               </div>
             </div>
-            <div class="sixteen columns" v-if="relatedPosts.length">
+            <div class="sixteen columns" v-if="activeAndRelatedPosts.length">
               <h3 class="margin-bottom-25">
                 Benzer ilanlar
               </h3>
-              <job-listing :posts="relatedPosts" />
+              <job-listing :posts="activeAndRelatedPosts" />
             </div>
           </div>
         </template>
