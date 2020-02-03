@@ -32,6 +32,18 @@ export default {
           </div>
           <nav id="navigation" class="menu">
             <ul class="responsive float-right">
+              <li>
+                <router-link to="/kayit-ol">
+                  <i class="fa fa-user"></i>
+                  Kayıt Ol
+                </router-link>
+              </li>
+              <li>
+                <router-link to="/giris-yap">
+                  <i class="fa fa-lock"></i>
+                  Giriş Yap
+                </router-link>
+              </li>
               <li class="header-subs">
                 <router-link to="/abone-ol">
                   <i class="fa fa-bullhorn" />

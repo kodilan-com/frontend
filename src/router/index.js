@@ -30,6 +30,16 @@ const router = new Router({
       })),
     },
     {
+      path: '/giris-yap',
+      name: 'Login',
+      component: () => import('@/components/pages/Login'),
+    },
+    {
+      path: '/kayit-ol',
+      name: 'SignUp',
+      component: () => import('@/components/pages/SignUp'),
+    },
+    {
       path: '/ilan-ekle',
       name: 'AddJob',
       component: () => import('@/components/pages/AddJob'),
