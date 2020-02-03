@@ -1,4 +1,5 @@
 <script>
+import { mapActions } from 'vuex';
 import RequestView from './RequestView';
 
 export default {
@@ -14,6 +15,14 @@ export default {
         password_confirmation: '',
       },
     };
+  },
+  methods: {
+    ...mapActions(['signUp']),
+    submitRegister() {
+      this.signUp(this.userRegister)
+        .then(res => console.log(res))
+        .catch(error => console.log(error.response.data));
+    },
   },
 };
 </script>

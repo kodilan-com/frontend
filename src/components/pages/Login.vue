@@ -1,4 +1,5 @@
 <script>
+import { mapActions } from 'vuex';
 import RequestView from './RequestView';
 
 export default {
@@ -8,10 +9,18 @@ export default {
   data() {
     return {
       userLogin: {
-        username: '',
+        email: '',
         password: '',
       },
     };
+  },
+  methods: {
+    ...mapActions(['login']),
+    submitLogin() {
+      this.login(this.userLogin)
+        .then(res => console.log(res))
+        .catch(error => console.log(error.response.data));
+    },
   },
 };
 
@@ -26,9 +35,9 @@ export default {
           <div class="tab-content" id="tab1">
             <form method="post" class="login">
               <p class="form-row form-row-wide">
-                <label for="username">Username:
-                  <i class="ln ln-icon-Male" />
-                  <input v-model="userLogin.username"
+                <label for="email2">Email Address:
+                  <i class="ln ln-icon-Mail" />
+                  <input v-model="userLogin.email"
                          type="text"
                          class="input-text"
                   >

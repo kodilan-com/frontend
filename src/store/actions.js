@@ -96,4 +96,10 @@ export default {
   setPeriod({ commit }, period) {
     commit('SET_ACTIVE_PERIOD', period);
   },
+  signUp(_, data) {
+    return http.post('/register', data);
+  },
+  login(_, data) {
+    return http.post('/login', data);
+  },
 };
