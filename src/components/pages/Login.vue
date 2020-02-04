@@ -23,7 +23,6 @@ export default {
     },
   },
 };
-
 </script>
 
 <template>
@@ -35,7 +34,7 @@ export default {
           <div class="tab-content" id="tab1">
             <form method="post" class="login">
               <p class="form-row form-row-wide">
-                <label for="email2">Email Address:
+                <label for="email2">Email Adresi:
                   <i class="ln ln-icon-Mail" />
                   <input v-model="userLogin.email"
                          type="text"
@@ -44,11 +43,11 @@ export default {
                 </label>
               </p>
               <p class="form-row form-row-wide">
-                <label for="password">Password:
+                <label for="password">Parola:
                   <i class="ln ln-icon-Lock-2" />
                   <input v-model="userLogin.password"
                          class="input-text"
-                         type="password" name="password"
+                         type="password"
                          id="password"
                   >
                 </label>
@@ -57,20 +56,18 @@ export default {
                 <input @click.prevent="submitLogin"
                        type="submit"
                        class="button border fw margin-top-10"
-                       name="login"
-                       value="Login"
+                       value="Giriş Yap"
                 >
                 <label for="rememberme" class="rememberme">
-                  <input name="rememberme"
-                         type="checkbox"
+                  <input type="checkbox"
                          id="rememberme"
                          value="forever"
                   >
-                  Remember Me
+                  Beni Hatırla
                 </label>
               </p>
               <p class="lost_password">
-                <a href="#">Lost Your Password?</a>
+                <a href="#">Parolanı mı unuttun?</a>
               </p>
             </form>
           </div>

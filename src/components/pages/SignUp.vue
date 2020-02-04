@@ -36,7 +36,7 @@ export default {
           <div class="tab-content" id="tab2">
             <form method="post" class="register">
               <p class="form-row form-row-wide">
-                <label for="username2">Username:
+                <label for="username2">Kullanıcı Adı:
                   <i class="ln ln-icon-Male" />
                   <input v-model="userRegister.name"
                          class="input-text"
@@ -45,7 +45,7 @@ export default {
                 </label>
               </p>
               <p class="form-row form-row-wide">
-                <label for="email2">Email Address:
+                <label for="email2">Email Adresi:
                   <i class="ln ln-icon-Mail" />
                   <input v-model="userRegister.email"
                          type="text"
@@ -54,7 +54,7 @@ export default {
                 </label>
               </p>
               <p class="form-row form-row-wide">
-                <label for="password1">Password:
+                <label for="password1">Parola:
                   <i class="ln ln-icon-Lock-2" />
                   <input v-model="userRegister.password"
                          type="password"
@@ -63,7 +63,7 @@ export default {
                 </label>
               </p>
               <p class="form-row form-row-wide">
-                <label for="password2">Repeat Password:
+                <label for="password2">Parolayı Doğrula:
                   <i class="ln ln-icon-Lock-2" />
                   <input v-model="userRegister.password_confirmation"
                          type="password"
@@ -75,6 +75,7 @@ export default {
                 <input @click.prevent="submitRegister"
                        type="submit"
                        class="button border fw margin-top-10"
+                       value="Kayıt Ol"
                 >
               </p>
             </form>
