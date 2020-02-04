@@ -6,6 +6,9 @@ import helpers from './helpers';
 const http = axios.create({
   baseURL: 'http://apiv2.kodilan.com/api',
   adapter: cacheAdapterEnhancer(axios.defaults.adapter),
+  headers: {
+    Authorization: `Bearer ${localStorage.getItem('AccessToken')}`,
+  },
 });
 
 export default {
@@ -97,9 +100,27 @@ export default {
     commit('SET_ACTIVE_PERIOD', period);
   },
   signUp(_, data) {
-    return http.post('/register', data);
+    return http.post('/register', data)
+      .then((res) => {
+        localStorage.setItem('AccessToken', res.data.access_token);
+        console.log(res);
+      })
+      .catch(error => console.log(error.response.data));
   },
   login(_, data) {
-    return http.post('/login', data);
+    return http.post('/login', data)
+      .then((res) => {
+        localStorage.setItem('AccessToken', res.data.access_token);
+        console.log(res);
+      })
+      .catch(error => console.log(error.response.data));
+  },
+  createCompany(_, data) {
+    return http.post('/companies?', data)
+      .then((res) => {
+        // localStorage.setItem('AccessToken', res.data.access_token);
+        console.log(res);
+      })
+      .catch(error => console.log(error.response.data));
   },
 };

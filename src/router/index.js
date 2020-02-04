@@ -40,6 +40,11 @@ const router = new Router({
       component: () => import('@/components/pages/SignUp'),
     },
     {
+      path: '/sirket-olustur',
+      name: 'CreateCompany',
+      component: () => import('@/components/pages/CreateCompany'),
+    },
+    {
       path: '/ilan-ekle',
       name: 'AddJob',
       component: () => import('@/components/pages/AddJob'),
