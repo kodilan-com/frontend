@@ -4,7 +4,7 @@ import * as constants from './constants';
 import helpers from './helpers';
 
 const http = axios.create({
-  baseURL: 'https://api.kodilan.com',
+  baseURL: 'http://apiv2.kodilan.com/api',
   adapter: cacheAdapterEnhancer(axios.defaults.adapter),
 });
 
@@ -95,5 +95,11 @@ export default {
   },
   setPeriod({ commit }, period) {
     commit('SET_ACTIVE_PERIOD', period);
+  },
+  signUp(_, data) {
+    return http.post('/register', data);
+  },
+  login(_, data) {
+    return http.post('/login', data);
   },
 };
