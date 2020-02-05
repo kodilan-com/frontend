@@ -112,7 +112,7 @@ export default {
       this.savePost(this.getPostData())
         .then(() => {
           this.saveToLocalStorage();
-          this.$router.push({ path: 'ilan-ara' });
+          this.$router.push('/ilan-ekle/basarili');
         })
         .catch((e) => {
           const errors = this.parseErrors(e);
