@@ -107,10 +107,11 @@ export default {
       })
       .catch(error => console.log(error.response.data));
   },
-  login(_, data) {
+  login({ commit }, data) {
     return http.post('/login', data)
       .then((res) => {
         localStorage.setItem('AccessToken', res.data.access_token);
+        commit('setIsLoggedIn', true);
         console.log(res);
       })
       .catch(error => console.log(error.response.data));
@@ -118,9 +119,12 @@ export default {
   createCompany(_, data) {
     return http.post('/companies?', data)
       .then((res) => {
-        // localStorage.setItem('AccessToken', res.data.access_token);
         console.log(res);
       })
       .catch(error => console.log(error.response.data));
+  },
+  logout(context) {
+    localStorage.removeItem('AccessToken');
+    context.commit('setIsLoggedIn', false);
   },
 };

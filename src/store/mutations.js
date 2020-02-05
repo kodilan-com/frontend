@@ -31,4 +31,7 @@ export default {
   [constants.SET_ACTIVE_PERIOD](state, period) {
     state.activePeriod = period;
   },
+  setIsLoggedIn(state, data) {
+    state.isLoggedIn = data;
+  },
 };

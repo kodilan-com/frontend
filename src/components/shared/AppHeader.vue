@@ -1,4 +1,5 @@
 <script>
+import { mapGetters, mapActions } from 'vuex';
 import AppBanner from './AppBanner';
 import AppTopbar from './AppTopbar';
 
@@ -13,6 +14,12 @@ export default {
   components: {
     AppBanner,
     AppTopbar,
+  },
+  computed: {
+    ...mapGetters(['isLoggedIn']),
+  },
+  methods: {
+    ...mapActions(['logout']),
   },
 };
 </script>
@@ -32,17 +39,22 @@ export default {
           </div>
           <nav id="navigation" class="menu">
             <ul class="responsive float-right">
-              <li>
-                <router-link to="/kayit-ol">
-                  <i class="fa fa-user"></i>
-                  Kayıt Ol
-                </router-link>
-              </li>
-              <li>
-                <router-link to="/giris-yap">
-                  <i class="fa fa-lock"></i>
-                  Giriş Yap
-                </router-link>
+              <span v-if="!isLoggedIn">
+                <li>
+                  <router-link to="/kayit-ol">
+                    <i class="fa fa-user"></i>
+                    Kayıt Ol
+                  </router-link>
+                </li>
+                <li>
+                  <router-link to="/giris-yap">
+                    <i class="fa fa-lock"></i>
+                    Giriş Yap
+                  </router-link>
+                </li>
+              </span>
+              <li v-if="isLoggedIn">
+                <a href="" @click="logout">Çıkış Yap</a>
               </li>
               <li class="header-subs">
                 <router-link to="/abone-ol">
