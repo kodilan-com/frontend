@@ -99,19 +99,23 @@ export default {
   setPeriod({ commit }, period) {
     commit('SET_ACTIVE_PERIOD', period);
   },
-  signUp(_, data) {
+  signUp({ dispatch }, data) {
     return http.post('/register', data)
       .then((res) => {
         localStorage.setItem('AccessToken', res.data.access_token);
+        dispatch('handleAuthCompleted');
         console.log(res);
       })
       .catch(error => console.log(error.response.data));
   },
-  login({ commit }, data) {
+  handleAuthCompleted({ commit }) {
+    commit('setIsLoggedIn', true);
+  },
+  login({ dispatch }, data) {
     return http.post('/login', data)
       .then((res) => {
         localStorage.setItem('AccessToken', res.data.access_token);
-        commit('setIsLoggedIn', true);
+        dispatch('handleAuthCompleted');
         console.log(res);
       })
       .catch(error => console.log(error.response.data));
@@ -123,8 +127,8 @@ export default {
       })
       .catch(error => console.log(error.response.data));
   },
-  logout(context) {
+  logout() {
     localStorage.removeItem('AccessToken');
-    context.commit('setIsLoggedIn', false);
+    document.location = '/';
   },
 };
