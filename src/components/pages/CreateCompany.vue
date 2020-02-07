@@ -1,5 +1,7 @@
 <script>
 import { mapActions } from 'vuex';
+import { normalizeUrl } from '../../utils/url';
+
 
 export default {
   data() {
@@ -12,12 +14,29 @@ export default {
         company_twitter: '',
         company_linkedin: '',
       },
+      rules: {
+        company_name: { required: true, message: 'Firma adı boş bırakılamaz.' },
+        company_email: { required: true, message: 'E-posta adresi boş bırakılamaz.' },
+        company_logo: { required: true, message: 'Logo URL boş bırakılamaz.' },
+        company_www: { required: true, message: 'Website boş bırakılamaz.' },
+      },
     };
   },
   methods: {
+    getPostData() {
+      const postData = {
+        ...this.formData,
+      };
+
+      postData.company_twitter = (postData.company_twitter || '').replace('@', '');
+      postData.company_www = normalizeUrl(postData.company_www);
+      postData.apply_url = normalizeUrl(postData.apply_url);
+
+      return postData;
+    },
     ...mapActions(['createCompany']),
     submitCompany() {
-      this.createCompany(this.formData)
+      this.createCompany(this.getPostData())
         .then(res => console.log(res))
         .catch(error => console.log(error.response.data));
     },

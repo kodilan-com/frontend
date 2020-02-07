@@ -1,4 +1,5 @@
 <script>
+import { mapActions } from 'vuex';
 import AppHeader from './components/shared/AppHeader';
 import AppFooter from './components/shared/AppFooter';
 import Subscribe from './components/shared/Subscribe';
@@ -9,6 +10,12 @@ export default {
     AppHeader,
     AppFooter,
     Subscribe,
+  },
+  methods: {
+    ...mapActions(['fetchMe']),
+  },
+  mounted() {
+    this.fetchMe();
   },
 };
 </script>

@@ -24,22 +24,11 @@ export default {
         position: '',
         description: '',
         apply_email: '',
-        apply_url: '',
         location: '',
         type: null,
         tags: '',
-        company_name: '',
-        company_email: '',
-        company_logo: '',
-        company_www: '',
-        company_twitter: '',
-        company_linkedin: '',
       },
       rules: {
-        company_name: { required: true, message: 'Firma adı boş bırakılamaz.' },
-        company_email: { required: true, message: 'E-posta adresi boş bırakılamaz.' },
-        company_logo: { required: true, message: 'Logo URL boş bırakılamaz.' },
-        company_www: { required: true, message: 'Website boş bırakılamaz.' },
         position: { required: true, message: 'Pozisyon boş bırakılamaz.' },
         description: { required: true, message: 'İlan açıklaması boş bırakılamaz.' },
         location: { required: true, message: 'Lokasyon boş bırakılamaz.' },
@@ -50,7 +39,7 @@ export default {
     };
   },
   computed: {
-    ...mapGetters(['autocompleteTags']),
+    ...mapGetters(['autocompleteTags', 'companyId']),
     normalizedTags() {
       return this.formData.tags
         .split(',')
@@ -96,27 +85,23 @@ export default {
       window.scrollTo(0, 0);
     },
     getPostData() {
-      const postData = {
+      return {
         ...this.formData,
+        company_id: this.companyId,
         tags: this.normalizedTags,
-      };
-
-      postData.company_twitter = (postData.company_twitter || '').replace('@', '');
-      postData.company_www = normalizeUrl(postData.company_www);
-      postData.apply_url = normalizeUrl(postData.apply_url);
-
-      return postData;
+      }
     },
     save() {
       this.isSaving = true;
+
       this.savePost(this.getPostData())
         .then(() => {
-          this.saveToLocalStorage();
           this.$router.push('/ilan-ekle/basarili');
         })
         .catch((e) => {
           const errors = this.parseErrors(e);
           this.showErrorDialog(`Lütfen gerekli alanları doldurduğunuzdan emin olunuz.${errors}`);
+          console.log(e.response.data);
         })
         .finally(() => {
           this.isSaving = false;
@@ -142,29 +127,12 @@ export default {
 
       return `<ul>${details.join('')}</ul>`;
     },
-    saveToLocalStorage() {
-      const postData = this.getPostData();
-      const storageData = {
-        company_name: postData.company_name,
-        company_email: postData.company_email,
-        company_logo: postData.company_logo,
-        company_www: postData.company_www,
-        company_twitter: postData.company_twitter,
-        company_linkedin: postData.company_linkedin,
-      };
-      localStorage.setItem('listingData', JSON.stringify(storageData));
-    },
-    readFromLocalStorage() {
-      const storageData = JSON.parse(localStorage.getItem('listingData'));
-      this.formData = { ...this.formData, ...storageData };
-    },
   },
   mounted() {
     this.fetchTags()
       .then(() => {
         autocomplete.init(this.$refs.tagsInput, this.autocompleteTags);
       });
-    this.readFromLocalStorage();
   },
 };
 </script>
@@ -211,15 +179,6 @@ export default {
               e-posta adresine bir onay e-postası gönderilecektir. İlanınız size gelen e-postadaki
               doğrulama linkine tıkladıktan sonra yayına alınacaktır.
             </p>
-          </div>
-          <div class="form">
-            <h5>E-posta Adresiniz</h5>
-            <input
-              v-model="formData.company_email"
-              class="search-field"
-              type="text"
-              placeholder="mail@example.com"
-            >
           </div>
           <div class="form">
             <h5>Pozisyon</h5>
@@ -275,39 +234,13 @@ export default {
           </div>
           <div class="form">
             <h5>Başvuru bilgileri</h5>
-            <input
+            <!-- <input
               v-model="formData.apply_url"
               placeholder="URL"
               class="margin-bottom-10"
               type="text"
-            >
+            > -->
             <input v-model="formData.apply_email" placeholder="E-posta" type="text">
-          </div>
-          <div class="divider">
-            <h3>Firma Bilgileri</h3>
-          </div>
-          <div class="form">
-            <h5>Firma adı</h5>
-            <input v-model="formData.company_name" type="text">
-          </div>
-          <div class="form">
-            <h5>Website</h5>
-            <input v-model="formData.company_www" type="text" placeholder="https://">
-          </div>
-          <div class="form">
-            <h5>Logo URL</h5>
-            <input v-model="formData.company_logo" type="text" placeholder="https://">
-            <p class="note">
-              Logo kare olarak gösterilecektir.
-            </p>
-          </div>
-          <div class="form">
-            <h5>Twitter Kullanıcı adı <span>(opsiyonel)</span></h5>
-            <input v-model="formData.company_twitter" type="text" placeholder="@twitter">
-          </div>
-          <div class="form">
-            <h5>Linkedin URL <span>(opsiyonel)</span></h5>
-            <input v-model="formData.company_linkedin" type="text" placeholder="https://">
           </div>
           <div class="button-container">
             <button @click="showPreview" class="button big margin-top-5" type="button">

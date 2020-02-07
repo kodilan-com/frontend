@@ -2,14 +2,14 @@ import axios from 'axios';
 import { cacheAdapterEnhancer } from 'axios-extensions';
 import * as constants from './constants';
 import helpers from './helpers';
+import tokenInterceptor from './tokenInterceptor';
 
 const http = axios.create({
   baseURL: 'http://apiv2.kodilan.com/api',
   adapter: cacheAdapterEnhancer(axios.defaults.adapter),
-  headers: {
-    Authorization: `Bearer ${localStorage.getItem('AccessToken')}`,
-  },
 });
+
+http.interceptors.request.use(tokenInterceptor, err => Promise.reject(err));
 
 export default {
   toggleLoading({ commit }) {
@@ -89,6 +89,12 @@ export default {
       .then((res) => {
         commit(constants.SET_AVAILABLE_LOCATIONS, res.data);
       });
+  },
+  fetchMe({ commit }) {
+    return http.get('/user/me')
+      .then(res => {
+        commit('SET_ME', res.data)
+      })
   },
   savePost(_, data) {
     return http.post('/posts', data);

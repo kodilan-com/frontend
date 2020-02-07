@@ -34,4 +34,7 @@ export default {
   setIsLoggedIn(state, data) {
     state.isLoggedIn = data;
   },
+  SET_ME(state, data) {
+    state.me = data;
+  }
 };

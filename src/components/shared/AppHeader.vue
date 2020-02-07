@@ -68,7 +68,7 @@ export default {
                 <router-link class="add-post button tag-create-post" to="/ilan-ekle">
                   <i class="fa fa-plus" />
                   <span class="tag-create-post">
-                    Ücretsiz İlan Ekle
+                    İlan Ekle
                   </span>
                 </router-link>
               </li>
