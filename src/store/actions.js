@@ -92,9 +92,19 @@ export default {
   },
   fetchMe({ commit }) {
     return http.get('/user/me')
-      .then(res => {
-        commit('SET_ME', res.data)
+      .then((res) => {
+        commit('SET_ME', res.data);
       })
+      .catch((error) => {
+        console.log(error.response.data)
+      });
+  },
+  fetchPostListing( {commit} ) {
+    http.get('/posts')
+      .then(res => {
+        commit('postListing',res.data.data);
+      })
+      .catch((error) => console.log(error.response.data))
   },
   savePost(_, data) {
     return http.post('/posts', data);
@@ -109,20 +119,20 @@ export default {
     return http.post('/register', data)
       .then((res) => {
         localStorage.setItem('AccessToken', res.data.access_token);
-        dispatch('handleAuthCompleted');
-        console.log(res);
+        dispatch('handleAuthCompleted', res.data.access_token);
       })
       .catch(error => console.log(error.response.data));
   },
-  handleAuthCompleted({ commit }) {
-    commit('setIsLoggedIn', true);
+  handleAuthCompleted({ commit }, token) {
+    commit('setIsLoggedIn', token);
   },
   login({ dispatch }, data) {
     return http.post('/login', data)
       .then((res) => {
-        localStorage.setItem('AccessToken', res.data.access_token);
-        dispatch('handleAuthCompleted');
-        console.log(res);
+        const token = res.data.access_token
+
+        localStorage.setItem('AccessToken', token);
+        dispatch('handleAuthCompleted', token);
       })
       .catch(error => console.log(error.response.data));
   },

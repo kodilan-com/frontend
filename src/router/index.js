@@ -33,6 +33,9 @@ const router = new Router({
       path: '/giris-yap',
       name: 'Login',
       component: () => import('@/components/pages/Login'),
+      meta: {
+        requiresVisitor: true,
+      }
     },
     {
       path: '/kayit-ol',
@@ -48,6 +51,11 @@ const router = new Router({
       path: '/ilan-ekle',
       name: 'AddJob',
       component: () => import('@/components/pages/AddJob'),
+    },
+    {
+      path: '/manage-jobs',
+      name: 'ManageJobs',
+      component: () => import('@/components/pages/ManageJobs'),
     },
     {
       path: '/ilan-ekle/basarili',

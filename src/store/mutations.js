@@ -36,5 +36,8 @@ export default {
   },
   SET_ME(state, data) {
     state.me = data;
-  }
+  },
+  postListing(state, data) {
+    state.manageJobs = data;
+  },
 };
