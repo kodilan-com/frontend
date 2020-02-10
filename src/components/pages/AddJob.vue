@@ -1,9 +1,8 @@
 <script>
-import { mapGetters, mapActions } from 'vuex';
+import { mapState, mapGetters, mapActions } from 'vuex';
 import { VueEditor } from 'vue2-editor';
 import LocationSelect from '../shared/LocationSelect';
 import JobDetails from './JobDetails';
-import { normalizeUrl } from '../../utils/url';
 import autocomplete from '../../utils/autocomplete';
 import validationMixin from '../../mixins/validator';
 import { defaultEditorToolbar } from '../../config';
@@ -39,6 +38,7 @@ export default {
     };
   },
   computed: {
+    ...mapState(['tags']),
     ...mapGetters(['autocompleteTags', 'companyId']),
     normalizedTags() {
       return this.formData.tags
@@ -89,11 +89,12 @@ export default {
         ...this.formData,
         company_id: this.companyId,
         tags: this.normalizedTags,
-      }
+      };
     },
     save() {
       this.isSaving = true;
 
+      console.log(this.getPostData());
       this.savePost(this.getPostData())
         .then(() => {
           this.$router.push('/ilan-ekle/basarili');
@@ -205,7 +206,7 @@ export default {
           <div class="form">
             <h5>Etiketler</h5>
             <input
-              v-model="formData.tags.length"
+              v-model="formData.tags"
               ref="tagsInput"
               class="tags-input"
               type="text"

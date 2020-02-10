@@ -99,15 +99,13 @@ export default {
         commit('SET_ME', res.data);
       })
       .catch((error) => {
-        console.log(error.response.data)
+        console.log(error.response.data);
       });
   },
-  fetchPostListing( {commit} ) {
+  fetchPostListing({ commit }) {
     http.get('/posts')
-      .then(res => {
-        commit('postListing',res.data.data);
-      })
-      .catch((error) => console.log(error.response.data))
+      .then(res => commit('postListing', res.data.data))
+      .catch(error => console.log(error.response.data));
   },
   savePost(_, data) {
     return http.post('/posts', data);
@@ -132,7 +130,7 @@ export default {
   login({ dispatch }, data) {
     return http.post('/login', data)
       .then((res) => {
-        const token = res.data.access_token
+        const token = res.data.access_token;
 
         localStorage.setItem('AccessToken', token);
         dispatch('handleAuthCompleted', token);

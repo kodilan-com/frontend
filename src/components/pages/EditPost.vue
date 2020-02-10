@@ -2,9 +2,7 @@
 import { mapGetters, mapActions } from 'vuex';
 import { VueEditor } from 'vue2-editor';
 import LocationSelect from '../shared/LocationSelect';
-import { normalizeUrl } from '../../utils/url';
 import autocomplete from '../../utils/autocomplete';
-import validationMixin from '../../mixins/validator';
 import { defaultEditorToolbar } from '../../config';
 import { JOB_TYPES_FOR_DROPDOWN } from '../../store/constants';
 
@@ -13,55 +11,45 @@ export default {
     VueEditor,
     LocationSelect,
   },
-  data(){
+  data() {
     return {
       postDetail: {},
       type: JOB_TYPES_FOR_DROPDOWN[0],
       typeOptions: JOB_TYPES_FOR_DROPDOWN,
     };
   },
-  methods: {
-    ...mapActions(['fetchPostDetail', 'fetchTags']),
-  },
-  mounted() {
-    this.$store.dispatch('fetchPostDetail')
-    .then(res => {this.postDetail = res.data.data[0]})
-    .catch(error => console.log(error.response.data))
-    
-    this.fetchTags()
-      .then(() => {
-        autocomplete.init(this.$refs.tagsInput, this.autocompleteTags);
-      });
-  },
   computed: {
     ...mapGetters(['autocompleteTags', 'companyId']),
+    orderTags() {
+      return this.postDetail.tags.map(key => key.name);
+    },
     normalizedTags() {
       return this.postDetail.tags
         .split(',')
         .filter(tag => tag.trim().length)
         .map(tag => tag.trim().toLowerCase().replace(/ /g, '-'));
     },
-    previewData() {
-      const tagsArr = this.normalizedTags.map(t => ({ name: t, slug: t }));
-      const company = Object.keys(this.postDetail).reduce((acc, key) => {
-        if (key.indexOf('company_') > -1) {
-          acc.company[key.replace('company_', '')] = this.postDetail[key];
-        }
-
-        return acc;
-      }, { company: {} });
-
-      return {
-        ...this.postDetail,
-        ...company,
-        tags: tagsArr,
-      };
-    },
     editorToolbar() {
       return defaultEditorToolbar;
     },
   },
-}
+  methods: {
+    ...mapActions(['fetchPostDetail', 'fetchTags']),
+  },
+  mounted() {
+    this.$store.dispatch('fetchPostDetail')
+      .then((res) => {
+        console.log(res);
+        this.postDetail = res.data.data[0];
+      })
+      .catch(error => console.log(error.response.data));
+
+    this.fetchTags()
+      .then(() => {
+        autocomplete.init(this.$refs.tagsInput, this.autocompleteTags);
+      });
+  },
+};
 </script>
 
 <template>
@@ -85,17 +73,17 @@ export default {
         <div class="submit-page">
           <div class="form">
             <h5>Pozisyon</h5>
-            <input v-model="this.postDetail.position" class="search-field" type="text">
+            <input v-model="postDetail.position" class="search-field" type="text">
           </div>
           <div class="form">
             <h5>İlan Açıklaması</h5>
-            <vue-editor v-model="this.postDetail.description" :editor-toolbar="editorToolbar" />
+            <vue-editor v-model="postDetail.description" :editor-toolbar="editorToolbar" />
           </div>
           <div class="form">
             <h5>Lokasyon</h5>
             <location-select
-              v-model="this.postDetail.location"
-              :value="this.postDetail.location"
+              v-model="postDetail.location"
+              :value="postDetail.location"
               :show-all="true"
               :searchable="true"
             />
@@ -117,7 +105,7 @@ export default {
           <div class="form">
             <h5>Etiketler</h5>
             <input
-              v-model="this.postDetail.tags"
+              v-model="orderTags"
               ref="tagsInput"
               class="tags-input"
               type="text"
@@ -137,7 +125,7 @@ export default {
           </div>
           <div class="form">
             <h5>Başvuru bilgileri</h5>
-            <input v-model="this.postDetail.apply_email" placeholder="E-posta" type="text">
+            <input v-model="postDetail.apply_email" placeholder="E-posta" type="text">
           </div>
           <div class="button-container">
             <button class="button big margin-top-5" type="button">
