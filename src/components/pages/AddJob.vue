@@ -171,15 +171,6 @@ export default {
     >
       <div class="sixteen columns">
         <div class="submit-page">
-          <div class="notification notice margin-bottom-40">
-            <p>
-              <span>Önemli hatırlatma!</span>
-              İlan ekleyebilmek için belirtmiş olduğunuz firma ismiyle uyumlu bir e-posta adresi
-              vermeniz gerekiyor. İlan ekledikten sonra doğrulama işlemi için belirtmiş olduğunuz
-              e-posta adresine bir onay e-postası gönderilecektir. İlanınız size gelen e-postadaki
-              doğrulama linkine tıkladıktan sonra yayına alınacaktır.
-            </p>
-          </div>
           <div class="form">
             <h5>Pozisyon</h5>
             <input v-model="formData.position" class="search-field" type="text">
@@ -214,7 +205,7 @@ export default {
           <div class="form">
             <h5>Etiketler</h5>
             <input
-              v-model="formData.tags"
+              v-model="formData.tags.length"
               ref="tagsInput"
               class="tags-input"
               type="text"
@@ -234,12 +225,6 @@ export default {
           </div>
           <div class="form">
             <h5>Başvuru bilgileri</h5>
-            <!-- <input
-              v-model="formData.apply_url"
-              placeholder="URL"
-              class="margin-bottom-10"
-              type="text"
-            > -->
             <input v-model="formData.apply_email" placeholder="E-posta" type="text">
           </div>
           <div class="button-container">

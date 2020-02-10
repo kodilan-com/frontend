@@ -8,7 +8,11 @@ export default {
       const id = this.manageJobs[0].company.id;
       this.$router.push(`manage-jobs/${id}`);
     },
-  },
+    editPost() {
+      const name = this.manageJobs[0].slug;
+      this.$router.push(`/manage-jobs/edit/${name}`);
+    },
+  }, 
   computed: {
     ...mapState(['manageJobs']),
   },
@@ -53,7 +57,7 @@ export default {
           <td>October 10, 2015</td>
           <td class="centered"><a class="button">Göster(4)</a></td>
           <td class="action">
-            <a href="#">
+            <a @click="editPost">
               <i class="fa fa-pencil"></i>
             Düzenle
             </a>
@@ -72,3 +76,13 @@ export default {
   </div>
 </div>
 </template>
+
+<style lang="scss" scoped>
+.manage-table {
+  .title {
+    a {
+      cursor: pointer;
+    }
+  }
+}
+</style>

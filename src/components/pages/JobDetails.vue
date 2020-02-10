@@ -1,5 +1,5 @@
 <script>
-import { mapActions } from 'vuex';
+import { mapActions, mapState } from 'vuex';
 import JobTypeBadge from '../shared/JobTypeBadge';
 import JobListing from '../shared/JobListing';
 import ApplyLink from '../shared/ApplyLink';
@@ -36,6 +36,7 @@ export default {
     };
   },
   computed: {
+    ...mapState(['me']),
     postData() {
       return Object.keys(this.previewData).length ? this.previewData : this.post;
     },
@@ -167,15 +168,15 @@ export default {
                     <router-link :to="`/firmalar/${postData.company.slug}`">
                       <img
                         itemprop="logo"
-                        :src="postData.company.logo"
-                        :alt="postData.company.name"
+                        :src="this.me.companies[0].logo"
+                        :alt="this.me.companies[0].name"
                         ref="logo"
                         @error="handleImageError"
                       >
                     </router-link>
                     <div class="content">
                       <h4 itemprop="name">
-                        {{ postData.company.name }}
+                        {{ this.me.companies[0].name }}
                       </h4>
                       <span>
                         <span itemprop="sameAs" :content="postData.company.www" />
@@ -183,15 +184,15 @@ export default {
                           <i class="fa fa-link" /> Website
                         </a>
                       </span>
-                      <span v-if="postData.company.twitter">
+                      <span v-if="this.me.companies[0].twitter">
                         <a :href="twitterUrl" target="_blank">
                           <i class="fa fa-twitter" />
-                          @{{ postData.company.twitter.replace('@', '') }}
+                          @{{ this.me.companies[0].twitter.replace('@', '') }}
                         </a>
                       </span>
-                      <span v-if="postData.company.linkedin">
-                        <a :href="postData.company.linkedin" target="_blank">
-                          <i class="fa fa-linkedin" /> {{ postData.company.name }}
+                      <span v-if="this.me.companies[0].linkedin">
+                        <a :href="this.me.companies[0].linkedin" target="_blank">
+                          <i class="fa fa-linkedin" /> {{ this.me.companies[0].name }}
                         </a>
                       </span>
                     </div>
@@ -247,7 +248,7 @@ export default {
                           <strong>Website</strong>
                           <span class="companyLink">
                             <a :href="postData.company.www" target="_blank">
-                              {{ postData.company.www }}
+                              {{ this.me.companies[0].www }}
                             </a>
                           </span>
                         </div>

@@ -54,6 +54,9 @@ export default {
     return http.get(`/posts/${slug}`)
       .then(res => res.data);
   },
+  fetchPostDetail(_, data) {
+    return http.get(`/posts?=${data}`)
+  },
   fetchByCompany(_, company) {
     return http.get(`/companies/${company}/posts`)
       .then(res => res.data);

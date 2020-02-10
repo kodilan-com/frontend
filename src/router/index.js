@@ -53,6 +53,11 @@ const router = new Router({
       component: () => import('@/components/pages/AddJob'),
     },
     {
+      path: '/manage-jobs/edit/:slug',
+      name: 'ManageJobs',
+      component: () => import('@/components/pages/EditPost'),
+    },
+    {
       path: '/manage-jobs',
       name: 'ManageJobs',
       component: () => import('@/components/pages/ManageJobs'),

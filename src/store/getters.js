@@ -4,5 +4,5 @@ export default {
   },
   companyId(state) {
     return Object.keys(state.me).length && state.me.companies[0].id;
-  },
+  }
 };
