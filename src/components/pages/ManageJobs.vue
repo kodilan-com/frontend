@@ -7,10 +7,6 @@ export default {
   },
   methods: {
     ...mapActions(['fetchPostListing']),
-    editPost() {
-      const name = this.manageJobs[0].slug;
-      this.$router.push(`/manage-jobs/edit/${name}`);
-    },
   },
   mounted() {
     this.$store.dispatch('fetchPostListing');
@@ -36,7 +32,7 @@ export default {
     </div>
     <div class="container">
       <div class="sixteen columns">
-        <p class="margin-bottom-25">Your listings are shown in the table below. Expired listings will be automatically removed after 30 days.</p>
+        <p class="margin-bottom-25">İş ilanlarınız aşağıdaki tabloda görünmektedir. Süresi dolmuş ilanlar otomatik olarak silinecektir.</p>
         <table class="manage-table responsive-table">
           <tr>
             <th><i class="fa fa-file-text" />Pozisyon</th>
@@ -46,7 +42,7 @@ export default {
             <th><i class="fa fa-user" />Başvurular</th>
             <th></th>
           </tr>
-          <tr v-for="jobs in this.manageJobs" :key="jobs.id">
+          <tr v-for="(jobs, index) in this.manageJobs" :key="jobs.id">
             <td class="title">
               <a>{{ jobs.position }}</a>
             </td>
@@ -57,10 +53,10 @@ export default {
               <a class="button">Göster(4)</a>
             </td>
             <td class="action">
-              <a @click="editPost">
+              <router-link :to="`manage-jobs/edit/${manageJobs[index].slug}`">
                 <i class="fa fa-pencil" />
                 Düzenle
-              </a>
+              </router-link>
               <a href="#">
                 <i class="fa  fa-check" />
                 İşaretle
