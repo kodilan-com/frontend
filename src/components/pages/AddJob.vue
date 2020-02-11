@@ -1,19 +1,16 @@
 <script>
-import { mapState, mapGetters, mapActions } from 'vuex';
-import { VueEditor } from 'vue2-editor';
-import LocationSelect from '../shared/LocationSelect';
-import JobDetails from './JobDetails';
+import { mapGetters, mapActions } from 'vuex';
 import autocomplete from '../../utils/autocomplete';
 import validationMixin from '../../mixins/validator';
-import { defaultEditorToolbar } from '../../config';
+import JobDetails from './JobDetails';
 import { JOB_TYPES_FOR_DROPDOWN } from '../../store/constants';
+import AdvertForm from './AdvertForm';
 
 export default {
   mixins: [validationMixin],
   components: {
-    VueEditor,
-    JobDetails,
-    LocationSelect,
+    AdvertForm,
+		JobDetails,
   },
   data() {
     return {
@@ -38,7 +35,6 @@ export default {
     };
   },
   computed: {
-    ...mapState(['tags']),
     ...mapGetters(['autocompleteTags', 'companyId']),
     normalizedTags() {
       return this.formData.tags
@@ -61,9 +57,6 @@ export default {
         ...company,
         tags: tagsArr,
       };
-    },
-    editorToolbar() {
-      return defaultEditorToolbar;
     },
   },
   methods: {
@@ -153,88 +146,28 @@ export default {
       </div>
     </div>
     <template v-if="isPreview">
-      <job-details
-        :preview="true"
-        :preview-data="previewData"
+			<job-details
+				:preview="true"
+				:preview-data="previewData"
+			/>
+			<div class="container margin-top-40 margin-bottom-40">
+				<button @click="togglePreview" class="button big back-button" type="button">
+					<i class="fa fa-arrow-left" /> Geri dön
+				</button>
+				<button @click="save" :disabled="isSaving" class="button big save-button" type="button">
+					Kaydet <i class="fa fa-check" />
+				</button>
+			</div>
+		</template>
+    <template v-else>
+      <advert-form
+        :formData = this.formData
       />
-      <div class="container margin-top-40 margin-bottom-40">
-        <button @click="togglePreview" class="button big back-button" type="button">
-          <i class="fa fa-arrow-left" /> Geri dön
-        </button>
-        <button @click="save" :disabled="isSaving" class="button big save-button" type="button">
-          Kaydet <i class="fa fa-check" />
-        </button>
-      </div>
     </template>
-    <div
-      v-else
-      class="container"
-    >
-      <div class="sixteen columns">
-        <div class="submit-page">
-          <div class="form">
-            <h5>Pozisyon</h5>
-            <input v-model="formData.position" class="search-field" type="text">
-          </div>
-          <div class="form">
-            <h5>İlan Açıklaması</h5>
-            <vue-editor v-model="formData.description" :editor-toolbar="editorToolbar" />
-          </div>
-          <div class="form">
-            <h5>Lokasyon</h5>
-            <location-select
-              v-model="formData.location"
-              :value="formData.location"
-              :show-all="true"
-              :searchable="true"
-            />
-            <p class="note">
-              Uzaktan çalışmaya elverişli bir ilansa Remote seçiniz.
-            </p>
-          </div>
-          <div class="form">
-            <h5>İlan Tipi</h5>
-            <multiselect
-              v-model="type"
-              :options="typeOptions"
-              label="text"
-              :searchable="false"
-              :close-on-select="true"
-              placeholder="Seçiniz..."
-            />
-          </div>
-          <div class="form">
-            <h5>Etiketler</h5>
-            <input
-              v-model="formData.tags"
-              ref="tagsInput"
-              class="tags-input"
-              type="text"
-              data-multiple
-            >
-            <p class="note">
-              Bu pozisyon için gerekli olan yeti ve teknolojileri listeden seçebilirsiniz
-              ya da virgul ile ekleme yapabilirsiniz. En fazla 10 etiket ekleyebilirsiniz.
-              <br>
-              İlanınıza <code>frontend</code>, <code>backend</code>, <code>mobile</code>,
-              <code>designer</code>, <code>qa</code> etiketlerinden birini ekleyip
-              ilgili kategoride yer almasını sağlayabilirsiniz.
-              <br>
-              Doğru ve etkili etiketler seçmek ilanınızın ilan detay sayfasındaki
-              "Benzer İlanlar" arasında gözükme şansını arttıracaktır.
-            </p>
-          </div>
-          <div class="form">
-            <h5>Başvuru bilgileri</h5>
-            <input v-model="formData.apply_email" placeholder="E-posta" type="text">
-          </div>
-          <div class="button-container">
-            <button @click="showPreview" class="button big margin-top-5" type="button">
-              Önizleme <i class="fa fa-arrow-circle-right" />
-            </button>
-          </div>
-        </div>
-      </div>
+    <div class="container button-container">
+      <button @click="showPreview" class="button big margin-top-5" type="button">
+        Önizleme <i class="fa fa-arrow-circle-right" />
+      </button>
     </div>
   </div>
 </template>
