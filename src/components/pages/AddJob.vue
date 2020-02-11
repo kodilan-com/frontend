@@ -10,7 +10,7 @@ export default {
   mixins: [validationMixin],
   components: {
     AdvertForm,
-		JobDetails,
+    JobDetails,
   },
   data() {
     return {
@@ -81,7 +81,8 @@ export default {
       return {
         ...this.formData,
         company_id: this.companyId,
-        tags: this.normalizedTags,
+        // tags: this.normalizedTags,
+        tags: [56, 64, 33, 46], // FIXME
       };
     },
     save() {
@@ -146,23 +147,21 @@ export default {
       </div>
     </div>
     <template v-if="isPreview">
-			<job-details
-				:preview="true"
-				:preview-data="previewData"
-			/>
-			<div class="container margin-top-40 margin-bottom-40">
-				<button @click="togglePreview" class="button big back-button" type="button">
-					<i class="fa fa-arrow-left" /> Geri dön
-				</button>
-				<button @click="save" :disabled="isSaving" class="button big save-button" type="button">
-					Kaydet <i class="fa fa-check" />
-				</button>
-			</div>
-		</template>
-    <template v-else>
-      <advert-form
-        :formData = this.formData
+      <job-details
+        :preview="true"
+        :preview-data="previewData"
       />
+      <div class="container margin-top-40 margin-bottom-40">
+        <button @click="togglePreview" class="button big back-button" type="button">
+          <i class="fa fa-arrow-left" /> Geri dön
+        </button>
+        <button @click="save" :disabled="isSaving" class="button big save-button" type="button">
+          Kaydet <i class="fa fa-check" />
+        </button>
+      </div>
+    </template>
+    <template v-else>
+      <advert-form :formData = this.formData />
     </template>
     <div class="container button-container">
       <button @click="showPreview" class="button big margin-top-5" type="button">
