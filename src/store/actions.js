@@ -2,11 +2,14 @@ import axios from 'axios';
 import { cacheAdapterEnhancer } from 'axios-extensions';
 import * as constants from './constants';
 import helpers from './helpers';
+import tokenInterceptor from './tokenInterceptor';
 
 const http = axios.create({
   baseURL: 'http://apiv2.kodilan.com/api',
   adapter: cacheAdapterEnhancer(axios.defaults.adapter),
 });
+
+http.interceptors.request.use(tokenInterceptor, err => Promise.reject(err));
 
 export default {
   toggleLoading({ commit }) {
@@ -51,6 +54,9 @@ export default {
     return http.get(`/posts/${slug}`)
       .then(res => res.data);
   },
+  fetchPostDetail(_, data) {
+    return http.get(`/posts?=${data}`)
+  },
   fetchByCompany(_, company) {
     return http.get(`/companies/${company}/posts`)
       .then(res => res.data);
@@ -87,6 +93,20 @@ export default {
         commit(constants.SET_AVAILABLE_LOCATIONS, res.data);
       });
   },
+  fetchMe({ commit }) {
+    return http.get('/user/me')
+      .then((res) => {
+        commit('SET_ME', res.data);
+      })
+      .catch((error) => {
+        console.log(error.response.data);
+      });
+  },
+  fetchPostListing({ commit }) {
+    http.get('/posts')
+      .then(res => commit('postListing', res.data.data))
+      .catch(error => console.log(error.response.data));
+  },
   savePost(_, data) {
     return http.post('/posts', data);
   },
@@ -96,10 +116,36 @@ export default {
   setPeriod({ commit }, period) {
     commit('SET_ACTIVE_PERIOD', period);
   },
-  signUp(_, data) {
-    return http.post('/register', data);
+  signUp({ dispatch }, data) {
+    return http.post('/register', data)
+      .then((res) => {
+        localStorage.setItem('AccessToken', res.data.access_token);
+        dispatch('handleAuthCompleted', res.data.access_token);
+      })
+      .catch(error => console.log(error.response.data));
   },
-  login(_, data) {
-    return http.post('/login', data);
+  handleAuthCompleted({ commit }, token) {
+    commit('setIsLoggedIn', token);
+  },
+  login({ dispatch }, data) {
+    return http.post('/login', data)
+      .then((res) => {
+        const token = res.data.access_token;
+
+        localStorage.setItem('AccessToken', token);
+        dispatch('handleAuthCompleted', token);
+      })
+      .catch(error => console.log(error.response.data));
+  },
+  createCompany(_, data) {
+    return http.post('/companies?', data)
+      .then((res) => {
+        console.log(res);
+      })
+      .catch(error => console.log(error.response.data));
+  },
+  logout() {
+    localStorage.removeItem('AccessToken');
+    document.location = '/';
   },
 };

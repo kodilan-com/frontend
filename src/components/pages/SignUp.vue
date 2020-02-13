@@ -20,7 +20,9 @@ export default {
     ...mapActions(['signUp']),
     submitRegister() {
       this.signUp(this.userRegister)
-        .then(res => console.log(res))
+        .then(() => {
+          this.$router.push({ name: 'CreateCompany' });
+        })
         .catch(error => console.log(error.response.data));
     },
   },

@@ -1,20 +1,16 @@
 <script>
 import { mapGetters, mapActions } from 'vuex';
-import { VueEditor } from 'vue2-editor';
-import LocationSelect from '../shared/LocationSelect';
-import JobDetails from './JobDetails';
-import { normalizeUrl } from '../../utils/url';
 import autocomplete from '../../utils/autocomplete';
 import validationMixin from '../../mixins/validator';
-import { defaultEditorToolbar } from '../../config';
+import JobDetails from './JobDetails';
 import { JOB_TYPES_FOR_DROPDOWN } from '../../store/constants';
+import AdvertForm from './AdvertForm';
 
 export default {
   mixins: [validationMixin],
   components: {
-    VueEditor,
+    AdvertForm,
     JobDetails,
-    LocationSelect,
   },
   data() {
     return {
@@ -24,22 +20,11 @@ export default {
         position: '',
         description: '',
         apply_email: '',
-        apply_url: '',
         location: '',
         type: null,
         tags: '',
-        company_name: '',
-        company_email: '',
-        company_logo: '',
-        company_www: '',
-        company_twitter: '',
-        company_linkedin: '',
       },
       rules: {
-        company_name: { required: true, message: 'Firma adı boş bırakılamaz.' },
-        company_email: { required: true, message: 'E-posta adresi boş bırakılamaz.' },
-        company_logo: { required: true, message: 'Logo URL boş bırakılamaz.' },
-        company_www: { required: true, message: 'Website boş bırakılamaz.' },
         position: { required: true, message: 'Pozisyon boş bırakılamaz.' },
         description: { required: true, message: 'İlan açıklaması boş bırakılamaz.' },
         location: { required: true, message: 'Lokasyon boş bırakılamaz.' },
@@ -50,7 +35,7 @@ export default {
     };
   },
   computed: {
-    ...mapGetters(['autocompleteTags']),
+    ...mapGetters(['autocompleteTags', 'companyId']),
     normalizedTags() {
       return this.formData.tags
         .split(',')
@@ -73,9 +58,6 @@ export default {
         tags: tagsArr,
       };
     },
-    editorToolbar() {
-      return defaultEditorToolbar;
-    },
   },
   methods: {
     ...mapActions(['fetchTags', 'savePost']),
@@ -96,27 +78,25 @@ export default {
       window.scrollTo(0, 0);
     },
     getPostData() {
-      const postData = {
+      return {
         ...this.formData,
-        tags: this.normalizedTags,
+        company_id: this.companyId,
+        // tags: this.normalizedTags,
+        tags: [56, 64, 33, 46], // FIXME
       };
-
-      postData.company_twitter = (postData.company_twitter || '').replace('@', '');
-      postData.company_www = normalizeUrl(postData.company_www);
-      postData.apply_url = normalizeUrl(postData.apply_url);
-
-      return postData;
     },
     save() {
       this.isSaving = true;
+
+      console.log(this.getPostData());
       this.savePost(this.getPostData())
         .then(() => {
-          this.saveToLocalStorage();
           this.$router.push('/ilan-ekle/basarili');
         })
         .catch((e) => {
           const errors = this.parseErrors(e);
           this.showErrorDialog(`Lütfen gerekli alanları doldurduğunuzdan emin olunuz.${errors}`);
+          console.log(e.response.data);
         })
         .finally(() => {
           this.isSaving = false;
@@ -142,29 +122,12 @@ export default {
 
       return `<ul>${details.join('')}</ul>`;
     },
-    saveToLocalStorage() {
-      const postData = this.getPostData();
-      const storageData = {
-        company_name: postData.company_name,
-        company_email: postData.company_email,
-        company_logo: postData.company_logo,
-        company_www: postData.company_www,
-        company_twitter: postData.company_twitter,
-        company_linkedin: postData.company_linkedin,
-      };
-      localStorage.setItem('listingData', JSON.stringify(storageData));
-    },
-    readFromLocalStorage() {
-      const storageData = JSON.parse(localStorage.getItem('listingData'));
-      this.formData = { ...this.formData, ...storageData };
-    },
   },
   mounted() {
     this.fetchTags()
       .then(() => {
         autocomplete.init(this.$refs.tagsInput, this.autocompleteTags);
       });
-    this.readFromLocalStorage();
   },
 };
 </script>
@@ -197,125 +160,13 @@ export default {
         </button>
       </div>
     </template>
-    <div
-      v-else
-      class="container"
-    >
-      <div class="sixteen columns">
-        <div class="submit-page">
-          <div class="notification notice margin-bottom-40">
-            <p>
-              <span>Önemli hatırlatma!</span>
-              İlan ekleyebilmek için belirtmiş olduğunuz firma ismiyle uyumlu bir e-posta adresi
-              vermeniz gerekiyor. İlan ekledikten sonra doğrulama işlemi için belirtmiş olduğunuz
-              e-posta adresine bir onay e-postası gönderilecektir. İlanınız size gelen e-postadaki
-              doğrulama linkine tıkladıktan sonra yayına alınacaktır.
-            </p>
-          </div>
-          <div class="form">
-            <h5>E-posta Adresiniz</h5>
-            <input
-              v-model="formData.company_email"
-              class="search-field"
-              type="text"
-              placeholder="mail@example.com"
-            >
-          </div>
-          <div class="form">
-            <h5>Pozisyon</h5>
-            <input v-model="formData.position" class="search-field" type="text">
-          </div>
-          <div class="form">
-            <h5>İlan Açıklaması</h5>
-            <vue-editor v-model="formData.description" :editor-toolbar="editorToolbar" />
-          </div>
-          <div class="form">
-            <h5>Lokasyon</h5>
-            <location-select
-              v-model="formData.location"
-              :value="formData.location"
-              :show-all="true"
-              :searchable="true"
-            />
-            <p class="note">
-              Uzaktan çalışmaya elverişli bir ilansa Remote seçiniz.
-            </p>
-          </div>
-          <div class="form">
-            <h5>İlan Tipi</h5>
-            <multiselect
-              v-model="type"
-              :options="typeOptions"
-              label="text"
-              :searchable="false"
-              :close-on-select="true"
-              placeholder="Seçiniz..."
-            />
-          </div>
-          <div class="form">
-            <h5>Etiketler</h5>
-            <input
-              v-model="formData.tags"
-              ref="tagsInput"
-              class="tags-input"
-              type="text"
-              data-multiple
-            >
-            <p class="note">
-              Bu pozisyon için gerekli olan yeti ve teknolojileri listeden seçebilirsiniz
-              ya da virgul ile ekleme yapabilirsiniz. En fazla 10 etiket ekleyebilirsiniz.
-              <br>
-              İlanınıza <code>frontend</code>, <code>backend</code>, <code>mobile</code>,
-              <code>designer</code>, <code>qa</code> etiketlerinden birini ekleyip
-              ilgili kategoride yer almasını sağlayabilirsiniz.
-              <br>
-              Doğru ve etkili etiketler seçmek ilanınızın ilan detay sayfasındaki
-              "Benzer İlanlar" arasında gözükme şansını arttıracaktır.
-            </p>
-          </div>
-          <div class="form">
-            <h5>Başvuru bilgileri</h5>
-            <input
-              v-model="formData.apply_url"
-              placeholder="URL"
-              class="margin-bottom-10"
-              type="text"
-            >
-            <input v-model="formData.apply_email" placeholder="E-posta" type="text">
-          </div>
-          <div class="divider">
-            <h3>Firma Bilgileri</h3>
-          </div>
-          <div class="form">
-            <h5>Firma adı</h5>
-            <input v-model="formData.company_name" type="text">
-          </div>
-          <div class="form">
-            <h5>Website</h5>
-            <input v-model="formData.company_www" type="text" placeholder="https://">
-          </div>
-          <div class="form">
-            <h5>Logo URL</h5>
-            <input v-model="formData.company_logo" type="text" placeholder="https://">
-            <p class="note">
-              Logo kare olarak gösterilecektir.
-            </p>
-          </div>
-          <div class="form">
-            <h5>Twitter Kullanıcı adı <span>(opsiyonel)</span></h5>
-            <input v-model="formData.company_twitter" type="text" placeholder="@twitter">
-          </div>
-          <div class="form">
-            <h5>Linkedin URL <span>(opsiyonel)</span></h5>
-            <input v-model="formData.company_linkedin" type="text" placeholder="https://">
-          </div>
-          <div class="button-container">
-            <button @click="showPreview" class="button big margin-top-5" type="button">
-              Önizleme <i class="fa fa-arrow-circle-right" />
-            </button>
-          </div>
-        </div>
-      </div>
+    <template v-else>
+      <advert-form :formData = this.formData />
+    </template>
+    <div class="container button-container">
+      <button @click="showPreview" class="button big margin-top-5" type="button">
+        Önizleme <i class="fa fa-arrow-circle-right" />
+      </button>
     </div>
   </div>
 </template>

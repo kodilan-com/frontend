@@ -31,4 +31,13 @@ export default {
   [constants.SET_ACTIVE_PERIOD](state, period) {
     state.activePeriod = period;
   },
+  setIsLoggedIn(state, data) {
+    state.isLoggedIn = data;
+  },
+  SET_ME(state, data) {
+    state.me = data;
+  },
+  postListing(state, data) {
+    state.manageJobs = data;
+  },
 };
