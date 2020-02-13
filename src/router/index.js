@@ -26,6 +26,7 @@ const router = new Router({
           period: period.type,
           hasBanner: true,
           scroll: true,
+          auth: localStorage.getItem('AccessToken'),
         },
       })),
     },
@@ -33,9 +34,6 @@ const router = new Router({
       path: '/giris-yap',
       name: 'Login',
       component: () => import('@/components/pages/Login'),
-      meta: {
-        requiresVisitor: true,
-      }
     },
     {
       path: '/kayit-ol',
@@ -148,6 +146,19 @@ const router = new Router({
 
     return savedPosition || { x: 0, y: 0 };
   },
+});
+
+router.beforeEach((to, from, next) => {
+  const isLoggedIn = localStorage.getItem('AccessToken');
+
+  if (to.name === 'AddJob') {
+    if (isLoggedIn) {
+      next();
+    }
+    next({ name: 'Login' });
+  }
+
+  next();
 });
 
 export default router;
