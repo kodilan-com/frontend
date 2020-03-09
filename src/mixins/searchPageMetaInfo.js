@@ -22,6 +22,7 @@ export default {
       .join(', ');
 
     return {
+      title: keywords,
       meta: [
         {
           name: 'description',
