@@ -6,11 +6,12 @@ import JobDetails from './JobDetails';
 import { normalizeUrl } from '../../utils/url';
 import autocomplete from '../../utils/autocomplete';
 import validationMixin from '../../mixins/validator';
+import addJobMetaInfoMixin from '../../mixins/addJobMetaInfo';
 import { defaultEditorToolbar } from '../../config';
 import { JOB_TYPES_FOR_DROPDOWN } from '../../store/constants';
 
 export default {
-  mixins: [validationMixin],
+  mixins: [validationMixin, addJobMetaInfoMixin],
   components: {
     VueEditor,
     JobDetails,
