@@ -22,6 +22,7 @@ export default {
       .join(', ');
 
     return {
+      title: `${this.query} için iş ilanları - Kodilan.Com`,
       meta: [
         {
           name: 'description',
