@@ -1,6 +1,8 @@
 export default {
   metaInfo() {
+    console.log(this);
     return {
+      title: `${this.tag} etiketli iş ilanları - Kodilan.Com`,
       meta: [
         {
           name: 'keywords',
