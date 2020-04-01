@@ -16,6 +16,8 @@ export default {
 
         acc.push(`${keyword} iş ilanları`);
         acc.push(`istanbul ${keyword} iş ilanları`);
+        acc.push(`ankara ${keyword} iş ilanları`);
+        acc.push(`izmir ${keyword} iş ilanları`);
 
         return acc;
       }, [])
