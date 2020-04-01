@@ -22,7 +22,6 @@ export default {
         return acc;
       }, [])
       .join(', ');
-console.log(this);
     return {
       title: `${this.query||this.jobTypeString||this.queryString.location} için iş ilanları - Kodilan.Com`,
       meta: [
