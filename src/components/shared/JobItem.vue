@@ -98,7 +98,7 @@ export default {
     color: #808080;
     position: absolute;
     right: 25px;
-    top: 60px;
+    top: 58px;
   }
 }
 </style>
