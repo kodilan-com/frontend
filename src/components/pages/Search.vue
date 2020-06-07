@@ -62,7 +62,7 @@ export default {
 
       this.search(this.queryString)
         .then((res) => {
-          this.posts = res.data;
+          this.posts = res;
         })
         .finally(() => {
           this.isLoading = false;

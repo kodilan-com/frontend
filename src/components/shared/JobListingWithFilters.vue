@@ -51,7 +51,6 @@ export default {
   methods: {
     search() {
       this.params.type = this.type ? this.type.id : 0;
-
       const params = queryUtils.getParams(this.params);
 
       if (params) {
