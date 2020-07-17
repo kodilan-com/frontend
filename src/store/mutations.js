@@ -31,4 +31,10 @@ export default {
   [constants.SET_ACTIVE_PERIOD](state, period) {
     state.activePeriod = period;
   },
+  [constants.USER](state, user) {
+    state.user = user;
+  },
+  [constants.ACCESS_TOKEN](state, accessToken) {
+    state.accessToken = accessToken;
+  },
 };

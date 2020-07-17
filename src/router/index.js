@@ -99,6 +99,16 @@ const router = new Router({
       component: () => import('@/components/pages/SubscribeLanding'),
     },
     {
+      path: '/kayit-ol',
+      name: 'SignUp',
+      component: () => import('@/components/pages/SignUp'),
+    },
+    {
+      path: '/giris',
+      name: 'Login',
+      component: () => import('@/components/pages/Login'),
+    },
+    {
       path: '/404',
       name: 'NotFound',
       component: () => import('@/components/pages/NotFound'),

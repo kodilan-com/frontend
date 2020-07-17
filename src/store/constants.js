@@ -7,6 +7,8 @@ export const SET_TAGS = 'SET_TAGS';
 export const SET_AVAILABLE_LOCATIONS = 'SET_AVAILABLE_LOCATIONS';
 export const PER_PAGE = 25;
 export const SET_ACTIVE_PERIOD = 'SET_ACTIVE_PERIOD';
+export const USER = 'USER';
+export const ACCESS_TOKEN = 'ACCESS_TOKEN';
 export const RECENT_POST_COUNT = 25;
 export const JOB_TYPE_MAP = {
   0: 'Tam zamanlı',

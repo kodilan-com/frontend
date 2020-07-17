@@ -6,6 +6,10 @@ import helpers from './helpers';
 const http = axios.create({
   baseURL: 'https://api.kodilan.com',
   adapter: cacheAdapterEnhancer(axios.defaults.adapter),
+  headers: {
+    Authorization: localStorage.getItem('accessToken')
+      ? `Bearer ${localStorage.getItem('accessToken')}` : '',
+  },
 });
 
 export default {
@@ -95,5 +99,25 @@ export default {
   },
   setPeriod({ commit }, period) {
     commit('SET_ACTIVE_PERIOD', period);
+  },
+  setUser({ commit }, user) {
+    localStorage.setItem('user', JSON.stringify(user));
+    commit(constants.USER, user);
+  },
+  setAccessToken({ commit }, accessToken) {
+    localStorage.setItem('accessToken', accessToken);
+    http.defaults.headers.common.Authorization = `Bearer ${accessToken}`;
+    commit(constants.ACCESS_TOKEN, accessToken);
+  },
+  registerUser(_, data) {
+    return http.post('/register', data);
+  },
+  loginUser({ commit }, data) {
+    return http.post('/login', data)
+      .then((response) => {
+        commit(constants.USER, response.data.user);
+
+        return response;
+      });
   },
 };

@@ -1,4 +1,5 @@
 <script>
+import { mapActions } from 'vuex';
 import AppHeader from './components/shared/AppHeader';
 import AppFooter from './components/shared/AppFooter';
 import Subscribe from './components/shared/Subscribe';
@@ -9,6 +10,21 @@ export default {
     AppHeader,
     AppFooter,
     Subscribe,
+  },
+  methods: {
+    ...mapActions(['setAccessToken', 'setUser']),
+  },
+  mounted() {
+    const accessToken = localStorage.getItem('accessToken');
+    const user = localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')) : null;
+
+    if (accessToken) {
+      this.setAccessToken(accessToken);
+
+      if (user) {
+        this.setUser(user);
+      }
+    }
   },
 };
 </script>
@@ -36,5 +52,9 @@ export default {
 
 .fade-enter, .fade-leave-to {
   opacity: 0;
+}
+
+#banner {
+  z-index: 1;
 }
 </style>

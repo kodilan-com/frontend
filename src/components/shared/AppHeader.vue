@@ -1,4 +1,5 @@
 <script>
+import { mapActions, mapGetters } from 'vuex';
 import AppBanner from './AppBanner';
 import AppTopbar from './AppTopbar';
 
@@ -13,6 +14,17 @@ export default {
   components: {
     AppBanner,
     AppTopbar,
+  },
+  computed: {
+    ...mapGetters(['user', 'accessToken']),
+  },
+  methods: {
+    ...mapActions(['setUser', 'setAccessToken']),
+    logout() {
+      this.setAccessToken(null);
+      this.setUser(null);
+      this.$router.push('/giris');
+    },
   },
 };
 </script>
@@ -32,14 +44,14 @@ export default {
           </div>
           <nav id="navigation" class="menu">
             <ul class="responsive float-right">
-              <li class="header-subs">
+              <!-- <li class="header-subs">
                 <router-link to="/abone-ol">
                   <i class="fa fa-bullhorn" />
                   <span class>
                     Abone ol!
                   </span>
                 </router-link>
-              </li>
+              </li> -->
               <li>
                 <router-link class="add-post button tag-create-post" to="/ilan-ekle">
                   <i class="fa fa-plus" />
@@ -48,6 +60,30 @@ export default {
                   </span>
                 </router-link>
               </li>
+              <li class="header-subs" v-if="user === null">
+                <router-link class="button" to="/kayit-ol">
+                  <i class="fa fa-user" />
+                  <span>Kayıt Ol</span>
+                </router-link>
+              </li>
+              <li class="header-subs" v-else>
+                <a class="button" href="#">
+                  <i class="fa fa-user" />
+                  <span>{{ user.name }}</span>
+                  &nbsp;<i class="fa fa-caret-down" />
+                </a>
+
+                <ul>
+                  <li>
+                    <router-link class="button" to="/hesabim">
+                      Ayarlar
+                    </router-link>
+
+                    <a @click.prevent="logout()" href="#">Çıkış</a>
+                  </li>
+                </ul>
+              </li>
+              <!-- <li><a href="my-account.html"><i class="fa fa-lock"></i> Log In</a></li> -->
             </ul>
           </nav>
         </div>
@@ -88,6 +124,16 @@ export default {
 
     i {
       margin-right: 10px !important;
+    }
+
+    ul.float-right ul {
+      left: unset;
+      right: 0;
+    }
+
+    ul.float-right ul::before {
+      left: unset;
+      right: 13px;
     }
   }
 }
