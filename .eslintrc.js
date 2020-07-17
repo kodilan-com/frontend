@@ -61,14 +61,18 @@ module.exports = {
   },
   settings: {
     'import/resolver': {
-      'import/extensions': [
-        '.js',
-        '.jsx',
-        '.mjs',
-        '.ts',
-        '.tsx',
-        '.vue',
-      ],
+      node: {
+        extensions: [
+          '.js',
+          '.jsx',
+          '.mjs',
+          '.ts',
+          '.tsx',
+          '.vue',
+        ],
+      },
+      moduleDirectory: ['node_modules', 'src/'],
+      paths: ['./src', 'node_modules'],
     },
   },
 };
