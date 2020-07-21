@@ -58,9 +58,8 @@ export default {
           this.setUser(user);
           this.$router.push('/');
         })
-        .catch((e) => {
-          const errors = this.parseErrors(e);
-          this.showErrorDialog(`Lütfen gerekli alanları doldurduğunuzdan emin olunuz.${errors}`);
+        .catch((error) => {
+          this.showErrorDialog(error.response.data.message);
         })
         .finally(() => {
           this.isSaving = false;
@@ -71,7 +70,7 @@ export default {
 
       this.$modal.show('dialog', {
         text,
-        title: 'İlan ekleme başarısız!',
+        title: 'Giriş başarısız!',
         buttons: [{
           title: `<a href="mailto:info@kodilan.com?subject=${subject}" >Hata bildir!</a>`,
         },
@@ -79,14 +78,6 @@ export default {
           title: 'Kapat',
         }],
       });
-    },
-    parseErrors(e) {
-      const errors = e.response.data.errors || [];
-      const details = Object.values(errors)
-        .reduce((arr, err) => arr.concat(err), [])
-        .map(err => `<li>${err}</li>`);
-
-      return `<ul>${details.join('')}</ul>`;
     },
   },
   mounted() {
