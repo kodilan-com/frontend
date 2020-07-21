@@ -115,6 +115,11 @@ const router = new Router({
       component: () => import('../components/pages/VerifyEmail'),
     },
     {
+      path: '/parolami-unuttum',
+      name: 'ForgotPassword',
+      component: () => import('../components/pages/ForgotPassword'),
+    },
+    {
       path: '/hesabim',
       name: 'Hesabım',
       component: () => import('../components/pages/dashboard/MyAccount'),

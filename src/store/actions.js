@@ -136,4 +136,10 @@ export default {
         return response;
       });
   },
+  sendPasswordResetEmail(_, data) {
+    return http.post('/send-password-reset', data);
+  },
+  resetPassword(_, data) {
+    return http.post('/reset-password', data);
+  },
 };

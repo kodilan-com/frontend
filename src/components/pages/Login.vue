@@ -148,6 +148,8 @@ export default {
               </button>
             </p>
           </form>
+
+          <router-link to="/parolami-unuttum">Parolamı unuttum</router-link>
         </div>
 
         <!-- Register -->

@@ -23,9 +23,8 @@ export default {
     this.verificationCode = this.$route.query.verification_code;
 
     this.verifyUser({ verification_code: this.verificationCode })
-      .then((response) => {
+      .then(() => {
         this.success = true;
-        console.log(response);
       })
       .catch(() => {
         this.success = false;
