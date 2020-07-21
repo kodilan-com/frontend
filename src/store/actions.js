@@ -4,7 +4,8 @@ import * as constants from './constants';
 import helpers from './helpers';
 
 const http = axios.create({
-  baseURL: 'https://api.kodilan.com',
+  // baseURL: 'https://api.kodilan.com',
+  baseURL: 'http://localhost:8000/api',
   adapter: cacheAdapterEnhancer(axios.defaults.adapter),
   headers: {
     Authorization: localStorage.getItem('accessToken')
@@ -104,6 +105,18 @@ export default {
     localStorage.setItem('user', JSON.stringify(user));
     commit(constants.USER, user);
   },
+  updateUser({ commit }, data) {
+    return http.put('/user/me', data)
+      .then((response) => {
+        commit(constants.USER, response.data.user);
+        localStorage.setItem('user', JSON.stringify(response.data.user));
+
+        return response;
+      });
+  },
+  updatePassword(_, data) {
+    return http.put('/user/password', data);
+  },
   setAccessToken({ commit }, accessToken) {
     localStorage.setItem('accessToken', accessToken);
     http.defaults.headers.common.Authorization = `Bearer ${accessToken}`;
@@ -111,6 +124,9 @@ export default {
   },
   registerUser(_, data) {
     return http.post('/register', data);
+  },
+  verifyUser(_, data) {
+    return http.post('/verify-email', data);
   },
   loginUser({ commit }, data) {
     return http.post('/login', data)

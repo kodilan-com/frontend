@@ -3,6 +3,7 @@ import Meta from 'vue-meta';
 import Router from 'vue-router';
 import Home from '@/components/pages/Home';
 import { PERIODS } from '../store/constants';
+import dashboardRoutes from './dashboard';
 
 Vue.use(Router);
 Vue.use(Meta);
@@ -107,6 +108,17 @@ const router = new Router({
       path: '/giris',
       name: 'Login',
       component: () => import('@/components/pages/Login'),
+    },
+    {
+      path: '/eposta-dogrula',
+      name: 'VerifyEmail',
+      component: () => import('../components/pages/VerifyEmail'),
+    },
+    {
+      path: '/hesabim',
+      name: 'Hesabım',
+      component: () => import('../components/pages/dashboard/MyAccount'),
+      children: dashboardRoutes,
     },
     {
       path: '/404',
