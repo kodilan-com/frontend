@@ -12,18 +12,14 @@ export default {
     Subscribe,
   },
   methods: {
-    ...mapActions(['setAccessToken', 'setUser']),
+    ...mapActions(['setAccessToken', 'getUser']),
   },
   mounted() {
     const accessToken = localStorage.getItem('accessToken');
-    const user = localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')) : null;
 
     if (accessToken) {
       this.setAccessToken(accessToken);
-
-      if (user) {
-        this.setUser(user);
-      }
+      this.getUser();
     }
   },
 };

@@ -101,6 +101,16 @@ export default {
   setPeriod({ commit }, period) {
     commit('SET_ACTIVE_PERIOD', period);
   },
+  getUser({ commit }) {
+    return http.get('/user/me')
+      .then((response) => {
+        localStorage.setItem('user', JSON.stringify(response.data.user));
+        commit(constants.USER, response.data.user);
+
+        return response.data.user;
+      })
+      .catch(() => null);
+  },
   setUser({ commit }, user) {
     localStorage.setItem('user', JSON.stringify(user));
     commit(constants.USER, user);

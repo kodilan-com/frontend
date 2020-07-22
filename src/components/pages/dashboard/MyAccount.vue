@@ -1,5 +1,5 @@
 <script>
-import { mapActions } from 'vuex';
+import { mapActions, mapGetters } from 'vuex';
 import validationMixin from '../../../mixins/validator';
 
 export default {
@@ -9,6 +9,7 @@ export default {
     return {};
   },
   computed: {
+    ...mapGetters(['user']),
     currentPage() {
       return this.$route.path;
     },
@@ -16,7 +17,13 @@ export default {
   methods: {
     ...mapActions([]),
   },
-  mounted() {},
+  mounted() {
+    if (!this.user) {
+      this.$router.push({
+        path: '/giris',
+      });
+    }
+  },
 };
 </script>
 
