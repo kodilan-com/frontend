@@ -4,8 +4,8 @@ import * as constants from './constants';
 import helpers from './helpers';
 
 const http = axios.create({
-  // baseURL: 'https://api.kodilan.com',
-  baseURL: 'http://localhost:8000/api',
+  baseURL: 'https://api.kodilan.com',
+  // baseURL: 'http://localhost:8000/api',
   adapter: cacheAdapterEnhancer(axios.defaults.adapter),
   headers: {
     Authorization: localStorage.getItem('accessToken')
@@ -151,5 +151,15 @@ export default {
   },
   resetPassword(_, data) {
     return http.post('/reset-password', data);
+  },
+  getCompany(_, companyId) {
+    return http.get(`/companies/${companyId}`, { cache: false });
+  },
+  saveCompany(_, data) {
+    if (data.companyId) {
+      return http.put(`/companies/${data.companyId}`, data);
+    }
+
+    return http.post('/companies', data);
   },
 };

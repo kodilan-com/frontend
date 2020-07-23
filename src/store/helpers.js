@@ -29,4 +29,12 @@ export default {
       .slice(0, 3)
       .map(o => o.post);
   },
+  parseErrors(errorResponse) {
+    const errors = errorResponse.response.data.errors || [];
+    const details = Object.values(errors)
+      .reduce((arr, err) => arr.concat(err), [])
+      .map(err => `<li>${err}</li>`);
+
+    return `<ul>${details.join('')}</ul>`;
+  },
 };

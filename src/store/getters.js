@@ -8,4 +8,7 @@ export default {
   user(state) {
     return state.user;
   },
+  companies(state) {
+    return state.user.companies;
+  },
 };

@@ -53,4 +53,8 @@ export default {
 #banner {
   z-index: 1;
 }
+
+table.manage-table.resumes td {
+  padding: 15px 10px;
+}
 </style>

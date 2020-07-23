@@ -452,7 +452,7 @@ body.boxed {
   .search-container input, .search-container select {
     font-size: 14px;
   }
-  .fake-input, input[type="text"], input[type="password"], input[type="email"], input[type="number"], textarea, select {
+  .fake-input, input[type="text"], input[type="password"], input[type="email"], input[type="number"], input[type="url"], input[type="tel"], input[type="date"] textarea, select {
     padding: 12px 6px;
   }
   .subscribe-widget input[type="text"] {

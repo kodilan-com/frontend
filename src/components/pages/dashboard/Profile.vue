@@ -4,6 +4,9 @@ import { mapActions, mapGetters } from 'vuex';
 import Loader from '../../shared/Loader';
 
 export default {
+  metaInfo: {
+    title: 'Profilim | Kodilan.com',
+  },
   components: {
     Loader,
   },
@@ -145,7 +148,7 @@ export default {
 
               <!-- Details -->
               <div class="my-profile">
-                <label for="name">İsim</label>
+                <label for="name" class="margin-top-0">İsim</label>
                 <input
                   type="text"
                   id="name"

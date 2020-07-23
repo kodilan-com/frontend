@@ -74,7 +74,12 @@ export default {
         <ul data-submenu-title="Hesabım">
           <li :class="[currentPage.includes('profil') ? 'active' : '']">
             <router-link to="/hesabim/profil">
-              Profil
+              Profilim
+            </router-link>
+          </li>
+          <li :class="[currentPage.includes('firmalarim') ? 'active' : '']">
+            <router-link to="/hesabim/firmalarim">
+              Firmalarım
             </router-link>
           </li>
         </ul>
