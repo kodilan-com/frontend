@@ -28,25 +28,42 @@ export default {
   methods: {
     ...mapActions([
       'getUser',
+      'deleteCompany',
     ]),
-    saveProfile(event) {
+    handleRemoveClick(event, company) {
       event.preventDefault();
 
       if (this.isSaving) {
         return;
       }
 
-      this.isSaving = true;
+      this.$modal.show('dialog', {
+        title: `${company.name} firmasını silmek üzeresiniz.`,
+        text: 'Silmek istediğinizden emin misiniz?',
+        buttons: [
+          {
+            title: 'İptal',
+            default: true,
+          },
+          {
+            title: 'Sil',
+            handler: () => {
+              this.isSaving = true;
 
-      const data = {
-        name: this.formData.name,
-        email: this.formData.email,
-      };
-
-      this.updateUser(data)
-        .finally(() => {
-          this.isSaving = false;
-        });
+              this.deleteCompany(company.id)
+                .then(() => {
+                  this.getUser()
+                    .finally(() => {
+                      this.isSaving = false;
+                    });
+                })
+                .finally(() => {
+                  this.$modal.hide('dialog');
+                });
+            },
+          },
+        ],
+      });
     },
     showErrorDialog(text) {
       const subject = encodeURI('Hata');
@@ -62,17 +79,13 @@ export default {
         }],
       });
     },
-    parseErrors(e) {
-      const errors = e.response.data.errors || [];
-      const details = Object.values(errors)
-        .reduce((arr, err) => arr.concat(err), [])
-        .map(err => `<li>${err}</li>`);
-
-      return `<ul>${details.join('')}</ul>`;
-    },
   },
   mounted() {
-    this.getUser();
+    this.isSaving = true;
+    this.getUser()
+      .finally(() => {
+        this.isSaving = false;
+      });
   },
 };
 </script>
@@ -89,13 +102,19 @@ export default {
     </div>
 
 
-    <div class="row">
+    <div v-if="isSaving">
+      <Loader />
+    </div>
+    <div class="row" v-else>
       <!-- Table-->
       <div class="col-lg-12 col-md-12">
         <div class="dashboard-list-box margin-top-30">
           <div class="dashboard-list-box-content">
             <!-- Table -->
-            <table class="manage-table resumes responsive-table" v-if="companies.length > 0">
+            <table
+              class="manage-table resumes responsive-table"
+              v-if="companies && companies.length > 0"
+            >
               <thead>
                 <tr>
                   <th><i class="fa fa-user" /> Firma</th>
@@ -117,7 +136,9 @@ export default {
                     <router-link :to="'/hesabim/firmalarim/' + company.id + '/duzenle'">
                       <i class="fa fa-pencil" /> Düzenle
                     </router-link>
-                    <a href="#" class="delete"><i class="fa fa-remove" /> Sil</a>
+                    <a href="#" class="delete" @click="handleRemoveClick($event, company)">
+                      <i class="fa fa-remove" /> Sil
+                    </a>
                   </td>
                   <td class="action" v-else />
                 </tr>

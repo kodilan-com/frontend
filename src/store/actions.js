@@ -8,8 +8,10 @@ const http = axios.create({
   // baseURL: 'http://localhost:8000/api',
   adapter: cacheAdapterEnhancer(axios.defaults.adapter),
   headers: {
-    Authorization: localStorage.getItem('accessToken')
-      ? `Bearer ${localStorage.getItem('accessToken')}` : '',
+    common: {
+      Authorization: localStorage.getItem('accessToken')
+        ? `Bearer ${localStorage.getItem('accessToken')}` : '',
+    },
   },
 });
 
@@ -102,7 +104,7 @@ export default {
     commit('SET_ACTIVE_PERIOD', period);
   },
   getUser({ commit }) {
-    return http.get('/user/me')
+    return http.get('/user/me', { cache: false })
       .then((response) => {
         localStorage.setItem('user', JSON.stringify(response.data.user));
         commit(constants.USER, response.data.user);
@@ -129,8 +131,8 @@ export default {
   },
   setAccessToken({ commit }, accessToken) {
     localStorage.setItem('accessToken', accessToken);
-    http.defaults.headers.common.Authorization = `Bearer ${accessToken}`;
     commit(constants.ACCESS_TOKEN, accessToken);
+    http.defaults.headers.common.Authorization = `Bearer ${accessToken}`;
   },
   registerUser(_, data) {
     return http.post('/register', data);
@@ -161,5 +163,8 @@ export default {
     }
 
     return http.post('/companies', data);
+  },
+  deleteCompany(_, companyId) {
+    return http.delete(`/companies/${companyId}`);
   },
 };
