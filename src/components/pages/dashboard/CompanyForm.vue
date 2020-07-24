@@ -93,65 +93,59 @@ export default {
 
 <template>
   <div>
-    <div class="row">
-      <!-- Profile -->
-      <div class="col-lg-6 col-md-12" v-if="isSaving">
-        <loader />
-      </div>
-      <div class="col-lg-6 col-md-12" v-else>
-        <div class="dashboard-list-box margin-top-0">
-          <div class="dashboard-list-box-static">
-            <!-- Titlebar -->
-            <div id="titlebar">
-              <div class="row">
-                <div class="col-md-12">
-                  <h1>Firma Ekle</h1>
-                </div>
-              </div>
+    <loader v-if="isSaving" />
+    <div class="dashboard-list-box margin-top-0" v-else>
+      <div class="dashboard-list-box-static">
+        <!-- Titlebar -->
+        <div id="titlebar">
+          <div class="row">
+            <div class="col-md-12">
+              <h1 v-if="companyId === null">Firma Ekle</h1>
+              <h1 v-else>{{ formData.name }} Firmanı Düzenle</h1>
             </div>
-            <form @submit="save">
-              <div class="form">
-                <h5>Firma adı</h5>
-                <input v-model="formData.name" type="text" required>
-              </div>
-              <div class="form">
-                <h5>E-Posta</h5>
-                <input v-model="formData.email" type="email" required>
-                <p class="note">
-                  İlan ekleyebilmek için belirtmiş olduğunuz firma ismiyle uyumlu bir e-posta
-                  adresi vermeniz gerekiyor. İlan ekledikten sonra doğrulama işlemi için belirtmiş
-                  olduğunuz e-posta adresine bir onay e-postası gönderilecektir. İlanınız size
-                  gelen e-postadaki doğrulama linkine tıkladıktan sonra yayına alınacaktır.
-                </p>
-              </div>
-              <div class="form">
-                <h5>Web Sitesi</h5>
-                <input v-model="formData.www" type="url" placeholder="https://" required>
-              </div>
-              <div class="form">
-                <h5>Logo URL</h5>
-                <input v-model="formData.logo" type="url" placeholder="https://" required>
-                <p class="note">
-                  Logo kare olarak gösterilecektir.
-                </p>
-              </div>
-              <div class="form">
-                <h5>Twitter Kullanıcı adı <span>(opsiyonel)</span></h5>
-                <input v-model="formData.twitter" type="text" placeholder="@twitter">
-              </div>
-              <div class="form">
-                <h5>Linkedin URL <span>(opsiyonel)</span></h5>
-                <input v-model="formData.linkedin" type="text" placeholder="https://">
-              </div>
-
-              <div class="button-container margin-top-10">
-                <button class="button big margin-top-5" type="submit">
-                  Kaydet <i class="fa fa-save" />
-                </button>
-              </div>
-            </form>
           </div>
         </div>
+        <form @submit="save">
+          <div class="form">
+            <h5>Firma adı</h5>
+            <input v-model="formData.name" type="text" required>
+          </div>
+          <div class="form">
+            <h5>E-Posta</h5>
+            <input v-model="formData.email" type="email" required>
+            <p class="note">
+              İlan ekleyebilmek için belirtmiş olduğunuz firma ismiyle uyumlu bir e-posta
+              adresi vermeniz gerekiyor. İlan ekledikten sonra doğrulama işlemi için belirtmiş
+              olduğunuz e-posta adresine bir onay e-postası gönderilecektir. İlanınız size
+              gelen e-postadaki doğrulama linkine tıkladıktan sonra yayına alınacaktır.
+            </p>
+          </div>
+          <div class="form">
+            <h5>Web Sitesi</h5>
+            <input v-model="formData.www" type="url" placeholder="https://" required>
+          </div>
+          <div class="form">
+            <h5>Logo URL</h5>
+            <input v-model="formData.logo" type="url" placeholder="https://" required>
+            <p class="note">
+              Logo kare olarak gösterilecektir.
+            </p>
+          </div>
+          <div class="form">
+            <h5>Twitter Kullanıcı adı <span>(opsiyonel)</span></h5>
+            <input v-model="formData.twitter" type="text" placeholder="@twitter">
+          </div>
+          <div class="form">
+            <h5>Linkedin URL <span>(opsiyonel)</span></h5>
+            <input v-model="formData.linkedin" type="text" placeholder="https://">
+          </div>
+
+          <div class="button-container margin-top-10">
+            <button class="button big margin-top-5" type="submit">
+              Kaydet <i class="fa fa-save" />
+            </button>
+          </div>
+        </form>
       </div>
     </div>
   </div>
