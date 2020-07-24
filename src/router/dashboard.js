@@ -19,6 +19,10 @@ const dashboardRoutes = [
     path: 'firmalarim/:companyId/duzenle',
     component: () => import('../components/pages/dashboard/CompanyForm'),
   },
+  {
+    path: 'firmalarim/:companyId/kullanicilar',
+    component: () => import('../components/pages/dashboard/CompanyUsers'),
+  },
 ];
 
 export default dashboardRoutes;

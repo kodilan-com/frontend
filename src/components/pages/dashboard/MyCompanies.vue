@@ -136,6 +136,9 @@ export default {
                     <router-link :to="'/hesabim/firmalarim/' + company.id + '/duzenle'">
                       <i class="fa fa-pencil" /> Düzenle
                     </router-link>
+                    <router-link :to="'/hesabim/firmalarim/' + company.id + '/kullanicilar'">
+                      <i class="fa fa-user" /> Kullanıcılar
+                    </router-link>
                     <a href="#" class="delete" @click="handleRemoveClick($event, company)">
                       <i class="fa fa-remove" /> Sil
                     </a>

@@ -167,4 +167,13 @@ export default {
   deleteCompany(_, companyId) {
     return http.delete(`/companies/${companyId}`);
   },
+  addCompanyUser(_, data) {
+    return http.post(`/companies/${data.companyId}/users`, data);
+  },
+  deleteCompanyUser(_, data) {
+    return http.delete(`/companies/${data.companyId}/users/${data.userId}`);
+  },
+  setCompanyUserStatus(_, data) {
+    return http.put(`/companies/${data.companyId}/users/${data.userId}`, data);
+  },
 };
