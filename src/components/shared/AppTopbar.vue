@@ -19,7 +19,7 @@ export default {
     <div class="container">
       <div class="topbar--cols">
         <a
-          href="https://github.com/kodilan-com/frontend"
+          href="https://github.com/kodilan-com/"
           target="_blank"
           class="topbar--cols__elm is-icon"
         >
@@ -28,7 +28,7 @@ export default {
         <div class="topbar--cols__elm is-content">
           <p>
             Kodilan.com açık kaynaklı bir girişimdir.
-            <a href="https://github.com/kodilan-com/frontend" target="_blank">
+            <a href="https://github.com/kodilan-com/" target="_blank">
               Katkıda bulunun!
             </a>
           </p>
