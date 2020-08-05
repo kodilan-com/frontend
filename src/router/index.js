@@ -33,7 +33,7 @@ const router = new Router({
     {
       path: '/ilan-ekle',
       name: 'AddJob',
-      component: () => import('@/components/pages/AddJob'),
+      redirect: '/hesabim/ilanlarim/ekle',
     },
     {
       path: '/ilan-ekle/basarili',

@@ -8,6 +8,9 @@ import image from '../../mixins/image';
 import jobDetailsMetaInfoMixin from '../../mixins/jobDetailsMetaInfo';
 
 export default {
+  metaInfo: {
+    title: 'Kodilan.com',
+  },
   props: {
     preview: {
       type: Boolean,
@@ -310,7 +313,7 @@ export default {
   }
 
   &.preview {
-    width: 1200px;
+    width: 100%;
     margin: 0 auto;
     border: 4px solid #ccc;
     border-radius: 4px;

@@ -94,9 +94,6 @@ export default {
         commit(constants.SET_AVAILABLE_LOCATIONS, res.data);
       });
   },
-  savePost(_, data) {
-    return http.post('/posts', data);
-  },
   subscribe(_, data) {
     return http.post('/newsletters', data);
   },
@@ -175,5 +172,21 @@ export default {
   },
   setCompanyUserStatus(_, data) {
     return http.put(`/companies/${data.companyId}/users/${data.userId}`, data);
+  },
+  getPostList() {
+    return http.get('/dashboard/posts', { cache: false });
+  },
+  getPost(_, postId) {
+    return http.get(`/dashboard/posts/${postId}`, { cache: false });
+  },
+  savePost(_, data) {
+    if (data.postId) {
+      return http.put(`/dashboard/posts/${data.postId}`, data);
+    }
+
+    return http.post('/dashboard/posts', data);
+  },
+  deletePost(_, postId) {
+    return http.delete(`/dashboard/posts/${postId}`);
   },
 };

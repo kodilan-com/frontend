@@ -1,3 +1,10 @@
+<script>
+export default {
+  metaInfo: {
+    title: 'İlan Eklendi | Kodilan.com',
+  },
+};
+</script>
 <template>
   <div class="add-job">
     <div

@@ -3,6 +3,9 @@ import { mapActions, mapGetters } from 'vuex';
 import validationMixin from '../../../mixins/validator';
 
 export default {
+  metaInfo: {
+    title: 'Hesabım | Kodilan.com',
+  },
   mixins: [validationMixin],
   components: {},
   data() {
@@ -16,6 +19,23 @@ export default {
   },
   methods: {
     ...mapActions([]),
+    handleTopMenuClick(event) {
+      event.preventDefault();
+      const element = event.target;
+
+      if (element.closest('li').querySelector('ul')) {
+        if (element.closest('li').classList.contains('active-submenu')) {
+          document.querySelectorAll('.dashboard-nav ul li.active-submenu').forEach((active) => {
+            active.classList.remove('active-submenu');
+          });
+        } else {
+          document.querySelectorAll('.dashboard-nav ul li.active-submenu').forEach((active) => {
+            active.classList.remove('active-submenu');
+          });
+          element.parentElement.classList.add('active-submenu');
+        }
+      }
+    },
   },
   mounted() {
     if (!this.user) {
@@ -45,22 +65,30 @@ export default {
           <li><a href="dashboard-messages.html">Messages <span class="nav-tag">2</span></a></li>
         </ul> -->
 
-        <!-- <ul data-submenu-title="Management"> -->
-          <!-- <li><a>For Employers</a>
+        <ul data-submenu-title="Yönetim" v-if="user && user.companies.length > 0">
+          <li>
+            <a @click="handleTopMenuClick">
+              İlan Yönetimi
+            </a>
             <ul>
-              <li>
-                <a href="dashboard-manage-jobs.html">
-                  Manage Jobs <span class="nav-tag">5</span>
-                </a>
+              <li :class="[currentPage.endsWith('ilanlarim') ? 'active' : '']">
+                <router-link to="/hesabim/ilanlarim">
+                  İlanlarım
+                  <!-- <span class="nav-tag">5</span> -->
+                </router-link>
               </li>
-              <li>
+              <!-- <li>
                 <a href="dashboard-manage-applications.html">
                   Manage Applications <span class="nav-tag">4</span>
                 </a>
+              </li> -->
+              <li :class="[currentPage.endsWith('ilanlarim/ekle') ? 'active' : '']">
+                <router-link to="/hesabim/ilanlarim/ekle">
+                  İlan Ekle
+                </router-link>
               </li>
-              <li><a href="dashboard-add-job.html">Add Job</a></li>
             </ul>
-          </li> -->
+          </li>
 
           <!-- <li><a>For Candidates</a>
             <ul>
@@ -69,7 +97,7 @@ export default {
               <li><a href="dashboard-add-resume.html">Add Resume</a></li>
             </ul>
           </li> -->
-        <!-- </ul> -->
+        </ul>
 
         <ul data-submenu-title="Hesabım">
           <li :class="[currentPage.includes('profil') ? 'active' : '']">

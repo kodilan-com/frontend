@@ -790,7 +790,7 @@ a.dashboard-responsive-nav-trigger { display: none; }
 	border-radius: 0 0 4px 4px;
 }
 
-.dashboard-list-box ul li {
+.dashboard-list-box ul:not(.multiselect__content) li {
 	padding: 23px 30px;
 	border-bottom: 1px solid #eaeaea;
 	transition: 0.3s;
@@ -1248,3 +1248,11 @@ a.close-list-item {
 
 .dashboard-list-box .comment-by-listing a { color: #888; }
 .dashboard-list-box .comment-by-listing a:hover { color: #4d4c4c; }
+
+#dashboard.hide-nav .dashboard-nav {
+  display: none;
+}
+
+#dashboard.hide-nav .dashboard-content {
+  margin-left: unset;
+}

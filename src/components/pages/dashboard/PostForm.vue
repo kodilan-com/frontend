@@ -1,13 +1,13 @@
 <script>
 import { mapGetters, mapActions } from 'vuex';
 import { VueEditor } from 'vue2-editor';
-import LocationSelect from '../shared/LocationSelect';
-import JobDetails from './JobDetails';
-import { normalizeUrl } from '../../utils/url';
-import autocomplete from '../../utils/autocomplete';
-import validationMixin from '../../mixins/validator';
-import { defaultEditorToolbar } from '../../config';
-import { JOB_TYPES_FOR_DROPDOWN } from '../../store/constants';
+import LocationSelect from '../../shared/LocationSelect';
+import JobDetails from '../JobDetails';
+import { normalizeUrl } from '../../../utils/url';
+import autocomplete from '../../../utils/autocomplete';
+import validationMixin from '../../../mixins/validator';
+import { defaultEditorToolbar } from '../../../config';
+import { JOB_TYPES_FOR_DROPDOWN } from '../../../store/constants';
 
 export default {
   mixins: [validationMixin],
@@ -20,6 +20,7 @@ export default {
     return {
       isPreview: false,
       isSaving: false,
+      postId: null,
       formData: {
         position: '',
         description: '',
@@ -28,18 +29,10 @@ export default {
         location: '',
         type: null,
         tags: '',
-        company_name: '',
-        company_email: '',
-        company_logo: '',
-        company_www: '',
-        company_twitter: '',
-        company_linkedin: '',
+        company_id: '',
       },
       rules: {
-        company_name: { required: true, message: 'Firma adı boş bırakılamaz.' },
-        company_email: { required: true, message: 'E-posta adresi boş bırakılamaz.' },
-        company_logo: { required: true, message: 'Logo URL boş bırakılamaz.' },
-        company_www: { required: true, message: 'Website boş bırakılamaz.' },
+        company: { required: true, message: 'Firma adı boş bırakılamaz.' },
         position: { required: true, message: 'Pozisyon boş bırakılamaz.' },
         description: { required: true, message: 'İlan açıklaması boş bırakılamaz.' },
         location: { required: true, message: 'Lokasyon boş bırakılamaz.' },
@@ -50,22 +43,16 @@ export default {
     };
   },
   computed: {
-    ...mapGetters(['autocompleteTags']),
+    ...mapGetters(['autocompleteTags', 'companies']),
     normalizedTags() {
       return this.formData.tags
         .split(',')
         .filter(tag => tag.trim().length)
-        .map(tag => tag.trim().toLowerCase().replace(/ /g, '-'));
+        .map(tag => tag.trim());
     },
     previewData() {
       const tagsArr = this.normalizedTags.map(t => ({ name: t, slug: t }));
-      const company = Object.keys(this.formData).reduce((acc, key) => {
-        if (key.indexOf('company_') > -1) {
-          acc.company[key.replace('company_', '')] = this.formData[key];
-        }
-
-        return acc;
-      }, { company: {} });
+      const { company } = this.formData;
 
       return {
         ...this.formData,
@@ -76,9 +63,21 @@ export default {
     editorToolbar() {
       return defaultEditorToolbar;
     },
+    companyList() {
+      const list = [];
+
+      this.companies.forEach((company) => {
+        list.push({
+          id: company.id,
+          text: company.name,
+        });
+      });
+
+      return list;
+    },
   },
   methods: {
-    ...mapActions(['fetchTags', 'savePost']),
+    ...mapActions(['fetchTags', 'savePost', 'getPost']),
     showPreview() {
       if (!this.validateForm()) {
         const messages = Object.values(this.validationErrorMessages).map(e => `<li>${e}</li>`);
@@ -93,16 +92,28 @@ export default {
     },
     togglePreview() {
       this.isPreview = !this.isPreview;
+
+      if (this.isPreview) {
+        document.querySelector('#dashboard').classList.add('hide-nav');
+      } else {
+        document.querySelector('#dashboard').classList.remove('hide-nav');
+      }
       window.scrollTo(0, 0);
     },
     getPostData() {
       const postData = {
         ...this.formData,
         tags: this.normalizedTags,
+        company_id: this.formData.company.id,
       };
 
-      postData.company_twitter = (postData.company_twitter || '').replace('@', '');
-      postData.company_www = normalizeUrl(postData.company_www);
+      if (this.postId !== null) {
+        postData.postId = this.postId;
+      }
+
+      delete postData.company;
+
+      // postData.company_twitter = (postData.company_twitter || '').replace('@', '');
       postData.apply_url = normalizeUrl(postData.apply_url);
 
       return postData;
@@ -113,6 +124,7 @@ export default {
         .then(() => {
           this.saveToLocalStorage();
           this.$router.push('/ilan-ekle/basarili');
+          document.querySelector('#dashboard').classList.remove('hide-nav');
         })
         .catch((e) => {
           const errors = this.parseErrors(e);
@@ -143,28 +155,43 @@ export default {
       return `<ul>${details.join('')}</ul>`;
     },
     saveToLocalStorage() {
-      const postData = this.getPostData();
-      const storageData = {
-        company_name: postData.company_name,
-        company_email: postData.company_email,
-        company_logo: postData.company_logo,
-        company_www: postData.company_www,
-        company_twitter: postData.company_twitter,
-        company_linkedin: postData.company_linkedin,
-      };
-      localStorage.setItem('listingData', JSON.stringify(storageData));
+      // const postData = this.getPostData();
+      // const storageData = {
+      //   company_name: postData.company_name,
+      //   company_email: postData.company_email,
+      //   company_logo: postData.company_logo,
+      //   company_www: postData.company_www,
+      //   company_twitter: postData.company_twitter,
+      //   company_linkedin: postData.company_linkedin,
+      // };
+      // localStorage.setItem('listingData', JSON.stringify(storageData));
     },
     readFromLocalStorage() {
-      const storageData = JSON.parse(localStorage.getItem('listingData'));
-      this.formData = { ...this.formData, ...storageData };
+      // const storageData = JSON.parse(localStorage.getItem('listingData'));
+      // this.formData = { ...this.formData, ...storageData };
     },
   },
   mounted() {
+    document.querySelector('#dashboard').classList.remove('hide-nav');
     this.fetchTags()
       .then(() => {
         autocomplete.init(this.$refs.tagsInput, this.autocompleteTags);
       });
-    this.readFromLocalStorage();
+    // this.readFromLocalStorage();
+
+    if (this.$route.params.postId) {
+      this.isSaving = true;
+      this.postId = parseInt(this.$route.params.postId, 10);
+
+      this.getPost(this.postId)
+        .then((response) => {
+          this.formData = response.data.post;
+          this.formData.tags = response.data.post.tags.map(tag => tag.name).join(', ');
+        })
+        .finally(() => {
+          this.isSaving = false;
+        });
+    }
   },
 };
 </script>
@@ -175,13 +202,10 @@ export default {
       id="titlebar"
       class="single submit-page"
     >
-      <div class="container">
-        <div class="sixteen columns">
-          <h1>
-            <i class="fa fa-plus-circle" /> Yeni İlan Ekle
-          </h1>
-        </div>
-      </div>
+      <h1>
+        <i class="fa fa-plus-circle" />
+        {{ postId === null ? 'Yeni İlan Ekle' : 'İlan Düzenle' }}
+      </h1>
     </div>
     <template v-if="isPreview">
       <job-details
@@ -199,33 +223,27 @@ export default {
     </template>
     <div
       v-else
-      class="container"
+      class="dashboard-list-box margin-top-0"
     >
-      <div class="sixteen columns">
+      <h4>İlan Detayları</h4>
+      <div class="dashboard-list-box-content">
         <div class="submit-page">
-          <div class="notification notice margin-bottom-40">
-            <p>
-              <span>Önemli hatırlatma!</span>
-              İlan ekleyebilmek için belirtmiş olduğunuz firma ismiyle uyumlu bir e-posta adresi
-              vermeniz gerekiyor. İlan ekledikten sonra doğrulama işlemi için belirtmiş olduğunuz
-              e-posta adresine bir onay e-postası gönderilecektir. İlanınız size gelen e-postadaki
-              doğrulama linkine tıkladıktan sonra yayına alınacaktır.
-            </p>
-          </div>
           <div class="form">
-            <h5>E-posta Adresiniz</h5>
-            <input
-              v-model="formData.company_email"
-              class="search-field"
-              type="text"
-              placeholder="mail@example.com"
-            >
+            <h5>Firma</h5>
+            <multiselect
+              v-model="formData.company"
+              :options="companies"
+              label="name"
+              :searchable="false"
+              :close-on-select="true"
+              placeholder="Seçiniz..."
+            />
           </div>
           <div class="form">
             <h5>Pozisyon</h5>
             <input v-model="formData.position" class="search-field" type="text">
           </div>
-          <div class="form">
+          <div class="form" style="width: 100%;">
             <h5>İlan Açıklaması</h5>
             <vue-editor v-model="formData.description" :editor-toolbar="editorToolbar" />
           </div>
@@ -263,7 +281,7 @@ export default {
             >
             <p class="note">
               Bu pozisyon için gerekli olan yeti ve teknolojileri listeden seçebilirsiniz
-              ya da virgul ile ekleme yapabilirsiniz. En fazla 10 etiket ekleyebilirsiniz.
+              ya da virgül ile ekleme yapabilirsiniz. En fazla 10 etiket ekleyebilirsiniz.
               <br>
               İlanınıza <code>frontend</code>, <code>backend</code>, <code>mobile</code>,
               <code>designer</code>, <code>qa</code> etiketlerinden birini ekleyip
@@ -283,36 +301,20 @@ export default {
             >
             <input v-model="formData.apply_email" placeholder="E-posta" type="text">
           </div>
-          <div class="divider">
-            <h3>Firma Bilgileri</h3>
-          </div>
-          <div class="form">
-            <h5>Firma adı</h5>
-            <input v-model="formData.company_name" type="text">
-          </div>
-          <div class="form">
-            <h5>Website</h5>
-            <input v-model="formData.company_www" type="text" placeholder="https://">
-          </div>
-          <div class="form">
-            <h5>Logo URL</h5>
-            <input v-model="formData.company_logo" type="text" placeholder="https://">
-            <p class="note">
-              Logo kare olarak gösterilecektir.
-            </p>
-          </div>
-          <div class="form">
-            <h5>Twitter Kullanıcı adı <span>(opsiyonel)</span></h5>
-            <input v-model="formData.company_twitter" type="text" placeholder="@twitter">
-          </div>
-          <div class="form">
-            <h5>Linkedin URL <span>(opsiyonel)</span></h5>
-            <input v-model="formData.company_linkedin" type="text" placeholder="https://">
-          </div>
           <div class="button-container">
-            <button @click="showPreview" class="button big margin-top-5" type="button">
-              Önizleme <i class="fa fa-arrow-circle-right" />
-            </button>
+            <button
+              @click="showPreview"
+              class="button big margin-top-5 margin-bottom-20"
+              type="button"
+              v-if="!postId"
+            >Önizleme <i class="fa fa-arrow-circle-right" /></button>
+            <button
+              @click="save"
+              :disabled="isSaving"
+              class="button big margin-top-5 margin-bottom-20"
+              type="button"
+              v-else
+            >Kaydet <i class="fa fa-check" /></button>
           </div>
         </div>
       </div>
