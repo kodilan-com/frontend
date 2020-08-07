@@ -123,7 +123,11 @@ export default {
       this.savePost(this.getPostData())
         .then(() => {
           this.saveToLocalStorage();
-          this.$router.push('/ilan-ekle/basarili');
+          if (this.postId === null) {
+            this.$router.push('/hesabim/ilanlarim/ekle/basarili');
+          } else {
+            this.$router.push('/hesabim/ilanlarim');
+          }
           document.querySelector('#dashboard').classList.remove('hide-nav');
         })
         .catch((e) => {

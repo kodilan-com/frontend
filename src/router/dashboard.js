@@ -32,6 +32,11 @@ const dashboardRoutes = [
     component: () => import('../components/pages/dashboard/PostForm'),
   },
   {
+    path: 'ilanlarim/ekle/basarili',
+    name: 'AddJobSuccess',
+    component: () => import('../components/pages/AddJobSuccess'),
+  },
+  {
     path: 'ilanlarim/:postId/duzenle',
     component: () => import('../components/pages/dashboard/PostForm'),
   },

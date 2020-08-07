@@ -22,8 +22,7 @@ export default {
     <div class="notification success center">
       <p>
         <span>İlanınız başarılı bir şekilde kaydedildi!</span><br><br>
-        İlanınızın yayınlanabilmesi için gönderilen e-postadaki
-        onay linkine tıklamanız gerekmektedir.
+        İlanınız editörlerimiz tarafından incelenecek. İnceleme sonuçlandığında e-posta ile bildirim alacaksınız.
       </p>
     </div>
   </div>

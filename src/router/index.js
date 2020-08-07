@@ -36,11 +36,6 @@ const router = new Router({
       redirect: '/hesabim/ilanlarim/ekle',
     },
     {
-      path: '/ilan-ekle/basarili',
-      name: 'AddJobSuccess',
-      component: () => import('@/components/pages/AddJobSuccess'),
-    },
-    {
       path: '/ilanlar/:slug',
       name: 'JobDetails',
       component: () => import('@/components/pages/JobDetails'),
