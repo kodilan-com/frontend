@@ -38,7 +38,7 @@ a.button.dark:hover,
 .chosen-container .chosen-results li.highlighted,
 .chosen-container-multi .chosen-choices li.search-choice,
 .list-search button,
-.checkboxes input[type=checkbox]:checked + label:before 
+.checkboxes input[type=checkbox]:checked + label:before
 { background-color: #26ae61; }
 
 
@@ -62,7 +62,8 @@ table.manage-table td.action a:hover,
 .meta-tags span a:hover,
 .widget-text h5 a:hover,
 .app-content .info span ,
-.app-content .info ul li a:hover
+.app-content .info ul li a:hover,
+.text-primary
 { color: #26ae61; }
 
 .icon-box.rounded i {

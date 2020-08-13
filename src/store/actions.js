@@ -189,4 +189,10 @@ export default {
   deletePost(_, postId) {
     return http.delete(`/dashboard/posts/${postId}`);
   },
+  getPaymentList() {
+    return http.get('/dashboard/payments', { cache: false });
+  },
+  getPaymentRequest(_, data) {
+    return http.post('/dashboard/payments', data);
+  },
 };

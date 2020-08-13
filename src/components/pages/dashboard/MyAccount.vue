@@ -39,9 +39,13 @@ export default {
   },
   mounted() {
     if (!this.user) {
-      this.$router.push({
-        path: '/giris',
-      });
+      setTimeout(() => {
+        if (!this.user) {
+          this.$router.push({
+            path: '/giris',
+          });
+        }
+      }, 5000);
     }
   },
 };
@@ -99,6 +103,14 @@ export default {
           </li> -->
         </ul>
 
+        <ul data-submenu-title="Ödemeler">
+          <li :class="[currentPage.includes('odemeler') ? 'active' : '']">
+            <router-link to="/hesabim/odemeler">
+              Ödemeler
+            </router-link>
+          </li>
+        </ul>
+
         <ul data-submenu-title="Hesabım">
           <li :class="[currentPage.includes('profil') ? 'active' : '']">
             <router-link to="/hesabim/profil">
@@ -136,5 +148,13 @@ export default {
     box-shadow: none;
     border-top: 1px solid #eee;
     min-height: auto;
+  }
+
+  .text-success {
+    color: #26ae61 !important;
+  }
+
+  .text-danger {
+    color: rgb(222, 11, 19) !important;
   }
 </style>

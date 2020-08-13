@@ -28,6 +28,14 @@ const dashboardRoutes = [
     component: () => import('../components/pages/dashboard/MyPosts'),
   },
   {
+    path: 'odemeler',
+    component: () => import('../components/pages/dashboard/Payment'),
+  },
+  {
+    path: 'odemeler/:paymentId/sonuc',
+    component: () => import('../components/pages/dashboard/PaymentStatus'),
+  },
+  {
     path: 'ilanlarim/ekle',
     component: () => import('../components/pages/dashboard/PostForm'),
   },
