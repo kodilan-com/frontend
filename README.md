@@ -44,6 +44,7 @@ Please take a look at the [CHANGELOG](https://gitlab.com/kodilan/frontend/blob/m
 - [Furkan Köse](https://github.com/furkankose)
 - [İlker Demir](https://github.com/ilker0)
 - [Berkan Sivri](https://github.com/berkansivri)
+- [S. Kağan Cin](https://github.com/cinkagan)
 
 ### More content
 
