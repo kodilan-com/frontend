@@ -69,7 +69,7 @@ export default {
           <li><a href="dashboard-messages.html">Messages <span class="nav-tag">2</span></a></li>
         </ul> -->
 
-        <ul data-submenu-title="Yönetim" v-if="user && user.companies.length > 0">
+        <ul data-submenu-title="Yönetim" v-if="user && user.companies && user.companies.length > 0">
           <li>
             <a @click="handleTopMenuClick">
               İlan Yönetimi
@@ -103,7 +103,10 @@ export default {
           </li> -->
         </ul>
 
-        <ul data-submenu-title="Ödemeler">
+        <ul
+          data-submenu-title="Ödemeler"
+          v-if="user && user.companies && user.companies.length > 0"
+        >
           <li :class="[currentPage.includes('odemeler') ? 'active' : '']">
             <router-link to="/hesabim/odemeler">
               Ödemeler

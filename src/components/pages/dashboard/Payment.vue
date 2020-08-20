@@ -137,7 +137,7 @@ export default {
       <div class="margin-top-30">
         <form @submit="handlePayFormSubmit">
           <div class="row">
-            <div class="col-12 col-md-3">
+            <div class="col-12 col-md-3" v-if="companies">
               <multiselect
                 v-model="formData.company"
                 :options="companies"
