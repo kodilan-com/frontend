@@ -105,6 +105,7 @@ export default {
                 <th><i class="fa fa-building-o" /> Firma</th>
                 <th><i class="fa fa-user" /> Kişi</th>
                 <th><i class="fa fa-try" /> Miktar</th>
+                <th><i class="fa fa-calendar" /> Tarih</th>
                 <th><i class="fa fa-money" /> Durum</th>
               </tr>
             </thead>
@@ -119,6 +120,11 @@ export default {
                 </td>
                 <td>
                   {{ item.amount_paid }} <i class="fa fa-try" />
+                </td>
+                <td>
+                  <span v-if="new Date(item.updated_at)">
+                    {{ (new Date(item.updated_at)).toLocaleString() }}
+                  </span>
                 </td>
                 <td style="text-align: center">
                   <span class="text-success" v-if="item.is_successful">
