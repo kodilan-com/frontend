@@ -195,4 +195,7 @@ export default {
   getPaymentRequest(_, data) {
     return http.post('/dashboard/payments', data);
   },
+  getPackageList() {
+    return http.get('/packages');
+  },
 };

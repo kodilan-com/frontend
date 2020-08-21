@@ -121,6 +121,10 @@ const router = new Router({
       children: dashboardRoutes,
     },
     {
+      path: '/paketler',
+      component: () => import('../components/pages/PackageList'),
+    },
+    {
       path: '/404',
       name: 'NotFound',
       component: () => import('@/components/pages/NotFound'),
