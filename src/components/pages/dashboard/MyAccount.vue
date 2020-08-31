@@ -93,6 +93,11 @@ export default {
               </li>
             </ul>
           </li>
+          <li :class="[currentPage.includes('odemeler') ? 'active' : '']">
+            <router-link to="/hesabim/odemeler">
+              Ödemeler
+            </router-link>
+          </li>
 
           <!-- <li><a>For Candidates</a>
             <ul>
@@ -101,17 +106,6 @@ export default {
               <li><a href="dashboard-add-resume.html">Add Resume</a></li>
             </ul>
           </li> -->
-        </ul>
-
-        <ul
-          data-submenu-title="Ödemeler"
-          v-if="user && user.companies && user.companies.length > 0"
-        >
-          <li :class="[currentPage.includes('odemeler') ? 'active' : '']">
-            <router-link to="/hesabim/odemeler">
-              Ödemeler
-            </router-link>
-          </li>
         </ul>
 
         <ul data-submenu-title="Hesabım">
