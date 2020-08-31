@@ -139,9 +139,30 @@ export default {
               {{ feature }}
             </li>
           </ul>
-          <a href="#" class="button" @click="handlePayFormSubmit($event, item.id)">
+          <a
+            href="#"
+            class="button"
+            @click="handlePayFormSubmit($event, item.id)"
+            v-if="item.price !== null && item.price > 0"
+          >
             <i class="fa fa-shopping-cart" />
             Satın Al
+          </a>
+          <a
+            href="#"
+            class="button"
+            v-else-if="item.price === 0"
+          >
+            <i class="fa fa-shopping-cart" />
+            Ücretsiz
+          </a>
+          <a
+            href="mailto:info@kodilan.com?subject=Enterprise paket hakkında"
+            class="button"
+            v-else
+          >
+            <i class="fa fa-envelope" />
+            İletişime Geçin
           </a>
         </div>
       </div>
