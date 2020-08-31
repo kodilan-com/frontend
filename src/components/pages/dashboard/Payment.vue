@@ -26,7 +26,6 @@ export default {
   methods: {
     ...mapActions([
       'getPaymentList',
-      'getPaymentRequest',
     ]),
     loadPayments() {
       if (this.isSaving) return;
@@ -36,28 +35,6 @@ export default {
       this.getPaymentList()
         .then((response) => {
           this.list = response.data.payments;
-        })
-        .catch(() => {
-          this.showErrorDialog('Bir sunucu hatası oluştu.');
-        })
-        .finally(() => {
-          this.isSaving = false;
-        });
-    },
-    handlePayFormSubmit(event) {
-      event.preventDefault();
-      if (this.isSaving) return;
-
-      this.isSaving = true;
-
-      const formData = {
-        company_id: this.formData.company.id,
-        amount: parseFloat(this.formData.amount),
-      };
-
-      this.getPaymentRequest(formData)
-        .then((response) => {
-          window.open(response.data.payment_url, '_blank');
         })
         .catch(() => {
           this.showErrorDialog('Bir sunucu hatası oluştu.');
@@ -138,40 +115,6 @@ export default {
             </tbody>
           </table>
         </div>
-      </div>
-
-      <div class="margin-top-30">
-        <form @submit="handlePayFormSubmit">
-          <div class="row">
-            <div class="col-12 col-md-3" v-if="companies">
-              <multiselect
-                v-model="formData.company"
-                :options="companies"
-                label="name"
-                :searchable="false"
-                :close-on-select="true"
-                placeholder="Seçiniz..."
-                required
-              />
-            </div>
-            <div class="col-12 col-md-3">
-              <input
-                v-model="formData.amount"
-                type="number"
-                min="0.01"
-                max="10000"
-                step="0.01"
-                required
-                placeholder="Miktar girin"
-              >
-            </div>
-            <div class="col-12 col-md-3">
-              <button type="submit" class="button">
-                Ödeme Yap
-              </button>
-            </div>
-          </div>
-        </form>
       </div>
     </div>
   </div>
