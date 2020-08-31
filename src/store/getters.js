@@ -9,6 +9,10 @@ export default {
     return state.user;
   },
   companies(state) {
-    return state.user.companies;
+    if (state.user) {
+      return state.user.companies;
+    }
+
+    return null;
   },
 };

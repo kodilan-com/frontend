@@ -119,6 +119,7 @@ export default {
                 <tr>
                   <th><i class="fa fa-user" /> Firma</th>
                   <th><i class="fa fa-unlock-alt" /> Rol</th>
+                  <th><i class="fa fa-suitcase" /> Paket</th>
                   <th />
                 </tr>
               </thead>
@@ -131,6 +132,17 @@ export default {
                   <td>
                     <span v-if="company.pivot.is_admin_at !== null">Yönetici</span>
                     <span v-else>Kullanıcı</span>
+                  </td>
+                  <td>
+                    <span v-if="company.subscription_active">
+                      {{ company.subscription_active.package.title }}
+
+                      <router-link
+                        class="button"
+                        :to="'/paketler?company_id=' + company.id"
+                        v-if="company.subscription_active.order !== 3"
+                      ><i class="fa fa-chevron-up" /> Yükselt</router-link>
+                    </span>
                   </td>
                   <td class="action" v-if="company.pivot.is_admin_at !== null">
                     <router-link :to="'/hesabim/firmalarim/' + company.id + '/duzenle'">
@@ -160,3 +172,12 @@ export default {
     </div>
   </div>
 </template>
+
+<style lang="scss">
+  td {
+    a {
+      margin-left: 10px;
+      vertical-align: middle;
+    }
+  }
+</style>
