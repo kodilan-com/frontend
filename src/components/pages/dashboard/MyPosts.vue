@@ -155,7 +155,9 @@ export default {
 
             <div class="notification notice" v-else>
               Henüz bir ilanınız yok.
-              <!-- TODO put new post button -->
+
+              Oluşturmak için
+              <router-link to="/hesabim/ilanlarim/ekle">tıklayın</router-link>.
             </div>
           </div>
         </div>

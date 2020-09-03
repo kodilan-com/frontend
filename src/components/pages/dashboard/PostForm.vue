@@ -42,6 +42,7 @@ export default {
         tags: { required: true, message: 'Etiketler boş bırakılamaz.' },
       },
       type: JOB_TYPES_FOR_DROPDOWN[0],
+      typeDisabled: false,
       typeOptions: JOB_TYPES_FOR_DROPDOWN,
     };
   },
@@ -141,7 +142,13 @@ export default {
         })
         .catch((e) => {
           const errors = this.parseErrors(e);
-          this.showErrorDialog(`Lütfen gerekli alanları doldurduğunuzdan emin olunuz.${errors}`);
+
+          if (e.response.status === 402) {
+            return this.showErrorDialog(`Pakedinizdeki haklarınızı kullandınız.${errors}`);
+          }
+
+          return this.showErrorDialog(`Lütfen gerekli alanları doldurduğunuzdan emin \
+            olunuz.${errors}`);
         })
         .finally(() => {
           this.isSaving = false;
@@ -160,6 +167,10 @@ export default {
       });
     },
     parseErrors(e) {
+      if (e.response.status === 402) {
+        return `<p>Yükseltmek için <a href="/paketler?company_id=${this.formData.company_id}">\
+        tıklayın</a>.</p>`;
+      }
       const errors = e.response.data.errors || [];
       const details = Object.values(errors)
         .reduce((arr, err) => arr.concat(err), [])
@@ -202,6 +213,12 @@ export default {
         .finally(() => {
           this.isSaving = false;
         });
+    },
+    handleInternPostClick(event) {
+      event.preventDefault();
+      [, , this.type] = JOB_TYPES_FOR_DROPDOWN;
+      this.typeDisabled = true;
+      this.available = true;
     },
   },
   mounted() {
@@ -305,6 +322,7 @@ export default {
               :searchable="false"
               :close-on-select="true"
               placeholder="Seçiniz..."
+              :disabled="typeDisabled"
             />
           </div>
           <div class="form" :class="available === true ? '' : 'hide'">
@@ -365,6 +383,10 @@ export default {
                   v-if="formData.company"
                   :to="'/paketler?company_id=' + formData.company.id"
                 >tıklayın</router-link>.
+              </p>
+              <p>
+                Stajyer ilanları her zaman ücretsiz! Stajyer ilanı oluşturmak için
+                <a href="#" @click="handleInternPostClick">tıklayın</a>.
               </p>
             </div>
           </div>
