@@ -8,18 +8,21 @@ import autocomplete from '../../../utils/autocomplete';
 import validationMixin from '../../../mixins/validator';
 import { defaultEditorToolbar } from '../../../config';
 import { JOB_TYPES_FOR_DROPDOWN } from '../../../store/constants';
+import Loader from '../../shared/Loader';
 
 export default {
   mixins: [validationMixin],
   components: {
     VueEditor,
     JobDetails,
+    Loader,
     LocationSelect,
   },
   data() {
     return {
       isPreview: false,
       isSaving: false,
+      available: undefined,
       postId: null,
       formData: {
         position: '',
@@ -77,7 +80,12 @@ export default {
     },
   },
   methods: {
-    ...mapActions(['fetchTags', 'savePost', 'getPost']),
+    ...mapActions([
+      'fetchTags',
+      'getCreatePostAvailability',
+      'getPost',
+      'savePost',
+    ]),
     showPreview() {
       if (!this.validateForm()) {
         const messages = Object.values(this.validationErrorMessages).map(e => `<li>${e}</li>`);
@@ -105,6 +113,7 @@ export default {
         ...this.formData,
         tags: this.normalizedTags,
         company_id: this.formData.company.id,
+        type: this.type.id,
       };
 
       if (this.postId !== null) {
@@ -174,6 +183,26 @@ export default {
       // const storageData = JSON.parse(localStorage.getItem('listingData'));
       // this.formData = { ...this.formData, ...storageData };
     },
+    handleCompanySelect(company) {
+      this.isSaving = true;
+
+      this.available = null;
+
+      this.getCreatePostAvailability(company.id)
+        .then((response) => {
+          if (response.data.available) {
+            this.available = true;
+          } else {
+            this.available = false;
+          }
+        })
+        .catch(() => {
+          this.available = false;
+        })
+        .finally(() => {
+          this.isSaving = false;
+        });
+    },
   },
   mounted() {
     document.querySelector('#dashboard').classList.remove('hide-nav');
@@ -191,6 +220,8 @@ export default {
         .then((response) => {
           this.formData = response.data.post;
           this.formData.tags = response.data.post.tags.map(tag => tag.name).join(', ');
+          this.type = JOB_TYPES_FOR_DROPDOWN[this.formData.type - 1];
+          this.available = true;
         })
         .finally(() => {
           this.isSaving = false;
@@ -232,7 +263,7 @@ export default {
       <h4>İlan Detayları</h4>
       <div class="dashboard-list-box-content">
         <div class="submit-page">
-          <div class="form">
+          <div class="form" style="width: 100%;">
             <h5>Firma</h5>
             <multiselect
               v-model="formData.company"
@@ -241,17 +272,19 @@ export default {
               :searchable="false"
               :close-on-select="true"
               placeholder="Seçiniz..."
+              @select="handleCompanySelect"
+              v-if="companies"
             />
           </div>
-          <div class="form">
+          <div class="form" style="width: 100%;" :class="available === true ? '' : 'hide'">
             <h5>Pozisyon</h5>
             <input v-model="formData.position" class="search-field" type="text">
           </div>
-          <div class="form" style="width: 100%;">
+          <div class="form" style="width: 100%;" :class="available === true ? '' : 'hide'">
             <h5>İlan Açıklaması</h5>
             <vue-editor v-model="formData.description" :editor-toolbar="editorToolbar" />
           </div>
-          <div class="form">
+          <div class="form" :class="available === true ? '' : 'hide'">
             <h5>Lokasyon</h5>
             <location-select
               v-model="formData.location"
@@ -263,7 +296,7 @@ export default {
               Uzaktan çalışmaya elverişli bir ilansa Remote seçiniz.
             </p>
           </div>
-          <div class="form">
+          <div class="form" :class="available === true ? '' : 'hide'">
             <h5>İlan Tipi</h5>
             <multiselect
               v-model="type"
@@ -274,7 +307,7 @@ export default {
               placeholder="Seçiniz..."
             />
           </div>
-          <div class="form">
+          <div class="form" :class="available === true ? '' : 'hide'">
             <h5>Etiketler</h5>
             <input
               v-model="formData.tags"
@@ -295,7 +328,7 @@ export default {
               "Benzer İlanlar" arasında gözükme şansını arttıracaktır.
             </p>
           </div>
-          <div class="form">
+          <div class="form" :class="available === true ? '' : 'hide'">
             <h5>Başvuru bilgileri</h5>
             <input
               v-model="formData.apply_url"
@@ -305,20 +338,38 @@ export default {
             >
             <input v-model="formData.apply_email" placeholder="E-posta" type="text">
           </div>
-          <div class="button-container">
+          <div class="button-container" :class="available === true ? '' : 'hide'">
             <button
               @click="showPreview"
               class="button big margin-top-5 margin-bottom-20"
               type="button"
               v-if="!postId"
-            >Önizleme <i class="fa fa-arrow-circle-right" /></button>
+            >
+              Önizleme <i class="fa fa-arrow-circle-right" />
+            </button>
             <button
               @click="save"
               :disabled="isSaving"
               class="button big margin-top-5 margin-bottom-20"
               type="button"
               v-else
-            >Kaydet <i class="fa fa-check" /></button>
+            >
+              Kaydet <i class="fa fa-check" />
+            </button>
+          </div>
+          <div :class="available === false ? '' : 'hide'">
+            <div class="alert alert-danger">
+              <p>
+                İlan gönderme haklarınızı kullandınız. Pakedinizi yükseltmek için
+                <router-link
+                  v-if="formData.company"
+                  :to="'/paketler?company_id=' + formData.company.id"
+                >tıklayın</router-link>.
+              </p>
+            </div>
+          </div>
+          <div :class="available === null ? '' : 'hide'">
+            <Loader />
           </div>
         </div>
       </div>
@@ -351,6 +402,10 @@ export default {
     color: #c0341d;
     background-color: #fbe5e1;
     border-radius: 4px;
+  }
+
+  .hide {
+    display: none;
   }
 }
 </style>

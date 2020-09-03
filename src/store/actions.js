@@ -189,6 +189,9 @@ export default {
   deletePost(_, postId) {
     return http.delete(`/dashboard/posts/${postId}`);
   },
+  getCreatePostAvailability(_, companyId) {
+    return http.get(`/dashboard/posts/availability?company_id=${companyId}`, { cache: false });
+  },
   getPaymentList() {
     return http.get('/dashboard/payments', { cache: false });
   },
