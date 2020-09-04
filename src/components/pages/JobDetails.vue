@@ -58,8 +58,9 @@ export default {
       if (this.preview) {
         return '';
       }
+      const updateAt = this.post.updated_at.replace(/-/g, '/');
 
-      return new Date(this.post.updated_at).toLocaleDateString('tr-TR', {
+      return new Date(updateAt).toLocaleDateString('tr-TR', {
         day: 'numeric',
         month: 'long',
         year: 'numeric',

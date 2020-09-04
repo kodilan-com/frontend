@@ -254,7 +254,7 @@ exports[`AppFooter.vue templates should match the snapshot 1`] = `
           class="copyrights"
         >
           
-          © Copyright 2019
+          © Copyright 2020
           
           <router-link-stub
             to="/"
