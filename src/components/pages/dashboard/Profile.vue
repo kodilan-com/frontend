@@ -16,6 +16,7 @@ export default {
       formData: {
         name: null,
         email: null,
+        linkedin_url: null,
         password_new: null,
         password_current: null,
         password_confirmation: null,
@@ -42,6 +43,7 @@ export default {
       const data = {
         name: this.formData.name,
         email: this.formData.email,
+        linkedin_url: this.formData.linkedin_url,
       };
 
       this.updateUser(data)
@@ -104,6 +106,7 @@ export default {
   mounted() {
     this.formData.name = this.user.name;
     this.formData.email = this.user.email;
+    this.formData.linkedin_url = this.user.linkedin_url;
   },
 };
 </script>
@@ -163,6 +166,16 @@ export default {
                   id="email"
                   name="email"
                   v-model="formData.email"
+                  required
+                >
+
+                <label for="linkedin_url">Linkedin Profili</label>
+                <input
+                  type="url"
+                  id="linkedin_url"
+                  name="linkedin_url"
+                  v-model="formData.linkedin_url"
+                  placeholder="https://..."
                   required
                 >
               </div>
