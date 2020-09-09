@@ -126,6 +126,15 @@ export default {
   updatePassword(_, data) {
     return http.put('/user/password', data);
   },
+  updateLookingForJob({ commit }, data) {
+    return http.put('/user/looking-for-job', data)
+      .then((response) => {
+        commit(constants.USER, response.data.user);
+        localStorage.setItem('user', JSON.stringify(response.data.user));
+
+        return response;
+      });
+  },
   setAccessToken({ commit }, accessToken) {
     localStorage.setItem('accessToken', accessToken);
     commit(constants.ACCESS_TOKEN, accessToken);

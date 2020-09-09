@@ -29,6 +29,7 @@ export default {
   methods: {
     ...mapActions([
       'updateUser',
+      'updateLookingForJob',
       'updatePassword',
     ]),
     saveProfile(event) {
@@ -101,6 +102,24 @@ export default {
         .map(err => `<li>${err}</li>`);
 
       return `<ul>${details.join('')}</ul>`;
+    },
+    toggleLookingForJob(event) {
+      event.preventDefault();
+
+      if (this.isSaving) {
+        return;
+      }
+
+      this.isSaving = true;
+
+      const data = {
+        looking_for_job: this.user.looking_for_job_at === null,
+      };
+
+      this.updateLookingForJob(data)
+        .finally(() => {
+          this.isSaving = false;
+        });
     },
   },
   mounted() {
@@ -230,6 +249,36 @@ export default {
 
                 <button class="button margin-top-15">
                   Değiştir
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- look for a job -->
+      <div class="col-lg-6 col-md-12" v-if="!isSaving">
+        <div class="dashboard-list-box">
+          <h4 class="gray">
+            İş Arıyor Musun?
+          </h4>
+          <div class="dashboard-list-box-static">
+            <!-- Change Password -->
+            <div class="my-profile">
+              <form @submit="toggleLookingForJob">
+                <p v-if="user.looking_for_job_at !== null">
+                  Şu anda <strong>iş arıyorsun</strong>. Firmalar seni bulabilir ve teklif
+                  verebilir ancak ismini ve çalıştığın firmaları göremez. İş arayışını
+                  sonlandırmak için aşağıdaki tuşa tıkla.
+                </p>
+                <p v-else>
+                  Şu anda <strong>iş aramıyorsun</strong>. Aşağıdaki tuşu kullanarak iş
+                  aramaya başlarsan firmalar seni bulabilecek ve teklif gönderebilecek.
+                  Ancak ismini ve çalıştığın firmaları göremeyecek.
+                </p>
+                <button type="submit" class="button button-danger margin-top-15">
+                  <span v-if="user.looking_for_job_at !== null">İş Aramayı Bırak</span>
+                  <span v-else>İş Aramaya Başla</span>
                 </button>
               </form>
             </div>
