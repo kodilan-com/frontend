@@ -2,6 +2,7 @@
 import { mapActions, mapGetters } from 'vuex';
 
 import Loader from '../../shared/Loader';
+import LocationSelect from '../../shared/LocationSelect';
 
 export default {
   metaInfo: {
@@ -9,6 +10,7 @@ export default {
   },
   components: {
     Loader,
+    LocationSelect,
   },
   data() {
     return {
@@ -17,6 +19,7 @@ export default {
         name: null,
         email: null,
         linkedin_url: null,
+        location: null,
         password_new: null,
         password_current: null,
         password_confirmation: null,
@@ -45,6 +48,7 @@ export default {
         name: this.formData.name,
         email: this.formData.email,
         linkedin_url: this.formData.linkedin_url,
+        location_id: this.formData.location.id,
       };
 
       this.updateUser(data)
@@ -126,6 +130,7 @@ export default {
     this.formData.name = this.user.name;
     this.formData.email = this.user.email;
     this.formData.linkedin_url = this.user.linkedin_url;
+    this.formData.location = this.user.location;
   },
 };
 </script>
@@ -197,6 +202,14 @@ export default {
                   placeholder="https://..."
                   required
                 >
+
+                <label for="location">Şehir</label>
+                <location-select
+                  v-model="formData.location"
+                  :value="formData.location"
+                  :show-all="true"
+                  :searchable="true"
+                />
               </div>
 
               <button type="submit" class="button margin-top-15">
@@ -264,7 +277,7 @@ export default {
           </h4>
           <div class="dashboard-list-box-static">
             <!-- Change Password -->
-            <div class="my-profile">
+            <div class="my-profile" v-if="user">
               <form @submit="toggleLookingForJob">
                 <p v-if="user.looking_for_job_at !== null">
                   Şu anda <strong>iş arıyorsun</strong>. Firmalar seni bulabilir ve teklif
