@@ -46,8 +46,8 @@ export default {
         </li>
         <li>
           <i class="ln ln-icon-Map2" />
-          <router-link :to="`/ilan-ara?location=${post.location}`">
-            {{ post.location }}
+          <router-link :to="`/ilan-ara?location=${post.location.name}`">
+            {{ post.location.name }}
           </router-link>
         </li>
         <li class="timeago-item">

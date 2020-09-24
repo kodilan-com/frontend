@@ -88,6 +88,14 @@ export default {
     return dispatch('fetchByTag', mainTag)
       .then(res => helpers.rankPosts(post, postTags, res.data));
   },
+  fetchAllLocations({ commit }) {
+    return http.get('/locations')
+      .then((response) => {
+        commit(constants.LOCATION_LIST, response.data.list);
+
+        return response;
+      });
+  },
   fetchAvailableLocations({ commit }) {
     return http.get('/posts/locations')
       .then((res) => {

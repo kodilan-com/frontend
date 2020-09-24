@@ -12,7 +12,7 @@ export default {
     Subscribe,
   },
   methods: {
-    ...mapActions(['setAccessToken', 'getUser']),
+    ...mapActions(['setAccessToken', 'getUser', 'fetchAllLocations']),
   },
   mounted() {
     const accessToken = localStorage.getItem('accessToken');
@@ -20,6 +20,7 @@ export default {
     if (accessToken) {
       this.setAccessToken(accessToken);
       this.getUser();
+      this.fetchAllLocations();
     }
   },
 };

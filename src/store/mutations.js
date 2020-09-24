@@ -20,13 +20,7 @@ export default {
     state.tags = tags;
   },
   [constants.SET_AVAILABLE_LOCATIONS](state, locations) {
-    state.availableLocations = locations.reduce((arr, loc) => {
-      if (loc.location !== 'Remote') {
-        arr.push(loc.location);
-      }
-
-      return arr;
-    }, ['Remote']);
+    state.availableLocations = locations;
   },
   [constants.SET_ACTIVE_PERIOD](state, period) {
     state.activePeriod = period;
@@ -36,5 +30,8 @@ export default {
   },
   [constants.ACCESS_TOKEN](state, accessToken) {
     state.accessToken = accessToken;
+  },
+  [constants.LOCATION_LIST](state, list) {
+    state.locationList = list;
   },
 };

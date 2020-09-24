@@ -10,6 +10,7 @@ export const SET_ACTIVE_PERIOD = 'SET_ACTIVE_PERIOD';
 export const USER = 'USER';
 export const ACCESS_TOKEN = 'ACCESS_TOKEN';
 export const RECENT_POST_COUNT = 25;
+export const LOCATION_LIST = 'LOCATION_LIST';
 export const JOB_TYPE_MAP = {
   0: 'Tam zamanlı',
   1: 'Tam zamanlı',

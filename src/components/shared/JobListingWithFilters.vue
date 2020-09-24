@@ -1,4 +1,5 @@
 <script>
+import { mapActions, mapState } from 'vuex';
 import JobListing from './JobListing';
 import LocationSelect from './LocationSelect';
 import queryUtils from '../../utils/query';
@@ -26,6 +27,7 @@ export default {
   },
   data() {
     return {
+      location: null,
       params: {
         query: this.$route.query.query || '',
         location: this.$route.query.location || '',
@@ -36,6 +38,7 @@ export default {
     };
   },
   computed: {
+    ...mapState(['locationList']),
     countText() {
       const length = this.meta && this.meta.total ? this.meta.total : this.posts.length;
 
@@ -49,10 +52,14 @@ export default {
     },
   },
   methods: {
+    ...mapActions(['fetchAllLocations']),
     search() {
       this.params.type = this.type ? this.type.id : 0;
 
-      const params = queryUtils.getParams(this.params);
+      const params = queryUtils.getParams({
+        ...this.params,
+        location: this.location,
+      });
 
       if (params) {
         this.$router.push({ path: '/ilan-ara', query: params });
@@ -60,6 +67,18 @@ export default {
     },
   },
   created() {
+    this.fetchAllLocations().then((response) => {
+      let location = null;
+
+      response.data.list.forEach((value) => {
+        if (value.name === this.$route.query.location) {
+          location = value;
+        }
+      });
+
+      this.location = location;
+    });
+
     const type = parseInt(this.$route.query.type, 10);
 
     if (type) {
@@ -100,7 +119,7 @@ export default {
             class="ico-01"
             placeholder="Pozisyon adı, teknoloji adı"
           >
-          <location-select v-model="params.location" :value="params.location" :searchable="true" />
+          <location-select v-model="location" :value="location" :searchable="true" />
           <multiselect
             v-model="type"
             :options="typeOptions"

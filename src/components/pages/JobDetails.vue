@@ -237,7 +237,7 @@ export default {
                                   itemtype="http://schema.org/PostalAddress"
                             >
                               <span itemprop="addressLocality">
-                                {{ postData.location }}
+                                {{ postData.location.name }}
                               </span>
                             </span>
                           </span>

@@ -10,4 +10,5 @@ export default {
   tags: [],
   availableLocations: ['Remote', 'İstanbul', 'İzmir', 'Ankara', 'Bursa'],
   user: null,
+  locationList: [],
 };

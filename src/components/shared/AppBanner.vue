@@ -10,7 +10,7 @@ export default {
     return {
       params: {
         query: '',
-        location: '',
+        location: null,
       },
     };
   },

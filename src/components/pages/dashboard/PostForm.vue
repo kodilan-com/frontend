@@ -29,7 +29,7 @@ export default {
         description: '',
         apply_email: '',
         apply_url: '',
-        location: '',
+        location: null,
         type: null,
         tags: '',
         company_id: '',
@@ -114,6 +114,7 @@ export default {
         ...this.formData,
         tags: this.normalizedTags,
         company_id: this.formData.company.id,
+        location_id: this.formData.location.id,
         type: this.type.id,
       };
 

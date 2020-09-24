@@ -111,3 +111,9 @@ export default {
     </h1>
   </job-listing-with-filters>
 </template>
+
+<style lang="scss" scoped>
+  h1 {
+    text-transform: capitalize;
+  }
+</style>

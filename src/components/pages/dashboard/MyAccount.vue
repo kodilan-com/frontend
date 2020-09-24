@@ -120,6 +120,17 @@ export default {
             </router-link>
           </li>
         </ul>
+
+        <ul
+          data-submenu-title="Developer Bul"
+          v-if="user && user.companies && user.companies.length > 0"
+        >
+          <li :class="[currentPage.includes('ilan-ara') ? 'active' : '']">
+            <router-link to="/hesabim/ilan-ara">
+              İş Arayan Developerlar
+            </router-link>
+          </li>
+        </ul>
       </div>
     </div>
     <!-- Navigation / End -->

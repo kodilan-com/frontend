@@ -15,4 +15,7 @@ export default {
 
     return null;
   },
+  locations(state) {
+    return state.locationList;
+  },
 };

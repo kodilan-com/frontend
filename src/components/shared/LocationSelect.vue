@@ -1,6 +1,5 @@
 <script>
 import { mapState, mapActions } from 'vuex';
-import allLocations from '../../assets/data/locations';
 
 export default {
   props: {
@@ -15,7 +14,7 @@ export default {
       default: false,
     },
     value: {
-      type: String,
+      type: Object,
       required: false,
       default: null,
     },
@@ -27,13 +26,13 @@ export default {
     };
   },
   computed: {
-    ...mapState(['availableLocations']),
+    ...mapState(['availableLocations', 'locationList']),
     locations() {
-      return this.showAll ? allLocations : this.availableLocations;
+      return this.showAll ? this.locationList : this.availableLocations;
     },
   },
   methods: {
-    ...mapActions(['fetchAvailableLocations']),
+    ...mapActions(['fetchAvailableLocations', 'fetchAllLocations']),
     handleChange(value) {
       this.$emit('input', value);
     },
@@ -50,7 +49,7 @@ export default {
       }
 
       this.options = this.locations.filter(
-        l => (l.toLocaleLowerCase('tr').indexOf(text.toLocaleLowerCase('tr')) > -1),
+        l => (l.name.toLocaleLowerCase('tr').indexOf(text.toLocaleLowerCase('tr')) > -1),
       );
     },
   },
@@ -64,7 +63,13 @@ export default {
   },
   created() {
     this.syncValue();
+
     this.fetchAvailableLocations()
+      .then(() => {
+        this.options = this.locations;
+      });
+
+    this.fetchAllLocations()
       .then(() => {
         this.options = this.locations;
       });
@@ -81,6 +86,7 @@ export default {
     :close-on-select="true"
     :show-labels="false"
     :internal-search="false"
+    label="name"
     placeholder="Şehir seçiniz..."
     @input="handleChange"
     @search-change="searchChange"
