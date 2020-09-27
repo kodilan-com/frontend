@@ -20,6 +20,7 @@ export default {
         email: null,
         linkedin_url: null,
         location: null,
+        title: null,
         password_new: null,
         password_current: null,
         password_confirmation: null,
@@ -46,6 +47,7 @@ export default {
 
       const data = {
         name: this.formData.name,
+        title: this.formData.title,
         email: this.formData.email,
         linkedin_url: this.formData.linkedin_url,
         location_id: this.formData.location.id,
@@ -128,6 +130,7 @@ export default {
   },
   mounted() {
     this.formData.name = this.user.name;
+    this.formData.title = this.user.title;
     this.formData.email = this.user.email;
     this.formData.linkedin_url = this.user.linkedin_url;
     this.formData.location = this.user.location;
@@ -201,6 +204,17 @@ export default {
                   v-model="formData.linkedin_url"
                   placeholder="https://..."
                   required
+                >
+
+                <label for="title" class="margin-top-0">Unvan</label>
+                <input
+                  type="text"
+                  id="title"
+                  name="title"
+                  v-model="formData.title"
+                  minlength="1"
+                  maxlength="50"
+                  placeholder="Web Developer"
                 >
 
                 <label for="location">Şehir</label>
