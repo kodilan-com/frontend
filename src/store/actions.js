@@ -70,6 +70,10 @@ export default {
     return http.get('/search', { params })
       .then(res => res.data);
   },
+  searchDevelopers(_, params) {
+    return http.get('/search/looking-for-job', { params })
+      .then(res => res.data);
+  },
   fetchTags({ commit }) {
     return http.get('/tags')
       .then((res) => {

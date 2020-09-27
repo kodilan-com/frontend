@@ -125,8 +125,8 @@ export default {
           data-submenu-title="Developer Bul"
           v-if="user && user.companies && user.companies.length > 0"
         >
-          <li :class="[currentPage.includes('ilan-ara') ? 'active' : '']">
-            <router-link to="/hesabim/ilan-ara">
+          <li :class="[currentPage.includes('developer-ara') ? 'active' : '']">
+            <router-link to="/developer-ara">
               İş Arayan Developerlar
             </router-link>
           </li>

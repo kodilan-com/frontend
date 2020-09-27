@@ -125,6 +125,10 @@ const router = new Router({
       component: () => import('../components/pages/PackageList'),
     },
     {
+      path: '/developer-ara',
+      component: () => import('../components/pages/SearchDeveloper'),
+    },
+    {
       path: '/404',
       name: 'NotFound',
       component: () => import('@/components/pages/NotFound'),
