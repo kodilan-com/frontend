@@ -16,6 +16,19 @@ export default {
     currentPage() {
       return this.$route.path;
     },
+    canSearchDevelopers() {
+      if (!this.user || !this.user.companies.length) return false;
+
+      let canSearchDevelopers = false;
+
+      this.user.companies.forEach((company) => {
+        if (company.can_search_developers) {
+          canSearchDevelopers = true;
+        }
+      });
+
+      return canSearchDevelopers;
+    },
   },
   methods: {
     ...mapActions([]),
@@ -123,7 +136,7 @@ export default {
 
         <ul
           data-submenu-title="Developer Bul"
-          v-if="user && user.companies && user.companies.length > 0"
+          v-if="user && user.companies && user.companies.length > 0 && canSearchDevelopers"
         >
           <li :class="[currentPage.includes('developer-ara') ? 'active' : '']">
             <router-link to="/developer-ara">

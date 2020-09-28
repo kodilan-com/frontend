@@ -17,7 +17,7 @@ export default {
         <h4>{{ user.title }}</h4>
         <span><i class="fa fa-map-marker" /> {{ user.location.name }}</span>
         <!-- <span><i class="fa fa-money" /> $35 / hour</span> -->
-        <p>Over 8000 hours on oDesk (only Drupal related). Highly motivated, goal-oriented, hands-on senior software engineer with extensive technical skills and over 15 years of experience in software development</p>
+        <p>{{ user.bio }}</p>
 
         <div class="skills">
           <span v-for="tag in user.tags" :key="tag.slug">
@@ -45,6 +45,10 @@ export default {
     font-size: 12px;
     position: absolute;
     right: 34px;
+  }
+
+  p {
+    display: block;
   }
 }
 </style>
