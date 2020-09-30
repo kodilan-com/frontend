@@ -18,6 +18,11 @@ export default {
       required: false,
       default: null,
     },
+    showDeveloperLocations: {
+      type: Boolean,
+      required: false,
+      default: false,
+    },
   },
   data() {
     return {
@@ -26,13 +31,25 @@ export default {
     };
   },
   computed: {
-    ...mapState(['availableLocations', 'locationList']),
+    ...mapState([
+      'availableLocations',
+      'locationList',
+      'developerLocations',
+    ]),
     locations() {
+      if (this.showDeveloperLocations) {
+        return this.developerLocations;
+      }
+
       return this.showAll ? this.locationList : this.availableLocations;
     },
   },
   methods: {
-    ...mapActions(['fetchAvailableLocations', 'fetchAllLocations']),
+    ...mapActions([
+      'fetchAvailableLocations',
+      'fetchAllLocations',
+      'fetchDeveloperLocations',
+    ]),
     handleChange(value) {
       this.$emit('input', value);
     },
@@ -63,16 +80,9 @@ export default {
   },
   created() {
     this.syncValue();
-
-    this.fetchAvailableLocations()
-      .then(() => {
-        this.options = this.locations;
-      });
-
-    this.fetchAllLocations()
-      .then(() => {
-        this.options = this.locations;
-      });
+    this.fetchAvailableLocations();
+    this.fetchAllLocations();
+    this.fetchDeveloperLocations();
   },
 };
 </script>
@@ -81,7 +91,7 @@ export default {
   <multiselect
     :class="{ 'is-searchable': searchable }"
     v-model="selected"
-    :options="options"
+    :options="locations"
     :searchable="searchable"
     :close-on-select="true"
     :show-labels="false"

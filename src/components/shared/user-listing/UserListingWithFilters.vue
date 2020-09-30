@@ -13,6 +13,9 @@ export default {
     meta: {
       type: Object,
       required: false,
+      default() {
+        return {};
+      },
     },
     isLoading: {
       type: Boolean,
@@ -42,7 +45,7 @@ export default {
         return 'Bu kritere uygun developer bulunamadı.';
       }
 
-      const prefix = this.$route.path === '/ilanlar' ? 'Toplam' : 'Bu kriterlere uygun';
+      const prefix = this.params.query ? 'Bu kriterlere uygun' : 'Toplam';
 
       return `${prefix} ${length} developer bulunuyor`;
     },
@@ -104,7 +107,12 @@ export default {
             class="ico-01"
             placeholder="Pozisyon adı, teknoloji adı"
           >
-          <location-select v-model="location" :value="location" :searchable="true" />
+          <location-select
+            v-model="location"
+            :value="location"
+            :searchable="true"
+            :show-developer-locations="true"
+          />
         </div>
         <div class="button-right">
           <button @click="search" class="button tag-search-btn">

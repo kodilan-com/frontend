@@ -16,7 +16,9 @@ export default {
       <div class="resumes-list-content">
         <h4>{{ user.title }}</h4>
         <span><i class="fa fa-map-marker" /> {{ user.location.name }}</span>
-        <!-- <span><i class="fa fa-money" /> $35 / hour</span> -->
+        <span v-if="user.expected_wage">
+          <i class="fa fa-money" /> {{ user.expected_wage.toLocaleString() }} ₺ / ay
+        </span>
         <p>{{ user.bio }}</p>
 
         <div class="skills">

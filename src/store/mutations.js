@@ -13,6 +13,9 @@ export default {
   [constants.SET_ALL_POST_META](state, meta) {
     state.allPostsMeta = meta;
   },
+  [constants.SET_DEVELOPER_SEARCH_META](state, meta) {
+    state.developerSearchMeta = meta;
+  },
   [constants.SET_FEATURED](state, featuredPosts) {
     state.featuredPosts = featuredPosts;
   },
@@ -21,6 +24,9 @@ export default {
   },
   [constants.SET_AVAILABLE_LOCATIONS](state, locations) {
     state.availableLocations = locations;
+  },
+  [constants.SET_DEVELOPER_LOCATIONS](state, locations) {
+    state.developerLocations = locations;
   },
   [constants.SET_ACTIVE_PERIOD](state, period) {
     state.activePeriod = period;

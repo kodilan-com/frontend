@@ -70,9 +70,29 @@ export default {
     return http.get('/search', { params })
       .then(res => res.data);
   },
-  searchDevelopers(_, params) {
-    return http.get('/search/looking-for-job', { params })
-      .then(res => res.data);
+  searchDevelopers({ commit }, params) {
+    const page = params
+      && params.page
+      && Number.isInteger(params.page)
+      && params.page > 1 ? params.page : 1;
+
+    const queryData = {
+      ...params,
+      page,
+    };
+
+    return http.get('/search/looking-for-job', { params: queryData, cache: false })
+      .then((response) => {
+        const { data } = response;
+        // commit(constants.SET_ALL_POSTS, data.data);
+        commit(constants.SET_DEVELOPER_SEARCH_META, {
+          total: data.total,
+          current_page: data.current_page,
+          last_page: data.last_page,
+        });
+
+        return response.data.data;
+      });
   },
   fetchTags({ commit }) {
     return http.get('/tags')
@@ -104,6 +124,14 @@ export default {
     return http.get('/posts/locations')
       .then((res) => {
         commit(constants.SET_AVAILABLE_LOCATIONS, res.data);
+      });
+  },
+  fetchDeveloperLocations({ commit }) {
+    return http.get('/locations/developers')
+      .then((response) => {
+        commit(constants.SET_DEVELOPER_LOCATIONS, response.data.list);
+
+        return response.data;
       });
   },
   subscribe(_, data) {

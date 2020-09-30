@@ -7,6 +7,7 @@ export default {
   featuredPosts: [],
   allPosts: [],
   allPostsMeta: {},
+  developerSearchMeta: {},
   tags: [],
   availableLocations: ['Remote', 'İstanbul', 'İzmir', 'Ankara', 'Bursa'],
   user: null,

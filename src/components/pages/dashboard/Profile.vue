@@ -21,6 +21,7 @@ export default {
         linkedin_url: null,
         location: null,
         title: null,
+        expected_wage: null,
         password_new: null,
         password_current: null,
         password_confirmation: null,
@@ -48,6 +49,7 @@ export default {
       const data = {
         name: this.formData.name,
         title: this.formData.title,
+        expected_wage: this.formData.expected_wage,
         email: this.formData.email,
         linkedin_url: this.formData.linkedin_url,
         location_id: this.formData.location.id,
@@ -131,6 +133,7 @@ export default {
   mounted() {
     this.formData.name = this.user.name;
     this.formData.title = this.user.title;
+    this.formData.expected_wage = this.user.expected_wage;
     this.formData.email = this.user.email;
     this.formData.linkedin_url = this.user.linkedin_url;
     this.formData.location = this.user.location;
@@ -196,7 +199,7 @@ export default {
                   required
                 >
 
-                <label for="linkedin_url">Linkedin Profili</label>
+                <label for="linkedin_url">Linkedin Profil Adresi</label>
                 <input
                   type="url"
                   id="linkedin_url"
@@ -215,6 +218,17 @@ export default {
                   minlength="1"
                   maxlength="50"
                   placeholder="Web Developer"
+                >
+
+                <label for="expected_wage" class="margin-top-0">Net Maaş Beklentiniz</label>
+                <input
+                  type="number"
+                  id="expected_wage"
+                  name="expected_wage"
+                  v-model="formData.expected_wage"
+                  min="1"
+                  max="999999"
+                  step="1"
                 >
 
                 <label for="location">Şehir</label>
