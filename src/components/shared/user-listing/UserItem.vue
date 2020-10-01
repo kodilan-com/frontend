@@ -1,18 +1,28 @@
 <script>
 import userDetail from '../../../mixins/userDetail';
 import image from '../../../mixins/image';
+import DeveloperProposalModal from '../DeveloperProposalModal';
 
 export default {
   mixins: [userDetail, image],
   components: {
+  },
+  methods: {
+    handleDeveloperClick(event) {
+      event.preventDefault();
+      this.$modal.show(DeveloperProposalModal, {
+        developer: this.user,
+      }, {
+        name: 'developer-proposal-modal',
+      });
+    },
   },
 };
 </script>
 
 <template>
   <li>
-    <router-link :to="detailsUrl">
-      <!-- <img src="images/avatar-placeholder.png"> -->
+    <a href="#" @click="handleDeveloperClick">
       <div class="resumes-list-content">
         <h4>{{ user.title }}</h4>
         <span><i class="fa fa-map-marker" /> {{ user.location.name }}</span>
@@ -25,14 +35,17 @@ export default {
           <span v-for="tag in user.tags" :key="tag.slug">
             {{ tag.name }}
           </span>
+          <div class="clearfix" />
         </div>
         <div class="date">
           {{ timeago }}
         </div>
-        <div class="clearfix"></div>
+        <div class="button-container">
+          <button type="button" class="button">Teklif Ver</button>
+        </div>
       </div>
-      <div class="clearfix"></div>
-    </router-link>
+      <div class="clearfix" />
+    </a>
   </li>
 </template>
 
@@ -46,7 +59,11 @@ export default {
     color: #808080;
     font-size: 12px;
     position: absolute;
-    right: 34px;
+    left: 34px;
+  }
+
+  .button-container {
+    text-align: end;
   }
 
   p {

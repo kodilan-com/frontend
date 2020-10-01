@@ -89,6 +89,7 @@ export default {
 
 <template>
   <multiselect
+    v-if="locations"
     :class="{ 'is-searchable': searchable }"
     v-model="selected"
     :options="locations"

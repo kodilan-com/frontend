@@ -11,7 +11,14 @@ Vue.config.productionTip = false;
 
 Vue.component('multiselect', Multiselect);
 
-Vue.use(VModal, { dialog: true });
+Vue.use(VModal, {
+  dialog: true,
+  dynamic: true,
+  dynamicDefaults: {
+    height: 'auto',
+    scrollable: true,
+  },
+});
 
 /* eslint-disable no-new */
 new Vue({

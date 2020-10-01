@@ -250,4 +250,7 @@ export default {
   getPackageList() {
     return http.get('/packages');
   },
+  saveDeveloperProposal(_, data) {
+    return http.post('/developer-proposals', data);
+  },
 };

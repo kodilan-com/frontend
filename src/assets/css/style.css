@@ -2,6 +2,11 @@
 @import url("font-awesome.css");
 @import url("https://fonts.googleapis.com/css?family=Montserrat:400,500,600");
 @import url("https://fonts.googleapis.com/css?family=Lato:400,700,300");
+
+:root {
+  --primary-color: #26ae61;
+}
+
 /* ------------------------------------------------------------------- */
 
 /* Table of Contents

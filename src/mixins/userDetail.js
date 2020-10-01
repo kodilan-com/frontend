@@ -8,9 +8,6 @@ export default {
     },
   },
   computed: {
-    detailsUrl() {
-      return `/developer/${this.user.id}`;
-    },
     timeago() {
       return formatDate(this.user.looking_for_job_at);
     },
