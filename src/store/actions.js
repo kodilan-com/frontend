@@ -81,7 +81,7 @@ export default {
       page,
     };
 
-    return http.get('/search/looking-for-job', { params: queryData, cache: false })
+    return http.get('/search/looking-for-job', { params: queryData })
       .then((response) => {
         const { data } = response;
         // commit(constants.SET_ALL_POSTS, data.data);
