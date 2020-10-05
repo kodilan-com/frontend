@@ -68,8 +68,8 @@ export default {
                     </span>
                     <span>
                       <i class="fa fa-map-marker" />
-                      <router-link :to="`/ilan-ara?location=${post.location}`">
-                        {{ post.location }}
+                      <router-link :to="`/ilan-ara?location=${post.location.name}`">
+                        {{ post.location.name }}
                       </router-link>
                     </span>
                     <job-type-badge :post="post" />
