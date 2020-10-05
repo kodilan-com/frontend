@@ -4,7 +4,7 @@ import * as constants from './constants';
 import helpers from './helpers';
 
 const http = axios.create({
-  baseURL: 'https://api.kodilan.com',
+  baseURL: 'https://apiv2.kodilan.com/api',
   // baseURL: 'http://localhost:8000/api',
   adapter: cacheAdapterEnhancer(axios.defaults.adapter),
   headers: {
