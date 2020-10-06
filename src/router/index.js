@@ -4,9 +4,23 @@ import Router from 'vue-router';
 import Home from '@/components/pages/Home';
 import { PERIODS } from '../store/constants';
 import dashboardRoutes from './dashboard';
+import store from '../store';
 
 Vue.use(Router);
 Vue.use(Meta);
+
+async function requireAuth(to, from, next) {
+  if (!store.getters.user) {
+    await store.dispatch('getUser');
+    if (!store.getters.user) {
+      next({ name: 'Login' });
+    } else {
+      next();
+    }
+  } else {
+    next();
+  }
+}
 
 
 const router = new Router({
@@ -34,6 +48,7 @@ const router = new Router({
       path: '/ilan-ekle',
       name: 'AddJob',
       redirect: '/hesabim/ilanlarim/ekle',
+      beforeEnter: requireAuth,
     },
     {
       path: '/ilanlar/:slug',
@@ -119,6 +134,7 @@ const router = new Router({
       name: 'Hesabım',
       component: () => import('../components/pages/dashboard/MyAccount'),
       children: dashboardRoutes,
+      beforeEnter: requireAuth,
     },
     {
       path: '/paketler',

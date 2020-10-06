@@ -2,7 +2,6 @@
 import { mapActions, mapGetters } from 'vuex';
 
 import Loader from '../../shared/Loader';
-import helpers from '../../../store/helpers';
 
 export default {
   metaInfo: {

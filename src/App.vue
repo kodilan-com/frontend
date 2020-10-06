@@ -35,7 +35,7 @@ export default {
     <app-footer />
     <subscribe :fixed="true" />
     <v-dialog />
-    <modals-container/>
+    <modals-container />
   </div>
 </template>
 

@@ -50,17 +50,6 @@ export default {
       }
     },
   },
-  mounted() {
-    if (!this.user) {
-      setTimeout(() => {
-        if (!this.user) {
-          this.$router.push({
-            path: '/giris',
-          });
-        }
-      }, 5000);
-    }
-  },
 };
 </script>
 
