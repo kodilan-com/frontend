@@ -24,7 +24,7 @@ export default {
         expected_wage: null,
         password_new: null,
         password_current: null,
-        password_confirmation: null,
+        password_new_confirmation: null,
       },
     };
   },
@@ -72,14 +72,14 @@ export default {
       const data = {
         password_new: this.formData.password_new,
         password_current: this.formData.password_current,
-        password_confirmation: this.formData.password_confirmation,
+        password_new_confirmation: this.formData.password_new_confirmation,
       };
 
       this.updatePassword(data)
         .then(() => {
           this.formData.password_new = null;
           this.formData.password_current = null;
-          this.formData.password_confirmation = null;
+          this.formData.password_new_confirmation = null;
         })
         .catch((e) => {
           const errors = this.parseErrors(e);
@@ -281,6 +281,7 @@ export default {
                   name="password_current"
                   v-model="formData.password_current"
                   type="password"
+                  minlength="8"
                   required
                   autocomplete="current-password"
                 >
@@ -291,15 +292,16 @@ export default {
                   name="password_new"
                   v-model="formData.password_new"
                   type="password"
+                  minlength="8"
                   required
                   autocomplete="new-password"
                 >
 
-                <label for="password_confirmation">Yeni Parolanı Doğrula</label>
+                <label for="password_new_confirmation">Yeni Parolanı Doğrula</label>
                 <input
-                  id="password_confirmation"
-                  name="password_confirmation"
-                  v-model="formData.password_confirmation"
+                  id="password_new_confirmation"
+                  name="password_new_confirmation"
+                  v-model="formData.password_new_confirmation"
                   type="password"
                   required
                   autocomplete="new-password"
