@@ -122,6 +122,7 @@ export default {
                 <tr>
                   <th><i class="fa fa-building-o" /> Firma</th>
                   <th><i class="fa fa-briefcase" /> Pozisyon</th>
+                  <th><i class="fa fa-check" /> Durum</th>
                   <th><i class="fa fa-clock-o" /> Son Güncelleme</th>
                   <th />
                 </tr>
@@ -134,6 +135,17 @@ export default {
                   </td>
                   <td>
                     {{ post.position }}
+                  </td>
+                  <td>
+                    <span v-if="post.status === 0">
+                      Reddedildi
+                    </span>
+                    <span v-else-if="post.status === 1">
+                      Yayınlandı
+                    </span>
+                    <span v-else>
+                      Yayından kaldırıldı
+                    </span>
                   </td>
                   <td>
                     {{ getDateFromString(post.updated_at).toLocaleString() }}
