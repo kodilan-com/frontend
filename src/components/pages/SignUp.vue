@@ -72,7 +72,17 @@ export default {
             email: this.formData.email,
           }));
           this.saveToLocalStorage();
-          this.$router.push('/ilan-ekle/basarili');
+
+          this.$modal.show('dialog', {
+            text: 'E-posta adresinize gönderilen bağlantıya tıklayarak adresinizi doğrulayın.',
+            title: 'Kodilan.com hesabınızı oluşturdunuz!',
+            buttons: [
+              {
+                title: 'Kapat',
+              },
+            ],
+          });
+          this.$router.push('/');
         })
         .catch((e) => {
           const errors = this.parseErrors(e);
