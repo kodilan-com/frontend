@@ -25,6 +25,28 @@ export default {
       this.setUser(null);
       this.$router.push('/giris');
     },
+    handleAddPostClick(event) {
+      if (this.user && !this.user.companies.length) {
+        const subject = encodeURI('Hata');
+
+        this.$modal.show('dialog', {
+          text: 'İlan ekleyebilmek için önce bir firma eklemelisiniz.',
+          title: 'Henüz firmanız yok',
+          buttons: [{
+            title: `<a href="mailto:info@kodilan.com?subject=${subject}" >Hata bildir!</a>`,
+          },
+          {
+            title: 'Kapat',
+          }],
+        });
+        this.$router.push('/hesabim/firmalarim/ekle');
+        event.preventDefault();
+
+        return false;
+      }
+
+      return true;
+    },
   },
 };
 </script>
@@ -53,9 +75,12 @@ export default {
                 </router-link>
               </li> -->
               <li>
-                <router-link class="add-post button tag-create-post" to="/ilan-ekle">
+                <router-link
+                  class="add-post button tag-create-post"
+                  to="/ilan-ekle"
+                >
                   <i class="fa fa-plus" />
-                  <span class="tag-create-post">
+                  <span class="tag-create-post" @click="handleAddPostClick">
                     Ücretsiz İlan Ekle
                   </span>
                 </router-link>
