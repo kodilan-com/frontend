@@ -59,4 +59,8 @@ export default {
 table.manage-table.resumes td {
   padding: 15px 10px;
 }
+
+input {
+  color: #666 !important;
+}
 </style>
