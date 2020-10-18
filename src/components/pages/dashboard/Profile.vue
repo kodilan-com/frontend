@@ -127,6 +127,23 @@ export default {
       this.updateLookingForJob(data)
         .finally(() => {
           this.isSaving = false;
+          const title = 'Güncellendi';
+          let text;
+
+          if (this.user.looking_for_job_at === null) {
+            // not looking for a job anymore
+            text = 'Artık iş arayanlar arasında listelenmeyeceksiniz.';
+          } else {
+            text = 'İş arayanlar arasında listelenmeye başladınız!';
+          }
+
+          this.$modal.show('dialog', {
+            text,
+            title,
+            buttons: [{
+              title: 'Kapat',
+            }],
+          });
         });
     },
   },
