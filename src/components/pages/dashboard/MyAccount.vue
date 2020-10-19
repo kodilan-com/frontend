@@ -32,23 +32,6 @@ export default {
   },
   methods: {
     ...mapActions(['setUser', 'setAccessToken']),
-    handleTopMenuClick(event) {
-      event.preventDefault();
-      const element = event.target;
-
-      if (element.closest('li').querySelector('ul')) {
-        if (element.closest('li').classList.contains('active-submenu')) {
-          document.querySelectorAll('.dashboard-nav ul li.active-submenu').forEach((active) => {
-            active.classList.remove('active-submenu');
-          });
-        } else {
-          document.querySelectorAll('.dashboard-nav ul li.active-submenu').forEach((active) => {
-            active.classList.remove('active-submenu');
-          });
-          element.parentElement.classList.add('active-submenu');
-        }
-      }
-    },
     handleLogoutClick() {
       this.setAccessToken(null);
       this.setUser(null);
@@ -77,28 +60,16 @@ export default {
         </ul> -->
 
         <ul data-submenu-title="Yönetim" v-if="user && user.companies && user.companies.length > 0">
-          <li>
-            <a @click="handleTopMenuClick">
-              İlan Yönetimi
-            </a>
-            <ul>
-              <li :class="[currentPage.endsWith('ilanlarim') ? 'active' : '']">
-                <router-link to="/hesabim/ilanlarim">
-                  İlanlarım
-                  <!-- <span class="nav-tag">5</span> -->
-                </router-link>
-              </li>
-              <!-- <li>
-                <a href="dashboard-manage-applications.html">
-                  Manage Applications <span class="nav-tag">4</span>
-                </a>
-              </li> -->
-              <li :class="[currentPage.endsWith('ilanlarim/ekle') ? 'active' : '']">
-                <router-link to="/hesabim/ilanlarim/ekle">
-                  İlan Ekle
-                </router-link>
-              </li>
-            </ul>
+          <li :class="[currentPage.endsWith('ilanlarim') ? 'active' : '']">
+            <router-link to="/hesabim/ilanlarim">
+              İlanlarım
+              <!-- <span class="nav-tag">5</span> -->
+            </router-link>
+          </li>
+          <li :class="[currentPage.endsWith('ilanlarim/ekle') ? 'active' : '']">
+            <router-link to="/hesabim/ilanlarim/ekle">
+              İlan Ekle
+            </router-link>
           </li>
           <li :class="[currentPage.includes('odemeler') ? 'active' : '']">
             <router-link to="/hesabim/odemeler">
