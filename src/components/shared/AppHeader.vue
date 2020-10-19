@@ -1,5 +1,5 @@
 <script>
-import { mapActions, mapGetters } from 'vuex';
+import { mapGetters } from 'vuex';
 import AppBanner from './AppBanner';
 import AppTopbar from './AppTopbar';
 
@@ -19,12 +19,6 @@ export default {
     ...mapGetters(['user', 'accessToken']),
   },
   methods: {
-    ...mapActions(['setUser', 'setAccessToken']),
-    logout() {
-      this.setAccessToken(null);
-      this.setUser(null);
-      this.$router.push('/giris');
-    },
     handleAddPostClick(event) {
       if (this.user && !this.user.companies.length) {
         const subject = encodeURI('Hata');
@@ -92,21 +86,10 @@ export default {
                 </router-link>
               </li>
               <li class="header-subs" v-else>
-                <a class="button" href="#">
+                <router-link class="button" to="/hesabim">
                   <i class="fa fa-user" />
                   <span>{{ user.name }}</span>
-                  &nbsp;<i class="fa fa-caret-down" />
-                </a>
-
-                <ul>
-                  <li>
-                    <router-link class="button" to="/hesabim">
-                      Ayarlar
-                    </router-link>
-
-                    <a @click.prevent="logout()" href="#">Çıkış</a>
-                  </li>
-                </ul>
+                </router-link>
               </li>
               <!-- <li><a href="my-account.html"><i class="fa fa-lock"></i> Log In</a></li> -->
             </ul>

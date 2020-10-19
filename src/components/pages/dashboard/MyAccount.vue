@@ -31,7 +31,7 @@ export default {
     },
   },
   methods: {
-    ...mapActions([]),
+    ...mapActions(['setUser', 'setAccessToken']),
     handleTopMenuClick(event) {
       event.preventDefault();
       const element = event.target;
@@ -48,6 +48,11 @@ export default {
           element.parentElement.classList.add('active-submenu');
         }
       }
+    },
+    handleLogoutClick() {
+      this.setAccessToken(null);
+      this.setUser(null);
+      this.$router.push('/giris');
     },
   },
 };
@@ -103,24 +108,13 @@ export default {
 
           <!-- <li><a>For Candidates</a>
             <ul>
-              <li><a href="dashboard-manage-resumes.html">Manage Resumes <span class="nav-tag">2</span></a></li>
+              <li><a href="dashboard-manage-resumes.html">
+                Manage Resumes <span class="nav-tag">2</span>
+              </a></li>
               <li><a href="dashboard-job-alerts.html">Job Alerts</a></li>
               <li><a href="dashboard-add-resume.html">Add Resume</a></li>
             </ul>
           </li> -->
-        </ul>
-
-        <ul data-submenu-title="Hesabım">
-          <li :class="[currentPage.includes('profil') ? 'active' : '']">
-            <router-link to="/hesabim/profil">
-              Profilim
-            </router-link>
-          </li>
-          <li :class="[currentPage.includes('firmalarim') ? 'active' : '']">
-            <router-link to="/hesabim/firmalarim">
-              Firmalarım
-            </router-link>
-          </li>
         </ul>
 
         <ul
@@ -131,6 +125,24 @@ export default {
             <router-link to="/developer-ara">
               İş Arayan Developerlar
             </router-link>
+          </li>
+        </ul>
+
+        <ul data-submenu-title="Hesabım">
+          <li :class="[currentPage.includes('firmalarim') ? 'active' : '']">
+            <router-link to="/hesabim/firmalarim">
+              Firmalarım
+            </router-link>
+          </li>
+          <li :class="[currentPage.includes('profil') ? 'active' : '']">
+            <router-link to="/hesabim/profil">
+              Profilim
+            </router-link>
+          </li>
+          <li>
+            <a href="#" @click.prevent="handleLogoutClick">
+              Çıkış
+            </a>
           </li>
         </ul>
       </div>
