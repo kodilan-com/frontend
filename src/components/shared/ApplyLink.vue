@@ -1,4 +1,6 @@
 <script>
+import { mapActions } from 'vuex';
+
 /* eslint-disable vue/singleline-html-element-content-newline */
 export default {
   props: {
@@ -16,6 +18,27 @@ export default {
       return `mailto:${post.apply_email}?subject=${encoded}&body=${body}`;
     },
   },
+  methods: {
+    ...mapActions(['saveClickLog']),
+    handleEmailApplyClick() {
+      this.saveClickLog({
+        action: 'post_apply_email',
+        post_id: this.post.id,
+        company_id: this.post.company.id,
+      });
+
+      return true;
+    },
+    handleWebApplyClick() {
+      this.saveClickLog({
+        action: 'post_apply_web',
+        post_id: this.post.id,
+        company_id: this.post.company.id,
+      });
+
+      return true;
+    },
+  },
 };
 </script>
 
@@ -26,6 +49,7 @@ export default {
       :href="mailToUrl"
       target="_blank"
       class="button tag-apply-link"
+      @click="handleEmailApplyClick"
     >
       <i class="fa fa-envelope-o" /> E-posta ile başvur
     </a>
@@ -34,6 +58,7 @@ export default {
       :href="post.apply_url"
       target="_blank"
       class="button tag-apply-link"
+      @click="handleWebApplyClick"
     >
       <i v-if="post.apply_email" class="fa fa-link" /> Site üzerinden başvur
     </a>

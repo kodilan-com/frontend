@@ -253,4 +253,7 @@ export default {
   saveDeveloperProposal(_, data) {
     return http.post('/developer-proposals', data);
   },
+  saveClickLog(_, data) {
+    return http.post('/click-logs', data);
+  },
 };
