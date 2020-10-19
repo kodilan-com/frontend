@@ -60,7 +60,7 @@ export default {
 
 <template>
   <!-- Dashboard -->
-  <div id="dashboard">
+  <div class="container" id="dashboard">
     <!-- Navigation
     ================================================== -->
 
@@ -163,6 +163,7 @@ export default {
   @import '../../../assets/css/dashboard.css';
 
   #dashboard {
+    background: #fff;
     padding-top: 0;
   }
 
@@ -170,6 +171,11 @@ export default {
     box-shadow: none;
     border-top: 1px solid #eee;
     min-height: auto;
+    position: static;
+  }
+
+  .dashboard-content {
+    margin-left: 0;
   }
 
   .text-success {
