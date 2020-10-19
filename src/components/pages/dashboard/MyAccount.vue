@@ -89,7 +89,7 @@ export default {
         </ul>
 
         <ul
-          data-submenu-title="Developer Bul"
+          data-submenu-title="Yetenek Havuzu"
           v-if="user && user.companies && user.companies.length > 0 && canSearchDevelopers"
         >
           <li :class="[currentPage.includes('developer-ara') ? 'active' : '']">

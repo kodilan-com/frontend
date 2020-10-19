@@ -224,7 +224,7 @@ export default {
             </p>
 
             <p class="form-row">
-              <button type="submit" class="button border fw margin-top-10">
+              <button type="submit" class="button border fw margin-top-0">
                 Kayıt Ol
               </button>
             </p>

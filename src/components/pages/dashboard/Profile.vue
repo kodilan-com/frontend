@@ -226,7 +226,7 @@ export default {
                   required
                 >
 
-                <label for="title" class="margin-top-0">Unvan</label>
+                <label for="title">Unvan</label>
                 <input
                   type="text"
                   id="title"
@@ -237,7 +237,7 @@ export default {
                   placeholder="Web Developer"
                 >
 
-                <label for="expected_wage" class="margin-top-0">Net Maaş Beklentiniz</label>
+                <label for="expected_wage">Net Maaş Beklentiniz</label>
                 <input
                   type="number"
                   id="expected_wage"
@@ -336,7 +336,7 @@ export default {
                   aramaya başlarsan firmalar seni bulabilecek ve teklif gönderebilecek.
                   Ancak ismini ve çalıştığın firmaları göremeyecek.
                 </p>
-                <button type="submit" class="button button-danger margin-top-15">
+                <button type="submit" class="button button-danger margin-top-0">
                   <span v-if="user.looking_for_job_at !== null">İş Aramayı Bırak</span>
                   <span v-else>İş Aramaya Başla</span>
                 </button>
