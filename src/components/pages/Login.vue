@@ -97,21 +97,9 @@ export default {
         </div>
       </div>
     </div>
-    <div class="my-account">
-      <ul class="tabs-nav">
-        <li class="active">
-          <a href="#">Giriş</a>
-        </li>
-        <li class="">
-          <router-link class="button" to="/kayit-ol">
-            Kayıt
-          </router-link>
-        </li>
-      </ul>
-
-      <div class="tabs-container">
-        <!-- Login -->
-        <div class="tab-content" id="tab1">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6 col-md-12 margin-bottom-30">
           <form method="post" class="login" @submit="login">
             <p class="form-row form-row-wide">
               <label for="email">E-posta adresi:
@@ -149,11 +137,16 @@ export default {
             </p>
           </form>
 
+          <router-link to="/kayit-ol">Hesabınız yok mu? Kayıt olabilirsiniz.</router-link>
+          <br>
           <router-link to="/parolami-unuttum">Parolamı unuttum</router-link>
         </div>
-
-        <!-- Register -->
-        <div class="tab-content" id="tab2" style="display: none;" />
+        <div class="col-lg-6 col-md-12 margin-bottom-30">
+          <h1>Neden kayıt olmalısınız?</h1>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+          </p>
+        </div>
       </div>
     </div>
   </div>

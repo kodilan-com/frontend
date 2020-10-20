@@ -147,24 +147,9 @@ export default {
         </div>
       </div>
     </div>
-    <div class="my-account">
-      <ul class="tabs-nav">
-        <li class="">
-          <router-link class="button" to="/giris">
-            Giriş
-          </router-link>
-        </li>
-        <li class="active">
-          <a href="#">Kayıt</a>
-        </li>
-      </ul>
-
-      <div class="tabs-container">
-        <!-- Login -->
-        <div class="tab-content" id="tab1" style="display: none;" />
-
-        <!-- Register -->
-        <div class="tab-content" id="tab2">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6 col-md-12 margin-bottom-30">
           <form method="post" class="register" @submit="register">
             <p class="form-row form-row-wide">
               <label for="name">İsim:
@@ -229,6 +214,14 @@ export default {
               </button>
             </p>
           </form>
+
+          <router-link to="/giris">Hesabınız var mı? Giriş yapın.</router-link>
+        </div>
+        <div class="col-lg-6 col-md-12 margin-bottom-30">
+          <h1>Neden kayıt olmalısınız?</h1>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+          </p>
         </div>
       </div>
     </div>

@@ -80,9 +80,9 @@ export default {
                 </router-link>
               </li>
               <li class="header-subs" v-if="user === null">
-                <router-link class="button" to="/kayit-ol">
+                <router-link class="button" to="/giris">
                   <i class="fa fa-user" />
-                  <span>Kayıt Ol</span>
+                  <span>Giriş Yap</span>
                 </router-link>
               </li>
               <li class="header-subs" v-else>
