@@ -149,6 +149,10 @@ export default {
     margin-left: 0;
   }
 
+  .dashboard-list-box {
+    margin: 0 0 30px 0;
+  }
+
   .text-success {
     color: #26ae61 !important;
   }
