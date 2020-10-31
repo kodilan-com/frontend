@@ -81,6 +81,7 @@ export default {
     :close-on-select="true"
     :show-labels="false"
     :internal-search="false"
+    :allow-empty="false"
     placeholder="Şehir seçiniz..."
     @input="handleChange"
     @search-change="searchChange"

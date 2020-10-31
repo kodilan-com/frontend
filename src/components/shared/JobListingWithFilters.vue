@@ -107,6 +107,7 @@ export default {
             label="text"
             :searchable="false"
             :close-on-select="true"
+            :allow-empty="false"
             placeholder="Çalışma tipi seçiniz..."
           />
         </div>
