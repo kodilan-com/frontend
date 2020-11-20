@@ -138,13 +138,13 @@ export default {
                   </td>
                   <td>
                     <span v-if="post.status === 0">
-                      Reddedildi
+                      Onay Bekliyor
                     </span>
                     <span v-else-if="post.status === 1">
                       Yayınlandı
                     </span>
                     <span v-else>
-                      Yayından kaldırıldı
+                      Yayından Kaldırıldı
                     </span>
                   </td>
                   <td>
