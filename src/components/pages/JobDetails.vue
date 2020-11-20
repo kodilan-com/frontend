@@ -332,7 +332,7 @@ export default {
     }
 
     .notification.preview {
-      margin-bottom: 0;
+      margin-bottom: 20px;
       font-size: 18px;
     }
   }
