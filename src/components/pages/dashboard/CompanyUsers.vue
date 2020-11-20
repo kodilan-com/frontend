@@ -95,6 +95,11 @@ export default {
           if (error.response.status === 404) {
             return this.showErrorDialog('Kullanıcı bulunamadı.');
           }
+
+          if (error.response.status === 403) {
+            return this.showErrorDialog(error.response.data.errors[0]);
+          }
+
           this.isSaving = false;
 
           return this.showErrorDialog('Bir sunucu hatası oldu.');
@@ -188,9 +193,12 @@ export default {
                     <router-link :to="'/hesabim/firmalarim/' + company.id + '/kullanicilar'">
                       <i class="fa fa-user" /> Kullanıcılar
                     </router-link> -->
-                    <a href="#" class="delete" @click="handleRemoveClick($event, user)">
-                      <i class="fa fa-remove" /> Sil
-                    </a>
+                    <a
+                      href="#"
+                      class="delete"
+                      @click="handleRemoveClick($event, user)"
+                      v-if="company.users.length > 1"
+                    ><i class="fa fa-remove" /> Sil</a>
                   </td>
                 </tr>
               </tbody>
