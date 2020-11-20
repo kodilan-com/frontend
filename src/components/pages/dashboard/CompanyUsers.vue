@@ -70,10 +70,22 @@ export default {
           this.newUserEmail = null;
         })
         .catch((error) => {
-          if (error.response.status === 404) {
-            return this.showErrorDialog('Kullanıcı bulunamadı.');
-          }
           this.isSaving = false;
+
+          if (error.response.status === 404) {
+            const subject = encodeURI('Kodilan.com\'a davetlisiniz!');
+
+            this.$modal.show('dialog', {
+              text: 'Kullanıcı bulunamadı.',
+              title: 'Kaydedilemedi!',
+              buttons: [{
+                title: `<a href="mailto:${this.newUserEmail}?subject=${subject}" >Davet Et</a>`,
+              },
+              {
+                title: 'Kapat',
+              }],
+            });
+          }
 
           return this.showErrorDialog('Bir sunucu hatası oldu.');
         });
