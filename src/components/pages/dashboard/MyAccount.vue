@@ -17,17 +17,18 @@ export default {
       return this.$route.path;
     },
     canSearchDevelopers() {
-      if (!this.user || !this.user.companies.length) return false;
-
-      let canSearchDevelopers = false;
-
-      this.user.companies.forEach((company) => {
-        if (company.can_search_developers) {
-          canSearchDevelopers = true;
-        }
-      });
-
-      return canSearchDevelopers;
+      return false;
+      // if (!this.user || !this.user.companies.length) return false;
+      //
+      // let canSearchDevelopers = false;
+      //
+      // this.user.companies.forEach((company) => {
+      //   if (company.can_search_developers) {
+      //     canSearchDevelopers = true;
+      //   }
+      // });
+      //
+      // return canSearchDevelopers;
     },
   },
   methods: {

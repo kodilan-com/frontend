@@ -317,13 +317,12 @@ export default {
       </div>
 
       <!-- look for a job -->
-      <div class="col-lg-6 col-md-12" v-if="!isSaving">
+      <!-- <div class="col-lg-6 col-md-12" v-if="!isSaving">
         <div class="dashboard-list-box">
           <h4 class="gray">
             İş Arıyor Musun?
           </h4>
           <div class="dashboard-list-box-static">
-            <!-- Change Password -->
             <div class="my-profile" v-if="user">
               <form @submit="toggleLookingForJob">
                 <p v-if="user.looking_for_job_at !== null">
@@ -344,7 +343,7 @@ export default {
             </div>
           </div>
         </div>
-      </div>
+      </div> -->
     </div>
   </div>
 </template>
