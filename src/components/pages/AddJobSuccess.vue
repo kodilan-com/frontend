@@ -11,8 +11,8 @@ export default {
       id="titlebar"
       class="single submit-page"
     >
-      <div class="container">
-        <div class="sixteen columns">
+      <div class="row">
+        <div class="col-md-12">
           <h1>
             <i class="fa fa-plus-circle" /> İlan Ekleme
           </h1>
