@@ -16,6 +16,7 @@ export default {
       company: null,
       packageList: null,
       isSaving: false,
+      subscriptionActive: null,
     };
   },
   computed: {
@@ -83,6 +84,7 @@ export default {
           this.companies.forEach((company) => {
             if (company.id === this.companyId) {
               this.company = company;
+              this.subscriptionActive = company.subscription_active;
               clearTimeout(timeout);
             }
           });
@@ -107,16 +109,16 @@ export default {
     <Loader v-if="isSaving" />
 
 
-    <div class="container" v-if="!isSaving">
+    <div class="container" v-if="!isSaving && subscriptionActive">
       <h3 v-if="company">
         <strong>{{ company.name }}</strong> firmanız için paket seçin.
       </h3>
 
       <div
         class="plan one-third column"
-        v-for="(item, index) in packageList"
+        v-for="(item) in packageList"
         :key="item.id"
-        :class="[index === 1 ? 'color-2' : 'color-1']"
+        :class="[item.id === subscriptionActive.package_id ? 'color-2' : 'color-1']"
       >
         <div class="plan-price">
           <h3>{{ item.title }}</h3>
@@ -143,7 +145,7 @@ export default {
             href="#"
             class="button"
             @click="handlePayFormSubmit($event, item.id)"
-            v-if="item.price !== null && item.price > 0"
+            v-if="item.price !== null && item.price > 0 && subscriptionActive.package_id !== item.id"
           >
             <i class="fa fa-shopping-cart" />
             Satın Al
@@ -159,10 +161,18 @@ export default {
           <a
             href="mailto:info@kodilan.com?subject=Enterprise paket hakkında"
             class="button"
-            v-else
+            v-else-if="subscriptionActive.package_id !== item.id"
           >
             <i class="fa fa-envelope" />
             İletişime Geçin
+          </a>
+          <a
+            href="#"
+            class="button"
+            @click.prevent="return false"
+            v-else
+          >
+            &nbsp;
           </a>
         </div>
       </div>
