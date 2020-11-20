@@ -94,17 +94,17 @@ export default {
 <template>
   <div>
     <loader v-if="isSaving" />
-    <div class="dashboard-list-box margin-top-0" v-else>
-      <div class="dashboard-list-box-static">
-        <!-- Titlebar -->
-        <div id="titlebar">
-          <div class="row">
-            <div class="col-md-12">
-              <h1 v-if="companyId === null">Firma Ekle</h1>
-              <h1 v-else>{{ formData.name }} Firmanı Düzenle</h1>
-            </div>
-          </div>
+    <!-- Titlebar -->
+    <div id="titlebar" v-if="!isSaving">
+      <div class="row">
+        <div class="col-md-12">
+          <h1 v-if="companyId === null">Firma Ekle</h1>
+          <h1 v-else>{{ formData.name }} Firmanı Düzenle</h1>
         </div>
+      </div>
+    </div>
+    <div class="dashboard-list-box margin-top-0" v-if="!isSaving">
+      <div class="dashboard-list-box-static submit-page">
         <form @submit="save">
           <div class="form">
             <h5>Firma adı</h5>
@@ -141,7 +141,7 @@ export default {
           </div>
 
           <div class="button-container margin-top-10">
-            <button class="button big margin-top-5" type="submit">
+            <button class="button big margin-top-5 margin-bottom-20" type="submit">
               Kaydet <i class="fa fa-save" />
             </button>
           </div>
@@ -150,3 +150,9 @@ export default {
     </div>
   </div>
 </template>
+
+<style lang="scss" scoped>
+  .dashboard-content .submit-page .form {
+    width: 100%;
+  }
+</style>
