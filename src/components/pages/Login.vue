@@ -1,10 +1,14 @@
 <script>
 import { mapActions } from 'vuex';
+
+import Loader from '../shared/Loader';
 import validationMixin from '../../mixins/validator';
 
 export default {
   mixins: [validationMixin],
-  components: {},
+  components: {
+    Loader,
+  },
   data() {
     return {
       isSaving: false,
@@ -97,7 +101,8 @@ export default {
         </div>
       </div>
     </div>
-    <div class="container">
+    <Loader v-if="isSaving" />
+    <div class="container" v-else>
       <div class="row">
         <div class="col-lg-6 col-md-12 margin-bottom-30">
           <form method="post" class="login" @submit="login">
