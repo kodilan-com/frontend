@@ -13,7 +13,7 @@ export default {
     const keywords = Array.from(headline.querySelectorAll('strong'))
       .reduce((acc, tag) => {
         const keyword = tag.innerText;
-        console.log('>>>>', keyword);
+
         acc.push(`${keyword} iş ilanları`);
         acc.push(`istanbul ${keyword} iş ilanları`);
 
