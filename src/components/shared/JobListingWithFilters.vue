@@ -13,9 +13,7 @@ export default {
     meta: {
       type: Object,
       required: false,
-      default: () => {
-        return {};
-      }
+      default: () => ({}),
     },
     isLoading: {
       type: Boolean,
