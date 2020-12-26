@@ -15,7 +15,7 @@ export default {
 </script>
 
 <template>
-  <section class="component is-topbar" v-if="!isVisible">
+  <section class="component is-topbar">
     <div class="container">
       <div class="topbar--cols">
         <a
@@ -34,14 +34,6 @@ export default {
             </a>
           </p>
         </div>
-        <a
-          href="#"
-          @click.prevent="handleClickClose"
-          title="Bir daha gösterme."
-          class="topbar--cols__elm is-action"
-        >
-          <i class="fa fa-close" />
-        </a>
       </div>
     </div>
   </section>
