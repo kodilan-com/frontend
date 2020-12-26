@@ -4414,6 +4414,10 @@ span.temporary {
 /* Job List Alternative
 ------------------------------------- */
 
+.related-jobs {
+  margin: 40px 0;
+}
+
 .listings-container {
   margin: 15px 0 15px 0;
 }

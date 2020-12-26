@@ -275,8 +275,8 @@ export default {
                 </div>
               </div>
             </div>
-            <div class="sixteen columns" v-if="relatedPosts.length">
-              <h3 class="margin-bottom-25">
+            <div class="sixteen columns related-jobs" v-if="relatedPosts.length">
+              <h3>
                 Benzer ilanlar
               </h3>
               <job-listing :posts="relatedPosts" />
