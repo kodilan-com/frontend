@@ -146,6 +146,9 @@ export default {
       margin: 0 6px;
       color: #202020;
     }
+    .multiselect__select{
+      right: 0.75rem;
+    }
 
     .close {
       display: block;

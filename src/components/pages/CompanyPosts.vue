@@ -1,16 +1,19 @@
 <script>
 import { mapActions } from 'vuex';
+import image from '../../mixins/image';
 import JobListing from '../shared/JobListing';
+import companyPostsMetaInfoMixin from '../../mixins/companyPostsMetaInfo';
 
 export default {
   name: 'CompanyPosts',
+  mixins: [companyPostsMetaInfoMixin, image],
   components: {
     JobListing,
   },
   data() {
     return {
       posts: [],
-      isLoading: false,
+      isLoading: true,
     };
   },
   methods: {

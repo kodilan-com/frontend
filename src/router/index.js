@@ -25,6 +25,7 @@ const router = new Router({
         meta: {
           period: period.type,
           hasBanner: true,
+          scroll: true,
         },
       })),
     },
@@ -34,12 +35,23 @@ const router = new Router({
       component: () => import('@/components/pages/AddJob'),
     },
     {
+      path: '/ilan-ekle/basarili',
+      name: 'AddJobSuccess',
+      component: () => import('@/components/pages/AddJobSuccess'),
+    },
+    {
       path: '/ilanlar/:slug',
       name: 'JobDetails',
       component: () => import('@/components/pages/JobDetails'),
     },
     {
       path: '/ilanlar',
+      name: 'JobList',
+      component: () => import('@/components/pages/JobList'),
+    },
+    {
+      path: '/ilanlar/sayfa/:page',
+      props: true,
       name: 'JobList',
       component: () => import('@/components/pages/JobList'),
     },
@@ -97,6 +109,15 @@ const router = new Router({
     },
   ],
   scrollBehavior(to, from, savedPosition) {
+    if (to.meta.scroll) {
+      const element = document.querySelector('.router-link-exact-active');
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+
+        return {};
+      }
+    }
+
     return savedPosition || { x: 0, y: 0 };
   },
 });

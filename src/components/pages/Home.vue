@@ -6,6 +6,9 @@ import InfoBanner from '../shared/InfoBanner';
 import Subscribe from '../shared/Subscribe';
 
 export default {
+  metaInfo: {
+    title: 'Kodilan.com',
+  },
   components: {
     RecentJobsList,
     JobSpotlight,

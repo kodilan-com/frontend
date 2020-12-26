@@ -245,7 +245,7 @@ export default {
                         <i class="ln ln-icon-Globe" />
                         <div>
                           <strong>Website</strong>
-                          <span>
+                          <span class="companyLink">
                             <a :href="postData.company.www" target="_blank">
                               {{ postData.company.www }}
                             </a>
@@ -275,8 +275,8 @@ export default {
                 </div>
               </div>
             </div>
-            <div class="sixteen columns" v-if="relatedPosts.length">
-              <h3 class="margin-bottom-25">
+            <div class="sixteen columns related-jobs" v-if="relatedPosts.length">
+              <h3>
                 Benzer ilanlar
               </h3>
               <job-listing :posts="relatedPosts" />

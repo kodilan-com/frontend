@@ -28,10 +28,21 @@ export default {
         return res.data;
       });
   },
-  fetchAllPosts({ commit }) {
-    return http.get('/posts?get=300')
+  fetchAllPosts({ commit }, payload = {}) {
+    const page = payload
+    && payload.page
+    && Number.isInteger(payload.page)
+    && payload.page > 1 ? payload.page : 1;
+
+    return http.get(`/posts?get=${constants.PER_PAGE}&page=${page}`)
       .then((res) => {
-        commit(constants.SET_ALL_POSTS, res.data.data);
+        const { data } = res;
+        commit(constants.SET_ALL_POSTS, data.data);
+        commit(constants.SET_ALL_POST_META, {
+          total: data.total,
+          current_page: data.current_page,
+          last_page: data.last_page,
+        });
 
         return res.data;
       });

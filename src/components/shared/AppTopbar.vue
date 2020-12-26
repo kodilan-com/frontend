@@ -19,17 +19,17 @@ export default {
     <div class="container">
       <div class="topbar--cols">
         <a
-          href="https://github.com/kodilan-com/frontend"
+          href="https://webrazzi.com/odul/2020/"
           target="_blank"
           class="topbar--cols__elm is-icon"
         >
-          <i class="fa fa-github" />
+          <i class="fa fa-bullhorn" />
         </a>
         <div class="topbar--cols__elm is-content">
           <p>
-            Kodilan.com açık kaynaklı bir girişimdir.
-            <a href="https://github.com/kodilan-com/frontend" target="_blank">
-              Katkıda bulunun!
+            Kodilan, Webrazzi 2020 Ödülleri'nde "Yılın İş İlan Sitesi" kategorisinde finale kaldı. Oy vererek bize destek olmak ister misiniz?
+            <a href="https://webrazzi.com/odul/2020/" target="_blank">
+              Webrazzi Ödülleri 2020
             </a>
           </p>
         </div>

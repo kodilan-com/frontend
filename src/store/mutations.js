@@ -10,6 +10,9 @@ export default {
   [constants.SET_ALL_POSTS](state, allPosts) {
     state.allPosts = allPosts;
   },
+  [constants.SET_ALL_POST_META](state, meta) {
+    state.allPostsMeta = meta;
+  },
   [constants.SET_FEATURED](state, featuredPosts) {
     state.featuredPosts = featuredPosts;
   },
