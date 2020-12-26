@@ -27,7 +27,8 @@ export default {
         </a>
         <div class="topbar--cols__elm is-content">
           <p>
-            Kodilan, Webrazzi 2020 Ödülleri'nde "Yılın İş İlan Sitesi" kategorisinde finale kaldı. Oy vererek bize destek olmak ister misiniz?
+            Kodilan, Webrazzi 2020 Ödülleri'nde "Yılın İş İlan Sitesi" kategorisinde finale kaldı.
+            Oy vererek bize destek olmak ister misiniz?
             <a href="https://webrazzi.com/odul/2020/" target="_blank">
               Webrazzi Ödülleri 2020
             </a>

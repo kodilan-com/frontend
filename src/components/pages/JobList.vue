@@ -6,6 +6,7 @@ import AppPaginate from '../shared/AppPaginate';
 export default {
   props: {
     page: {
+      type: Number,
       required: false,
       default: 1,
     },
