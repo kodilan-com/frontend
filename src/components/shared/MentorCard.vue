@@ -13,7 +13,7 @@ export default {
   },
   computed: {
     publicPageUrl() {
-      return `https://superpeer.com/kodilan/${this.username}`;
+      return `https://superpeer.com/kodilan/${this.username}?via=r.kodilan`;
     },
     description() {
       const original = this.profile.longDescription;
