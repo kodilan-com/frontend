@@ -2,7 +2,7 @@
 import { mapActions } from 'vuex';
 import JobListingWithFilters from '../shared/JobListingWithFilters';
 import searchPageMetaInfoMixin from '../../mixins/searchPageMetaInfo';
-import { JOB_TYPE_MAP, JOB_TYPE_SLUG_TO_ID_MAP } from '../../store/constants';
+import { JOB_TYPE_MAP, JOB_TYPE_SLUG_TO_ID_MAP, JOB_TYPES_FOR_DROPDOWN } from '../../store/constants';
 
 export default {
   mixins: [searchPageMetaInfoMixin],
@@ -58,15 +58,27 @@ export default {
   methods: {
     ...mapActions(['search']),
     handleSearch() {
-      this.isLoading = true;
-
-      this.search(this.queryString)
-        .then((res) => {
-          this.posts = res.data;
-        })
-        .finally(() => {
-          this.isLoading = false;
-        });
+      let isItSearchable = true;
+      let searchType = this.queryString.type
+      if(searchType){
+        let found = JOB_TYPES_FOR_DROPDOWN.find(x => x.id == searchType)
+        if(!found){
+          this.$router.push({ path: '/ilan-ara?type=1' })
+        }
+      }
+      if(isItSearchable){
+        this.isLoading = true;
+        this.search(this.queryString)
+          .then((res) => {
+            this.posts = res.data;
+          })
+          .finally(() => {
+            this.isLoading = false;
+          });
+      }
+      else{
+        this.$router.push({ path: '/ilan-ara?type=1' })
+      }
     },
   },
   watch: {
