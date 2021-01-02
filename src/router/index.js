@@ -99,6 +99,11 @@ const router = new Router({
       component: () => import('@/components/pages/SubscribeLanding'),
     },
     {
+      path: '/mentorlar',
+      name: 'Mentors',
+      component: () => import('@/components/pages/Mentors'),
+    },
+    {
       path: '/404',
       name: 'NotFound',
       component: () => import('@/components/pages/NotFound'),

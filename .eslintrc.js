@@ -28,7 +28,7 @@ module.exports = {
     'import/prefer-default-export': 0,
     'vue/max-attributes-per-line': 0,
     'max-len': ['error', {
-      code: 100,
+      code: 200,
       ignoreComments: true,
       ignoreStrings: true,
       ignoreRegExpLiterals: true,

@@ -33,11 +33,9 @@ export default {
           <nav id="navigation" class="menu">
             <ul class="responsive float-right">
               <li class="header-subs">
-                <router-link to="/abone-ol">
-                  <i class="fa fa-bullhorn" />
-                  <span class>
-                    Abone ol!
-                  </span>
+                <router-link to="/mentorlar">
+                  <i class="fa fa-users" />
+                  <span class>Mentorlar</span>
                 </router-link>
               </li>
               <li>

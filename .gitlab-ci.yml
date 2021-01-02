@@ -10,6 +10,7 @@ deploy:
   script:
   - yarn install
   - yarn lint --no-fix
+  - node ./scripts/mentors.js
   - yarn build
   - 'which ssh-agent || ( apt-get update -y && apt-get install openssh-client -y )'
   - mkdir -p ~/.ssh
