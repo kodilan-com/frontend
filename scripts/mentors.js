@@ -21,9 +21,9 @@ const usernames = [
   'f',
   'serhat',
   'suadev',
-  'kara',
-  'yigit',
-  'cavide',
+  // 'kara',
+  // 'yigit',
+  // 'cavide',
 ];
 
 (async () => {
