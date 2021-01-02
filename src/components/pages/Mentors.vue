@@ -2,6 +2,7 @@
 import MentorCard from '../shared/MentorCard';
 
 const mentors = require('../../assets/data/mentors.json');
+
 const description = 'Alanında uzman kişilerden yazılım geliştirme, kariyer tavsiyeleri, tasarım, SEO ve DevOps gibi birçok konuda birebir randevu alabilirsiniz.';
 const pageTitle = 'Kodilan Mentorlar';
 
