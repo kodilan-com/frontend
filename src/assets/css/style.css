@@ -4334,6 +4334,7 @@ span.temporary {
   margin-top: -1px;
   transition: 0.3s;
   z-index: 10;
+  word-wrap: break-word;
 }
 
 .resumes-list.alternative li:hover {
