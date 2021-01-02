@@ -32,6 +32,7 @@ export default {
           </router-link> üzerinden hiçbir veri gönderilmemektedir.
           Sitemizde yayınlanan ilanlar tamamen ücretsizdir ve ilan sahipleri ile sitemizin
           hiçbir ilişkisi yoktur. <br>
+          Paylaşılan ilanlarda değişiklik yapma ve yayından kaldırma hakları Kodilan'a aittir.
           Görüş ve önerileriniz için <a href="mailto:info@kodilan.com">
             info@kodilan.com
           </a>
