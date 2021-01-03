@@ -63,7 +63,7 @@ export default {
       if(searchType){
         let found = JOB_TYPES_FOR_DROPDOWN.find(x => x.id == searchType)
         if(!found){
-          this.$router.push({ path: '/ilan-ara?type=1' })
+          isItSearchable = false;
         }
       }
       if(isItSearchable){
