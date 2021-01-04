@@ -10,6 +10,9 @@ export default {
     handleScroll() {
       this.isBackToTopVisible = window.scrollY > 540;
     },
+    backToTop(){
+        window.scrollTo({top: 0, behavior: 'smooth'})
+    }
   },
   mounted() {
     window.addEventListener('scroll', this.handleScroll);
@@ -153,7 +156,7 @@ export default {
     </div>
     <transition name="fade">
       <div id="backtotop" v-if="isBackToTopVisible">
-        <a href="#" />
+        <a @click="backToTop" />
       </div>
     </transition>
   </div>
