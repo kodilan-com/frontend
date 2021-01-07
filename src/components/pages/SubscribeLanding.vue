@@ -31,6 +31,12 @@ export default {
     border: 1px solid #e4e4e4;
     border-bottom-width: 2px;
 
+    .multiselect__single,
+    ul.multiselect__content li,
+    ul.multiselect__content li span{
+      margin:0 !important;
+    }
+  
     input {
       width: 100% !important;
       margin-bottom: 10px;
