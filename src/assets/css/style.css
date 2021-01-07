@@ -4686,6 +4686,10 @@ li .job-spotlight p {
 .listing-icons {
   padding: 0;
   margin: 0;
+  max-width: 95%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
 }
 
 .listing-icons li {
