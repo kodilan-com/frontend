@@ -36,7 +36,7 @@
     "babel-core": "7.0.0-bridge.0",
     "babel-eslint": "^10.0.1",
     "babel-jest": "^23.6.0",
-    "codecov": "^3.5.0",
+    "codecov": "^3.7.1",
     "eslint": "^5.16.0",
     "eslint-import-resolver-alias": "^1.1.2",
     "eslint-plugin-vue": "^5.0.0",
