@@ -22,6 +22,7 @@ export default {
       .join(', ');
 
     return {
+      title: `${this.query} anahtar kelimesine sahip ilanlar`,
       meta: [
         {
           name: 'description',
