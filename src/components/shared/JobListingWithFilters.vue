@@ -84,7 +84,7 @@ export default {
       </div>
     </div>
     <div class="container job-listing" :class="{ empty: !posts.length }">
-      <div class="eleven columns">
+      <div :class="!isLoading && 'eleven columns'">
         <div class="padding-right">
           <job-listing :is-loading="isLoading"
                        :posts="posts"
