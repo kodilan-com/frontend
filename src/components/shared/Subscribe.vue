@@ -37,7 +37,7 @@ export default {
         return true;
       }
 
-      return !this.isClosed && !localStorage.getItem('subscribeClosed');
+      return !this.isClosed && !localStorage.subscribeClosed || localStorage.subscribeClosed != 'true';
     },
   },
   methods: {
@@ -73,11 +73,7 @@ export default {
 </script>
 
 <template>
-  <div
-    v-if="isVisible"
-    :class="{ fixed: fixed }"
-    class="subscribe-widget"
-  >
+  <div v-if="isVisible" :class="{ fixed: fixed }" class="subscribe-widget">
     <span>Güncel iş ilanlarını</span>
     <div class="subscribe--select">
       <multiselect
@@ -89,16 +85,20 @@ export default {
       />
     </div>
     <span>olarak almak için</span>
-    <input type="text" v-model="name" placeholder="İsim soyisim" class="username">
-    <input @keyup.enter="handleSubscribe" type="text" v-model="email" placeholder="Email">
-    <button class="button" @click="handleSubscribe">
-      Abone ol!
-    </button>
-    <span
-      v-if="fixed"
-      class="close"
-      @click="close"
-    >
+    <input
+      type="text"
+      v-model="name"
+      placeholder="İsim soyisim"
+      class="username"
+    />
+    <input
+      @keyup.enter="handleSubscribe"
+      type="text"
+      v-model="email"
+      placeholder="Email"
+    />
+    <button class="button" @click="handleSubscribe">Abone ol!</button>
+    <span v-if="fixed" class="close" @click="close">
       Bir daha gösterme :(
     </span>
   </div>
@@ -110,7 +110,6 @@ export default {
   box-sizing: border-box;
   font-size: 16px;
   text-align: center;
-
 
   .subscribe--select {
     text-align: left;
@@ -125,11 +124,11 @@ export default {
     width: 100%;
     height: 70px;
     color: #fff;
-    background: #231F20;
+    background: #231f20;
     border-top: 1px solid #474646;
     line-height: 50px;
 
-    input[type=text] {
+    input[type="text"] {
       margin-right: 6px;
       width: 120px;
       display: inline;
@@ -146,7 +145,7 @@ export default {
       margin: 0 6px;
       color: #202020;
     }
-    .multiselect__select{
+    .multiselect__select {
       right: 0.75rem;
     }
 
@@ -166,7 +165,7 @@ export default {
     }
   }
 
-  input[type=text] {
+  input[type="text"] {
     padding: 11px 10px;
   }
 
@@ -205,13 +204,13 @@ export default {
 }
 
 @media only screen and (min-width: 990px) {
-  .subscribe-widget input[type=text] {
+  .subscribe-widget input[type="text"] {
     width: 140px !important;
   }
 }
 
 @media only screen and (min-width: 1180px) {
-  .subscribe-widget input[type=text] {
+  .subscribe-widget input[type="text"] {
     width: 180px !important;
   }
 }
