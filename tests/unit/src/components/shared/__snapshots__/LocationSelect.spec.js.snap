@@ -1,0 +1,38 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LocationSelect.vue should match with snapshot on initial 1`] = `
+<multiselect-stub
+  allowempty="true"
+  blockkeys=""
+  class=""
+  clearonselect="true"
+  closeonselect="true"
+  customlabel="function(t,e){return i(t)?\\"\\":e?t[e]:t}"
+  deselectgrouplabel="Press enter to deselect group"
+  deselectlabel="Press enter to remove"
+  limit="99999"
+  limittext="function(t){return\\"and \\".concat(t,\\" more\\")}"
+  maxheight="300"
+  name=""
+  opendirection=""
+  optionheight="40"
+  options="test1,test2"
+  optionslimit="1000"
+  placeholder="Şehir seçiniz..."
+  selectedlabel="Selected"
+  selectgrouplabel="Press enter to select group"
+  selectlabel="Press enter to select"
+  shownooptions="true"
+  shownoresults="true"
+  showpointer="true"
+  tabindex="0"
+  tagplaceholder="Press enter to create a tag"
+  tagposition="top"
+>
+  <div>
+    
+    Aramanızla eşleşen bir sonuç bulunamadı.
+  
+  </div>
+</multiselect-stub>
+`;

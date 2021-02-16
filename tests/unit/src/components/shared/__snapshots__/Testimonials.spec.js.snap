@@ -1,0 +1,238 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Testimonials.vue should match with snapshot 1`] = `
+<section
+  class="fullwidth-testimonial margin-top-15"
+>
+  <div
+    class="container"
+  >
+    <div
+      class="sixteen columns"
+    >
+      <h3
+        class="headline centered"
+      >
+        
+        kodilan.com kullanıcılarının yorumları
+      
+      </h3>
+    </div>
+  </div>
+   
+  <div
+    class="feedbacks"
+  >
+    <div
+      class="feedback"
+    >
+      <div
+        class="testimonial-box"
+      >
+        <div
+          class="testimonial"
+        >
+          
+          İlk defa kullandık ve çok olumlu sonuç aldık. Verdiğimiz ilanla gerçekten eşleşen adayların başvurduğunu gördük, bu da bizi alakasız CV'lerle boşuna vakit kaybetmekten kurtardı.
+        
+        </div>
+      </div>
+       
+      <div
+        class="testimonial-author"
+      >
+        <img
+          alt="Halil İbrahim Kalkan"
+          src=""
+        />
+         
+        <div
+          class="testimonial-author-name"
+        >
+          <p
+            class="name"
+          >
+            
+            Halil İbrahim Kalkan
+          
+          </p>
+           
+          <p>
+            
+            Volosoft, Kurucu Ortak
+          
+          </p>
+        </div>
+      </div>
+    </div>
+    <div
+      class="feedback"
+    >
+      <div
+        class="testimonial-box"
+      >
+        <div
+          class="testimonial"
+        >
+          
+          Kodilan.com sadece yapması gereken işi, çok iyi bir şekilde yapan bir site. Gereksiz hiç bir detayla uğraşmıyorsunuz. Sadece yazılım sektörüne yönelik olması da hedefe ulaşmayı kolaylaştırıyor. Bundan sonraki ilan ihtiyaçlarında ilk tercihimiz Kodilan.com olacak.
+        
+        </div>
+      </div>
+       
+      <div
+        class="testimonial-author"
+      >
+        <img
+          alt="Yavuz Selim Bilgin"
+          src=""
+        />
+         
+        <div
+          class="testimonial-author-name"
+        >
+          <p
+            class="name"
+          >
+            
+            Yavuz Selim Bilgin
+          
+          </p>
+           
+          <p>
+            
+            Bilgin Pro, CTO
+          
+          </p>
+        </div>
+      </div>
+    </div>
+    <div
+      class="feedback"
+    >
+      <div
+        class="testimonial-box"
+      >
+        <div
+          class="testimonial"
+        >
+          
+          İş ilanları için ulusal veya küresel başka siteler olsa da, yazılımcılarla şirketleri birleştiren bir platform olarak, kodilan.com sektöre ve ülkemize özel olarak farkını göstermektedir.
+        
+        </div>
+      </div>
+       
+      <div
+        class="testimonial-author"
+      >
+        <img
+          alt="Ayhan Kutlu"
+          src=""
+        />
+         
+        <div
+          class="testimonial-author-name"
+        >
+          <p
+            class="name"
+          >
+            
+            Ayhan Kutlu
+          
+          </p>
+           
+          <p>
+            
+            Alta Bering, Ülke Müdürü
+          
+          </p>
+        </div>
+      </div>
+    </div>
+    <div
+      class="feedback"
+    >
+      <div
+        class="testimonial-box"
+      >
+        <div
+          class="testimonial"
+        >
+          
+          Uzun süredir ihtiyacımız olan sektör odaklı bir iş ilanları sitesi boşluğunu başarıyla dolduracağına inandığım bir proje.
+        
+        </div>
+      </div>
+       
+      <div
+        class="testimonial-author"
+      >
+        <img
+          alt="Ahmet Aygün"
+          src=""
+        />
+         
+        <div
+          class="testimonial-author-name"
+        >
+          <p
+            class="name"
+          >
+            
+            Ahmet Aygün
+          
+          </p>
+           
+          <p>
+            
+            Biges, Ar-Ge Müdürü
+          
+          </p>
+        </div>
+      </div>
+    </div>
+    <div
+      class="feedback"
+    >
+      <div
+        class="testimonial-box"
+      >
+        <div
+          class="testimonial"
+        >
+          
+          Nitelikli çalışana ulaşmak için tercih ettiğimiz kodilan.com aracılığıyla aradığımız takım arkadaşına kısa sürede ulaştık.
+        
+        </div>
+      </div>
+       
+      <div
+        class="testimonial-author"
+      >
+        <img
+          alt="Onur Candan"
+          src=""
+        />
+         
+        <div
+          class="testimonial-author-name"
+        >
+          <p
+            class="name"
+          >
+            
+            Onur Candan
+          
+          </p>
+           
+          <p>
+            
+            Visionteractive, Kurucu Ortak
+          
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+`;

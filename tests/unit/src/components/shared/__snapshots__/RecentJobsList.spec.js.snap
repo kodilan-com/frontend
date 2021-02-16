@@ -1,0 +1,41 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`RecentJobsList.vue should match with snapshot 1`] = `
+<div
+  class="eleven columns"
+>
+  <div
+    class="padding-right"
+  >
+    <h3
+      class="margin-bottom-25"
+    >
+      
+      En son eklenen ilanlar
+    
+    </h3>
+     
+    <job-period-selector-stub />
+     
+    <job-listing-stub
+      notfoundtext="İlan bulunamadı."
+      posts="test1,test2"
+    />
+     
+    <a
+      class="button centered tag-all-posts"
+    >
+      <i
+        class="fa fa-plus-circle"
+      />
+      
+      Tüm ilanları gör
+    
+    </a>
+     
+    <div
+      class="margin-bottom-55"
+    />
+  </div>
+</div>
+`;

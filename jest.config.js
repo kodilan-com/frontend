@@ -16,6 +16,10 @@ module.exports = {
   moduleNameMapper: {
     '^@/(.*)$': '<rootDir>/src/$1',
   },
+  coveragePathIgnorePatterns: [
+    'node_modules',
+    'tests',
+  ],
   snapshotSerializers: [
     'jest-serializer-vue',
   ],
@@ -28,4 +32,5 @@ module.exports = {
     'jest-watch-typeahead/testname',
   ],
   setupTestFrameworkScriptFile: '<rootDir>tests/unit/setupTests.js',
+  collectCoverageFrom: ['src/**/*.{js,vue}', '!src/main.js'],
 };

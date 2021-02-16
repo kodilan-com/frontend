@@ -1,0 +1,72 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Subscribe.vue should be shown if isVisible is true 1`] = `
+<div
+  class="subscribe-widget"
+>
+  <span>
+    Güncel iş ilanlarını
+  </span>
+   
+  <div
+    class="subscribe--select"
+  >
+    <multiselect-stub
+      allowempty="true"
+      blockkeys=""
+      clearonselect="true"
+      closeonselect="true"
+      customlabel="function(t,e){return i(t)?\\"\\":e?t[e]:t}"
+      deselectgrouplabel="Press enter to deselect group"
+      deselectlabel="Press enter to remove"
+      internalsearch="true"
+      label="text"
+      limit="99999"
+      limittext="function(t){return\\"and \\".concat(t,\\" more\\")}"
+      maxheight="300"
+      name=""
+      opendirection=""
+      optionheight="40"
+      options="[object Object],[object Object]"
+      optionslimit="1000"
+      placeholder="Select option"
+      selectedlabel="Selected"
+      selectgrouplabel="Press enter to select group"
+      selectlabel="Press enter to select"
+      showlabels="true"
+      shownooptions="true"
+      shownoresults="true"
+      showpointer="true"
+      tabindex="0"
+      tagplaceholder="Press enter to create a tag"
+      tagposition="top"
+      value="[object Object]"
+    />
+  </div>
+   
+  <span>
+    olarak almak için
+  </span>
+   
+  <input
+    class="username"
+    placeholder="İsim soyisim"
+    type="text"
+  />
+   
+  <input
+    placeholder="Email"
+    type="text"
+  />
+   
+  <button
+    class="button"
+  >
+    
+    Abone ol!
+  
+  </button>
+   
+  <!---->
+</div>
+`;
