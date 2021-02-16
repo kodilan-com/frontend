@@ -4433,6 +4433,7 @@ span.temporary {
   overflow: hidden;
   border: 1px solid #e0e0e0;
   margin-top: -1px;
+  align-items: center;
 }
 
 .listings-container .listing:first-child {
@@ -4498,6 +4499,10 @@ span.temporary {
   min-width: 60px;
   display: flex;
   align-items: center;
+  border:1px solid #f1f1f1;
+  padding: 5px;
+  min-height: 60px;
+  box-sizing: border-box;
 }
 
 .listing .listing-logo img {
@@ -4653,7 +4658,7 @@ li .job-spotlight p {
 }
 
 .job-spotlight .details {
-  margin-top: 8px;
+  margin-top: 4px;
 }
 
 .job-spotlight i {
