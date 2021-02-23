@@ -1,8 +1,10 @@
 <script>
 import Subscribe from '../shared/Subscribe';
 import JobSpotlight from '../shared/JobSpotlight';
+import subscribeLandingMetaInfo from '../../mixins/subscribeLandingMetaInfo';
 
 export default {
+  mixins: [subscribeLandingMetaInfo],
   components: {
     Subscribe,
     JobSpotlight,
