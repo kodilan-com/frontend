@@ -90,3 +90,29 @@ export default {
     </div>
   </multiselect>
 </template>
+
+<style lang="scss" scoped>
+
+  input.multiselect__input:focus {
+    border: none;
+    opacity: 1;
+    box-shadow: none !important;
+  }
+
+  .multiselect__tags {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20' stroke='%23A6A8AF'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z' /%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-size: 20px 20px;
+    background-position: center left;
+    text-indent: 12px;
+    color: #000;
+
+    &::placeholder {
+      color: #A6A8AF;
+    }
+
+    &:focus {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20' stroke='%2326ae61'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z' /%3E%3C/svg%3E");
+    }
+  }
+</style>

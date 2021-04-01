@@ -1,5 +1,5 @@
 <script>
-import AppBanner from './AppBanner';
+import AppBanner from './AppBanner_v2';
 import AppTopbar from './AppTopbar';
 
 export default {
@@ -51,7 +51,7 @@ export default {
         </div>
       </div>
     </header>
-    <div class="clearfix" />
+    <!--<div class="clearfix" />-->
     <app-banner v-if="withBanner" />
   </section>
 </template>

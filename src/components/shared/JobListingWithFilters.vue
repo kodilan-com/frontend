@@ -93,30 +93,70 @@ export default {
         </div>
       </div>
       <div v-if="!isLoading" class="five columns">
-        <div class="widget">
-          <input
-            v-model="params.query"
-            @keypress.enter="search"
-            type="text"
-            class="ico-01"
-            placeholder="Pozisyon adı, teknoloji adı"
-          >
-          <location-select v-model="params.location" :value="params.location" :searchable="true" />
-          <multiselect
-            v-model="type"
-            :options="typeOptions"
-            label="text"
-            :searchable="false"
-            :close-on-select="true"
-            placeholder="Çalışma tipi seçiniz..."
-          />
-        </div>
-        <div class="button-right">
-          <button @click="search" class="button tag-search-btn">
-            Ara
-          </button>
+        <h3>
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+          </svg>
+          Farklı ilanlar arayın
+        </h3>
+        <div class="searchform-wrapper">
+          <div class="widget">
+            <input
+              v-model="params.query"
+              @keypress.enter="search"
+              type="text"
+              class="ico-01"
+              placeholder="Pozisyon adı, teknoloji adı"
+            >
+            <location-select v-model="params.location" :value="params.location" :searchable="true" />
+            <multiselect
+              v-model="type"
+              :options="typeOptions"
+              label="text"
+              :searchable="false"
+              :close-on-select="true"
+              placeholder="Çalışma tipi seçiniz..."
+            />
+          </div>
+          <div class="button-right">
+            <button @click="search" class="button tag-search-btn">
+              Ara
+            </button>
+          </div>
         </div>
       </div>
     </div>
   </section>
 </template>
+
+<style lang="scss" scoped>
+  .five.columns {
+    .searchform-wrapper {
+      margin-top: 24px;
+      border-radius: 4px;
+      box-sizing: border-box;
+      background-color: #FFF;
+      padding: 12px 24px 24px 24px;
+      box-shadow: 0px 2px 4px -3px rgba(0,0,0,.1), 0px 10px 15px -3px rgba(0,0,0,.05);
+    }
+  }
+
+  h3 {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    font-weight: 500;
+
+    svg {
+      width: 24px;
+      height: 24px;
+      background-color: #26ae61;
+      stroke: #FFF;
+      margin-right: 12px;
+      padding: 8px;
+      border-radius: 50%;
+    }
+  }
+
+</style>
