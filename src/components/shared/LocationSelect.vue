@@ -90,3 +90,20 @@ export default {
     </div>
   </multiselect>
 </template>
+
+<style lang="scss" scoped>
+
+  input.multiselect__input:focus {
+    border: none;
+    opacity: 1;
+    box-shadow: none !important;
+  }
+
+  .multiselect__tags {
+    color: #000;
+
+    &::placeholder {
+      color: #A6A8AF;
+    }
+  }
+</style>

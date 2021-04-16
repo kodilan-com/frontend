@@ -63,7 +63,7 @@ table.manage-table td.action a:hover,
 .widget-text h5 a:hover,
 .app-content .info span ,
 .app-content .info ul li a:hover
-{ color: #26ae61; }
+{ /*color: #26ae61; */ }
 
 .icon-box.rounded i {
 	border-color: #26ae61;

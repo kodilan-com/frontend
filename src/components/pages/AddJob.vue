@@ -203,7 +203,7 @@ export default {
     >
       <div class="sixteen columns">
         <div class="submit-page">
-          <div class="notification notice margin-bottom-40">
+          <div class="notification warning margin-bottom-40">
             <p>
               <span>Önemli hatırlatma!</span>
               İlan ekleyebilmek için belirtmiş olduğunuz firma ismiyle uyumlu bir e-posta adresi
@@ -321,6 +321,14 @@ export default {
 </template>
 
 <style lang="scss">
+
+.submit-page {
+  background-color: #FFF;
+  border-radius: 4px;
+  padding: 24px 32px;
+  box-shadow: 0px 2px 4px -3px rgba(0,0,0,.1), 0px 10px 15px -3px rgba(0,0,0,.05);
+}
+
 .add-job {
   .button-container {
     text-align: right;

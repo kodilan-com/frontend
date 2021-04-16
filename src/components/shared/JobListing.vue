@@ -1,6 +1,6 @@
 <script>
 import Loader from './Loader';
-import JobItem from './JobItem';
+import JobItem from './JobItem_v2';
 
 export default {
   props: {
