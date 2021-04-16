@@ -30,7 +30,9 @@ module.exports = {
     'max-len': ['error', {
       code: 200,
       ignoreComments: true,
+      ignoreTemplateLiterals: true,
       ignoreStrings: true,
+      ignorePattern: 'd="([\\s\\S]*?)"',
       ignoreRegExpLiterals: true,
     }],
     'vue/order-in-components': ['error', {

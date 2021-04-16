@@ -41,7 +41,7 @@ export default {
               class="ico-01 flat"
               placeholder="Pozisyon adı, teknoloji adı"
             >
-            <div class="semi-border"></div>
+            <div class="semi-border" />
             <div class="banner--location-select">
               <location-select
                 v-model="params.location"
@@ -94,18 +94,6 @@ export default {
 
 <style lang="scss" scoped>
 
-  .multiselect__tags {
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%23A6A8AF'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z' /%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M15 11a3 3 0 11-6 0 3 3 0 016 0z' /%3E%3C/svg%3E");
-    background-repeat: no-repeat;
-    background-size: 24px 24px;
-    background-position: center left;
-    text-indent: 12px;
-  }
-
-  .multiselect.multiselect--active .multiselect__tags {
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%2326ae61'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z' /%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M15 11a3 3 0 11-6 0 3 3 0 016 0z' /%3E%3C/svg%3E");
-  }
-
   .banner {
     background: none;
   }
@@ -140,7 +128,7 @@ export default {
         padding: 0px 12px;
         margin-right: 8px;
 
-        &:last-child { margin-right: 0px; }  
+        &:last-child { margin-right: 0px; }
 
         &:hover {
           border-color: transparent;
@@ -156,7 +144,7 @@ export default {
     }
 
     .inputs {
-      padding: 8px 8px 8px 16px;
+      padding: 8px 8px 8px 8px;
       background-color: #fff;
       box-shadow: 0px 2px 4px -3px rgba(0,0,0,.1), 0px 10px 15px -3px rgba(0,0,0,.05);
 
@@ -164,19 +152,10 @@ export default {
 
       .ico-01 {
         border-right: 1px solid #e0e0e0;
-        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20' stroke='%23A6A8AF'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z' /%3E%3C/svg%3E");
-        background-repeat: no-repeat;
-        background-size: 20px 20px;
-        background-position: center left;
-        text-indent: 12px;
         color: #000;
 
         &::placeholder {
           color: #A6A8AF;
-        }
-
-        &:focus {
-          background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20' stroke='%2326ae61'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z' /%3E%3C/svg%3E");
         }
       }
 

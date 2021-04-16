@@ -55,9 +55,9 @@ export default {
         </svg>
         En son eklenen ilanlar
       </h3>
-      <div class="margin-bottom-30"></div>
+      <div class="margin-bottom-30" />
       <job-period-selector />
-      <div class="margin-bottom-25"></div>
+      <div class="margin-bottom-25" />
       <job-listing
         :is-loading="isLoading"
         :posts="recentPosts"
