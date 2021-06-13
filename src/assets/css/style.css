@@ -4701,6 +4701,7 @@ li .job-spotlight p {
 
 .listing-icons li:last-child {
   margin-right: 0px;
+  display: block;
 }
 
 .listing-icons li i {
